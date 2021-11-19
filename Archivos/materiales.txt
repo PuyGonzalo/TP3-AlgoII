@@ -1,0 +1,3 @@
+madera 5305
+metal 1442
+piedra 1830
