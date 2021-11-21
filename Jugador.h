@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include "edificio.h"
+#include "herramientas.h"
 //#include "inventario.h"
 
 using namespace std;
@@ -33,12 +34,14 @@ enum Objetivo_t{
     OBJ_EXTREMISTA
 };
 
+
+
 class Jugador{
     private:
         char identificador;
         int andycoins_gastados;
 //        Inventario inventario;
-//        Coordenadas ubicacion;
+        Coordenadas ubicacion;
         Objetivo_t objetivos_secundarios[CANT_OBJETIVOS_SECUNDARIOS];
 //        Lista<Datos_edificio*> catalogo;
         double energia;

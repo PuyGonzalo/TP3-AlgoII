@@ -16,7 +16,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero transitable
-    Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
+    Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado, Jugador_t jugador);
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero transitable default

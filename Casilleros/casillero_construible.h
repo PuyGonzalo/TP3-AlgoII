@@ -16,7 +16,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero construible
-    Casillero_construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
+    Casillero_construible(Superficie* superficie, int coord_x, int coord_y, bool ocupado, Jugador_t jugador);
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero construible default

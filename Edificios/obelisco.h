@@ -22,11 +22,11 @@ public:
 
     // pre: -
     // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
-    char obtener_material_brindado(){return ' ';}
+    char obtener_recurso(){return ' ';}
 
     // pre: -
     // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
-    double obtener_cantidad_material_brindado(){return 0;}
+    double obtener_cantidad_recurso(){return 0;}
 };
 
 

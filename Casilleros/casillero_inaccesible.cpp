@@ -5,8 +5,8 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_inaccesible::Casillero_inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
-        :Casillero(superficie, coord_x, coord_y, ocupado){}
+Casillero_inaccesible::Casillero_inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado, Jugador_t jugador) 
+        :Casillero(superficie, coord_x, coord_y, ocupado, jugador){}
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -21,7 +21,10 @@ void Casillero_inaccesible::imprimir_casillero(){
 
         if(superficie -> obtener_color() == codigos_color_superficies[i][0]){
             color_superficie_encontrada = true;
-            cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
+            if(jugador != NADIE){
+                cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;
+            } else
+                cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
         }
 
         ++i;

@@ -12,7 +12,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero inaccesible
-    Casillero_inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado);
+    Casillero_inaccesible(Superficie* superficie, int coord_x, int coord_y, bool ocupado, Jugador_t jugador);
 
     // pre: -
     // pos: CONSTRUCTOR de un casillero inaccesible default

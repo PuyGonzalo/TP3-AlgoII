@@ -5,8 +5,8 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Casillero_transitable::Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado) 
-        :Casillero(superficie, coord_x, coord_y, ocupado){}
+Casillero_transitable::Casillero_transitable(Superficie* superficie, int coord_x, int coord_y, bool ocupado, Jugador_t jugador) 
+        :Casillero(superficie, coord_x, coord_y, ocupado, jugador){}
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -34,9 +34,12 @@ void Casillero_transitable::imprimir_casillero(){
 
         if(superficie -> obtener_color() == codigos_color_superficies[i][0]){
             color_superficie_encontrada = true;
-            if(ocupado)
-                cout << codigos_color_superficies[i][1] << material_ocupado -> obtener_identificador() << FIN_DE_FORMATO;
-            else
+            if(ocupado){
+                if(jugador != NADIE){
+                    cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;  
+                } else
+                    cout << codigos_color_superficies[i][1] << material_ocupado -> obtener_identificador() << FIN_DE_FORMATO;
+            } else
                 cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
         }
 
