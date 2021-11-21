@@ -15,7 +15,7 @@ Madera::Madera(double cantidad) : Material(cantidad) {
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Madera::obtener_tipo_material(){
+string Madera::obtener_nombre_material(){
 
     return STR_MADERA;
 

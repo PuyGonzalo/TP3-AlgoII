@@ -15,7 +15,7 @@ Metal::Metal(double cantidad) : Material(cantidad) {
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Metal::obtener_tipo_material(){
+string Metal::obtener_nombre_material(){
 
     return STR_METAL;
 

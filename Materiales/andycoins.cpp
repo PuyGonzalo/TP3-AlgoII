@@ -15,7 +15,7 @@ Andycoins::Andycoins(double cantidad) : Material(cantidad) {
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Andycoins::obtener_tipo_material(){
+string Andycoins::obtener_nombre_material(){
 
     return STR_ANDYCOINS;
 

@@ -11,7 +11,7 @@ const string STR_MADERA = "madera";
 const string STR_METAL = "metal";
 const string STR_ANDYCOINS = "andycoins";
 const string STR_BOMBAS = "bombas";
-// ENERGIA? 
+
 const char IDENTIF_PIEDRA = 'S';
 const char IDENTIF_MADERA = 'W';
 const char IDENTIF_METAL = 'I';
@@ -59,7 +59,7 @@ public:
 
     // pre: -
     // pos: obtiene que tipo/nombre de material es
-    virtual string obtener_tipo_material() = 0;
+    virtual string obtener_nombre_material() = 0;
     // #### para mi PONERLE "NOMBRE en vez de tipo", no lo cambie para no romper el codigo q lo use
 
 };

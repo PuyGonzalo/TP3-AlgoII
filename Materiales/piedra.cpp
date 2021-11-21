@@ -15,7 +15,7 @@ Piedra::Piedra(double cantidad) : Material(cantidad) {
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Piedra::obtener_tipo_material(){
+string Piedra::obtener_nombre_material(){
 
     return STR_PIEDRA;
     

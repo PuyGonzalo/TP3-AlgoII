@@ -15,7 +15,7 @@ public:
 
     // pre: -
     // post: devuelve una string con el tipo de material que es (madera)
-    string obtener_tipo_material();
+    string obtener_nombre_material();
 
 };
 

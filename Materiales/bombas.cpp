@@ -11,7 +11,7 @@ Bombas::Bombas(double cantidad) : Material(cantidad) {} // no tiene identif o po
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Bombas::obtener_tipo_material(){
+string Bombas::obtener_nombre_material(){
 
     return STR_BOMBAS;
 
