@@ -2,12 +2,12 @@
 #define JUGADOR_H
 
 #include<iostream>
-#include "Edificio.h"
-#include "Inventario.h"
+#include "edificio.h"
+//#include "inventario.h"
 
 using namespace std;
 
-#define CANT_OBJETIVOS_SECUNDARIOS 3
+const int CANT_OBJETIVOS_SECUNDARIOS = 3;
 
 const char IDENTIFICADOR_JUGADOR_UNO = 'J';
 const char IDENTIFICADOR_JUGADOR_DOS = 'U';
@@ -19,7 +19,7 @@ const int CANT_OBJ_BOMBARDERO = 5;
 const int CANT_OBJ_CANSADO = 0;
 const int CANT_OBJ_ARMADO = 10;
 
-typedef enum {
+enum Objetivo_t{
     OBJ_OBELISCO,
     OBJ_COMPRAR_ANDYNOPOLIS,
     OBJ_EDAD_PIEDRA,
@@ -31,36 +31,36 @@ typedef enum {
     OBJ_CONSTRUCTOR,
     OBJ_ARMADO,
     OBJ_EXTREMISTA
-}Objetivo_t;
+};
 
 class Jugador{
     private:
         char identificador;
         int andycoins_gastados;
-        Inventario inventario;
-        Coordenadas ubicacion;
+//        Inventario inventario;
+//        Coordenadas ubicacion;
         Objetivo_t objetivos_secundarios[CANT_OBJETIVOS_SECUNDARIOS];
-        Lista<Datos_edificio*> catalogo;
+//        Lista<Datos_edificio*> catalogo;
         double energia;
 
     public:
         Jugador();
-        Jugador(char id,int andycoins_gastados,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
+//        Jugador(char id,int andycoins_gastados,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
 
         char obtener_identificador();
         int obtener_andycoins_gastados();
-        Inventario obtener_inventario();
-        Coordenadas obtener_ubicacion();
+//        Inventario obtener_inventario();
+//        Coordenadas obtener_ubicacion();
         Objetivo_t obtener_objetivos_secundarios();
-        Lista<Datos_edificio*> obtener_catalogo();
+//        Lista<Datos_edificio*> obtener_catalogo();
         double obtener_energia();
 
         void setear_identificador( char id);
         void setear_andycoins_gastados( int cant_andycoins);
-        void setear_inventario( Inventario invent);
-        void setear_ubicacion( Coordenadas ubi);
+//        void setear_inventario( Inventario invent);
+//        void setear_ubicacion( Coordenadas ubi);
         void setear_objetivos_secundarios( Objetivo_t objetivos);
-        void setear_catalogo( Lista<Datos_edificio*> catalog);
+//        void setear_catalogo( Lista<Datos_edificio*> catalog);
         void setear_energia(  double cant_energia);
 /*
         void sortear_objetivos_secundarios();
