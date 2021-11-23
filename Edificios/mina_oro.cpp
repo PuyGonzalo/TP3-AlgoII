@@ -3,7 +3,7 @@
 Mina_oro::Mina_oro(char identificador, char creador) : Edificio(identificador, creador){
 
     this -> identificador_material_brindado = IDENTIF_ANDYCOINS;
-    this -> cantidad_material_brindado = CANTIDAD_ANDYCOINS_BRINDADAS;
+    this -> cantidad_material_brindado = CANTIDAD_ANDYCOINS_BRINDADAS_MINA_ORO;
 }
 
 

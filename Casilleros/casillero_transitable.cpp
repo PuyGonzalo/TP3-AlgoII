@@ -36,7 +36,8 @@ void Casillero_transitable::imprimir_casillero(){
             color_superficie_encontrada = true;
             if(ocupado){
                 if(jugador != NADIE){
-                    cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;  
+                    cout << codigos_color_superficies[i][1] << colores_jugador[jugador] 
+                    << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;  
                 } else
                     cout << codigos_color_superficies[i][1] << material_ocupado -> obtener_identificador() << FIN_DE_FORMATO;
             } else

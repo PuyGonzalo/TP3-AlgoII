@@ -4,7 +4,7 @@
 #include "../edificio.h"
 #include "../material.h"
 
-const double CANTIDAD_ANDYCOINS_BRINDADAS = 25;
+const double CANTIDAD_ANDYCOINS_BRINDADAS_ESCUELA = 25;
 
 class Escuela: public Edificio {
 

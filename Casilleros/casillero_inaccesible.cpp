@@ -22,7 +22,8 @@ void Casillero_inaccesible::imprimir_casillero(){
         if(superficie -> obtener_color() == codigos_color_superficies[i][0]){
             color_superficie_encontrada = true;
             if(jugador != NADIE){
-                cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;
+                cout << codigos_color_superficies[i][1] << colores_jugador[jugador] 
+                << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;
             } else
                 cout << codigos_color_superficies[i][1] << ' ' << FIN_DE_FORMATO;
         }

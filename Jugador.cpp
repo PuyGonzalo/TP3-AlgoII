@@ -3,7 +3,51 @@
 
 // ------------------------------------------------------------------------------------------------------------
 
+Jugador::Jugador(){
 
+    this -> jugador = NADIE;
+    this -> identificador = ' ';
+
+}
+
+
+
+Jugador::Jugador(char id, Jugador_t jugador){
+
+    this -> jugador = jugador;
+    this -> identificador = id;
+
+}
+
+
+void Jugador::mostrar_inventario(){
+
+    inventario.mostrar_inventario();
+
+}
+
+
+void Jugador::asignar_identificador(char identif){
+
+    this -> identificador = identif;
+
+}
+
+void Jugador::asignar_numero_jugador(Jugador_t jugador){
+
+    this -> jugador = jugador;
+
+}
+
+void Jugador::agregar_material_a_lista(Material* material){
+
+    inventario.agregar_material_a_lista(material);
+
+}
+
+
+
+/*
 Jugador::Jugador(){
     identificador = 0;
     andycoins_gastados = 0;
@@ -147,7 +191,7 @@ void setear_energia( int cant_energia){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
+
 bool Jugador::chequear_objetivo_obelisco(){
     for(int i=0; !catalogo.vacia(); i++){
         if(STR_OBELISCO == catalogo.consulta(i) -> nombre)
