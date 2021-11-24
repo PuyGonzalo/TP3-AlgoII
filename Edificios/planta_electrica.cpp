@@ -17,3 +17,11 @@ string Planta_electrica::obtener_tipo_edificio(){
 
     return STR_P_ELECTRICA;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Planta_electrica::obtener_cantidad_recurso(){
+    return this -> cantidad_energia_brindada;
+}

@@ -32,7 +32,7 @@ public:
 
     // pre: -
     // pos: Devuelve la cantidad de energia que devuelve la planta electrica.
-    double obtener_cantidad_recurso(){return 0;};
+    double obtener_cantidad_recurso();
 };
 
 
