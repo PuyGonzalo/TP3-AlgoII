@@ -11,7 +11,7 @@ Casillero::Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocup
     this -> coord_x = coord_x;
     this -> coord_y = coord_y;
     this -> ocupado = ocupado;
-    this -> jugador = NADIE;
+    this -> jugador = jugador;
 
 }
 

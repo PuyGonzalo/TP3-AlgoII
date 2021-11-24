@@ -212,6 +212,10 @@ Superficie* Parser::procesar_entrada_superficie(){
         superficie = new Lago(identificador_superficie());
     } else if (identificador_superficie() == identificador_camino){
         superficie = new Camino(identificador_superficie());
+    } else if (identificador_superficie() == identificador_betun){
+        superficie = new Betun(identificador_superficie());
+    } else if (identificador_superficie() == identificador_muelle){
+        superficie = new Muelle(identificador_superficie());
     } else {
         superficie = new Terreno(identificador_superficie());
     }
@@ -299,16 +303,16 @@ Material* Parser::procesar_entrada_ubicaciones_materiales(){
 
 string Parser::nombre_elemento_ubicaciones(){
     
-    string nombre_edificio;
+    string nombre_elemento;
     int i = 0;
 
     for (; i < cantidad_de_palabras - CANTIDAD_PARAMETROS_UBICACIONES ; ++i){
-        nombre_edificio.append(this -> entrada[i]);
-        nombre_edificio.append(ESPACIO);
+        nombre_elemento.append(this -> entrada[i]);
+        nombre_elemento.append(ESPACIO);
     }
-    nombre_edificio.append(this->entrada[i]);
+    nombre_elemento.append(this->entrada[i]);
     
-    return nombre_edificio;
+    return nombre_elemento;
 
 }
 

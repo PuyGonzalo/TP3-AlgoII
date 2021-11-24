@@ -125,7 +125,7 @@ public:
     Material* procesar_entrada_ubicaciones_materiales();
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "ubicaciones.txt"
-    // pos: Devuelve el nombre del edificio
+    // pos: Devuelve el nombre del elemento leido (puede ser un jugador, un material o un edificio)
     string nombre_elemento_ubicaciones();
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "ubicaciones.txt"

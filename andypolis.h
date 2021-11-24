@@ -9,7 +9,7 @@
 #include "parser.h"
 #include "inventario.h"
 #include "jugador.h"
-//#include "mapa.h"
+#include "mapa.h"
 #include "errores.h"
 #include "herramientas.h"
 
@@ -27,8 +27,8 @@ class Andypolis{
 
 private:
     // Atributos
-//    Mapa mapa;
-//    Lista<Datos_edificio*> catalogo;
+    Mapa mapa;
+//  Lista<Datos_edificio*> catalogo; VA A SER UN ARBOL
     Jugador jugador_uno;
     Jugador jugador_dos;
 
@@ -47,6 +47,10 @@ public:
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);
+
+    // pre: -
+    // pos: muestra el mapa
+    void mostrar_mapa();
 
 
 };

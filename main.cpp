@@ -31,6 +31,8 @@ int main (void){
 
 	andypolis.mostrar_inventario(JUGADOR_DOS);
 
+	andypolis.mostrar_mapa();
+
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 
 	archivo_entrada_edificios.close();

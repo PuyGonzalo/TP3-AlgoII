@@ -11,6 +11,8 @@ Jugador::Jugador(){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
 
 Jugador::Jugador(char id, Jugador_t jugador){
 
@@ -20,11 +22,17 @@ Jugador::Jugador(char id, Jugador_t jugador){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::mostrar_inventario(){
 
     inventario.mostrar_inventario();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 void Jugador::asignar_identificador(char identif){
@@ -33,17 +41,40 @@ void Jugador::asignar_identificador(char identif){
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::asignar_numero_jugador(Jugador_t jugador){
 
     this -> jugador = jugador;
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::asignar_ubicacion_jugador(int coord_x, int coord_y){
+
+    this -> ubicacion.coordenada_x = coord_x;
+    this -> ubicacion.coordenada_y = coord_y;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::agregar_material_a_lista(Material* material){
 
     inventario.agregar_material_a_lista(material);
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 
 

@@ -44,11 +44,11 @@ public:
 
     // pre: - 
     // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
-    char obtener_material_brindado_de_casillero(){return ' ';};
+    char obtener_recurso_de_casillero(){return ' ';};
 
     // pre: - 
     // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
-    double obtener_cantidad_material_brindado_de_casillero(){return 0;};
+    double obtener_cantidad_recurso_de_casillero(){return 0;};
 
 };
 

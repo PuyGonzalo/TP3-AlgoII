@@ -8,11 +8,12 @@
 
 using namespace std;
 
-const int CANT_OBJETIVOS_SECUNDARIOS = 3;
 
 const char IDENTIFICADOR_JUGADOR_UNO = 'J';
 const char IDENTIFICADOR_JUGADOR_DOS = 'U';
 
+
+const int CANT_OBJETIVOS_SECUNDARIOS = 3;
 
 const int CANT_OBJ_EDAD_PIEDRA = 50000;
 const int CANT_OBJ_COMPRAR_ANDYPOLIS = 100000;
@@ -41,21 +42,42 @@ private:
         // Atributos
         char identificador;
         Jugador_t jugador;
-//        int andycoins_gastados;
+//      int andycoins_gastados;
         Inventario inventario;
-//        Coordenadas ubicacion;
-//        Objetivo_t objetivos_secundarios[CANT_OBJETIVOS_SECUNDARIOS];
-//        Lista<Datos_edificio*> catalogo;
-//        double energia;
+        Coordenadas ubicacion;
+//      Objetivo_t objetivos_secundarios[CANT_OBJETIVOS_SECUNDARIOS];
+//      Lista<Datos_edificio*> catalogo;
+//      double energia;
 
 public:
         // Metodos
 
+        // pre: -
+        // pos: CONSTRUCTOR por parametros de un jugador
         Jugador(char id, Jugador_t jugador);
+
+        // pre: -
+        // pos: CONSTRUCTOR por default de un juegador
         Jugador();
+
+        // pre: -
+        // pos: asigna el identificador al jugador (con el que será visto en el mapa)
         void asignar_identificador(char identif);
+
+        // pre: -
+        // pos: asigna que jugador es (jugador 1 o 2)
         void asignar_numero_jugador(Jugador_t jugador);
+
+        // pre: las coordenadas deben estar dentro del mapa (chequear en funcion superior)
+        // pos: asigna la ubicacion en el mapa del jugador
+        void asignar_ubicacion_jugador(int coord_x, int coord_y);
+
+        // pre: -
+        // pos: muestra el inventario del jugador
         void mostrar_inventario();
+
+        // pre: -
+        // pos: agrega un material a la lista de materiales del jugador
         void agregar_material_a_lista(Material* material);
 
 

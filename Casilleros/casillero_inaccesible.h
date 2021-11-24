@@ -39,11 +39,11 @@ public:
 
     // pre: -
     // pos: momentaneamente no tiene sentido pedirle un material a un casillero inaccesible
-    char obtener_material_brindado_de_casillero(){return ' ';};
+    char obtener_recurso_de_casillero(){return ' ';};
 
     // pre: - 
     // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero inaccesible
-    double obtener_cantidad_material_brindado_de_casillero(){return 0;};
+    double obtener_cantidad_recurso_de_casillero(){return 0;};
 
 };
 

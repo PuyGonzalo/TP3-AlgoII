@@ -20,7 +20,6 @@ Inventario::~Inventario(){
     
     for (int i = 0 ; i < cantidad_materiales ; ++i){
         delete lista_materiales.consulta(i);
-        // lista_materiales.consulta(i) = nullptr;
     }
 
 }
