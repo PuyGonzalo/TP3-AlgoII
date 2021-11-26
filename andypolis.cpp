@@ -12,7 +12,18 @@ Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& 
     jugador_uno.asignar_numero_jugador(JUGADOR_UNO);
     jugador_dos.asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
     jugador_dos.asignar_numero_jugador(JUGADOR_DOS);
-    
+
+    // UBICACIONES
+
+/*
+    Para esto es mejor primero implementar el mapa. Una vez hecho eso, habria que ir poniendo los materiales en el mapa hasta
+    leer un "1", comparar con stoi() contra JUGADOR 1 y ahi llamar tal vez un metodo "cargar_edificios_jugador(Jugador_t jug)"
+    y obvio lo mismo para "2" (y agregar las ubicaciones.
+    Problema: no podemos llamar al constructor de jugador o inventario como en el TP anterior, vamos a tener que crearlo
+    vacio e irlo llenando con setter, me parece una poronga porque medio que Andypolis termina construyendolos en vez de la 
+    clase misma pero bueno, es la unica forma que veo si te van dando la info del jugador en 2 archivos distintos y tan
+    descorrelacionados.
+*/
 
     // INVENTARIO (meter en metodo)
     string linea_leida;
@@ -26,17 +37,6 @@ Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& 
         jugador_dos.agregar_material_a_lista(material_leido_dos);
         
     }
-
-    // UBICACIONES
-/*
-    Para esto es mejor primero implementar el mapa. Una vez hecho eso, habria que ir poniendo los materiales en el mapa hasta
-    leer un "1", comparar con stoi() contra JUGADOR 1 y ahi llamar tal vez un metodo "cargar_edificios_jugador(Jugador_t jug)"
-    y obvio lo mismo para "2" (y agregar las ubicaciones.
-    Problema: no podemos llamar al constructor de jugador o inventario como en el TP anterior, vamos a tener que crearlo
-    vacio e irlo llenando con setter, me parece una poronga porque medio que Andypolis termina construyendolos en vez de la 
-    clase misma pero bueno, es la unica forma que veo si te van dando la info del jugador en 2 archivos distintos y tan
-    descorrelacionados.
-*/
 
 }
 

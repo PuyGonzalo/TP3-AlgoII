@@ -21,14 +21,13 @@ const string STR_MINA_ORO = "mina oro";
 
 /*
 struct Datos_edificio{
-    string nombre;
+    string nombre; // si no se usa sacar 
     double costo_piedra;
     double costo_madera;
     double costo_metal;
     int cantidad_construidos;
     int maximos_permitidos;
     bool brinda_material;
-    Lista<Coordenadas*> ubicaciones_construidos;
 };
 */
 
