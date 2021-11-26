@@ -35,6 +35,7 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
     Estado_t estado = OK;
     Estado_t estado_edificios = OK;
     Estado_t estado_materiales = OK;
+    streampos pos_inicial_archivo = 0;
 
     // IMPLEMENTACION GONA 
 
@@ -46,7 +47,7 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
         // Si es distinto de 1 significa que hay materiales en el archivo ubicaciones
         // Entonces:
 
-        archivo_ubics.seekg(0); // Vuevlo a colocar el cursor de lectura en el inicio.
+        archivo_ubics.seekg(pos_inicial_archivo); // Vuevlo a colocar el cursor de lectura en el inicio.
         estado_materiales = cargar_materiales_mapa(archivo_ubics);
         // El metodo de arriba me deja el archivo pipicucu, justo para leer el "1 (69, 420)" jugador 1.
         estado_edificios = cargar_edificios_jugador(archivo_ubics);
@@ -55,7 +56,7 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
         // Si la primera linea es la posiscion de un jugador, entonces no hay materiales en el archivo ubicaciones.
         // Por ende:
 
-        archivo_ubics.seekg(0); // Vuelvo a colocar el cursor de lectura al inicio.
+        archivo_ubics.seekg(pos_inicial_archivo); // Vuelvo a colocar el cursor de lectura al inicio.
         estado_edificios = cargar_edificios_jugador(archivo_ubics);
     }
 /*
