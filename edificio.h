@@ -17,19 +17,6 @@ const string STR_OBELISCO = "obelisco";
 const string STR_P_ELECTRICA = "planta electrica";
 const string STR_MINA_ORO = "mina oro";
 
-// VER DESPUES SI DEJAMOS ESTO O LO SACAMOS Y HACEMOS UNA CLASE.
-
-/*
-struct Datos_edificio{
-    string nombre; // si no se usa sacar 
-    double costo_piedra;
-    double costo_madera;
-    double costo_metal;
-    int cantidad_construidos;
-    int maximos_permitidos;
-    bool brinda_material;
-};
-*/
 
 class Edificio{
 
