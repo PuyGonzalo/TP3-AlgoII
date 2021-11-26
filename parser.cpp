@@ -258,8 +258,6 @@ Edificio* Parser::procesar_entrada_ubicaciones_edificios(Jugador_t jugador){
         edificio = new Mina(obtener_identificador_edificio(), identif_jugador);
     } else if(nombre_elemento_ubicaciones() == STR_P_ELECTRICA){
         edificio = new Planta_electrica(obtener_identificador_edificio(), identif_jugador);
-    } else if(nombre_elemento_ubicaciones() == STR_YACIMIENTO){
-        edificio = new Yacimiento(obtener_identificador_edificio(), identif_jugador);
     } else if(nombre_elemento_ubicaciones() == STR_ESCUELA){
         edificio = new Escuela(obtener_identificador_edificio(), identif_jugador);
     } else if(nombre_elemento_ubicaciones() == STR_OBELISCO){

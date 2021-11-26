@@ -14,7 +14,6 @@ const string STR_ASERRADERO = "aserradero";
 const string STR_FABRICA = "fabrica";
 const string STR_ESCUELA = "escuela";
 const string STR_OBELISCO = "obelisco";
-const string STR_YACIMIENTO = "yacimiento";
 const string STR_P_ELECTRICA = "planta electrica";
 const string STR_MINA_ORO = "mina oro";
 

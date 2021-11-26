@@ -14,7 +14,6 @@
 #include "Edificios/fabrica.h"
 #include "Edificios/obelisco.h"
 #include "Edificios/planta_electrica.h"
-#include "Edificios/yacimiento.h"
 #include "Edificios/mina_oro.h"
 #include "superficie.h"
 #include "Superficies/camino.h"

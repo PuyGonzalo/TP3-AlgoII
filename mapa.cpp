@@ -256,7 +256,6 @@ cout << TAB << "║ " << "(F) Fabrica"  << string(26, ' ') << " ║" << endl;
 cout << TAB << "║ " << "(M) Mina"  << string(29, ' ') << " ║" << endl;
 cout << TAB << "║ " << "(O) Obelisco"  << string(25, ' ') << " ║" << endl;
 cout << TAB << "║ " << "(P) Planta electrica" << string(17, ' ')  << " ║" << endl;
-cout << TAB << "║ " << "(Y) Yacimiento" << string(23, ' ')  << " ║" << endl;
 cout << TAB << "║ " << string(37, ' ') << " ║" << endl;
 cout << TAB << NEGRITA << "║ " << "Materiales:" << string(26, ' ') << FIN_DE_FORMATO << " ║" << endl;
 cout << TAB << "║ " << "(I) Metal || (W) Madera || (S) Piedra"  << " ║" << endl;
