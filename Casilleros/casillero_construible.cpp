@@ -32,10 +32,10 @@ void Casillero_construible::imprimir_casillero(){
         if(superficie -> obtener_color() == codigos_color_superficies[i][0]){
             color_superficie_encontrada = true;
             if(ocupado){
-                if(jugador != NADIE){
-                    cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador] << FIN_DE_FORMATO;
+                if(hay_jugador()){
+                    cout << codigos_color_superficies[i][1] << identificaciones_jugadores[jugador_en_casillero] << FIN_DE_FORMATO;
                 } else
-                    cout << codigos_color_superficies[i][1] << colores_jugador[jugador-1]
+                    cout << codigos_color_superficies[i][1] << colores_jugador[(edificio_construido -> obtener_creador())-1]
                     << edificio_construido -> obtener_identificador()
                     << FIN_DE_FORMATO;
             } else

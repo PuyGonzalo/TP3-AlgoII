@@ -4,7 +4,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Fabrica::Fabrica(char identificador, char creador) : Edificio(identificador, creador) {
+Fabrica::Fabrica(char identificador, Jugador_t creador) : Edificio(identificador, creador) {
 
     this -> identificador_material_brindado = IDENTIF_METAL;
     this -> cantidad_material_brindado = CANTIDAD_METAL_BRINDADA;

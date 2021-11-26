@@ -45,6 +45,22 @@ public:
     ~Andypolis(){};
 
     // pre: -
+    // pos: carga las ubicaciones de materiales y los edificios de cada jugador
+    Estado_t cargar_ubicaciones(ifstream& archivo_ubics);
+
+    // pre: -
+    // pos: carga los edificios de un jugador en particular
+    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics, Jugador_t jugador);
+
+    // pre: -
+    // pos: carga los materiales en el mapa
+    Estado_t cargar_materiales_mapa(ifstream& archivo_ubics);
+
+    // pre: -
+    // pos: posiciona un jugador en el mapa
+    Estado_t posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);
 

@@ -154,7 +154,7 @@ bool Mapa::casillero_esta_ocupado(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Mapa::construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y){
+Estado_t Mapa::asignar_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y){
 
     Estado_t estado = OK;
 
@@ -198,6 +198,20 @@ Estado_t Mapa::destruir_edificio_en_coord(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Estado_t Mapa::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador){
+
+    if(coord_x > cantidad_columnas || coord_y > cantidad_filas)
+        return ERROR_POSICION_INEXISTENTE;
+
+    mapa[coord_x][coord_y] -> posicionar_jugador(jugador);
+    return OK;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Estado_t Mapa::consultar_casillero(int coord_x, int coord_y) const{
 
     Estado_t estado = OK;
@@ -216,7 +230,7 @@ Estado_t Mapa::consultar_casillero(int coord_x, int coord_y) const{
 
 void Mapa::mostrar_mapa(){
 
-    imprimir_leyenda_mapa();
+    //imprimir_leyenda_mapa();
 
     for (int i = 0 ; i < cantidad_filas ; ++i){
         cout << "\t\t";

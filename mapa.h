@@ -65,11 +65,15 @@ public:
 
     // pre: coordenadas validas
     // pos: "construye" un edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o ya este ocupado)
-    Estado_t construir_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y);
+    Estado_t asignar_edificio_en_coord(Edificio* edificio, int coord_x, int coord_y);
 
     // pre: coordenadas validas
     // pos: "destruye" el edificio en una coordenada dada (y devuelve un error en caso de que sea no sea construible o no haya nada)
     Estado_t destruir_edificio_en_coord(int coord_x, int coord_y);
+
+    // pre: coordenadas validas
+    // pos: posiciona al jugador en el casillero
+    Estado_t posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador);
 
     // pre: coordenadas validas
     // pos: consulta un casillero del mapa en particular

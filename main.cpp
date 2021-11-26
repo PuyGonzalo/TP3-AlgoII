@@ -26,10 +26,6 @@ int main (void){
 
  	// ########## JUEGO
 	Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
-	
-	andypolis.mostrar_inventario(JUGADOR_UNO);
-
-	andypolis.mostrar_inventario(JUGADOR_DOS);
 
 	andypolis.mostrar_mapa();
 

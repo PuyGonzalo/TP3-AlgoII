@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Aserradero::Aserradero(char identificador, char creador) : Edificio(identificador, creador) {
+Aserradero::Aserradero(char identificador, Jugador_t creador) : Edificio(identificador, creador) {
     this -> identificador_material_brindado = IDENTIF_MADERA;
     this -> cantidad_material_brindado = CANTIDAD_MADERA_BRINDADA;
 }

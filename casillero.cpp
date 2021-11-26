@@ -11,7 +11,7 @@ Casillero::Casillero(Superficie* superficie, int coord_x, int coord_y, bool ocup
     this -> coord_x = coord_x;
     this -> coord_y = coord_y;
     this -> ocupado = ocupado;
-    this -> jugador = jugador;
+    this -> jugador_en_casillero = jugador;
 
 }
 
@@ -24,6 +24,7 @@ Casillero::Casillero(){
     this -> coord_x = -1; // 0,0 ES una posicion valida en el mapa.
     this -> coord_y = -1;
     this -> ocupado = false;
+    this -> jugador_en_casillero = NADIE;
 
 }
 
@@ -95,5 +96,28 @@ bool Casillero::es_casillero_construible(){
 bool Casillero::es_casillero_accesible(){
 
     return superficie -> es_accesible();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Casillero::hay_jugador(){
+
+    if(jugador_en_casillero != NADIE)
+        return true;
+    return false;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero::posicionar_jugador(Jugador_t jugador){
+    
+    this -> ocupado = true;
+    this -> jugador_en_casillero = jugador;
 
 }

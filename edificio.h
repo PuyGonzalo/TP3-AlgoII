@@ -5,7 +5,7 @@
 #include <sstream>
 //#include "lista.h"
 #include "errores.h"
-//#include "herramientas.h"
+#include "herramientas.h"
 
 using namespace std;
 
@@ -36,7 +36,7 @@ class Edificio{
 protected:
     // Atributos
     char identificador;
-    char creador;
+    Jugador_t creador;
 
 
 public:
@@ -48,7 +48,7 @@ public:
 
     // pre: identificador valido (entre los que hay en la consigna)
     // pos: CONSTRUCTOR con parametro
-    Edificio(char identificador, char creador);
+    Edificio(char identificador, Jugador_t creador);
 
     // pre: -
     // pos: DESTRUCTOR de edificios
@@ -69,6 +69,10 @@ public:
     // pre: -
     // pos: devuelve el identificador del edificio
     char obtener_identificador();
+
+    // pre: -
+    // pos: devuelve el creador del edificio
+    Jugador_t obtener_creador();
 
 };
 

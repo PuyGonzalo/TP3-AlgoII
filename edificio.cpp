@@ -7,7 +7,7 @@
 Edificio::Edificio(){
 
     this -> identificador = ' ';
-    this -> creador = ' ';
+    this -> creador = NADIE;
 
 }
 
@@ -15,7 +15,7 @@ Edificio::Edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Edificio::Edificio(char identificador, char creador){
+Edificio::Edificio(char identificador, Jugador_t creador){
 
     this -> identificador = identificador;
     this -> creador = creador;
@@ -33,3 +33,9 @@ char Edificio::obtener_identificador(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+Jugador_t Edificio::obtener_creador(){
+
+    return creador;
+
+}

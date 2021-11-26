@@ -17,7 +17,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR mina
-    Mina(char identificador, char creador);
+    Mina(char identificador, Jugador_t creador);
 
     // pre: -
     // pos: DESTRUCTOR mina

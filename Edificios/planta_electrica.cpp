@@ -4,7 +4,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Planta_electrica::Planta_electrica(char identificador, char creador) : Edificio(identificador, creador){
+Planta_electrica::Planta_electrica(char identificador, Jugador_t creador) : Edificio(identificador, creador){
 
     this -> cantidad_energia_brindada = CANTIDAD_ENERGIA_BRINDADA;
 }

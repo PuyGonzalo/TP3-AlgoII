@@ -14,7 +14,7 @@
 using namespace std;
 
 const char identificaciones_jugadores[3] = {' ','J','U'}; // CHE PERO EL EDIFICIO TIENE UN ATRIBUTO DE QUIEN ES EL CREADOR!
-const string colores_jugador[2] = {TEXTO_PURPURA,TEXT_PURPURA_OSCURO}; // (impresion de casilleros con edifs)
+const string colores_jugador[2] = {TEXTO_PURPURA,TEXTO_PURPURA_OSCURO}; // (impresion de casilleros con edifs)
 
 class Casillero{
 
@@ -24,7 +24,7 @@ protected:
     int coord_x;
     int coord_y;
     bool ocupado;
-    Jugador_t jugador;
+    Jugador_t jugador_en_casillero;
 
 
 public:
@@ -65,6 +65,14 @@ public:
     // pre: -
     // pos: devuelve, en funcion de su superficie, si es un casillero accesible o no
     bool es_casillero_accesible();
+
+    // pre: -
+    // pos: devuelve true si hay un jugador en el casillero (false si no)
+    bool hay_jugador();
+
+    // pre: coordenada valida
+    // pos: posiciona un jugador en el casillero
+    void posicionar_jugador(Jugador_t jugador);
 
     // pre: -
     // pos: pone un edificio en el casillero (solo en construible)

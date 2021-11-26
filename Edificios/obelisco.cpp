@@ -4,7 +4,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Obelisco::Obelisco(char identificador, char creador): Edificio(identificador, creador){}
+Obelisco::Obelisco(char identificador, Jugador_t creador): Edificio(identificador, creador){}
 
 // ------------------------------------------------------------------------------------------------------------
 

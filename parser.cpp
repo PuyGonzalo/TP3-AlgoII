@@ -247,27 +247,20 @@ Edificio* Parser::procesar_entrada_ubicaciones_edificios(Jugador_t jugador){
    
     Edificio* edificio = nullptr;
 
-    char identif_jugador;
-
-    if(jugador == JUGADOR_UNO)
-        identif_jugador = 'J';
-    else
-        identif_jugador= 'U';
-
     if(nombre_elemento_ubicaciones() == STR_MINA){
-        edificio = new Mina(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Mina(obtener_identificador_edificio(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_P_ELECTRICA){
-        edificio = new Planta_electrica(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Planta_electrica(obtener_identificador_edificio(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_ESCUELA){
-        edificio = new Escuela(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Escuela(obtener_identificador_edificio(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_OBELISCO){
-        edificio = new Obelisco(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Obelisco(obtener_identificador_edificio(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_FABRICA){
-        edificio = new Fabrica(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Fabrica(obtener_identificador_edificio(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_MINA_ORO){
-        edificio = new Mina_oro(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Mina_oro(obtener_identificador_edificio(), jugador);
     } else {
-        edificio = new Aserradero(obtener_identificador_edificio(), identif_jugador);
+        edificio = new Aserradero(obtener_identificador_edificio(), jugador);
     }
 
     return edificio;

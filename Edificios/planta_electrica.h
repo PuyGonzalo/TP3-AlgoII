@@ -16,7 +16,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR planta electrica 
-    Planta_electrica(char identificador, char creador);
+    Planta_electrica(char identificador, Jugador_t creador);
 
     // pre: -
     // pos: DESTRUCTOR planta electrica 
