@@ -50,7 +50,7 @@ public:
 
     // pre: -
     // pos: carga los edificios de un jugador en particular
-    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics, Jugador_t jugador);
+    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics);
 
     // pre: -
     // pos: carga los materiales en el mapa
