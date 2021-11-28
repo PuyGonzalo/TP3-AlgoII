@@ -1,7 +1,7 @@
 #ifndef ABB_H
 #define ABB_H
 
-#include "Nodo_ABB.h"
+#include "ABB_Nodo.h"
 #include <iostream>
 
 template <typename T, typename C>
