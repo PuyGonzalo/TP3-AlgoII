@@ -5,6 +5,7 @@
 #include "edificio.h"
 #include "herramientas.h"
 #include "inventario.h"
+#include "grafo.h"
 
 using namespace std;
 
@@ -42,6 +43,7 @@ private:
         // Atributos
         char identificador;
         Jugador_t jugador;
+        Grafo grafo;
 //      int andycoins_gastados;
         Inventario inventario;
         Coordenadas ubicacion;
