@@ -13,7 +13,7 @@ private:
 
     // Metodos:
 
-    ABBNodo<T,C>* insertar(ABBNodo<T,C>* nodo, T dato, C clave);
+    ABBNodo<T,C>* insertar(ABBNodo<T,C>* nodo, T* dato, C clave);
     //void imprimir_en_orden(ABBNodo<T,C>* nodo); // Posiblemente lo saque
     ABBNodo<T,C>* buscar(ABBNodo<T,C>* nodo, C clave);
     C buscar_minimo(ABBNodo<T,C>* nodo);
@@ -33,7 +33,7 @@ public:
     
     // pre:
     // pos:
-    void insertar(T dato, C clave);
+    void insertar(T* dato, C clave);
 
     // pre:
     // pos:
@@ -45,7 +45,7 @@ public:
 
     // pre:
     // pos:
-    ABBNodo<T,C>* consultar(C clave); //No se si dejarlo aca o ponerlo como privado. Depende si lo vamos a necesitar para el TP
+    ABBNodo<T,C>* consultar(C clave);
 
     // pre:
     // pos:
@@ -100,7 +100,7 @@ ABB<T,C>::ABB(){
 
 
 template <typename T, typename C>
-ABBNodo<T,C>* ABB<T,C>::insertar(ABBNodo<T,C>* nodo, T dato, C clave) {
+ABBNodo<T,C>* ABB<T,C>::insertar(ABBNodo<T,C>* nodo, T* dato, C clave) {
 
     if(nodo == NULL){
         nodo = new ABBNodo<T,C>(dato, clave);
@@ -122,7 +122,7 @@ ABBNodo<T,C>* ABB<T,C>::insertar(ABBNodo<T,C>* nodo, T dato, C clave) {
 
 
 template <typename T, typename C>
-void ABB<T,C>::insertar(T dato, C clave){
+void ABB<T,C>::insertar(T* dato, C clave){
 
     this -> raiz = insertar(this -> raiz, dato, clave);
 }
@@ -200,7 +200,7 @@ template <typename T, typename C>
 C ABB<T,C>::buscar_minimo(ABBNodo<T,C>* nodo){
 
     if(nodo == NULL)
-        return -1;
+        return "?"; // Antes habia un '-1'
 
     else if(nodo -> obtener_izquierda() == NULL)
         return nodo -> obtener_clave();
@@ -226,7 +226,7 @@ template <typename T, typename C>
 C ABB<T,C>::buscar_maximo(ABBNodo<T,C>* nodo){
 
     if(nodo == NULL)
-        return -1;
+        return "?"; //Antes habia un '-1'
     
     else if(nodo -> obtener_derecha() == NULL)
         return nodo -> obtener_clave();
@@ -280,7 +280,7 @@ C ABB<T,C>::sucesor(C clave){
     ABBNodo<T,C>* nodo_clave = this -> buscar(this -> raiz, clave);
 
     if(nodo_clave == NULL)
-        return -1;
+        return "?"; // Antes habia un '-1'
     
     else return sucesor(nodo_clave);
 }
@@ -318,10 +318,10 @@ C ABB<T,C>::predecesor(ABBNodo<T,C>* nodo)
 template <typename T, typename C>
 C ABB<T,C>::predecesor(C clave)
 {
-    ABBNodo<T>* nodo_clave = this -> buscar(this -> raiz, clave);
+    ABBNodo<T,C>* nodo_clave = this -> buscar(this -> raiz, clave);
 
     if(nodo_clave == NULL)
-        return -1;
+        return "?"; // Antes habia un '-1'
     
     else return predecesor(nodo_clave);
 }
@@ -363,7 +363,7 @@ ABBNodo<T,C>* ABB<T,C>::remover(ABBNodo<T,C>* nodo, C clave){
 
             C clave_sucesor = this -> sucesor(clave);
 
-            T dato_sucesor = this -> consultar(clave_sucesor) -> obtener_dato();
+            T* dato_sucesor = this -> consultar(clave_sucesor) -> obtener_dato();
 
             nodo -> colocar_dato(dato_sucesor);
 

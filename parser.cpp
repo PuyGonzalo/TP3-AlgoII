@@ -99,35 +99,15 @@ double Parser::cantidad_material(Jugador_t jugador){
 // ----------------------------------------------------------------------------------------------------------//
 
 
-/*
 Datos_edificio* Parser::procesar_entrada_edificio(){
 
-    Datos_edificio* nuevos_datos = new Datos_edificio;    
-
-    nuevos_datos -> nombre = nombre_edificio();
-
-    if (nombre_edificio() == STR_MINA){
-        nuevos_datos -> brinda_material = true;
-    }else if(nombre_edificio() == STR_ASERRADERO){
-            nuevos_datos -> brinda_material = true;
-    }else if(nombre_edificio() == STR_FABRICA){
-            nuevos_datos -> brinda_material = true;
-    }else{nuevos_datos -> brinda_material = false;
+    Datos_edificio* dato = new Datos_edificio(nombre_edificio(), costo_piedra(), costo_madera(), costo_metal(), cantidad_maxima_permitida());
     
-    };
-
-    nuevos_datos -> costo_piedra = costo_piedra();
-    nuevos_datos -> costo_madera = costo_madera();
-    nuevos_datos -> costo_metal = costo_metal();
-    nuevos_datos -> cantidad_construidos = 0;
-    nuevos_datos -> maximos_permitidos = cantidad_maxima_permitida();
-    // ya carga la lista como vacia cuadno se declara en la linea del principio
-
-    return nuevos_datos;
-
+    return dato;
 }
-*/
 
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 char Parser::obtener_identificador_edificio(){

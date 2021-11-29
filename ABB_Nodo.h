@@ -7,7 +7,7 @@ class ABBNodo
 {
 private:
     // Atributos:
-    T dato;
+    T* dato;
     C clave;
     ABBNodo<T,C>* izquierda; // Hijo izquierda
     ABBNodo<T,C>* derecha; // Hijo derecha
@@ -18,11 +18,15 @@ public:
 
     // pre:
     // pos:
-    ABBNodo(T dato, C clave);
+    ABBNodo(T* dato, C clave);
 
     // pre:
     // pos:
-    T obtener_dato();
+    ~ABBNodo();
+
+    // pre:
+    // pos:
+    T* obtener_dato();
 
     // pre:
     // pos:
@@ -30,7 +34,7 @@ public:
 
     // pre:
     // pos:
-    void colocar_dato(T dato);
+    void colocar_dato(T* dato);
 
     // pre:
     // pos:
@@ -86,7 +90,7 @@ public:
 
 
 template <typename T, typename C>
-ABBNodo<T,C>::ABBNodo(T dato, C clave){
+ABBNodo<T,C>::ABBNodo(T* dato, C clave){
 
     this -> clave = clave;
     this -> dato = dato;
@@ -100,7 +104,16 @@ ABBNodo<T,C>::ABBNodo(T dato, C clave){
 
 
 template <typename T, typename C>
-T ABBNodo<T,C>::obtener_dato(){
+ABBNodo<T,C>::~ABBNodo(){
+
+    delete dato;
+}
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
+T* ABBNodo<T,C>::obtener_dato(){
 
     return this -> dato;
 }
@@ -120,7 +133,7 @@ C ABBNodo<T,C>::obtener_clave(){
 
 
 template <typename T, typename C>
-void ABBNodo<T,C>::colocar_dato(T dato){
+void ABBNodo<T,C>::colocar_dato(T* dato){
 
     this -> dato = dato;
 }

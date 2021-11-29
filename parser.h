@@ -21,6 +21,7 @@
 #include "Superficies/lago.h"
 #include "Superficies/betun.h"
 #include "Superficies/muelle.h"
+#include "datos_edificio.h"
 #include "herramientas.h"
 
 #include <string>
@@ -74,8 +75,8 @@ public:
     // ### Para edificios ###
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
-    // pos: Crea una estructura del tipo Datos_edificio
-    // - Datos_edificio* procesar_entrada_edificio();
+    // pos: Crea un objeto del tipo Datos_edificio
+    Datos_edificio* procesar_entrada_edificio();
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
     // pos: Devuelve la primer letra del nombre en mayuscula (identificador)
