@@ -115,6 +115,7 @@ fuentes ?= $(wildcard *.$(extension))\
 $(wildcard Casilleros/*.$(extension))\
 $(wildcard Edificios/*.$(extension))\
 $(wildcard Materiales/*.$(extension))\
+$(wildcard Objetivos/*.$(extension))\
 $(wildcard Superficies/*.$(extension))
 directorios = $(shell find . -type d -regex '.*\w+')
 
