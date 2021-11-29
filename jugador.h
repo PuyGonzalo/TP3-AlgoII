@@ -27,7 +27,7 @@ private:
 //      int andycoins_gastados;
         Inventario inventario;
         Coordenadas ubicacion;
-        Lista<Objetivos*> objetivos;
+        Lista<Objetivo*> objetivos; // objetivoS
 //      Lista<Datos_edificio*> catalogo;
 //      double energia;
 

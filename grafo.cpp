@@ -63,6 +63,8 @@ void Grafo::inicializar_matriz_adyacencia(){
 
 void Grafo::cargar_matriz_adyacencia(){
 
+    // ACA ESTA EL ERROR!!!!!!!!!!!!!!!!!!!
+
     for(int i = 0 ; i < cantidad_filas ; ++i){
         for(int j = 0 ; j < cantidad_columnas ; ++j){
             for(int k = 0 ; k < grafo[i][j] -> obtener_lista_conexiones().obtener_cantidad() ; ++k){
