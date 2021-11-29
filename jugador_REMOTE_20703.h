@@ -23,12 +23,7 @@ private:
         // Atributos
         char identificador;
         Jugador_t jugador;
-<<<<<<< HEAD
         Grafo grafo;
-//      int andycoins_gastados;
-=======
-        Grafo grafo;
->>>>>>> 39bc6ab1491dd8ff01c92dafbe4d408e49b79174
         Inventario inventario;
         Coordenadas ubicacion;
         Lista<Objetivos*> objetivos;

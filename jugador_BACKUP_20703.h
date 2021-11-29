@@ -24,7 +24,7 @@ private:
         char identificador;
         Jugador_t jugador;
 <<<<<<< HEAD
-        Grafo grafo;
+        //Grafo grafo;
 //      int andycoins_gastados;
 =======
         Grafo grafo;
