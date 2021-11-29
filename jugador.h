@@ -5,7 +5,7 @@
 #include "edificio.h"
 #include "herramientas.h"
 #include "inventario.h"
-//#include "grafo.h"
+#include "grafo.h"
 
 using namespace std;
 
