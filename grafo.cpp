@@ -40,6 +40,25 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Grafo::~Grafo(){
+
+    for(int i = 0; i < cantidad_vertices ; ++i)
+        delete [] matriz_adyacencia[i];
+    delete [] matriz_adyacencia; // si quiero poner a nullptr tengo que ir 1 por una, no?
+
+    for(int i = 0; i < cantidad_filas ; ++i){
+        for(int j = 0 ; j < cantidad_columnas ; ++j){
+            delete grafo[i][j]; // tengo que ir 1 por 1 porque son estructuras complejas
+            grafo[i][j] = nullptr;
+        }
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Grafo::inicializar_matriz_adyacencia(){
 
     matriz_adyacencia = new int*[cantidad_vertices];
@@ -63,14 +82,12 @@ void Grafo::inicializar_matriz_adyacencia(){
 
 void Grafo::cargar_matriz_adyacencia(){
 
-    // ACA ESTA EL ERROR!!!!!!!!!!!!!!!!!!!
-
     for(int i = 0 ; i < cantidad_filas ; ++i){
         for(int j = 0 ; j < cantidad_columnas ; ++j){
-            for(int k = 0 ; k < grafo[i][j] -> obtener_lista_conexiones().obtener_cantidad() ; ++k){
+            for(int k = 0 ; k < grafo[i][j] -> obtener_cantidad_conexiones() ; ++k){
                 int indice_vertice_origen = grafo[i][j] -> obtener_indice();
-                int indice_vertice_destino = grafo[i][j] -> obtener_lista_conexiones().consulta(k);
-                matriz_adyacencia[indice_vertice_origen][indice_vertice_destino] = grafo[i][j] -> obtener_lista_pesos().consulta(k);
+                int indice_vertice_destino = grafo[i][j] -> obtener_elemento_de_lista_conexiones(k);
+                matriz_adyacencia[indice_vertice_origen][indice_vertice_destino] = grafo[i][j] -> obtener_elemento_de_lista_pesos(k);
             }
         }
     }
@@ -83,36 +100,49 @@ void Grafo::cargar_matriz_adyacencia(){
 
 void Grafo::conectar_esquinas(const Mapa &mapa){
 
-    // aaaaaaaaaaaaa que feo
-    int indices[4] = {
-        grafo[0][0] -> obtener_indice(),
-        grafo[0][cantidad_columnas-1] -> obtener_indice(),
-        grafo[cantidad_filas-1][0] -> obtener_indice(),
-        grafo[cantidad_filas-1][cantidad_columnas-1] -> obtener_indice()
-    };
+    // Arriba-Izquierda
+    grafo[0][0] -> conectar_vertice(
+        grafo[0][1] -> obtener_indice(),
+        mapa.obtener_peso_casillero(0,1,jugador)
+    );
 
-    int pesos[4] = {
-        mapa.obtener_peso_casillero(0,0,jugador),
-        mapa.obtener_peso_casillero(0,cantidad_columnas-1,jugador),
-        mapa.obtener_peso_casillero(cantidad_filas-1,0,jugador),
-        mapa.obtener_peso_casillero(cantidad_filas-1,cantidad_columnas-1,jugador)
-    };
+    grafo[0][0] -> conectar_vertice(
+        grafo[1][0] -> obtener_indice(),
+        mapa.obtener_peso_casillero(1,0,jugador)
+    );
 
-//    int indice = grafo[0][0] -> obtener_indice();
-//    int peso = mapa.obtener_peso_casillero(0,0,jugador);
-    grafo[0][0]->conectar_vertice(indices[0],pesos[0]);
+    // Arriba-Derecha
+    grafo[0][cantidad_columnas-1] -> conectar_vertice(
+        grafo[0][cantidad_columnas-2] -> obtener_indice(),
+        mapa.obtener_peso_casillero(0,cantidad_columnas-2,jugador)
+    );
 
-//    int indice = grafo[0][cantidad_columnas-1] -> obtener_indice();
-//    int peso = mapa.obtener_peso_casillero(0,cantidad_columnas-1,jugador);
-    grafo[0][cantidad_columnas-1]->conectar_vertice(indices[1],pesos[1]);
+    grafo[0][cantidad_columnas-1] -> conectar_vertice(
+        grafo[1][cantidad_columnas-1] -> obtener_indice(),
+        mapa.obtener_peso_casillero(1,cantidad_columnas-1,jugador)
+    );
 
-//    int indice = grafo[cantidad_filas-1][0] -> obtener_indice();
-//    int peso = mapa.obtener_peso_casillero(cantidad_filas-1,0,jugador);
-    grafo[cantidad_filas-1][0]->conectar_vertice(indices[2],pesos[2]);
+    // Abajo-Izquierda
+    grafo[cantidad_filas-1][0] -> conectar_vertice(
+        grafo[cantidad_filas-2][0] -> obtener_indice(),
+        mapa.obtener_peso_casillero(cantidad_filas-2,0,jugador)
+    );
 
-//    int indice = grafo[cantidad_filas-1][cantidad_columnas-1] -> obtener_indice();
-//    int peso = mapa.obtener_peso_casillero(cantidad_filas-1,cantidad_columnas-1,jugador);
-    grafo[cantidad_filas-1][cantidad_columnas-1]->conectar_vertice(indices[3],pesos[3]);
+    grafo[cantidad_filas-1][0] -> conectar_vertice(
+        grafo[cantidad_filas-1][1] -> obtener_indice(),
+        mapa.obtener_peso_casillero(cantidad_filas-1,1,jugador)
+    );
+
+    // Abajo-Derecha
+    grafo[cantidad_filas-1][cantidad_columnas-1] -> conectar_vertice(
+        grafo[cantidad_filas-2][cantidad_columnas-1] -> obtener_indice(),
+        mapa.obtener_peso_casillero(cantidad_filas-2,cantidad_columnas-1,jugador)
+    );
+
+    grafo[cantidad_filas-1][cantidad_columnas-1] -> conectar_vertice(
+        grafo[cantidad_filas-1][cantidad_columnas-2] -> obtener_indice(),
+        mapa.obtener_peso_casillero(cantidad_filas-1,cantidad_columnas-2,jugador)
+    );
 
 }
 
@@ -224,8 +254,8 @@ void Grafo::conectar_centros(const Mapa &mapa){
 
 void Grafo::imprimir_matriz_ady(){
 
-    for(int i = 0 ; i < 25 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
-        for(int j = 0 ; j < 25 ; ++j){
+    for(int i = 0 ; i < 20 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
+        for(int j = 0 ; j < 20 ; ++j){
             if(matriz_adyacencia[i][j] == INFINITO)
                 cout << "Inf" << '\t';
             else

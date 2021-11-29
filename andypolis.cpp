@@ -12,11 +12,19 @@ Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& 
     cargar_inventarios(archivo_mats);
     cargar_ubicaciones(archivo_ubics);
 
-    Grafo grafo(mapa,JUGADOR_UNO);
-    grafo.imprimir_matriz_ady();
+//    Grafo grafo(mapa,JUGADOR_UNO); falta la logica para asignarselo a c/jugador y eso
+//    grafo.imprimir_matriz_ady(); para ver si imprimai bien
  
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Andypolis::~Andypolis(){
+
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -214,15 +222,6 @@ void Andypolis::cargar_inventarios(ifstream& archivo_mats){
         jugador_dos.agregar_material_a_lista(material_leido_dos);
         
     }
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-Andypolis::~Andypolis(){
-
-
 }
 
 

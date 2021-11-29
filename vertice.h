@@ -12,6 +12,7 @@ private:
     int indice;
     int pos_x;
     int pos_y;
+    int cantidad_conexiones;
     Lista<int> lista_conexiones;
     Lista<int> lista_pesos;
 
@@ -27,6 +28,10 @@ public:
     Vertice(int indice, int pos_x, int pos_y);
 
     // pre: -
+    // pos: DESTRUCTOR del vertice (deberia llamar nomas a los destructores de lista)
+    ~Vertice(){};
+
+    // pre: -
     // pos: devuelve el indice del vertice
     int obtener_indice();
 
@@ -38,8 +43,12 @@ public:
     // pos: devuelve la posicion en y del vertice (en funcion del mapa)
     int obtener_posy();
 
-    Lista<int> obtener_lista_conexiones();
-    Lista<int> obtener_lista_pesos();
+    // pre: - 
+    // pos: devuelve cuantas conexines tiene el vertice
+    int obtener_cantidad_conexiones();
+
+    int obtener_elemento_de_lista_conexiones(int posicion);
+    int obtener_elemento_de_lista_pesos(int posicion);
 
     // pre: 
     // pos: conecta el vertice con otro (basicamente crea un camino/arista)

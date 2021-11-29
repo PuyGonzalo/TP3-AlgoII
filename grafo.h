@@ -25,6 +25,10 @@ public:
     Grafo (const Mapa &mapa, Jugador_t jugador); // pasar por const referencia?
 
     // pre: -
+    // pos: DESTRUCTOR del grafo
+    ~Grafo();
+
+    // pre: -
     // pos: inicializa la matriz de adyacencia (para el grafo pedido en el TP)
     void inicializar_matriz_adyacencia();
 

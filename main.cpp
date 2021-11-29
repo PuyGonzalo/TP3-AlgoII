@@ -27,7 +27,7 @@ int main (void){
  	// ########## JUEGO
 	Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
 
-	andypolis.mostrar_mapa();
+	//andypolis.mostrar_mapa();
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 
