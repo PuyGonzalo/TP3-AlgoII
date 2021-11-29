@@ -63,6 +63,16 @@ int Casillero::obtener_coordenada_y(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+int Casillero::obtener_peso(Jugador_t jugador){
+
+    return superficie -> obtener_peso(jugador);
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 bool Casillero::esta_ocupado(){
 
     return this -> ocupado;

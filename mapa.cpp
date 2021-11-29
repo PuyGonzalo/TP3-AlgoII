@@ -86,7 +86,7 @@ Mapa::~Mapa(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Mapa::obtener_filas(){
+int Mapa::obtener_filas() const{
 
     return cantidad_filas;
 
@@ -96,7 +96,7 @@ int Mapa::obtener_filas(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Mapa::obtener_columnas(){
+int Mapa::obtener_columnas() const{
 
     return cantidad_columnas;
 
@@ -111,6 +111,17 @@ string Mapa::obtener_nombre_objeto_de_casillero_ocupado(int coord_x, int coord_y
     return mapa[coord_x][coord_y]-> obtener_nombre_objeto_de_casillero();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Mapa::obtener_peso_casillero(int coord_x, int coord_y, Jugador_t jugador) const{
+
+    return mapa[coord_x][coord_y] -> obtener_peso(jugador);
+
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 

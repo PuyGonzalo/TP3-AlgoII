@@ -37,15 +37,19 @@ public:
 
     // pre: -
     // pos: obtiene la cantidad de filas que tiene el mapa
-    int obtener_filas();
+    int obtener_filas() const;
 
     // pre: -
     // pos: obtiene la cantidad de columnas que tiene el mapa
-    int obtener_columnas();
+    int obtener_columnas() const;
 
     // pre: las coordenadas deben ser de un casillero que esta ocupado (es decir, validar antes en funcionas mas externas esto)
     // pos: obtiene lo que haya en el casillero
     string obtener_nombre_objeto_de_casillero_ocupado(int coord_x, int coord_y);
+
+    // pre: el casillero debe ser valido
+    // pos: devuelve el peso (costo de energia) para el jugador que pase por dicho casillero debido a la superf que se halle ahi
+    int obtener_peso_casillero(int coord_x, int coord_y, Jugador_t jugador) const;
 
     // pre: coordenadas validas (depende de mapa.txt)
     // pos: devuelve si un casillero particular del mapa es transitable

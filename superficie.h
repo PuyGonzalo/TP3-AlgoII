@@ -6,6 +6,7 @@
 #include <string>
 #include "errores.h"
 #include "formatos.h"
+#include "herramientas.h"
 
 using namespace std;
 
@@ -39,6 +40,7 @@ protected:
     bool transitable;
     bool construible;
     bool accesible;
+    int costo_energia_jugador[2];
 
 public:
     // Metodos
@@ -62,6 +64,10 @@ public:
     // pre: -
     // pos: obtiene el color caracteristico de la superficie
     string obtener_color();
+
+    // pre: -
+    // pos: obtiene el peso (costo de energia) de un jugador para pasar por la superficie
+    int obtener_peso(Jugador_t jugador);
 
     // pre: -
     // pos: devuelve si es una superficie transitable o no

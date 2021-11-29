@@ -8,5 +8,7 @@ Terreno::Terreno(char identificador) : Superficie(identificador) {
     this -> transitable = false;
     this -> construible = true;
     this -> accesible = true;
+    costo_energia_jugador[JUGADOR_UNO-1] = 25;
+    costo_energia_jugador[JUGADOR_DOS-1] = 25;
     
 }

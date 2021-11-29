@@ -51,6 +51,10 @@ public:
     int obtener_coordenada_y();
 
     // pre: -
+    // pos: obtiene el peso (costo de energia) de un jugador para pasar por la superficie del casillero
+    int obtener_peso(Jugador_t jugador);
+
+    // pre: -
     // pos: devuelve si el casillero esta ocupado (ya sea por un material o edificio) o no
     bool esta_ocupado();
 
