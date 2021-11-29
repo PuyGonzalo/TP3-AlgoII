@@ -10,8 +10,10 @@
 #include "inventario.h"
 #include "jugador.h"
 #include "mapa.h"
+#include "datos_edificio.h"
 #include "errores.h"
 #include "herramientas.h"
+#include "ABB.h"
 
 using namespace std;
 
@@ -28,7 +30,7 @@ class Andypolis{
 private:
     // Atributos
     Mapa mapa;
-//  Lista<Datos_edificio*> catalogo; VA A SER UN ARBOL
+    ABB<Datos_edificio,string> diccionario;
     Jugador jugador_uno;
     Jugador jugador_dos;
 
@@ -42,7 +44,11 @@ public:
 
     // pre: -
     // pos: DESTRUCTOR de andypolis
-    ~Andypolis(){};
+    ~Andypolis();
+
+    //
+    //
+    void cargar_diccionario(ifstream& archivo_edif);
 
     // pre: -
     // pos: carga las ubicaciones de materiales y los edificios de cada jugador
@@ -59,6 +65,10 @@ public:
     // pre: -
     // pos: posiciona un jugador en el mapa
     Estado_t posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre:
+    // pos:
+    void cargar_inventarios(ifstream& archivo_mats);
 
     // pre: -
     // pos: muestra el inventario del jugador pedido

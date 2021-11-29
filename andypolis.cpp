@@ -8,21 +8,28 @@
 Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats)
 : mapa(archivo_mapa){
 
+    cargar_diccionario(archivo_edif);
+    cargar_inventarios(archivo_mats);
     cargar_ubicaciones(archivo_ubics);
+ 
+}
 
-    // INVENTARIO (meter en metodo)
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::cargar_diccionario(ifstream& archivo_edif){
+
     string linea_leida;
-    
-    while(getline(archivo_mats, linea_leida)){
 
-        Parser parser(linea_leida);
-        Material* material_leido_uno = parser.procesar_entrada_material(JUGADOR_UNO);
-        jugador_uno.agregar_material_a_lista(material_leido_uno);
-        Material* material_leido_dos = parser.procesar_entrada_material(JUGADOR_DOS);
-        jugador_dos.agregar_material_a_lista(material_leido_dos);
+    while(getline(archivo_edif, linea_leida)){
         
-    }
+        Parser parser(linea_leida);
 
+        Datos_edificio* dato = parser.procesar_entrada_edificio();
+
+        diccionario.insertar(dato, parser.nombre_edificio());
+    }
 }
 
 
@@ -59,57 +66,6 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
         archivo_ubics.seekg(pos_inicial_archivo); // Vuelvo a colocar el cursor de lectura al inicio.
         estado_edificios = cargar_edificios_jugador(archivo_ubics);
     }
-/*
-    while(getline(archivo_ubics, linea_leida)){
-        
-        Parser parser(linea_leida);
-
-        if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugador_uno.asignar_identificador(JUGADOR_UNO);
-            jugador_uno.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-            mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_UNO);
-            while (getline(archivo_ubics, linea_leida)){
-                Parser parser(linea_leida);
-                if( parser.nombre_elemento_ubicaciones() == "2"){
-                    jugador_dos.asignar_identificador(JUGADOR_DOS);
-                    jugador_dos.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-                    mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_DOS);
-                    while (getline(archivo_ubics, linea_leida)){
-                        Parser parser(linea_leida);
-                        int coordenada_x = parser.obtener_coordenada_x();
-                        int coordenada_y = parser.obtener_coordenada_y();
-                        estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_DOS), coordenada_x, coordenada_y);
-                        // cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y); PARA C/JUG
-                    }
-                } else{
-                    int coordenada_x = parser.obtener_coordenada_x();
-                    int coordenada_y = parser.obtener_coordenada_y();
-                    estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_UNO), coordenada_x, coordenada_y);
-                    // cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y); PARA C/JUG
-                }
-            }    
-        } else {            
-            int coord_x = parser.obtener_coordenada_x();
-            int coord_y = parser.obtener_coordenada_y();
-            Material* mat = parser.procesar_entrada_ubicaciones_materiales();
-            estado = mapa.agregar_material_en_coordenadas(mat, coord_x, coord_y);
-        }
-    }
-*/
-        
-/*
-        if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugador_uno.asignar_identificador(JUGADOR_UNO);
-            jugador_uno.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-            estado_edificios = cargar_edificios_jugador(archivo_ubics, JUGADOR_UNO);    
-        } else if( parser.nombre_elemento_ubicaciones() == "2"){
-            jugador_dos.asignar_identificador(JUGADOR_DOS);
-            jugador_dos.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-            estado_edificios = cargar_edificios_jugador(archivo_ubics, JUGADOR_DOS);
-        } else{
-            estado_materiales = cargar_materiales_mapa(archivo_ubics);
-        }
-*/
 
     if (estado_materiales != OK){
         estado = estado_materiales;
@@ -235,6 +191,34 @@ Estado_t Andypolis::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugad
     estado = mapa.posicionar_jugador(coord_x,coord_y,jugador);
 
     return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::cargar_inventarios(ifstream& archivo_mats){
+
+    string linea_leida;
+    
+    while(getline(archivo_mats, linea_leida)){
+
+        Parser parser(linea_leida);
+        Material* material_leido_uno = parser.procesar_entrada_material(JUGADOR_UNO);
+        jugador_uno.agregar_material_a_lista(material_leido_uno);
+        Material* material_leido_dos = parser.procesar_entrada_material(JUGADOR_DOS);
+        jugador_dos.agregar_material_a_lista(material_leido_dos);
+        
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Andypolis::~Andypolis(){
+
 
 }
 

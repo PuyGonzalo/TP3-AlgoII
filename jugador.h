@@ -6,35 +6,15 @@
 #include "herramientas.h"
 #include "inventario.h"
 #include "grafo.h"
+#include "objetivo.h"
 
 using namespace std;
 
 
 const char IDENTIFICADOR_JUGADOR_UNO = 'J';
 const char IDENTIFICADOR_JUGADOR_DOS = 'U';
-
-
-const int CANT_OBJETIVOS_SECUNDARIOS = 3;
-
-const int CANT_OBJ_EDAD_PIEDRA = 50000;
-const int CANT_OBJ_COMPRAR_ANDYPOLIS = 100000;
-const int CANT_OBJ_BOMBARDERO = 5;
-const int CANT_OBJ_CANSADO = 0;
-const int CANT_OBJ_ARMADO = 10;
-
-enum Objetivo_t{
-    OBJ_OBELISCO,
-    OBJ_COMPRAR_ANDYNOPOLIS,
-    OBJ_EDAD_PIEDRA,
-    OBJ_BOMBARDERO,
-    OBJ_ENERGETICO,
-    OBJ_LETRADO,
-    OBJ_MINERO,
-    OBJ_CANSADO,
-    OBJ_CONSTRUCTOR,
-    OBJ_ARMADO,
-    OBJ_EXTREMISTA
-};
+const int CANT_OBJETIVOS = 3;
+const int CANT_MAX_ENERGIA = 100;
 
 
 
@@ -43,11 +23,15 @@ private:
         // Atributos
         char identificador;
         Jugador_t jugador;
+<<<<<<< HEAD
         Grafo grafo;
 //      int andycoins_gastados;
+=======
+        Grafo grafo;
+>>>>>>> 39bc6ab1491dd8ff01c92dafbe4d408e49b79174
         Inventario inventario;
         Coordenadas ubicacion;
-//      Objetivo_t objetivos_secundarios[CANT_OBJETIVOS_SECUNDARIOS];
+        Lista<Objetivos*> objetivos;
 //      Lista<Datos_edificio*> catalogo;
 //      double energia;
 
@@ -82,9 +66,13 @@ public:
         // pos: agrega un material a la lista de materiales del jugador
         void agregar_material_a_lista(Material* material);
 
+        void sortear_objetivos();
+
+        bool chequear_objetivos();
+
 
 //        Jugador();
-//        Jugador(char id,int andycoins_gastados,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
+//        Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
 
  //       char obtener_identificador();
 //        int obtener_andycoins_gastados();
@@ -95,27 +83,12 @@ public:
 //        double obtener_energia();
 
 //        void setear_identificador( char id);
- //       void setear_andycoins_gastados( int cant_andycoins);
 //        void setear_inventario( Inventario invent);
 //        void setear_ubicacion( Coordenadas ubi);
 //        void setear_objetivos_secundarios( Objetivo_t objetivos);
 //        void setear_catalogo( Lista<Datos_edificio*> catalog);
  //       void setear_energia(  double cant_energia);
 /*
-        void sortear_objetivos_secundarios();
-        void chequear_objetivos_secundarios();
-
-        bool chequear_objetivo_obelisco();
-        bool chequear_objetivo_comprar_andypolis();
-        bool chequear_objetivo_edad_piedra();
-        bool chequear_objetivo_bombardero();
-        bool chequear_objetivo_energetico();
-        bool chequear_objetivo_letrado();
-        bool chequear_objetivo_minero();
-        bool chequear_objetivo_cansado();
-        bool chequear_objetivo_constructor();
-        bool chequear_objetivo_armado();
-        bool chequear_objetivo_extremista();
 */
 };
 
