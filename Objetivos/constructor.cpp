@@ -1,15 +1,24 @@
+#include <iostream>
 #include "constructor.h"
 
-Constructor::Constructor(string nombre_obj, bool realizado, int andycoins, int bombas_compradas , int bombas_usadas  ):Objetivo(realizado,andycoins,bombas_compradas,bombas_usadas,nombre_obj){
-}
 
-string Constructor::obtener_nombre(){
-    return nombre;
-}
+// ------------------------------------------------------------------------------------------------------------
+
+
+Constructor::Constructor(string nombre_obj, bool realizado) : Objetivo(nombre_obj,realizado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Constructor::obtener_condiciones(){
     return CONDICIONES_CONSTRUCTOR;
 }
+
+/* necesito chequear cosas de grafo y estas cosas me tiran errores
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 bool Constructor::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
     
@@ -18,6 +27,10 @@ bool Constructor::chequear_cumplimiento(const int &cant_energia, const Inventari
             return false;
     }
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Constructor::obtener_progreso(){
     
@@ -31,3 +44,5 @@ string Constructor::obtener_progreso(){
     return std::to_string( construidos % i ) + "%";
    
 }
+
+*/

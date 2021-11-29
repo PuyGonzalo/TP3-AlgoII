@@ -75,7 +75,7 @@ void Jugador::agregar_material_a_lista(Material* material){
 
 // ------------------------------------------------------------------------------------------------------------
 
-
+/*
 
 void Jugador::sortear_objetivos(){
     
@@ -108,7 +108,7 @@ bool Jugador::chequear_objetivos(){
 }
 
 
-/*
+
 Jugador::Jugador(){
     identificador = 0;
     andycoins_gastados = 0;
@@ -252,3 +252,4 @@ void setear_energia( int cant_energia){
 // ------------------------------------------------------------------------------------------------------------
 
 
+*/

@@ -11,6 +11,9 @@ Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& 
     cargar_diccionario(archivo_edif);
     cargar_inventarios(archivo_mats);
     cargar_ubicaciones(archivo_ubics);
+
+    Grafo grafo(mapa,JUGADOR_UNO);
+    grafo.imprimir_matriz_ady();
  
 }
 

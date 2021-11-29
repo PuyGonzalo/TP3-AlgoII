@@ -1,16 +1,24 @@
+#include <iostream>
 #include "letrado.h"
 
-Letrado::Letrado(string nombre_obj, bool realizado, int andycoins, int bombas_compradas , int bombas_usadas  ):Objetivo(realizado,andycoins,bombas_compradas,bombas_usadas,nombre_obj){
 
-}
+// ------------------------------------------------------------------------------------------------------------
 
-string Letrado::obtener_nombre(){
-    return nombre;
-}
+
+Letrado::Letrado(string nombre_obj, bool realizado) : Objetivo(nombre_obj,realizado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Letrado::obtener_condiciones(){
     return CONDICIONES_LETRADO;
 }
+
+/*  me tira banda de errores
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 bool Letrado::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
     
@@ -19,6 +27,10 @@ bool Letrado::chequear_cumplimiento(const int &cant_energia, const Inventario & 
             return (catalogo.consulta(i) -> cantidad_construidos == CANT_ESCUELAS);
     }
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Letrado::obtener_progreso(){
     int cant_contruidos = 0;
@@ -30,3 +42,5 @@ string Letrado::obtener_progreso(){
     return std::to_string( cant_contruidos % CANT_ESCUELAS ) + "%";
    
 }
+
+*/

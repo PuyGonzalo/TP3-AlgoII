@@ -224,8 +224,8 @@ void Grafo::conectar_centros(const Mapa &mapa){
 
 void Grafo::imprimir_matriz_ady(){
 
-    for(int i = 0 ; i < cantidad_vertices ; ++i){
-        for(int j = 0 ; j < cantidad_vertices ; ++j){
+    for(int i = 0 ; i < 25 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
+        for(int j = 0 ; j < 25 ; ++j){
             if(matriz_adyacencia[i][j] == INFINITO)
                 cout << "Inf" << '\t';
             else

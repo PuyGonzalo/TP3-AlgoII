@@ -14,6 +14,7 @@
 #include "errores.h"
 #include "herramientas.h"
 #include "ABB.h"
+#include "grafo.h"
 
 using namespace std;
 

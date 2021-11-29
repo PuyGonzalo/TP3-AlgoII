@@ -1,16 +1,24 @@
+#include <iostream>
 #include "minero.h"
 
-Minero::Minero(string nombre_obj, bool realizado, int andycoins, int bombas_compradas , int bombas_usadas  ):Objetivo(realizado,andycoins,bombas_compradas,bombas_usadas,nombre_obj){
 
-}
+// ------------------------------------------------------------------------------------------------------------
 
-string Minero::obtener_nombre(){
-    return nombre;
-}
+
+Minero::Minero(string nombre_obj, bool realizado):Objetivo(nombre_obj, realizado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Minero::obtener_condiciones(){
     return CONDICIONES_MINERO;
 }
+
+/* errores
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 bool Minero::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
     
@@ -29,6 +37,10 @@ bool Minero::chequear_cumplimiento(const int &cant_energia, const Inventario & i
     return false;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 string Minero::obtener_progreso(){
     int cant_minas = 0;
     for(int i=0; !catalogo.vacia(); i++){
@@ -46,3 +58,5 @@ string Minero::obtener_progreso(){
     return std::to_string(cant_minas % CANT_MINAS ) + "%";
    
 }
+
+*/

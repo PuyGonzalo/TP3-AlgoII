@@ -4,21 +4,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "lista.h"
-#include "inventario.h"
-#include "datos_edificio.h"
-
-#include "armado.h"
-#include "bombardero.h"
-#include "cansado.h"
-#include "comprar_andypolis.h"
-#include "constructor.h"
-#include "edad_piedra.h"
-#include "energetico.h"
-#include "extremista.h"
-#include "letrado.h"
-#include "minero.h"
-#include "obelisco.h"
+//#include "lista.h"
+//#include "inventario.h"
+//#include "datos_edificio.h"
 
 using namespace std;
 
@@ -53,22 +41,22 @@ enum objetivo_t{
     OPC_EXTREMISTA
 };
 
+//#include "Objetivos/comprar_andypolis.h" // (SI NO LO PONGO TIRAR ERROR EN SORTEAR_OBJETIVOS PERO SI LO DEJO ESTAN MAL LOS INCLUDE)
+                                            // HAY QUE BUSCAR OTRA FORMA DE SORTEAR
+
 
 class Objetivo{
     private:
         string nombre;
         bool cumplido;
-        int cant_andycoins_gastados;
-        int cant_bombas_compradas;
-        int cant_bombas_usadas;
     
     public:
-        Objetivo(string nombre_obj, bool realizado, int andycoins, int bombas_compradas , int bombas_usadas );
+        Objetivo(string nombre_obj, bool realizado);
+        string obtener_nombre();
 
         Objetivo* sortear_objetivos();
-        virtual string obtener_nombre() = 0;
         virtual string obtener_condiciones() = 0;
-        virtual bool chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo) = 0; 
+        //virtual bool chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo) = 0; 
         virtual string obtener_progreso() = 0;
 };
 

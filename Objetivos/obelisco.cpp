@@ -1,17 +1,24 @@
+#include <iostream>
 #include "obelisco.h"
 
-Obelisco::Obelisco(string nombre_obj, bool realizado, int andycoins, int bombas_compradas , int bombas_usadas  ):Objetivo(realizado,andycoins,bombas_compradas, bombas_usadas,nombre_obj){
-    nombre = OBJ_OBELISCO;
-    cumplido = false;
-}
 
-string Obelisco::obtener_nombre(){
-    return nombre;
-}
+// ------------------------------------------------------------------------------------------------------------
+
+
+Obelisco::Obelisco(string nombre_obj, bool realizado) : Objetivo(nombre_obj , realizado){}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Obelisco::obtener_condiciones(){
     return CONDICIONES_OBELISCO;
 }
+
+/* errores
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 bool Obelisco::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
     
@@ -21,6 +28,10 @@ bool Obelisco::chequear_cumplimiento(const int &cant_energia, const Inventario &
     }
     return false;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Obelisco::obtener_progreso(){
 
@@ -33,3 +44,6 @@ string Obelisco::obtener_progreso(){
     return std::to_string( cant_contruidos % CANT_OBELISCOS ) + "%";
    
 }
+
+
+*/
