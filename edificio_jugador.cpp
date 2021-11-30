@@ -1,5 +1,6 @@
 #include "edificio_jugador.h"
 
+
 Edificio_jugador::Edificio_jugador(){
 
     this -> nombre = "";
@@ -26,6 +27,11 @@ Edificio_jugador::~Edificio_jugador(){
 string Edificio_jugador::obtener_nombre(){
 
     return this -> nombre;
+}
+
+char Edificio_jugador::obtener_identificador(){
+
+    return this -> identificador;
 }
 
 int Edificio_jugador::obtener_cantidad_construidos(){

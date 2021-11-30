@@ -40,6 +40,10 @@ public:
 
     // pre:
     // pos:
+    char obtener_identificador();
+
+    // pre:
+    // pos:
     int obtener_cantidad_construidos();
 
     // pre:

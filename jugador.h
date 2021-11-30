@@ -81,6 +81,14 @@ public:
         // pos: agrega un material a la lista de materiales del jugador
         void agregar_material_a_lista(Material* material);
 
+        // pre:
+        // pos:
+        void agregar_jugador_a_lista(string nombre, char identificador, int vida, int coord_x, int coord_y);
+
+        // pre:
+        // pos:
+        int buscar_edificio_en_arreglo(char identificador);
+
         // pre: -
         // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
         void sortear_objetivos_secundarios();
