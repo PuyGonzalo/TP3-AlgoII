@@ -13,6 +13,7 @@ class Bombardero: public Objetivo {
 
     public:
         Bombardero(string nombre_obj, bool realizado);
+        ~Bombardero(){};
 
         string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo); 

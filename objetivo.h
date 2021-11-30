@@ -5,6 +5,7 @@
 #include <string>
 #include <cstdlib>
 #include "lista.h"
+#include "vector.h"
 #include "inventario.h"
 #include "datos_edificio.h"
 
@@ -15,7 +16,7 @@ const int CANT_OBJ_CANSADO = 0;
 const int CANT_OBJ_ARMADO = 10;
 
 
-const string OBJ_OBELISCO = "Objetivo Mas alto que las nubes";
+const string OBJ_MAS_ALTO_NUBES = "Objetivo Mas alto que las nubes"; // para que queremos realmente esto?
 const string OBJ_COMPRAR_ANDYNOPOLIS = " Objetivo Comprar Andynopolis";
 const string OBJ_EDAD_PIEDRA = " Objetivo Edad de Piedra";
 const string OBJ_BOMBARDERO = " Objetivo Bombardero";
@@ -26,9 +27,9 @@ const string OBJ_CANSADO = " Objetivo Cansado";
 const string OBJ_CONSTRUCTOR = "Objetivo Constructor";
 const string OBJ_ARMADO = "Objetivo Armado";
 const string OBJ_EXTREMISTA = "Objetivo Extremista";
-const string PROGRESO_OBJ = " El objetivo tienen un progrse de : ";
+const string PROGRESO_OBJ = " El objetivo tienen un progreso de : ";
 
-enum objetivo_t{
+enum Objetivo_secundario_t{
     OPC_COMPRAR_ANDYNOPOLIS,
     OPC_EDAD_PIEDRA,
     OPC_BOMBARDERO,
@@ -50,11 +51,13 @@ class Objetivo{
     
     public:
         Objetivo(string nombre_obj, bool realizado);
+        virtual ~Objetivo(){};
+
         string obtener_nombre();
 
         virtual string obtener_condiciones() = 0;
-        virtual bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0; 
-        virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0;
+        //virtual bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0; 
+        //virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0;
 };
 
 

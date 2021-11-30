@@ -15,7 +15,7 @@ string  Constructor::obtener_condiciones(){
     return CONDICIONES_CONSTRUCTOR;
 }
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -44,4 +44,4 @@ string  Constructor::obtener_progreso(  int &cant_energia,   Inventario & invent
     return std::to_string(  construidos % i ) + "%";
    
 }
-
+*/

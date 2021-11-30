@@ -12,6 +12,7 @@ class Edad_piedra: public Objetivo {
 
     public:
         Edad_piedra(string nombre_obj, bool realizado);
+        ~Edad_piedra(){};
 
         string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo); 

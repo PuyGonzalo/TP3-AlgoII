@@ -12,7 +12,7 @@ string Edad_piedra::obtener_condiciones(){
 }
 
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -32,3 +32,4 @@ string Edad_piedra::obtener_progreso(  int &cant_energia,   Inventario & inventa
     return std::to_string( cant_piedras % CANT_PIEDRA ) + "%";
    
 }
+*/

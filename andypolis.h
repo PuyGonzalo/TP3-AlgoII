@@ -47,8 +47,12 @@ public:
     // pos: DESTRUCTOR de andypolis
     ~Andypolis();
 
-    //
-    //
+    // pre: -
+    // pos: completa la informacion del jugador (excepto ubicacion, claro)
+    void cargar_informacion_jugador();
+
+    // pre: bien formado
+    // pos: carga el diccionario (no le deciamos catalogo? xd)
     void cargar_diccionario(ifstream& archivo_edif);
 
     // pre: -

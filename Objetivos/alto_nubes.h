@@ -1,16 +1,19 @@
-#ifndef OBELISCO_H
-#define OBELISCO_H
+#ifndef ALTO_NUBES_H
+#define ALTO_NUBES_H
 
 #include "../objetivo.h"
 
-const string CONDICIONES_OBELISCO = "Construir el obelisco";
+const string CONDICIONES_MAS_ALTO_NUBES = "Construir el obelisco";
 const int CANT_OBELISCOS = 1;
 
-class Obelisco: public Objetivo {
+class Alto_nubes: public Objetivo {
     private:
 
     public:
-        Obelisco(string nombre_obj, bool realizado);
+        Alto_nubes(string nombre_obj, bool realizado);
+        ~Alto_nubes(){};
+
+        string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo); 
         string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo);
 };

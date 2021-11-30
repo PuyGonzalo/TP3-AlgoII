@@ -17,7 +17,7 @@ string Comprar_andypolis::obtener_condiciones(){
     return CONDICIONES_COMPRAR_ANDYPOLIS;
 }
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -40,3 +40,4 @@ string Comprar_andypolis::obtener_progreso(  int &cant_energia,   Inventario & i
     return std::to_string(andycoins_gastadas % CANT_ANDYCOINS ) + "%";
    
 }
+*/

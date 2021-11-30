@@ -12,6 +12,7 @@ class Comprar_andypolis : public Objetivo {
 
     public:
         Comprar_andypolis(string nombre_obj, bool realizado);
+        ~Comprar_andypolis(){};
 
         string obtener_condiciones();
         

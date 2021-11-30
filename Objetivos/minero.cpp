@@ -16,7 +16,7 @@ string Minero::obtener_condiciones(){
 }
 
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -62,3 +62,4 @@ string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario, 
     return std::to_string(cant_minas % CANT_MINAS ) + "%";
    
 }
+*/

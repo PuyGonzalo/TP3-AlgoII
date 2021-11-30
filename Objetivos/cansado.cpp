@@ -19,7 +19,7 @@ string Cansado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-
+/*
 bool Cansado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     return (cant_energia == 0);
@@ -34,4 +34,4 @@ string Cansado::obtener_progreso(  int &cant_energia,   Inventario & inventario,
     return std::to_string((CANT_MAX_ENERGIA-cant_energia) % CANT_MAX_ENERGIA ) + "%";
    
 }     
-
+*/

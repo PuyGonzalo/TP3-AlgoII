@@ -11,6 +11,7 @@ class Armado: public Objetivo {
 
     public:
         Armado(string nombre_obj, bool realizado);
+        ~Armado(){};
 
         string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo); 

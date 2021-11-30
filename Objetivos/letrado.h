@@ -11,6 +11,7 @@ class Letrado: public Objetivo {
 
     public:
         Letrado(string nombre_obj, bool realizado);
+        ~Letrado(){};
 
         string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo); 

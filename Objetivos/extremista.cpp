@@ -17,7 +17,7 @@ string Extremista::obtener_condiciones(){
     return CONDICIONES_EXTREMISTA;
 }
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -41,3 +41,4 @@ string Extremista::obtener_progreso(  int &cant_energia,   Inventario & inventar
     return std::to_string(bombas_compradas % CANT_BOMBAS_COMPRADAS ) + "%";
    
 }
+*/

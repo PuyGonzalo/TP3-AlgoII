@@ -16,7 +16,7 @@ string Letrado::obtener_condiciones(){
 }
 
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -42,3 +42,4 @@ string Letrado::obtener_progreso(  int &cant_energia,   Inventario & inventario,
     return std::to_string( cant_contruidos % CANT_ESCUELAS ) + "%";
    
 }
+*/

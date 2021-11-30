@@ -28,7 +28,7 @@ public:
 
     // pre: tam > 0
     // pos: Construye un vector de longitud tam y datos vacios
-    Vector(int tam = VECTOR_TAMANIO_INICIAL);
+    Vector(int tam); // Vector(int tam = VECTOR_TAMANIO_INICIAL); conflicto con default si pones un param default
 
     // Constructor de copia (Dejar?)
     //Vector(const Vector<D>& vec);

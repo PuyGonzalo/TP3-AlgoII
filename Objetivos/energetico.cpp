@@ -15,7 +15,7 @@ string Energetico::obtener_condiciones(){
     return CONDICIONES_ENERGETICO;
 }
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -27,8 +27,9 @@ bool Energetico::chequear_cumplimiento(  int &cant_energia,  Inventario & invent
 
 // ------------------------------------------------------------------------------------------------------------
 
-*/
+
 string Energetico::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(cant_energia % CANT_ENERGIA ) + "%"; 
    
 }
+*/

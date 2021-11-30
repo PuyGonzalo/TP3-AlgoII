@@ -12,6 +12,7 @@ class Energetico: public Objetivo {
 
     public:
         Energetico(string nombre_obj, bool realizado);
+        ~Energetico(){};
 
         string obtener_condiciones();
         bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo);

@@ -10,7 +10,7 @@
 #include "vector.h"
 
 #include "Objetivos/armado.h"
-#include "Objetivosbombardero.h"
+#include "Objetivos/bombardero.h"
 #include "Objetivos/cansado.h"
 #include "Objetivos/comprar_andypolis.h"
 #include "Objetivos/constructor.h"
@@ -19,7 +19,7 @@
 #include "Objetivos/extremista.h"
 #include "Objetivos/letrado.h"
 #include "Objetivos/minero.h"
-#include "Objetivos/obelisco.h"
+#include "Objetivos/alto_nubes.h"
 
 
 using namespace std;
@@ -30,8 +30,8 @@ const char IDENTIFICADOR_JUGADOR_DOS = 'U';
 const int CANT_OBJETIVOS = 3;
 const int CANT_MAX_ENERGIA = 100;
 
-struct Edificio_jugador{
-        string nombre_edifio;
+struct Edificio_jugador{ // hacerlo clase?
+        string nombre_edificio;
         int cantidad_construidos;
         Lista<Coordenadas*> ubicacion;
         bool estado; //chequear esto!
@@ -48,7 +48,7 @@ private:
         Inventario inventario;
         Coordenadas ubicacion;
         Objetivo* objetivo_principal;
-        Vector<Objetivo*> objetivos_secundarios; // objetivoS
+        Vector<Objetivo*> objetivos_secundarios;
         Vector<Edificio_jugador*> Mis_edificios; //con mis ladrillos
 //      double energia;
 
@@ -56,12 +56,16 @@ public:
         // Metodos
 
         // pre: -
+        // pos: CONSTRUCTOR por default de un juegador
+        Jugador();
+
+        // pre: -
         // pos: CONSTRUCTOR por parametros de un jugador
         Jugador(char id, Jugador_t jugador);
 
         // pre: -
-        // pos: CONSTRUCTOR por default de un juegador
-        Jugador();
+        // pos: DESTRUCTOR del jugador
+        ~Jugador();
 
         // pre: -
         // pos: asigna el identificador al jugador (con el que será visto en el mapa)
@@ -98,20 +102,20 @@ public:
 
 
 //        Jugador();
-//        Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
+//        Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_secundario_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
 
  //       char obtener_identificador();
 //        int obtener_andycoins_gastados();
 //        Inventario obtener_inventario();
 //        Coordenadas obtener_ubicacion();
-//        Objetivo_t obtener_objetivos_secundarios();
+//        Objetivo_secundario_t obtener_objetivos_secundarios();
 //        Lista<Datos_edificio*> obtener_catalogo();
 //        double obtener_energia();
 
 //        void setear_identificador( char id);
 //        void setear_inventario( Inventario invent);
 //        void setear_ubicacion( Coordenadas ubi);
-//        void setear_objetivos_secundarios( Objetivo_t objetivos);
+//        void setear_objetivos_secundarios( Objetivo_secundario_t objetivos);
 //        void setear_catalogo( Lista<Datos_edificio*> catalog);
  //       void setear_energia(  double cant_energia);
 /*

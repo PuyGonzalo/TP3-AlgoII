@@ -17,7 +17,7 @@ string Bombardero::obtener_condiciones(){
     return CONDICIONES_BOMBARDERO;
 }
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -41,3 +41,4 @@ string Bombardero::obtener_progreso(  int &cant_energia,   Inventario & inventar
     return std::to_string(bombas_usadas % CANT_BOMBAS_USADAS ) + "%";
    
 }
+*/

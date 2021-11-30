@@ -8,9 +8,14 @@
 Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats)
 : mapa(archivo_mapa){
 
+
+    // cuando venga vacio va a haber que meter una logica por aca
     cargar_diccionario(archivo_edif);
-    cargar_inventarios(archivo_mats);
     cargar_ubicaciones(archivo_ubics);
+    cargar_inventarios(archivo_mats);
+
+
+    // this->jugador_uno = Jugador('J',JUGADOR_UNO); me gustaria hacer esto pero no se puede xq jugador muere al final de este metodo
 
 //    Grafo grafo(mapa,JUGADOR_UNO); falta la logica para asignarselo a c/jugador y eso
 //    grafo.imprimir_matriz_ady(); para ver si imprimai bien
@@ -25,6 +30,22 @@ Andypolis::~Andypolis(){
 
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::cargar_informacion_jugador(){ // esto es solo si no se puede hacer Jugador jugador_uno(parametros) en atrib de andypo
+
+    this -> jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
+    this -> jugador_uno.asignar_numero_jugador(JUGADOR_UNO);
+    // crear grafo? xd
+
+    this -> jugador_dos.asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
+    this -> jugador_dos.asignar_numero_jugador(JUGADOR_DOS);
+
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 

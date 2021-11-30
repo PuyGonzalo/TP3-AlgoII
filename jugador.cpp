@@ -7,7 +7,7 @@ Jugador::Jugador(){
 
     this -> jugador = NADIE;
     this -> identificador = ' ';
-    this -> objetivo_principal = new Objetivo(OBJ_OBELISCO, false); 
+    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false); 
 
 }
 
@@ -19,7 +19,16 @@ Jugador::Jugador(char id, Jugador_t jugador){
 
     this -> jugador = jugador;
     this -> identificador = id;
-    this -> objetivo_principal = new Objetivo(OBJ_OBELISCO, false); 
+    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false); 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+Jugador::~Jugador(){
+
+    delete objetivo_principal;
+
 }
 
 
@@ -151,7 +160,6 @@ Objetivo* Jugador::sortear_objetivos(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-/*
 Jugador::Jugador(){
     identificador = 0;
     andycoins_gastados = 0;
@@ -169,7 +177,7 @@ Jugador::Jugador(){
 
 
 
-Jugador::Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios, int cant_energia){
+Jugador::Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_secundario_t objetivos, Lista<Datos_edificio*> edificios, int cant_energia){
     identificador = id;
     inventario = invent;
     ubicacion = ubi;
@@ -216,7 +224,7 @@ Coordenadas Jugador::obtener_ubicacion(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Objetivo_t Jugador::obtener_objetivos_secundarios(){
+Objetivo_secundario_t Jugador::obtener_objetivos_secundarios(){
     return objetivos_secundarios;
 }
 
@@ -273,7 +281,7 @@ void Jugador::setear_ubicacion( Coordenadas ubi){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::setear_objetivos_secundarios( Objetivo_t objetivos){
+void Jugador::setear_objetivos_secundarios( Objetivo_secundario_t objetivos){
     objetivos_secundarios = objetivos;
 }
 
