@@ -96,7 +96,7 @@ void Jugador::agregar_material_a_lista(Material* material){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::agregar_jugador_a_lista(string nombre, char identificador, int vida, int coord_x, int coord_y){
+void Jugador::agregar_edificio_a_lista(string nombre, char identificador, int vida, int coord_x, int coord_y){
 
     int pos = buscar_edificio_en_arreglo(identificador);
 

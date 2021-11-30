@@ -83,7 +83,7 @@ public:
 
         // pre:
         // pos:
-        void agregar_jugador_a_lista(string nombre, char identificador, int vida, int coord_x, int coord_y);
+        void agregar_edificio_a_lista(string nombre, char identificador, int vida, int coord_x, int coord_y);
 
         // pre:
         // pos:
