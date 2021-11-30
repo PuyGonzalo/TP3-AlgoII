@@ -7,7 +7,6 @@
 #include "lista.h"
 #include "vector.h"
 #include "inventario.h"
-#include "datos_edificio.h"
 
 using namespace std;
 
@@ -56,8 +55,8 @@ class Objetivo{
         string obtener_nombre();
 
         virtual string obtener_condiciones() = 0;
-        //virtual bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0; 
-        //virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0;
+        //virtual bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & mis_edificios) = 0; 
+        //virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & mis_edificios) = 0;
 };
 
 

@@ -29,6 +29,16 @@ Jugador::~Jugador(){
 
     delete objetivo_principal;
 
+    for(int i = 0; i < objetivos_secundarios.obtener_longitud(); ++i ){
+
+        delete objetivos_secundarios.consultar(i);
+    }
+
+    for(int i = 0; i< mis_edificios.obtener_longitud(); ++i){
+
+        delete mis_edificios.consultar(i);
+    }
+
 }
 
 
@@ -88,10 +98,13 @@ void Jugador::agregar_material_a_lista(Material* material){
 /*
 void Jugador::sortear_objetivos_secundarios(){
     
-    Objetivo* objetivo_aux = nullptr ;
+    Objetivo* objetivo_aux = nullptr;
 
-    for( int i=0; i< CANT_OBJETIVOS; i++)
+    while( objetivos_secundarios.cantidad_de_objetivos() == CANT_OBJETIVOS){
+
         objetivos_secundarios.insertar(objetivo_aux.sortear_objetivo() );
+
+    }
 
 }
 

@@ -9,6 +9,7 @@
 #include "objetivo.h"
 #include "vector.h"
 
+#include "edificio_jugador.h"
 #include "Objetivos/armado.h"
 #include "Objetivos/bombardero.h"
 #include "Objetivos/cansado.h"
@@ -30,13 +31,6 @@ const char IDENTIFICADOR_JUGADOR_DOS = 'U';
 const int CANT_OBJETIVOS = 3;
 const int CANT_MAX_ENERGIA = 100;
 
-struct Edificio_jugador{ // hacerlo clase?
-        string nombre_edificio;
-        int cantidad_construidos;
-        Lista<Coordenadas*> ubicacion;
-        bool estado; //chequear esto!
-};
-
 
 
 class Jugador{
@@ -49,7 +43,7 @@ private:
         Coordenadas ubicacion;
         Objetivo* objetivo_principal;
         Vector<Objetivo*> objetivos_secundarios;
-        Vector<Edificio_jugador*> Mis_edificios; //con mis ladrillos
+        Vector<Edificio_jugador*> mis_edificios; //con mis ladrillos
 //      double energia;
 
 public:
