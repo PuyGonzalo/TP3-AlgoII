@@ -98,18 +98,26 @@ void Jugador::agregar_material_a_lista(Material* material){
 
 void Jugador::agregar_edificio(string nombre, char identificador, int vida, int coord_x, int coord_y){
 
-    int pos = buscar_edificio_en_arreglo(identificador);
+    
+    if(this -> mis_edificios.obtener_longitud() > 0){
+        
+        int pos = buscar_edificio_en_arreglo(identificador);
 
-    if( pos != -1 ){
-        mis_edificios.consultar(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+        if( pos != -1 ){
+            this -> mis_edificios.consultar(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
 
+        }else{
+
+            Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
+            this -> mis_edificios.insertar(nuevo_edif);
+            int pos_nuevo_edif = mis_edificios.obtener_longitud() - 1;
+            this -> mis_edificios.consultar(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+        }
     }else{
-
         Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
-        mis_edificios.insertar(nuevo_edif);
-        int pos_nuevo_edif = mis_edificios.obtener_longitud() -1;
-        mis_edificios.consultar(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
-
+        this -> mis_edificios.insertar(nuevo_edif);
+        int pos_nuevo_edif = this -> mis_edificios.obtener_longitud() - 1;
+        this -> mis_edificios.consultar(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
     }
 }
 

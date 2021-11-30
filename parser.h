@@ -78,7 +78,7 @@ public:
     // pos: Crea un objeto del tipo Datos_edificio
     Datos_edificio* procesar_entrada_edificio();
 
-    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt" o con una linea del tipo "ubicaciones.txt" pero si se esta seguro de estar leyendo un edificio.
     // pos: Devuelve la primer letra del nombre en mayuscula (identificador)
     char obtener_identificador_edificio();
 

@@ -75,6 +75,10 @@ public:
     // pos:
     void cargar_inventarios(ifstream& archivo_mats);
 
+    // pre:
+    // pos:
+    void cargar_edificio_a_jugador(Parser& parser, Jugador_t jugador);
+
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);

@@ -176,11 +176,11 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
         Parser parser(linea_leida);
 
         if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugador_uno.asignar_identificador(JUGADOR_UNO);
+            jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
             jugador_uno.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_UNO);
         }else if(parser.nombre_elemento_ubicaciones() == "2"){
-            jugador_dos.asignar_identificador(JUGADOR_DOS);
+            jugador_dos.asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
             jugador_dos.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_DOS);
             pos_archivo = archivo_ubics.tellg();
@@ -190,7 +190,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
             int coordenada_x = parser.obtener_coordenada_x();
             int coordenada_y = parser.obtener_coordenada_y();
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_UNO), coordenada_x, coordenada_y);
-            // cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y); PARA C/JUG
+            //cargar_edificio_a_jugador(parser, JUGADOR_UNO);
         }
 
     }
@@ -204,8 +204,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
         int coordenada_x = parser.obtener_coordenada_x();
         int coordenada_y = parser.obtener_coordenada_y();
         estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_DOS), coordenada_x, coordenada_y);
-        // cargar_coordenadas_en_catalogo(parser.nombre_edificio_ubicaciones(), coordenada_x, coordenada_y); PARA C/JUG
-
+        //cargar_edificio_a_jugador(parser, JUGADOR_DOS);
     }
 
     return estado;
@@ -248,6 +247,28 @@ void Andypolis::cargar_inventarios(ifstream& archivo_mats){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+void Andypolis::cargar_edificio_a_jugador(Parser& parser, Jugador_t jugador){
+    int vida = 0;
+
+    if(parser.nombre_elemento_ubicaciones() == STR_MINA || parser.nombre_elemento_ubicaciones() == STR_FABRICA){
+        vida = 100;
+    }else{
+        vida = 50;
+    }
+
+    if(jugador == JUGADOR_UNO){
+
+        jugador_uno.agregar_edificio(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), vida, parser.obtener_coordenada_x(), parser.obtener_coordenada_y());
+
+
+    }else{
+        jugador_dos.agregar_edificio(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), vida, parser.obtener_coordenada_x(), parser.obtener_coordenada_y());
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 void Andypolis::mostrar_inventario(Jugador_t jugador){
 
