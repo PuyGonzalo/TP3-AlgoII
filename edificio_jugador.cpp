@@ -9,6 +9,10 @@ Edificio_jugador::Edificio_jugador(){
     this -> vida = 0;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Edificio_jugador::Edificio_jugador(string nombre, char identificador, int vida){
 
     this -> nombre = nombre;
@@ -17,12 +21,20 @@ Edificio_jugador::Edificio_jugador(string nombre, char identificador, int vida){
     this -> vida = vida;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Edificio_jugador::~Edificio_jugador(){
 
     for(int i = 0; i < ubicacion.obtener_cantidad(); ++i)
         delete ubicacion.consulta(i);
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 string Edificio_jugador::obtener_nombre(){
 
@@ -34,15 +46,27 @@ char Edificio_jugador::obtener_identificador(){
     return this -> identificador;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Edificio_jugador::obtener_cantidad_construidos(){
 
     return this -> cantidad_construidos;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 int Edificio_jugador::obtener_vida(){
 
     return this -> vida;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Edificio_jugador::agregar_coordenadas_a_lista(int coord_x, int coord_y){
 
@@ -55,6 +79,10 @@ void Edificio_jugador::agregar_coordenadas_a_lista(int coord_x, int coord_y){
 
     this -> cantidad_construidos++;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 int Edificio_jugador::buscar_coordenadas_en_lista(int coord_x, int coord_y){
     
@@ -75,6 +103,10 @@ int Edificio_jugador::buscar_coordenadas_en_lista(int coord_x, int coord_y){
     return posicion;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Estado_t Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 
     Estado_t estado = OK;
@@ -90,3 +122,6 @@ Estado_t Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 
     return estado;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
