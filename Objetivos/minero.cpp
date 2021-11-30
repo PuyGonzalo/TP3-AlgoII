@@ -15,20 +15,24 @@ string Minero::obtener_condiciones(){
     return CONDICIONES_MINERO;
 }
 
-/* errores
+
 
 // ------------------------------------------------------------------------------------------------------------
 
 
 bool Minero::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
-    for(int i=0; !catalogo.vacia(); i++){
-        if(STR_MINA == catalogo.consulta(i) -> nombre)
-            if(catalogo.consulta(i) -> cantidad_construidos)
+    for(int i=0; i < catalogo.obtener_longitud(); i++){
+        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )
+            if(catalogo.consultar(i) -> cantidad_construidos)
             {
-                for(int i=0; !catalogo.vacia(); i++){
-                    if(STR_MINA_ORO == catalogo.consulta(i) -> nombre)
-                        return true;
+                for(int i=0; i < catalogo.obtener_longitud(); i++){
+                    if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA_ORO ) 
+                        if(catalogo.consultar(i) -> cantidad_construidos)
+                            return true;
+                        else 
+                            return false;
+                }
             }
             else 
                 return false;
@@ -37,21 +41,21 @@ bool Minero::chequear_cumplimiento(  int &cant_energia,   Inventario & inventari
     return false;
 }
 
-*/
+
 // ------------------------------------------------------------------------------------------------------------
 
 
 string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     int cant_minas = 0;
-    for(int i=0; !catalogo.vacia(); i++){
-        if(STR_MINA == catalogo.consulta(i) -> nombre)
-            if(catalogo.consulta(i) -> cantidad_construidos)
+    for(int i=0; i < catalogo.obtener_longitud(); i++){
+        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )
+            if(catalogo.consultar(i) -> cantidad_construidos)
                 cant_minas++;
     }
     
-    for(int i=0; !catalogo.vacia(); i++){
-        if(STR_MINA_ORO == catalogo.consulta(i) -> nombre)
-            if(catalogo.consulta(i) -> cantidad_construidos)
+     for(int i=0; i < catalogo.obtener_longitud(); i++){
+        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA_ORO ) 
+            if(catalogo.consultar(i) -> cantidad_construidos)
                 cant_minas++;
     }
 

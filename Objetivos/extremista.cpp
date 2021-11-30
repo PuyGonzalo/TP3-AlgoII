@@ -20,20 +20,24 @@ string Extremista::obtener_condiciones(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/* error de includes 
 
 bool Extremista::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    
-    if(cant_bombas_compradas < CANT_BOMBAS_COMPRADAS)
-        return false;
-    return true; // IDEM EL OTRO, tal vez queda mas fachero usar (cond?) retu tru: false
+    int ubicacion = invectario.ubicacion_material_en_lista('X');
+    int bombas_compradas = 0;
+    invetario.consulta(ubicacion)->obtener_bombas_compradas(bombas_compradas);
+
+    return( bombas_compradas < CANT_BOMBAS_COMPRADAS);
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
-*/
+
 string Extremista::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    return std::to_string(cant_bombas_compradas % CANT_BOMBAS_COMPRADAS ) + "%";
+    int ubicacion = invectario.ubicacion_material_en_lista('X');
+    int bombas_compradas = 0;
+    invetario.consulta(ubicacion)->obtener_bombas_compradas(bombas_compradas);
+
+    return std::to_string(bombas_compradas % CANT_BOMBAS_COMPRADAS ) + "%";
    
 }

@@ -18,7 +18,7 @@ string Cansado::obtener_condiciones(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/* ERROR DE INCLUDES 
+
 
 bool Cansado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
@@ -26,12 +26,12 @@ bool Cansado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventar
 }
 
 
-*/
+
 // ------------------------------------------------------------------------------------------------------------
 
 
 string Cansado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){     
     return std::to_string((CANT_MAX_ENERGIA-cant_energia) % CANT_MAX_ENERGIA ) + "%";
    
-}           CANT MAX ENERGIA??? que es eso?
+}     
 

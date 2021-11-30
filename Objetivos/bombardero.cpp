@@ -20,20 +20,24 @@ string Bombardero::obtener_condiciones(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
+
 bool Bombardero::chequear_cumplimiento(  int &cant_energia,  Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    
-    if(cant_bombas_usadas < CANT_BOMBAS_USADAS)
-        return false;
-    else return true;
-    // usar operador tri-noseqe return cant<a ? true:false algo asi 
+    int ubicacion = invectario.ubicacion_material_en_lista('X');
+    int bombas_usadas = 0;
+    invetario.consulta(ubicacion)->obtener_bombas_usadas(bombas_usadas);
+
+    return ( bombas_usadas > CANT_ANDYCOINS);
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
-*/
+
 string Bombardero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    return std::to_string(cant_bombas_usadas % CANT_BOMBAS_USADAS ) + "%";
+    int ubicacion = invectario.ubicacion_material_en_lista('X');
+    int bombas_usadas = 0;
+    invetario.consulta(ubicacion)->obtener_bombas_usadas(bombas_usadas);
+
+    return std::to_string(bombas_usadas % CANT_BOMBAS_USADAS ) + "%";
    
 }

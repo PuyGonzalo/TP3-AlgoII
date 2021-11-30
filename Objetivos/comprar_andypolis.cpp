@@ -31,8 +31,12 @@ bool Comprar_andypolis::chequear_cumplimiento(  int &cant_energia,   Inventario 
 
 // ------------------------------------------------------------------------------------------------------------
 
-*/
+
 string Comprar_andypolis::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    return std::to_string(cant_andycoins_gastados % CANT_ANDYCOINS ) + "%";
+    int ubicacion = invectario.ubicacion_material_en_lista('C');
+    int andycoins_gastadas = 0;
+    invetario.consulta(ubicacion)->obtener_andycoins_gastadas(andycoins_gastadas);
+
+    return std::to_string(andycoins_gastadas % CANT_ANDYCOINS ) + "%";
    
 }

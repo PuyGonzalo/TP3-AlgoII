@@ -16,6 +16,7 @@ const char IDENTIF_PIEDRA = 'S';
 const char IDENTIF_MADERA = 'W';
 const char IDENTIF_METAL = 'I';
 const char IDENTIF_ANDYCOINS = 'C';
+const char IDENTIF_BOMBA = 'X';
 // BOMBA NO TIENE IDENTIFICADOR -> PONER IDENTIF_BOMBA = "X" o PONERLO DIRECTO EN CONSTRUCTOR? 
 
 
@@ -64,11 +65,11 @@ public:
 
     //Para el objetivo bombardero
     virtual void asignar_bomas_usadas(int cantidad){};
-    virtual int obtener_bombas_usadas(){};
+    virtual void obtener_bombas_usadas(int &cantidad_usadas){};
 
     //Para el objetivo extremista:
     virtual void asignar_bomas_compradas(int cantidad){};
-    virtual int obtener_bombas_compradas(){};
+    virtual void obtener_bombas_compradas(int &cantidad_compradas){};
 
     //Para el objetivo comprar_andypolis:
     virtual void aumentar_andycoins_gastadas(int cantidad){};

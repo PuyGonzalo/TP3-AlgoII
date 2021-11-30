@@ -29,8 +29,8 @@ void Bombas::asignar_bomas_usadas(int cantidad){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Bombas::obtener_bombas_usadas(){
-    return bombas_usadas;
+void Bombas::obtener_bombas_usadas(int &cantidad_usadas){
+    cantidad_usadas = this -> bombas_usadas;
 }
 
 
@@ -45,6 +45,6 @@ void Bombas::asignar_bomas_compradas(int cantidad){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Bombas::obtener_bombas_compradas(){
-    return bombas_ucompradas;
+void Bombas::obtener_bombas_compradas(int &cantidad_compradas){
+    bombas_compradas = this -> bombas_compradas;
 }

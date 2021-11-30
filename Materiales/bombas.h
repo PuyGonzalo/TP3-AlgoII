@@ -21,11 +21,11 @@ class Bombas: public Material {
 
     //Para el objetivo bombardero
     void asignar_bomas_usadas(int cantidad);
-    int obtener_bombas_usadas();
+    void obtener_bombas_usadas(int &cantidad_usadas);
 
     //Para el objetivo extremista:
     void asignar_bomas_compradas(int cantidad);
-    int obtener_bombas_compradas();
+    void obtener_bombas_compradas(int &cantidad_compradas);
 
 };
 
