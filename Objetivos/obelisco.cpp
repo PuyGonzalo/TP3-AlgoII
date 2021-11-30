@@ -20,7 +20,7 @@ string Obelisco::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Obelisco::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Obelisco::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     for(int i=0; !catalogo.vacia(); i++){
         if(STR_OBELISCO == catalogo.consulta(i) -> nombre)
@@ -32,8 +32,8 @@ bool Obelisco::chequear_cumplimiento(const int &cant_energia, const Inventario &
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Obelisco::obtener_progreso(){
+*/
+string Obelisco::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
 
     int cant_contruidos = 0;
     for(int i=0; !catalogo.vacia(); i++){
@@ -44,6 +44,3 @@ string Obelisco::obtener_progreso(){
     return std::to_string( cant_contruidos % CANT_OBELISCOS ) + "%";
    
 }
-
-
-*/

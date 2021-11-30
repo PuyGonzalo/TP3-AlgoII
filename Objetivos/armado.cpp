@@ -19,7 +19,7 @@ string Armado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Armado::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Armado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     if(inventario.obtener_cantidad_de_bombas()<CANT_BOMBAS_ALMACENADAS)
         return false;
@@ -28,9 +28,8 @@ bool Armado::chequear_cumplimiento(const int &cant_energia, const Inventario & i
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Armado::obtener_progreso(){
+*/
+string Armado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(inventario.obtener_cantidad_de_bombas()%CANT_BOMBAS_ALMACENADAS)+"%";
    
 }
-*/

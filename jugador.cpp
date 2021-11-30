@@ -7,6 +7,7 @@ Jugador::Jugador(){
 
     this -> jugador = NADIE;
     this -> identificador = ' ';
+    this -> objetivo_principal = new Objetivo(OBJ_OBELISCO, false); 
 
 }
 
@@ -18,7 +19,7 @@ Jugador::Jugador(char id, Jugador_t jugador){
 
     this -> jugador = jugador;
     this -> identificador = id;
-
+    this -> objetivo_principal = new Objetivo(OBJ_OBELISCO, false); 
 }
 
 
@@ -76,39 +77,81 @@ void Jugador::agregar_material_a_lista(Material* material){
 // ------------------------------------------------------------------------------------------------------------
 
 /*
-
-void Jugador::sortear_objetivos(){
+void Jugador::sortear_objetivos_secundarios(){
     
     Objetivo* objetivo_aux = nullptr ;
 
     for( int i=0; i< CANT_OBJETIVOS; i++)
-        {
-            objetivos.alta(objetivo_aux.sortear_objetivo(),i);
-        }
-    }
+        objetivos_secundarios.insertar(objetivo_aux.sortear_objetivo() );
 
-    objetivo_aux = new Objetivo(OBJ_OBELISCO, false); 
-    objetivos.alta(objetivo_aux.sortear_objetivo(),i);
-}
-
-bool Jugador::chequear_objetivos(){
-
-    if(objetivos.consulta(CANT_OBJETIVOS).chequear_cumplimiento())
-        return true;
-    
-    if(objetivos.vacia){
-        for( int i=0; i< objetivos.obtener_cantidad()-1; i++)
-        {
-            if ( !objetivos.consulta(i).chequear_cumplimiento() ) 
-                return false;
-        }
-    }
-
-    return true;
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
 
+
+bool Jugador::chequear_objetivo(Objetivo *objetivo){
+    return objetivos_secundarios.consultar(i).chequear_cumplimiento();
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+Objetivo* Jugador::sortear_objetivos(){
+  
+    int opcion_objetivo = rand() % 10;
+
+    Objetivo* aux = nullptr;
+
+    switch(opcion_objetivo){
+        
+        case OPC_COMPRAR_ANDYNOPOLIS:
+            aux = new Comprar_andypolis(OBJ_COMPRAR_ANDYNOPOLIS, false);
+            break;
+
+        case OPC_EDAD_PIEDRA:
+            aux = new Edad_piedra(OBJ_EDAD_PIEDRA, false);
+            break;
+        
+        case OPC_BOMBARDERO:
+            aux = new Bombardero(OBJ_BOMBARDERO, false);
+            break;
+        
+        case OPC_ENERGETICO:
+            aux = new Energetico(OBJ_ENERGETICO, false);
+            break;
+        
+        case OPC_LETRADO:
+            aux = new Letrado(OBJ_LETRADO, false);
+            break;
+        
+        case OPC_MINERO:
+            aux = new Minero(OBJ_MINERO, false);
+            break;
+        
+        case OPC_CANSADO:
+            aux = new Cansado(OBJ_CANSADO, false);
+            break;
+
+        case OPC_CONSTRUCTOR:
+            aux = new Constructor(OBJ_CONSTRUCTOR, false);
+            break;
+
+        case OPC_ARMADO:
+            aux = new Armado(OBJ_ARMADO, false);
+            break;
+    }
+
+
+    return aux;
+
+} 
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+/*
 Jugador::Jugador(){
     identificador = 0;
     andycoins_gastados = 0;
@@ -122,6 +165,8 @@ Jugador::Jugador(){
 
 
 // ------------------------------------------------------------------------------------------------------------
+
+
 
 
 Jugador::Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_t objetivos, Lista<Datos_edificio*> edificios, int cant_energia){

@@ -7,6 +7,20 @@
 #include "inventario.h"
 #include "grafo.h"
 #include "objetivo.h"
+#include "vector.h"
+
+#include "Objetivos/armado.h"
+#include "Objetivosbombardero.h"
+#include "Objetivos/cansado.h"
+#include "Objetivos/comprar_andypolis.h"
+#include "Objetivos/constructor.h"
+#include "Objetivos/edad_piedra.h"
+#include "Objetivos/energetico.h"
+#include "Objetivos/extremista.h"
+#include "Objetivos/letrado.h"
+#include "Objetivos/minero.h"
+#include "Objetivos/obelisco.h"
+
 
 using namespace std;
 
@@ -16,6 +30,13 @@ const char IDENTIFICADOR_JUGADOR_DOS = 'U';
 const int CANT_OBJETIVOS = 3;
 const int CANT_MAX_ENERGIA = 100;
 
+struct Edificio_jugador{
+        string nombre_edifio;
+        int cantidad_construidos;
+        Lista<Coordenadas*> ubicacion;
+        bool estado; //chequear esto!
+};
+
 
 
 class Jugador{
@@ -24,11 +45,11 @@ private:
         char identificador;
         Jugador_t jugador;
 //        Grafo grafo;
-//      int andycoins_gastados;
         Inventario inventario;
         Coordenadas ubicacion;
-        Lista<Objetivo*> objetivos; // objetivoS
-//      Lista<Datos_edificio*> catalogo;
+        Objetivo* objetivo_principal;
+        Vector<Objetivo*> objetivos_secundarios; // objetivoS
+        Vector<Edificio_jugador*> Mis_edificios; //con mis ladrillos
 //      double energia;
 
 public:
@@ -62,9 +83,18 @@ public:
         // pos: agrega un material a la lista de materiales del jugador
         void agregar_material_a_lista(Material* material);
 
-        void sortear_objetivos();
+        // pre: -
+        // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
+        void sortear_objetivos_secundarios();
 
-        bool chequear_objetivos();
+
+        //pre: -
+        //post: Devuelvo la condicion del objetivo si esta cumplido
+        bool chequear_objetivo(Objetivo *objetivo);
+
+        //pre: - 
+        //post: Crea un objetivo al azar
+        Objetivo* sortear_objetivos();
 
 
 //        Jugador();

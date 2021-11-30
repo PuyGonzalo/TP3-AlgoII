@@ -21,7 +21,7 @@ string Bombardero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 /*
-bool Bombardero::chequear_cumplimiento(const int &cant_energia,const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Bombardero::chequear_cumplimiento(  int &cant_energia,  Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     if(cant_bombas_usadas < CANT_BOMBAS_USADAS)
         return false;
@@ -32,9 +32,8 @@ bool Bombardero::chequear_cumplimiento(const int &cant_energia,const Inventario 
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Bombardero::obtener_progreso(){
+*/
+string Bombardero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(cant_bombas_usadas % CANT_BOMBAS_USADAS ) + "%";
    
 }
-*/

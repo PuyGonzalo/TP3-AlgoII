@@ -20,7 +20,7 @@ string Minero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Minero::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Minero::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     for(int i=0; !catalogo.vacia(); i++){
         if(STR_MINA == catalogo.consulta(i) -> nombre)
@@ -37,11 +37,11 @@ bool Minero::chequear_cumplimiento(const int &cant_energia, const Inventario & i
     return false;
 }
 
-
+*/
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Minero::obtener_progreso(){
+string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     int cant_minas = 0;
     for(int i=0; !catalogo.vacia(); i++){
         if(STR_MINA == catalogo.consulta(i) -> nombre)
@@ -58,5 +58,3 @@ string Minero::obtener_progreso(){
     return std::to_string(cant_minas % CANT_MINAS ) + "%";
    
 }
-
-*/

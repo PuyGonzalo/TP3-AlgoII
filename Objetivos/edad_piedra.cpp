@@ -16,18 +16,16 @@ string Edad_piedra::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Edad_piedra::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Edad_piedra::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     return (inventario.obtener_cantidad_de_piedra() > CANT_PIEDRA);
 }
 
-
+*/
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Edad_piedra::obtener_progreso(){
+string Edad_piedra::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(inventario.obtener_cantidad_de_piedra() % CANT_PIEDRA ) + "%";
    
 }
-
-*/

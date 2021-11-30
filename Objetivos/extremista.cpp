@@ -22,7 +22,7 @@ string Extremista::obtener_condiciones(){
 
 /* error de includes 
 
-bool Extremista::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Extremista::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     if(cant_bombas_compradas < CANT_BOMBAS_COMPRADAS)
         return false;
@@ -32,10 +32,8 @@ bool Extremista::chequear_cumplimiento(const int &cant_energia, const Inventario
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Extremista::obtener_progreso(){
+*/
+string Extremista::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(cant_bombas_compradas % CANT_BOMBAS_COMPRADAS ) + "%";
    
 }
-
-*/

@@ -4,9 +4,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-//#include "lista.h"
-//#include "inventario.h"
-//#include "datos_edificio.h"
+#include "lista.h"
+#include "inventario.h"
+#include "datos_edificio.h"
 
 using namespace std;
 
@@ -41,12 +41,10 @@ enum objetivo_t{
     OPC_EXTREMISTA
 };
 
-//#include "Objetivos/comprar_andypolis.h" // (SI NO LO PONGO TIRAR ERROR EN SORTEAR_OBJETIVOS PERO SI LO DEJO ESTAN MAL LOS INCLUDE)
-                                            // HAY QUE BUSCAR OTRA FORMA DE SORTEAR
-
 
 class Objetivo{
-    private:
+
+    protected:
         string nombre;
         bool cumplido;
     
@@ -54,10 +52,9 @@ class Objetivo{
         Objetivo(string nombre_obj, bool realizado);
         string obtener_nombre();
 
-        Objetivo* sortear_objetivos();
         virtual string obtener_condiciones() = 0;
-        //virtual bool chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo) = 0; 
-        virtual string obtener_progreso() = 0;
+        virtual bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0; 
+        virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & catalogo) = 0;
 };
 
 

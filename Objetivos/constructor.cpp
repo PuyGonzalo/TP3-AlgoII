@@ -11,7 +11,7 @@ Constructor::Constructor(string nombre_obj, bool realizado) : Objetivo(nombre_ob
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Constructor::obtener_condiciones(){
+string  Constructor::obtener_condiciones(){
     return CONDICIONES_CONSTRUCTOR;
 }
 
@@ -20,7 +20,7 @@ string Constructor::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Constructor::chequear_cumplimiento(const int &cant_energia, const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool  Constructor::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     for(int i=0; !catalogo.vacia(); i++){
         if(catalogo.consulta(i) -> cantidad_construidos == 0)
@@ -31,18 +31,17 @@ bool Constructor::chequear_cumplimiento(const int &cant_energia, const Inventari
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Constructor::obtener_progreso(){
+*/
+string  Constructor::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
-    int construidos = 0;
-    
+    int  construidos = 0;
+    int i;
     for(int i=0; !catalogo.vacia(); i++){
-        if(catalogo.consulta(i) -> cantidad_construidos == 0)
-            construidos++;
+        if(catalogo.consulta(i).cantidad_construidos() == 0)
+             construidos++;
     }
 
-    return std::to_string( construidos % i ) + "%";
+    return std::to_string(  construidos % i ) + "%";
    
 }
 
-*/

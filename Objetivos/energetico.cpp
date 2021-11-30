@@ -19,7 +19,7 @@ string Energetico::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 /* errores de include
-bool Energetico::chequear_cumplimiento(const int &cant_energia,const Inventario & inventario, const Lista<Datos_edificio*> & catalogo){
+bool Energetico::chequear_cumplimiento(  int &cant_energia,  Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     
     return (cant_energia >= CANT_ENERGIA);
 }
@@ -27,10 +27,9 @@ bool Energetico::chequear_cumplimiento(const int &cant_energia,const Inventario 
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Energetico::obtener_progreso(){
+*/
+string Energetico::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
     return std::to_string(cant_energia % CANT_ENERGIA ) + "%"; 
    
 }
 //de donde saca cant_energia?
-*/
