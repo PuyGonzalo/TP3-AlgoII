@@ -51,7 +51,12 @@ Grafo::~Grafo(){
             delete grafo[i][j]; // tengo que ir 1 por 1 porque son estructuras complejas
             grafo[i][j] = nullptr;
         }
+        delete [] grafo[i];
+        grafo[i] = nullptr;
     }
+
+    delete [] grafo;
+    grafo = nullptr;
 
 }
 

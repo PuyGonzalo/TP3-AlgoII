@@ -39,13 +39,14 @@ private:
         // Atributos
         char identificador;
         Jugador_t jugador;
-//        Grafo grafo;
-        Inventario inventario;
         Coordenadas ubicacion;
+        Vector<Edificio_jugador> mis_edificios; //con mis ladrillos
+
+        Grafo* grafo;
+        Inventario inventario;
         Objetivo* objetivo_principal;
         Vector<Objetivo> objetivos_secundarios;
-        Vector<Edificio_jugador> mis_edificios; //con mis ladrillos
-//      double energia;
+        double energia;
 
 public:
         // Metodos
@@ -56,7 +57,7 @@ public:
 
         // pre: -
         // pos: CONSTRUCTOR por parametros de un jugador
-        Jugador(char id, Jugador_t jugador);
+//        Jugador(char id, Jugador_t jugador);
 
         // pre: -
         // pos: DESTRUCTOR del jugador
@@ -73,6 +74,10 @@ public:
         // pre: las coordenadas deben estar dentro del mapa (chequear en funcion superior)
         // pos: asigna la ubicacion en el mapa del jugador
         void asignar_ubicacion_jugador(int coord_x, int coord_y);
+
+        // pre: -
+        // pos: crea el grafo correspondiente al jugador
+        void crear_grafo(const Mapa &mapa);
 
         // pre: -
         // pos: muestra el inventario del jugador
@@ -103,10 +108,9 @@ public:
         //post: Devuelvo la condicion del objetivo si esta cumplido
         bool chequear_objetivo(Objetivo *objetivo);
 
-        //pre: - 
+        //pre: -  // DEBERIA SER PRIVADO
         //post: Crea un objetivo al azar
         Objetivo* sortear_objetivos(int opcion_objetivo);
-
 
 };
 

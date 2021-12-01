@@ -5,41 +5,33 @@
 
 Jugador::Jugador(){
 
-    this -> jugador = NADIE;
     this -> identificador = ' ';
-    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false); 
+    this -> jugador = NADIE;
+    ubicacion.coordenada_x = -1;
+    ubicacion.coordenada_y = -1;
+    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false);
+    energia = 50; // primer turno imagino que es cuando se crea..
 
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
-
+/*
 Jugador::Jugador(char id, Jugador_t jugador){
 
     this -> jugador = jugador;
     this -> identificador = id;
     this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false); 
 }
-
+*/
 
 // ------------------------------------------------------------------------------------------------------------
 
 Jugador::~Jugador(){
-
+    
     delete objetivo_principal;
-
-    /*
-    for(int i = 0; i < objetivos_secundarios.obtener_longitud(); ++i ){
-
-        delete objetivos_secundarios.consultar(i);
-    }
-
-    for(int i = 0; i< mis_edificios.obtener_longitud(); ++i){
-
-        delete mis_edificios.consultar(i);
-    }
-    */
+    delete grafo;
 
 }
 
@@ -81,6 +73,15 @@ void Jugador::asignar_ubicacion_jugador(int coord_x, int coord_y){
 
     this -> ubicacion.coordenada_x = coord_x;
     this -> ubicacion.coordenada_y = coord_y;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Jugador::crear_grafo(const Mapa &mapa){
+
+    this -> grafo = new Grafo(mapa,jugador);
 
 }
 
@@ -174,15 +175,16 @@ int Jugador::buscar_edificio_por_nombre(string nombre){
 
 
 void Jugador::sortear_objetivos_secundarios(){
+
     Lista<int> opciones_objetivos;
     int opcion_elegida;
 
-    for(int i=0; i < CANT_OBJETIVOS_SECUNDARIOS; i++){
+    for(int i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
         opciones_objetivos.alta(i,i);
     }
 
     while( objetivos_secundarios.obtener_longitud() == CANT_OBJETIVOS_SORTEADOS){
-        opcion_elegida = opciones_objetivos.destruir_aleatorio();
+        opcion_elegida = opciones_objetivos.bajar_aleatorio();
         objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
     }
 
@@ -245,4 +247,4 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
 
     return aux;
 
-} 
+}

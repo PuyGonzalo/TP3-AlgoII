@@ -8,17 +8,11 @@
 Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats)
 : mapa(archivo_mapa){
 
-
     // cuando venga vacio va a haber que meter una logica por aca
+    cargar_informacion_jugadores();
     cargar_diccionario(archivo_edif);
     cargar_ubicaciones(archivo_ubics);
     cargar_inventarios(archivo_mats);
-
-
-    // this->jugador_uno = Jugador('J',JUGADOR_UNO); me gustaria hacer esto pero no se puede xq jugador muere al final de este metodo
-
-//    Grafo grafo(mapa,JUGADOR_UNO); falta la logica para asignarselo a c/jugador y eso
-//    grafo.imprimir_matriz_ady(); para ver si imprimai bien
  
 }
 
@@ -26,23 +20,23 @@ Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& 
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::~Andypolis(){
-
-
-}
+Andypolis::~Andypolis(){}
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_informacion_jugador(){ // esto es solo si no se puede hacer Jugador jugador_uno(parametros) en atrib de andypo
+void Andypolis::cargar_informacion_jugadores(){
 
     this -> jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
     this -> jugador_uno.asignar_numero_jugador(JUGADOR_UNO);
-    // crear grafo? xd
+    this -> jugador_uno.sortear_objetivos_secundarios();
+    this -> jugador_uno.crear_grafo(mapa);
 
     this -> jugador_dos.asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
     this -> jugador_dos.asignar_numero_jugador(JUGADOR_DOS);
+    this -> jugador_dos.sortear_objetivos_secundarios();
+    this -> jugador_dos.crear_grafo(mapa);
 
 }
 
@@ -92,7 +86,7 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
         estado_edificios = cargar_edificios_jugador(archivo_ubics);
     }else{
 
-        // Si la primera linea es la posiscion de un jugador, entonces no hay materiales en el archivo ubicaciones.
+        // Si la primera linea es la posicion de un jugador, entonces no hay materiales en el archivo ubicaciones.
         // Por ende:
 
         archivo_ubics.seekg(pos_inicial_archivo); // Vuelvo a colocar el cursor de lectura al inicio.
@@ -176,11 +170,9 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
         Parser parser(linea_leida);
 
         if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
             jugador_uno.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_UNO);
         }else if(parser.nombre_elemento_ubicaciones() == "2"){
-            jugador_dos.asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
             jugador_dos.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_DOS);
             pos_archivo = archivo_ubics.tellg();

@@ -49,7 +49,7 @@ public:
 
     //pre: la lista está cargada con valores
     //post: elijo un valor random de la lista y lo elimino
-    Tipo destruir_aleatorio();
+    Tipo bajar_aleatorio();
 
 
 private:
@@ -148,7 +148,7 @@ int Lista<Tipo>::obtener_cantidad(){
 }
 
 template <typename Tipo>
-Tipo Lista<Tipo>::destruir_aleatorio(){
+Tipo Lista<Tipo>::bajar_aleatorio(){
     int posicion_random = rand() % cantidad;
     Tipo temporal = this-> consulta(posicion_random);
     this-> baja(posicion_random);

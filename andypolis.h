@@ -48,8 +48,8 @@ public:
     ~Andypolis();
 
     // pre: -
-    // pos: completa la informacion del jugador (excepto ubicacion, claro)
-    void cargar_informacion_jugador();
+    // pos: completa la informacion de los jugadores (excepto ubicacion, claro)
+    void cargar_informacion_jugadores();
 
     // pre: bien formado
     // pos: carga el diccionario (no le deciamos catalogo? xd)
