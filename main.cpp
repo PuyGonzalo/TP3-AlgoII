@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
+
 #include "inventario.h"
 #include "jugador.h"
 #include "errores.h"
 #include "herramientas.h"
 #include "andypolis.h"
+
 
 using namespace std;
 
@@ -15,7 +17,7 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 
 int main (void){
-    
+
     //if(system(CLR_SCREEN));
 	
     // Abro archivos de lectura
@@ -47,6 +49,5 @@ int main (void){
 	archivo_salida_materiales.close();
 	archivo_salida_ubicaciones.close();
 */
-
     return 0;
 }
