@@ -63,17 +63,6 @@ public:
     virtual string obtener_nombre_material() = 0;
     // #### para mi PONERLE "NOMBRE en vez de tipo", no lo cambie para no romper el codigo q lo use
 
-    //Para el objetivo bombardero
-    virtual void asignar_bomas_usadas(int cantidad){};
-    virtual void obtener_bombas_usadas(int &cantidad_usadas){};
-
-    //Para el objetivo extremista:
-    virtual void asignar_bomas_compradas(int cantidad){};
-    virtual void obtener_bombas_compradas(int &cantidad_compradas){};
-
-    //Para el objetivo comprar_andypolis:
-    virtual void aumentar_andycoins_gastadas(int cantidad){};
-    virtual void obtener_andycoins_gastadas(int &cantidad_andycoins){};
 };
 
 

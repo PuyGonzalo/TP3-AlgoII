@@ -15,23 +15,21 @@ string Armado::obtener_condiciones(){
     return CONDICIONES_ARMADO;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Armado::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+
+    return ( inventario.obtener_cantidad_de_bombas() < CANT_BOMBAS_ALMACENADAS );
+ 
+}
+
 /*
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Armado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    int ubicacion = inventario.ubicacion_material_en_lista('X');
-    int cantidad_bombas = inventario.consulta(ubicacion)->obtener_cantidad();
-
-    if( cantidad_bombas < CANT_BOMBAS_ALMACENADAS )
-        return false;
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-string Armado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+string Armado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador*> & catalogo){
     int ubicacion = inventario.ubicacion_material_en_lista('X');
     int cantidad_bombas = inventario.consulta(ubicacion)->obtener_cantidad();
 

@@ -36,7 +36,7 @@ Edificio_jugador::~Edificio_jugador(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Edificio_jugador::obtener_nombre(){
+string Edificio_jugador::obtener_nombre() const{
 
     return this -> nombre;
 }

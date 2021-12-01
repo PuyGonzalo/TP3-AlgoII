@@ -116,6 +116,30 @@ double Inventario::obtener_cantidad_de_metal(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+double Inventario::obtener_cantidad_de_bombas(){
+    
+    int ubicacion_material;
+    ubicacion_material = buscar_material(IDENTIF_BOMBA);
+
+    return materiales.consultar(ubicacion_material) -> obtener_cantidad();
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Inventario::obtener_cantidad_de_andycoins(){
+    
+    int ubicacion_material;
+    ubicacion_material = buscar_material(IDENTIF_ANDYCOINS);
+
+    return materiales.consultar(ubicacion_material) -> obtener_cantidad();
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Inventario::restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal){
     int ubicacion_piedra, ubicacion_madera, ubicacion_metal;
 
@@ -170,4 +194,48 @@ void Inventario::guardar_inventario(ofstream& archivo_materiales){
     << ESPACIO <<
     materiales.consultar(i) -> obtener_cantidad();
 
+}
+
+void Inventario::aumentar_andycoins_gastadas(int cantidad){
+    andycoins_gastadas+=cantidad;
+}
+   
+
+// ------------------------------------------------------------------------------------------------------------
+
+ 
+int Inventario::obtener_andycoins_gastadas(){
+    return andycoins_gastadas;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Inventario::aumentar_bomas_usadas(int cantidad){
+    bombas_usadas += cantidad;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Inventario::obtener_bombas_usadas(){
+    return bombas_usadas;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Inventario::aumentar_bomas_compradas(int cantidad){
+    bombas_compradas += cantidad;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Inventario::obtener_bombas_compradas(){
+    return bombas_compradas;
 }

@@ -3,7 +3,7 @@
 
 #include "../objetivo.h"
 
-const int CANT_ENERGIA = 100;
+const int CANT_ENERGIA_MAXIMA = 100;
 const string CONDICIONES_ENERGETICO = "Haber terminado un turno con 100 puntos de energía";
 
 
@@ -15,8 +15,8 @@ class Energetico: public Objetivo {
         ~Energetico(){};
 
         string obtener_condiciones();
-        bool chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo);
-        string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo);
+        bool chequear_cumplimiento(  const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios);
+        //string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo);
 };
 
 

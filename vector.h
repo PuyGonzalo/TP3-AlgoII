@@ -47,7 +47,7 @@ public:
 
     // pre: -
     // pos: Devuelve la longitud del vector
-    int obtener_longitud();
+    int obtener_longitud() const;
 
     // Sobrecarga del operador =
     //void operator=(const Vector<D>& vec); // No se si me sirve para algo sinceramente
@@ -173,7 +173,7 @@ D* Vector<D>::consultar(int pos){
 
 
 template <typename D>
-int Vector<D>::obtener_longitud(){
+int Vector<D>::obtener_longitud() const{
 
     return this -> longitud;
 }

@@ -36,7 +36,7 @@ public:
 
     // pre:
     // pos:
-    string obtener_nombre();
+    string obtener_nombre() const;
 
     // pre:
     // pos:

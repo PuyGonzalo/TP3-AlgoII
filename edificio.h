@@ -17,6 +17,17 @@ const string STR_OBELISCO = "obelisco";
 const string STR_P_ELECTRICA = "planta electrica";
 const string STR_MINA_ORO = "mina oro";
 
+const int CANTIDAD_EDIFICIOS = 7;
+
+const string NOMBRES_EDIFICIOS[] = {
+    STR_MINA,
+    STR_ASERRADERO,
+    STR_FABRICA,
+    STR_ESCUELA,
+    STR_OBELISCO,
+    STR_P_ELECTRICA,
+    STR_MINA_ORO,
+};
 
 class Edificio{
 

@@ -16,36 +16,26 @@ string Minero::obtener_condiciones(){
 }
 
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Minero::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+    /* Hago una lista
+    bool construidos = true;
+    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
+
+        
+    }
+    */
+    return false;
+}
+
 /*
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Minero::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )
-            if(catalogo.consultar(i) -> cantidad_construidos)
-            {
-                for(int i=0; i < catalogo.obtener_longitud(); i++){
-                    if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA_ORO ) 
-                        if(catalogo.consultar(i) -> cantidad_construidos)
-                            return true;
-                        else 
-                            return false;
-                }
-            }
-            else 
-                return false;
-    }
-
-    return false;
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int cant_minas = 0;
     for(int i=0; i < catalogo.obtener_longitud(); i++){
         if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )

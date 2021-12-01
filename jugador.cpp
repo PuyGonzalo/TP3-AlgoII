@@ -244,7 +244,6 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
             break;
     }
 
-
     return aux;
 
 }

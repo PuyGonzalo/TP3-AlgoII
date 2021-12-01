@@ -17,23 +17,20 @@ string Extremista::obtener_condiciones(){
     return CONDICIONES_EXTREMISTA;
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Extremista::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    int ubicacion = invectario.ubicacion_material_en_lista('X');
-    int bombas_compradas = 0;
-    invetario.consulta(ubicacion)->obtener_bombas_compradas(bombas_compradas);
+bool Extremista::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
 
-    return( bombas_compradas < CANT_BOMBAS_COMPRADAS);
+    return( inventario.obtener_bombas_compradas() < CANT_BOMBAS_COMPRADAS);
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Extremista::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+/*
+string Extremista::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int ubicacion = invectario.ubicacion_material_en_lista('X');
     int bombas_compradas = 0;
     invetario.consulta(ubicacion)->obtener_bombas_compradas(bombas_compradas);

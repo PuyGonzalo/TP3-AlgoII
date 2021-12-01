@@ -17,22 +17,20 @@ string Comprar_andypolis::obtener_condiciones(){
     return CONDICIONES_COMPRAR_ANDYPOLIS;
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Comprar_andypolis::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
-    int ubicacion = invectario.ubicacion_material_en_lista('C');
-    int andycoins_gastadas = 0;
-    invetario.consulta(ubicacion)->obtener_andycoins_gastadas(andycoins_gastadas);
-
-    return ( andycoins_gastadas> CANT_ANDYCOINS);
+bool Comprar_andypolis::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+    int total = inventario.obtener_andycoins_gastadas() + inventario.obtener_cantidad_de_andycoins();
+    return ( total > CANT_ANDYCOINS);
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Comprar_andypolis::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+/*
+string Comprar_andypolis::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int ubicacion = invectario.ubicacion_material_en_lista('C');
     int andycoins_gastadas = 0;
     invetario.consulta(ubicacion)->obtener_andycoins_gastadas(andycoins_gastadas);

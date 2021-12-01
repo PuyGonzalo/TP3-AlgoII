@@ -19,18 +19,18 @@ string Cansado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-/*
-bool Cansado::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+
+bool Cansado::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
     
     return (cant_energia == 0);
 }
 
 
-
+/*
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Cansado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){     
+string Cansado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){     
     return std::to_string((CANT_MAX_ENERGIA-cant_energia) % CANT_MAX_ENERGIA ) + "%";
    
 }     

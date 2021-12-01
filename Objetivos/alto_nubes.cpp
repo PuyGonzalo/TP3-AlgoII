@@ -15,15 +15,15 @@ string Alto_nubes::obtener_condiciones(){
     return CONDICIONES_MAS_ALTO_NUBES;
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Alto_nubes::chequear_cumplimiento(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+bool Alto_nubes::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
     
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_OBELISCO ) 
-            return (catalogo.consultar(i) -> cantidad_construidos == 0);
+    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
+        if( mis_edificios.consultar(i)->obtener_nombre() == STR_OBELISCO) 
+            return (mis_edificios.consultar(i) -> obtener_cantidad_construidos() == 1);
     }
     return false;
 }
@@ -31,13 +31,13 @@ bool Alto_nubes::chequear_cumplimiento(  int &cant_energia,   Inventario & inven
 
 // ------------------------------------------------------------------------------------------------------------
 
-
-string Alto_nubes::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Datos_edificio*> & catalogo){
+/*
+string Alto_nubes::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & mis_edificios){
 
     int cant_contruidos = 0;
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_OBELISCO )
-            cant_contruidos = catalogo.consultar(i) -> cantidad_construidos;
+    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
+        if( mis_edificios.consultar(i) -> nombre_edificio ==STR_OBELISCO )
+            cant_contruidos = mis_edificios.consultar(i) -> cantidad_construidos;
     }
     
     return std::to_string( cant_contruidos % CANT_OBELISCOS ) + "%";

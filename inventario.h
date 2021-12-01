@@ -19,6 +19,9 @@ private:
     Vector<Material> materiales;
     int cantidad_materiales;
     Jugador_t jugador;
+    int andycoins_gastadas;
+    int bombas_usadas;
+    int bombas_compradas;
 
 public:
     // Metodos
@@ -51,6 +54,14 @@ public:
     // pos: obtiene cuanta cantidad de metal hay en el inventario
     double obtener_cantidad_de_metal();
 
+    // pre: -
+    // pos: obtiene cuanta cantidad de bombas hay en el inventario
+    double obtener_cantidad_de_bombas();
+
+    // pre: -
+    // pos: obtiene cuanta cantidad de andycoins hay en el inventario
+    double obtener_cantidad_de_andycoins();
+
     // pre: deberia ya estar chequeado que la resta queda > 0 como cantidad final de c/material
     // pos: resta una cantidad de material de los 3 elementos de construccion
     void restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal);
@@ -70,6 +81,18 @@ public:
     // pre: -
     // pos: guarda el inventario
     void guardar_inventario(ofstream& archivo_materiales);
+
+    //Para el objetivo comprar_andypolis:
+    void aumentar_andycoins_gastadas(int cantidad);
+    int obtener_andycoins_gastadas();
+
+    //Para el objetivo bombardero
+    void aumentar_bomas_usadas(int cantidad);
+    int obtener_bombas_usadas();
+
+    //Para el objetivo extremista:
+    void aumentar_bomas_compradas(int cantidad);
+    int obtener_bombas_compradas();
 
 };
 
