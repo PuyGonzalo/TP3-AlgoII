@@ -88,7 +88,11 @@ public:
 
         // pre:
         // pos:
-        int buscar_edificio_en_arreglo(char identificador);
+        int buscar_edificio_por_identificador(char identificador);
+
+        // pre:
+        // pos:
+        //int buscar_edificio_por_nombre(string nombre);
 
         // pre: -
         // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios

@@ -103,7 +103,7 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
     
     if(this -> mis_edificios.obtener_longitud() > 0){
         
-        int pos = buscar_edificio_en_arreglo(identificador);
+        int pos = buscar_edificio_por_identificador(identificador);
 
         if( pos != -1 ){
             this -> mis_edificios.consultar(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
@@ -127,7 +127,7 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Jugador::buscar_edificio_en_arreglo(char identificador){
+int Jugador::buscar_edificio_por_identificador(char identificador){
 
     int pos = -1;
     bool encontrado = false;
@@ -146,6 +146,29 @@ int Jugador::buscar_edificio_en_arreglo(char identificador){
     return pos;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+/* No se si va a ser util la dejo por si las dudas
+int Jugador::buscar_edificio_por_nombre(string nombre){
+
+    int pos = -1;
+    bool encontrado = false;
+    int i = 0;
+
+    while(i < mis_edificios.obtener_longitud() && !encontrado){
+
+        if(mis_edificios.consultar(i) -> obtener_nombre() == nombre){
+            pos = i;
+            encontrado = true;
+        }
+
+        ++i;
+    }
+
+    return pos;
+}
+*/
 
 // ------------------------------------------------------------------------------------------------------------
 
