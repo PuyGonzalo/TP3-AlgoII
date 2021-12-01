@@ -35,7 +35,7 @@ public:
 
     // pre: dato tiene que ser un Dato valido
     // pos: Inserta el dato, en la ultima posicion
-    void insertar(D& dato);
+    void insertar(const D& dato);
 
     // pre: 0 <= pos < longitud, dato tiene que ser un Dato valido
     // pos: Inserta el dato, en la posicion "pos", la primera es la 0.
@@ -144,7 +144,7 @@ void Vector<D>::operator=(const Vector<D>& vec){
 
 
 template <typename D>
-void Vector<D>::insertar(D& dato){
+void Vector<D>::insertar(const D& dato){
 
     if(longitud == capacidad)
         this -> redimensionar(capacidad+1);

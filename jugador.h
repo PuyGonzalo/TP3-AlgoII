@@ -28,7 +28,8 @@ using namespace std;
 
 const char IDENTIFICADOR_JUGADOR_UNO = 'J';
 const char IDENTIFICADOR_JUGADOR_DOS = 'U';
-const int CANT_OBJETIVOS = 3;
+const int CANT_OBJETIVOS_SORTEADOS = 3;
+const int CANT_OBJETIVOS_SECUNDARIOS = 10;
 const int CANT_MAX_ENERGIA = 100;
 
 
@@ -100,28 +101,9 @@ public:
 
         //pre: - 
         //post: Crea un objetivo al azar
-        Objetivo* sortear_objetivos();
+        Objetivo* sortear_objetivos(int opcion_objetivo);
 
 
-//        Jugador();
-//        Jugador(char id,Inventario invent, Coordenadas ubi,Objetivo_secundario_t objetivos, Lista<Datos_edificio*> edificios,  double cant_energia);
-
- //       char obtener_identificador();
-//        int obtener_andycoins_gastados();
-//        Inventario obtener_inventario();
-//        Coordenadas obtener_ubicacion();
-//        Objetivo_secundario_t obtener_objetivos_secundarios();
-//        Lista<Datos_edificio*> obtener_catalogo();
-//        double obtener_energia();
-
-//        void setear_identificador( char id);
-//        void setear_inventario( Inventario invent);
-//        void setear_ubicacion( Coordenadas ubi);
-//        void setear_objetivos_secundarios( Objetivo_secundario_t objetivos);
-//        void setear_catalogo( Lista<Datos_edificio*> catalog);
- //       void setear_energia(  double cant_energia);
-/*
-*/
 };
 
 #endif

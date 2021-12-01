@@ -2,7 +2,11 @@
 #define LISTA_H
 
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
 #include "nodo.h"
+
+using namespace std;
 
 template <typename Tipo>
 class Lista {
@@ -43,11 +47,16 @@ public:
     // pos: devuelve la cantidad de nodos que hay en la lista
     int obtener_cantidad();
 
+    //pre: la lista está cargada con valores
+    //post: elijo un valor random de la lista y lo elimino
+    Tipo destruir_aleatorio();
+
 
 private:
     // pre: posicion menor al largo de la lista (cantidad)
     // pos: obtiene el nodo de una posicion en particular
     Nodo<Tipo>* obtener_nodo(int pos);
+
 };
 
 
@@ -138,6 +147,12 @@ int Lista<Tipo>::obtener_cantidad(){
     return cantidad;
 }
 
-
+template <typename Tipo>
+Tipo Lista<Tipo>::destruir_aleatorio(){
+    int posicion_random = rand() % cantidad;
+    Tipo temporal = this-> consulta(posicion_random);
+    this-> baja(posicion_random);
+    return temporal;
+} 
 
 #endif // LISTA_H
