@@ -6,7 +6,7 @@
 #include <iomanip>
 #include "material.h"
 #include "parser.h"
-#include "lista.h"
+#include "vector.h"
 #include "herramientas.h"
 
 using namespace std;
@@ -16,7 +16,7 @@ class Inventario{
 
 private:
     // Atributos
-    Lista<Material*> lista_materiales;
+    Vector<Material> materiales;
     int cantidad_materiales;
     Jugador_t jugador;
 
@@ -37,7 +37,7 @@ public:
 
     // pre: -
     // pos: devuelve la ubicacion de un material en la lista de materiales
-    int ubicacion_material_en_lista(char identificador);
+    int buscar_material(char identificador);
 
     // pre: -
     // pos: obtiene cuanta cantidad de piedra hay en el inventario
