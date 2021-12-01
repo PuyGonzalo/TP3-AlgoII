@@ -42,8 +42,8 @@ private:
         Inventario inventario;
         Coordenadas ubicacion;
         Objetivo* objetivo_principal;
-        Vector<Objetivo*> objetivos_secundarios;
-        Vector<Edificio_jugador*> mis_edificios; //con mis ladrillos
+        Vector<Objetivo> objetivos_secundarios;
+        Vector<Edificio_jugador> mis_edificios; //con mis ladrillos
 //      double energia;
 
 public:

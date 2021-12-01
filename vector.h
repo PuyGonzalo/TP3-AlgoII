@@ -9,7 +9,7 @@ class Vector{
     
 private:
     // Atributos
-    D* datos;
+    D** datos;
     int longitud;
     int capacidad;
 
@@ -23,27 +23,27 @@ public:
     // Metodos
 
     // pre: -
-    // pos: Construye un vector vacio
+    // pos: Construye un vector vacio de capacidad  = VECTOR_TAMANIO_INICIAL y datos vacios
     Vector();
 
     // pre: tam > 0
     // pos: Construye un vector de longitud tam y datos vacios
-    Vector(int tam); // Vector(int tam = VECTOR_TAMANIO_INICIAL); conflicto con default si pones un param default
+    Vector(int tam);
 
     // Constructor de copia (Dejar?)
     //Vector(const Vector<D>& vec);
 
     // pre: dato tiene que ser un Dato valido
     // pos: Inserta el dato, en la ultima posicion
-    void insertar(D& dato);
+    void insertar(D* dato);
 
     // pre: 0 <= pos < longitud, dato tiene que ser un Dato valido
     // pos: Inserta el dato, en la posicion "pos", la primera es la 0.
-    void insertar_en_posicion( D& dato, int pos);
+    void insertar_en_posicion( D* dato, int pos);
 
     // pre: 0 <= pos < longitud, y que el dato exista
     // pos: devuelve el dato que esta en pos
-    D consultar(int pos);
+    D* consultar(int pos);
 
     // pre: -
     // pos: Devuelve la longitud del vector
@@ -66,7 +66,11 @@ template <typename D>
 Vector<D>::Vector(){
 
     this -> longitud = 0;
-    datos = nullptr;
+    this -> capacidad = VECTOR_TAMANIO_INICIAL;
+    datos = new D * [VECTOR_TAMANIO_INICIAL];
+
+    for(int i = 0; i < longitud; ++i)
+        datos[i] = NULL;
 }
 
 
@@ -78,7 +82,10 @@ Vector<D>::Vector(int tam){
     
     this -> longitud = 0;
     this -> capacidad = tam;
-    datos = new D[tam];
+    datos = new D * [tam];
+
+    for(int i = 0; i < tam; ++i)
+        datos[i] = NULL;
 }
 
 
@@ -88,8 +95,16 @@ Vector<D>::Vector(int tam){
 template <typename D>
 Vector<D>::~Vector(){
 
-    if(longitud > 0)
+    if(datos != NULL){
+        for(int i = 0; i < longitud; ++i){
+
+            if(datos[i] != NULL)
+                delete datos[i];
+        }
+
         delete[] datos;
+    }
+        
 }
 
 
@@ -99,15 +114,15 @@ Vector<D>::~Vector(){
 template <typename D>
 void Vector<D>::redimensionar(int nuevo_tam){
 
-    D* aux;
-    aux = new D[nuevo_tam];
+    D** aux;
+    aux = new D * [nuevo_tam];
 
     for(int i = 0; i < longitud; ++i){
-        aux[i] = datos[i];
+        if(i < capacidad)
+            aux[i] = datos[i];
+        else
+            aux[i] = NULL;
     }
-
-    if(nuevo_tam < longitud)
-        longitud = nuevo_tam;
 
     delete[] datos;
 
@@ -119,32 +134,9 @@ void Vector<D>::redimensionar(int nuevo_tam){
 
 // -----------------------------------------------------------------------------------------
 
-/*
-template <typename D>
-void Vector<D>::operator=(const Vector<D>& vec){
-
-    D* aux;    
-
-    if(this -> longitud != vec.longitud){
-
-        aux = new D[longitud];
-        delete[] datos;
-        datos = aux;
-        this -> capacidad = vec.capacidad;
-        this -> longitud = vec.longitud;
-
-    }
-
-    for(int i = 0; i < this -> longitud; ++i)
-        this -> datos[i] = vec.datos[i];
-}
-*/
-
-// -----------------------------------------------------------------------------------------
-
 
 template <typename D>
-void Vector<D>::insertar(D& dato){
+void Vector<D>::insertar(D* dato){
 
     if(longitud == capacidad)
         this -> redimensionar(capacidad+1);
@@ -158,9 +150,12 @@ void Vector<D>::insertar(D& dato){
 
 
 template <typename D>
-void Vector<D>::insertar_en_posicion( D& dato, int pos){
-
-    datos[pos] = dato;
+void Vector<D>::insertar_en_posicion( D* dato, int pos){
+    //  ESTO LO TENGO QUE CHEQUEAR CUANDO NO TENGA TANTO SUEÑO 
+    D* aux = new D;
+    aux = dato;
+    delete datos[pos];
+    datos[pos] = aux;
 }
 
 
@@ -168,7 +163,7 @@ void Vector<D>::insertar_en_posicion( D& dato, int pos){
 
 
 template <typename D>
-D Vector<D>::consultar(int pos){
+D* Vector<D>::consultar(int pos){
 
     return datos[pos];
 }

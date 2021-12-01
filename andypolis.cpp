@@ -190,7 +190,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
             int coordenada_x = parser.obtener_coordenada_x();
             int coordenada_y = parser.obtener_coordenada_y();
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_UNO), coordenada_x, coordenada_y);
-            //cargar_edificio_a_jugador(parser, JUGADOR_UNO);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coordenada_x, coordenada_y, JUGADOR_UNO);
         }
 
     }
@@ -204,7 +204,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
         int coordenada_x = parser.obtener_coordenada_x();
         int coordenada_y = parser.obtener_coordenada_y();
         estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_DOS), coordenada_x, coordenada_y);
-        //cargar_edificio_a_jugador(parser, JUGADOR_DOS);
+        cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coordenada_x, coordenada_y, JUGADOR_DOS);
     }
 
     return estado;
@@ -248,10 +248,10 @@ void Andypolis::cargar_inventarios(ifstream& archivo_mats){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_edificio_a_jugador(Parser& parser, Jugador_t jugador){
+void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int coord_x, int coord_y, Jugador_t jugador){
     int vida = 0;
 
-    if(parser.nombre_elemento_ubicaciones() == STR_MINA || parser.nombre_elemento_ubicaciones() == STR_FABRICA){
+    if(nombre == STR_MINA || nombre == STR_FABRICA){
         vida = 100;
     }else{
         vida = 50;
@@ -259,11 +259,11 @@ void Andypolis::cargar_edificio_a_jugador(Parser& parser, Jugador_t jugador){
 
     if(jugador == JUGADOR_UNO){
 
-        jugador_uno.agregar_edificio(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), vida, parser.obtener_coordenada_x(), parser.obtener_coordenada_y());
+        jugador_uno.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
 
 
     }else{
-        jugador_dos.agregar_edificio(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), vida, parser.obtener_coordenada_x(), parser.obtener_coordenada_y());
+        jugador_dos.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
     }
 }
 

@@ -29,6 +29,7 @@ Jugador::~Jugador(){
 
     delete objetivo_principal;
 
+    /*
     for(int i = 0; i < objetivos_secundarios.obtener_longitud(); ++i ){
 
         delete objetivos_secundarios.consultar(i);
@@ -38,6 +39,7 @@ Jugador::~Jugador(){
 
         delete mis_edificios.consultar(i);
     }
+    */
 
 }
 
