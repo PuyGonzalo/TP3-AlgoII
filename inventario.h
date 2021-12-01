@@ -40,11 +40,11 @@ public:
 
     // pre: -
     // pos: devuelve la ubicacion de un material en la lista de materiales
-    int buscar_material(char identificador);
+    int buscar_material(char identificador) const;
 
     // pre: -
     // pos: obtiene cuanta cantidad de piedra hay en el inventario
-    double obtener_cantidad_de_piedra();
+    double obtener_cantidad_de_piedra() const;
 
     // pre: -
     // pos: obtiene cuanta cantidad de madera hay en el inventario
@@ -56,11 +56,11 @@ public:
 
     // pre: -
     // pos: obtiene cuanta cantidad de bombas hay en el inventario
-    double obtener_cantidad_de_bombas();
+    double obtener_cantidad_de_bombas() const;
 
     // pre: -
     // pos: obtiene cuanta cantidad de andycoins hay en el inventario
-    double obtener_cantidad_de_andycoins();
+    double obtener_cantidad_de_andycoins() const;
 
     // pre: deberia ya estar chequeado que la resta queda > 0 como cantidad final de c/material
     // pos: resta una cantidad de material de los 3 elementos de construccion
@@ -84,15 +84,15 @@ public:
 
     //Para el objetivo comprar_andypolis:
     void aumentar_andycoins_gastadas(int cantidad);
-    int obtener_andycoins_gastadas();
+    int obtener_andycoins_gastadas() const;
 
     //Para el objetivo bombardero
     void aumentar_bomas_usadas(int cantidad);
-    int obtener_bombas_usadas();
+    int obtener_bombas_usadas() const;
 
     //Para el objetivo extremista:
     void aumentar_bomas_compradas(int cantidad);
-    int obtener_bombas_compradas();
+    int obtener_bombas_compradas() const;
 
 };
 

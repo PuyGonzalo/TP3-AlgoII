@@ -5,9 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Bombardero::Bombardero(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){
-    this -> cant_bombas_usadas = 0;
-}
+Bombardero::Bombardero(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
 
 
 // ------------------------------------------------------------------------------------------------------------

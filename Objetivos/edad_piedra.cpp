@@ -7,6 +7,10 @@
 
 Edad_piedra::Edad_piedra(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 string Edad_piedra::obtener_condiciones(){
     return CONDICIONES_EDAD_PIEDRA;
 }

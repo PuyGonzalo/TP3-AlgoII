@@ -65,7 +65,7 @@ void Inventario::mostrar_inventario(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-int Inventario::buscar_material(char identificador){
+int Inventario::buscar_material(char identificador) const{
     int i = 0;
     int ubicacion = -1;
     bool material_encontrado = false;
@@ -83,7 +83,7 @@ int Inventario::buscar_material(char identificador){
 
 // ------------------------------------------------------------------------------------------------------------
 
-double Inventario::obtener_cantidad_de_piedra(){
+double Inventario::obtener_cantidad_de_piedra() const{
     
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_PIEDRA);
@@ -116,7 +116,7 @@ double Inventario::obtener_cantidad_de_metal(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Inventario::obtener_cantidad_de_bombas(){
+double Inventario::obtener_cantidad_de_bombas() const{
     
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_BOMBA);
@@ -128,7 +128,7 @@ double Inventario::obtener_cantidad_de_bombas(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Inventario::obtener_cantidad_de_andycoins(){
+double Inventario::obtener_cantidad_de_andycoins() const{
     
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_ANDYCOINS);
@@ -141,6 +141,7 @@ double Inventario::obtener_cantidad_de_andycoins(){
 
 
 void Inventario::restar_cantidad_materiales_construccion(double costo_piedra, double costo_madera, double costo_metal){
+   
     int ubicacion_piedra, ubicacion_madera, ubicacion_metal;
 
     ubicacion_piedra = buscar_material(IDENTIF_PIEDRA);
@@ -204,7 +205,7 @@ void Inventario::aumentar_andycoins_gastadas(int cantidad){
 // ------------------------------------------------------------------------------------------------------------
 
  
-int Inventario::obtener_andycoins_gastadas(){
+int Inventario::obtener_andycoins_gastadas() const{
     return andycoins_gastadas;
 }
 
@@ -220,7 +221,7 @@ void Inventario::aumentar_bomas_usadas(int cantidad){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Inventario::obtener_bombas_usadas(){
+int Inventario::obtener_bombas_usadas() const{
     return bombas_usadas;
 }
 
@@ -236,6 +237,6 @@ void Inventario::aumentar_bomas_compradas(int cantidad){
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Inventario::obtener_bombas_compradas(){
+int Inventario::obtener_bombas_compradas() const{
     return bombas_compradas;
 }

@@ -7,7 +7,6 @@ const string CONDICIONES_MAS_ALTO_NUBES = "Construir el obelisco";
 const int CANT_OBELISCOS = 1;
 
 class Alto_nubes: public Objetivo {
-    private:
 
     public:
         Alto_nubes(string nombre_obj, bool realizado);

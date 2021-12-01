@@ -22,7 +22,7 @@ string Alto_nubes::obtener_condiciones(){
 bool Alto_nubes::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
     
     for(int i=0; i < mis_edificios.obtener_longitud(); i++){
-        if( mis_edificios.consultar(i)->obtener_nombre() == STR_OBELISCO) 
+        if( mis_edificios .consultar(i) -> obtener_nombre() == STR_OBELISCO) 
             return (mis_edificios.consultar(i) -> obtener_cantidad_construidos() == 1);
     }
     return false;

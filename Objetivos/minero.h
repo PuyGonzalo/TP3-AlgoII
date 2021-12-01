@@ -7,8 +7,7 @@ const int CANT_MINAS = 2;
 const string CONDICIONES_MINERO = "Haber construido una mina de cada tipo.";
 
 class Minero: public Objetivo {
-    private:
-
+    
     public:
         Minero(string nombre_obj, bool realizado);
         ~Minero(){};

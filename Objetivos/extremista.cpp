@@ -5,9 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Extremista::Extremista(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){
-    this -> cant_bombas_compradas = 0;
-}
+Extremista::Extremista(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
 
 
 // ------------------------------------------------------------------------------------------------------------

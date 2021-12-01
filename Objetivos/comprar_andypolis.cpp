@@ -5,9 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Comprar_andypolis::Comprar_andypolis(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){
-    this -> cant_andycoins_gastados = 0;
-}
+Comprar_andypolis::Comprar_andypolis(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
 
 
 // ------------------------------------------------------------------------------------------------------------
@@ -22,7 +20,7 @@ string Comprar_andypolis::obtener_condiciones(){
 
 
 bool Comprar_andypolis::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
-    int total = inventario.obtener_andycoins_gastadas() + inventario.obtener_cantidad_de_andycoins();
+    double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
     return ( total > CANT_ANDYCOINS);
 }
 

@@ -57,7 +57,7 @@ class Objetivo{
         string obtener_nombre();
 
         virtual string obtener_condiciones() = 0;
-        virtual bool chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador*> & mis_edificios) = 0; 
+        virtual bool chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios) = 0; 
         //virtual string obtener_progreso(  int &cant_energia,   Inventario & inventario,   Vector<Edificio_jugador*> & mis_edificios) = 0;
 };
 

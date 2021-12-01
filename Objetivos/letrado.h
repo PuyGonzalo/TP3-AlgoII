@@ -7,7 +7,6 @@ const int CANT_ESCUELAS_MAXIMO = 5;
 const string CONDICIONES_LETRADO = "Haber construido el máximo posible de escuelas.";
 
 class Letrado: public Objetivo {
-    private:
 
     public:
         Letrado(string nombre_obj, bool realizado);
