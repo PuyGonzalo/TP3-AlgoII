@@ -32,6 +32,10 @@ public:
     Tipo consulta(int pos);
 
     // pre: posicion menor al largo de la lista (cantidad)
+    // pre: devuelve el dato contenido en el nodo de una posicion en particular
+    Tipo consulta_const(int pos) const;
+
+    // pre: posicion menor al largo de la lista (cantidad)
     // pos: da de baja un nodo de una posicion en particualr
     void baja(int pos);
 
@@ -60,7 +64,8 @@ private:
 };
 
 
-// _______________________________________________________________________________________________
+// -----------------------------------------------------------------------------------------
+
 
 template <typename Tipo>
 Lista<Tipo>::Lista() {
@@ -69,10 +74,16 @@ Lista<Tipo>::Lista() {
 }
 
 
+// -----------------------------------------------------------------------------------------
+
+
 template <typename Tipo>
 bool Lista<Tipo>::vacia() {
     return (cantidad == 0);
 }
+
+
+// -----------------------------------------------------------------------------------------
 
 
 template <typename Tipo>
@@ -98,6 +109,9 @@ void Lista<Tipo>::alta(Tipo d, int pos) {
 }
 
 
+// -----------------------------------------------------------------------------------------
+
+
 template <typename Tipo>
 void Lista<Tipo>::baja(int pos) {
     
@@ -116,6 +130,9 @@ void Lista<Tipo>::baja(int pos) {
 }
 
 
+// -----------------------------------------------------------------------------------------
+
+
 template <typename Tipo>
 Tipo Lista<Tipo>::consulta(int pos) {
     Nodo<Tipo>* aux = obtener_nodo(pos);
@@ -123,11 +140,27 @@ Tipo Lista<Tipo>::consulta(int pos) {
 }
 
 
+// -----------------------------------------------------------------------------------------
+
+
+template <typename Tipo>
+Tipo Lista<Tipo>::consulta_const(int pos) const{
+    Nodo<Tipo>* aux = obtener_nodo(pos);
+    return aux -> obtener_dato();
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
 template <typename Tipo>
 Lista<Tipo>::~Lista() {
     while (! vacia())
         baja(0);
 }
+
+
+// -----------------------------------------------------------------------------------------
 
 
 template <typename Tipo>
@@ -142,10 +175,17 @@ Nodo<Tipo>* Lista<Tipo>::obtener_nodo(int pos) {
 }
 
 
+// -----------------------------------------------------------------------------------------
+
+
 template <typename Tipo>
 int Lista<Tipo>::obtener_cantidad(){
     return cantidad;
 }
+
+
+// -----------------------------------------------------------------------------------------
+
 
 template <typename Tipo>
 Tipo Lista<Tipo>::bajar_aleatorio(){

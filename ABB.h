@@ -49,6 +49,10 @@ public:
 
     // pre:
     // pos:
+    ABBNodo<T,C>* consultar_const(C clave) const;
+
+    // pre:
+    // pos:
     C buscar_minimo();
 
     // pre:
@@ -186,6 +190,18 @@ bool ABB<T,C>::buscar(C clave){
 
 template <typename T, typename C>
 ABBNodo<T,C>* ABB<T,C>::consultar(C clave){
+
+    ABBNodo<T,C>* resultado = buscar(this -> raiz, clave);
+
+    return resultado;
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
+ABBNodo<T,C>* ABB<T,C>::consultar_const(C clave) const{
 
     ABBNodo<T,C>* resultado = buscar(this -> raiz, clave);
 

@@ -43,7 +43,11 @@ public:
 
     // pre: 0 <= pos < longitud, y que el dato exista
     // pos: devuelve el dato que esta en pos
-    D* consultar(int pos) const;
+    D* consultar(int pos);
+
+    // pre: 0 <= pos < longitud, y que el dato exista
+    // pos: devuelve el dato que esta en pos
+    D* consultar_const(int pos) const;
 
     // pre: -
     // pos: Devuelve la longitud del vector
@@ -163,8 +167,17 @@ void Vector<D>::insertar_en_posicion( D* dato, int pos){
 
 
 template <typename D>
-D* Vector<D>::consultar(int pos) const{
+D* Vector<D>::consultar(int pos){
 
+    return datos[pos];
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename D>
+D* Vector<D>::consultar_const(int pos) const{
     return datos[pos];
 }
 
