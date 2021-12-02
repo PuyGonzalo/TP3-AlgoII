@@ -107,7 +107,7 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
         int pos = buscar_edificio_por_identificador(identificador);
 
         if( pos != -1 ){
-            this -> mis_edificios.consulta(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+            this -> mis_edificios.consulta(pos)->agregar_coordenadas_a_lista(coord_x, coord_y);
 
         }else{
 

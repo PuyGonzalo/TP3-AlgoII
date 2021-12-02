@@ -41,7 +41,7 @@ private:
         char identificador;
         Jugador_t jugador;
         Coordenadas ubicacion;
-        Lista<Edificio_jugador> mis_edificios; //con mis ladrillos
+        Lista<Edificio_jugador*> mis_edificios; //con mis ladrillos
 
         Grafo* grafo;
         Inventario inventario;

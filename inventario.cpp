@@ -71,7 +71,7 @@ int Inventario::buscar_material(char identificador) const{
     bool material_encontrado = false;
 
     while(i < cantidad_materiales && !material_encontrado ){
-        if(materiales.consultar(i) -> obtener_identificador() == identificador){
+        if(materiales.consultar_const(i) -> obtener_identificador() == identificador){
             ubicacion = i;
             material_encontrado = true;
         }
@@ -88,7 +88,7 @@ double Inventario::obtener_cantidad_de_piedra() const{
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_PIEDRA);
 
-    return materiales.consultar(ubicacion_material) -> obtener_cantidad();
+    return materiales.consultar_const(ubicacion_material) -> obtener_cantidad();
 }
 
 // ------------------------------------------------------------------------------------------------------------
@@ -121,7 +121,7 @@ double Inventario::obtener_cantidad_de_bombas() const{
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_BOMBA);
 
-    return materiales.consultar(ubicacion_material) -> obtener_cantidad();
+    return materiales.consultar_const(ubicacion_material) -> obtener_cantidad();
 }
 
 
@@ -133,7 +133,7 @@ double Inventario::obtener_cantidad_de_andycoins() const{
     int ubicacion_material;
     ubicacion_material = buscar_material(IDENTIF_ANDYCOINS);
 
-    return materiales.consultar(ubicacion_material) -> obtener_cantidad();
+    return materiales.consultar_const(ubicacion_material) -> obtener_cantidad();
 }
 
 
