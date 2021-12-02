@@ -33,6 +33,10 @@ Jugador::~Jugador(){
     delete objetivo_principal;
     delete grafo;
 
+    for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i)
+        delete mis_edificios.consulta(i);
+
+
 }
 
 
@@ -193,10 +197,19 @@ void Jugador::sortear_objetivos_secundarios(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
-bool Jugador::chequear_objetivo(Objetivo *objetivo){
-    return objetivos_secundarios.consultar(i).chequear_cumplimiento();
-}*/
+
+bool Jugador::chequear_objetivos_secundarios(){
+
+    int cantidad_objetivos_secundarios_cumplidos = 0;
+    
+    for(int i = 0 ; i < objetivos_secundarios.obtener_longitud() ; ++i){
+        if( objetivos_secundarios.consultar(i) -> chequear_cumplimiento(energia,inventario,mis_edificios) )
+            cantidad_objetivos_secundarios_cumplidos++;
+    }
+
+    return (cantidad_objetivos_secundarios_cumplidos >= 2); // CANTIDAD_OBJ_SECUNDARIOS_PA_GANAR = 2
+
+}
 
 
 // ------------------------------------------------------------------------------------------------------------

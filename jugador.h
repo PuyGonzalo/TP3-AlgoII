@@ -107,7 +107,7 @@ public:
 
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido
-        bool chequear_objetivo(Objetivo *objetivo);
+        bool chequear_objetivos_secundarios();
 
         //pre: -  // DEBERIA SER PRIVADO
         //post: Crea un objetivo al azar

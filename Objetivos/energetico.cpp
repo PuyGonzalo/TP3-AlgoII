@@ -19,7 +19,7 @@ string Energetico::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Energetico::chequear_cumplimiento(  const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+bool Energetico::chequear_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     
     return (cant_energia == CANT_ENERGIA_MAXIMA);
 }
@@ -28,7 +28,7 @@ bool Energetico::chequear_cumplimiento(  const int &cant_energia,  const Inventa
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Energetico::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string Energetico::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     return std::to_string(cant_energia % CANT_ENERGIA ) + "%"; 
    
 }

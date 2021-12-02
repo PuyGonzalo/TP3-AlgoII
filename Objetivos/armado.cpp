@@ -19,7 +19,7 @@ string Armado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Armado::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+bool Armado::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
     return ( inventario.obtener_cantidad_de_bombas() < CANT_BOMBAS_ALMACENADAS );
  
@@ -29,7 +29,7 @@ bool Armado::chequear_cumplimiento(const int &cant_energia,  const Inventario & 
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Armado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador*> & catalogo){
+string Armado::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador*> & catalogo){
     int ubicacion = inventario.ubicacion_material_en_lista('X');
     int cantidad_bombas = inventario.consulta(ubicacion)->obtener_cantidad();
 

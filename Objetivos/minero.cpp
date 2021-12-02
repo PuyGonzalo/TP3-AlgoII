@@ -20,22 +20,24 @@ string Minero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Minero::chequear_cumplimiento(const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
-    /* Hago una lista
-    bool construidos = true;
-    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
+bool Minero::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
-        
+    int contador = 0;
+
+    for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i){
+        if(mis_edificios.consulta_const(i) -> obtener_nombre() == STR_MINA || mis_edificios.consulta_const(i) -> obtener_nombre() == STR_MINA_ORO)
+            contador++;
     }
-    */
-    return false;
+
+    return(contador == 2); // CANTIDAD_DE_MINAS = 2;
+
 }
 
 /*
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Minero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string Minero::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int cant_minas = 0;
     for(int i=0; i < catalogo.obtener_longitud(); i++){
         if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )

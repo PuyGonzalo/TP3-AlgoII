@@ -36,8 +36,16 @@ public:
     Tipo obtener_dato();
 
     //PRE: -
+    //POS: obtiene el dato contenido en el nodo
+    Tipo obtener_dato_const() const;
+
+    //PRE: -
     //POS: obtiene la direccion del nodo siguiente hacia el que esta apuntando el nodo
     Nodo* obtener_siguiente();
+
+    //PRE: -
+    //POS: obtiene la direccion del nodo siguiente hacia el que esta apuntando el nodo
+    Nodo* obtener_siguiente_const() const;
 
     //PRE: -
     //POS: obtiene la direccion del nodo anterior hacia el que esta apuntando el nodo
@@ -74,9 +82,22 @@ Tipo Nodo<Tipo>::obtener_dato() {
 
 
 template <typename Tipo>
+Tipo Nodo<Tipo>::obtener_dato_const() const{
+    return dato;
+}
+
+
+template <typename Tipo>
 Nodo<Tipo>* Nodo<Tipo>::obtener_siguiente() {
     return siguiente;
 }
+
+
+template <typename Tipo>
+Nodo<Tipo>* Nodo<Tipo>::obtener_siguiente_const() const{
+    return siguiente;
+}
+
 
 
 

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
-
+#include <ctime>
 #include "inventario.h"
 #include "jugador.h"
 #include "errores.h"
 #include "herramientas.h"
 #include "andypolis.h"
+#include "menu_jugador.h"
+
 
 
 using namespace std;
@@ -17,8 +19,7 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 
 int main (void){
-
-    //if(system(CLR_SCREEN));
+    //if(if(system(CLR_SCREEN)));
 	
     // Abro archivos de lectura
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
@@ -28,10 +29,7 @@ int main (void){
 
  	// ########## JUEGO
 	Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
-	//andypolis.mostrar_mapa();
-
-	andypolis.mostrar_inventario(JUGADOR_UNO);
-	andypolis.mostrar_inventario(JUGADOR_UNO);
+	procesar_juego(andypolis);
 
     // Cierro archivos de lectura
 	archivo_entrada_materiales.close(); 

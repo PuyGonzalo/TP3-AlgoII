@@ -19,11 +19,11 @@ string Alto_nubes::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Alto_nubes::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+bool Alto_nubes::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     
-    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
-        if( mis_edificios .consultar_const(i) -> obtener_nombre() == STR_OBELISCO) 
-            return (mis_edificios.consultar_const(i) -> obtener_cantidad_construidos() == 1);
+    for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
+        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO) 
+            return (mis_edificios.consulta_const(i) -> obtener_cantidad_construidos() == 1);
     }
     return false;
 }
@@ -32,7 +32,7 @@ bool Alto_nubes::chequear_cumplimiento( const int &cant_energia,  const Inventar
 // ------------------------------------------------------------------------------------------------------------
 
 /*
-string Alto_nubes::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & mis_edificios){
+string Alto_nubes::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & mis_edificios){
 
     int cant_contruidos = 0;
     for(int i=0; i < mis_edificios.obtener_longitud(); i++){

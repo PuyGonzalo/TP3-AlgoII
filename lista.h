@@ -49,7 +49,7 @@ public:
 
     // pre: -
     // pos: devuelve la cantidad de nodos que hay en la lista
-    int obtener_cantidad();
+    int obtener_cantidad() const;
 
     //pre: la lista está cargada con valores
     //post: elijo un valor random de la lista y lo elimino
@@ -60,6 +60,10 @@ private:
     // pre: posicion menor al largo de la lista (cantidad)
     // pos: obtiene el nodo de una posicion en particular
     Nodo<Tipo>* obtener_nodo(int pos);
+
+    // pre: posicion menor al largo de la lista (cantidad)
+    // pos: obtiene el nodo de una posicion en particular
+    Nodo<Tipo>* obtener_nodo_const(int pos) const;
 
 };
 
@@ -145,8 +149,8 @@ Tipo Lista<Tipo>::consulta(int pos) {
 
 template <typename Tipo>
 Tipo Lista<Tipo>::consulta_const(int pos) const{
-    Nodo<Tipo>* aux = obtener_nodo(pos);
-    return aux -> obtener_dato();
+    Nodo<Tipo>* aux = obtener_nodo_const(pos);
+    return aux -> obtener_dato_const();
 }
 
 
@@ -179,7 +183,22 @@ Nodo<Tipo>* Lista<Tipo>::obtener_nodo(int pos) {
 
 
 template <typename Tipo>
-int Lista<Tipo>::obtener_cantidad(){
+Nodo<Tipo>* Lista<Tipo>::obtener_nodo_const(int pos) const{
+
+    Nodo<Tipo>* aux = primero;
+    for (int i = 0; i < pos; i++)
+        aux = aux->obtener_siguiente_const();
+
+    return aux;
+
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename Tipo>
+int Lista<Tipo>::obtener_cantidad() const{
     return cantidad;
 }
 
@@ -189,10 +208,13 @@ int Lista<Tipo>::obtener_cantidad(){
 
 template <typename Tipo>
 Tipo Lista<Tipo>::bajar_aleatorio(){
-    int posicion_random = rand() % cantidad;
-    Tipo temporal = this-> consulta(posicion_random);
-    this-> baja(posicion_random);
+
+    int posicion_aleatoria = rand() % cantidad;
+    Tipo temporal = this-> consulta(posicion_aleatoria);
+    this -> baja(posicion_aleatoria);
+    
     return temporal;
+
 } 
 
 #endif // LISTA_H

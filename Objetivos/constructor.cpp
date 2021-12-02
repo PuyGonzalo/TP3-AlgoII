@@ -19,18 +19,10 @@ string  Constructor::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool  Constructor::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
-    /* mis edificios una lista???
-    if(mis_edificios.obtener_longitud() != CANTIDAD_EDIFICIOS)
-        return false;
+bool  Constructor::chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
-    bool construidos = true;
-
-    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
-        if(mis_edificios.consultar(i) -> cant_contruidos == 0 )
-            construidos = false;
-    }
-*/
+    if(mis_edificios.obtener_cantidad() == CANTIDAD_EDIFICIOS_OBJETIVO)
+        return true;
     return false;
 }
 
@@ -38,7 +30,7 @@ bool  Constructor::chequear_cumplimiento( const int &cant_energia,  const Invent
 // ------------------------------------------------------------------------------------------------------------
 
 
-string  Constructor::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string  Constructor::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     
     int  construidos = 0;
     int i;

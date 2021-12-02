@@ -20,7 +20,7 @@ string Letrado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Letrado::chequear_cumplimiento( const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+bool Letrado::chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     /* Hay que usar el ABB?
     for(int i=0; i < catalogo.obtener_longitud(); i++){
         if( catalogo.consultar(i) -> nombre_edificio == STR_ESCUELA ) 
@@ -34,7 +34,7 @@ bool Letrado::chequear_cumplimiento( const int &cant_energia,  const Inventario 
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Letrado::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string Letrado::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int cant_contruidos = 0;
     for(int i=0; i < catalogo.obtener_longitud(); i++){
         if( catalogo.consultar(i) -> nombre_edificio ==STR_ESCUELA ) 

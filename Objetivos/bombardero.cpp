@@ -19,7 +19,7 @@ string Bombardero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Bombardero::chequear_cumplimiento(  const int &cant_energia,  const Inventario & inventario,  const Vector<Edificio_jugador> & mis_edificios){
+bool Bombardero::chequear_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
    
    return (  inventario.obtener_bombas_usadas() > CANT_BOMBAS_USADAS);
 }
@@ -28,7 +28,7 @@ bool Bombardero::chequear_cumplimiento(  const int &cant_energia,  const Inventa
 // ------------------------------------------------------------------------------------------------------------
 
 /*
-string Bombardero::obtener_progreso(  int &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string Bombardero::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
     int ubicacion = invectario.ubicacion_material_en_lista('X');
     int bombas_usadas = 0;
     invetario.consulta(ubicacion)->obtener_bombas_usadas(bombas_usadas);
