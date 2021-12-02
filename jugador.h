@@ -8,6 +8,7 @@
 #include "grafo.h"
 #include "objetivo.h"
 #include "vector.h"
+#include "lista.h"
 
 #include "edificio_jugador.h"
 #include "Objetivos/armado.h"
@@ -40,7 +41,7 @@ private:
         char identificador;
         Jugador_t jugador;
         Coordenadas ubicacion;
-        Vector<Edificio_jugador> mis_edificios; //con mis ladrillos
+        Lista<Edificio_jugador> mis_edificios; //con mis ladrillos
 
         Grafo* grafo;
         Inventario inventario;

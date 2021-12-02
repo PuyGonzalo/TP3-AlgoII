@@ -102,25 +102,25 @@ void Jugador::agregar_material_a_lista(Material* material){
 void Jugador::agregar_edificio(string nombre, char identificador, int vida, int coord_x, int coord_y){
 
     
-    if(this -> mis_edificios.obtener_longitud() > 0){
+    if(this -> mis_edificios.obtener_cantidad() > 0){
         
         int pos = buscar_edificio_por_identificador(identificador);
 
         if( pos != -1 ){
-            this -> mis_edificios.consultar(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+            this -> mis_edificios.consulta(pos) -> agregar_coordenadas_a_lista(coord_x, coord_y);
 
         }else{
 
             Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
-            this -> mis_edificios.insertar(nuevo_edif);
-            int pos_nuevo_edif = mis_edificios.obtener_longitud() - 1;
-            this -> mis_edificios.consultar(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+            this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
+            int pos_nuevo_edif = mis_edificios.obtener_cantidad() - 1;
+            this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
         }
     }else{
         Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
-        this -> mis_edificios.insertar(nuevo_edif);
-        int pos_nuevo_edif = this -> mis_edificios.obtener_longitud() - 1;
-        this -> mis_edificios.consultar(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+        this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
+        int pos_nuevo_edif = this -> mis_edificios.obtener_cantidad() - 1;
+        this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
     }
 }
 
@@ -134,9 +134,9 @@ int Jugador::buscar_edificio_por_identificador(char identificador){
     bool encontrado = false;
     int i = 0;
 
-    while(i < mis_edificios.obtener_longitud() && !encontrado){
+    while(i < mis_edificios.obtener_cantidad() && !encontrado){
 
-        if(mis_edificios.consultar(i) -> obtener_identificador() == identificador){
+        if(mis_edificios.consulta(i) -> obtener_identificador() == identificador){
             pos = i;
             encontrado = true;
         }
