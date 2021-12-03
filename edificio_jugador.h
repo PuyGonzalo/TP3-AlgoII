@@ -2,9 +2,11 @@
 #define EDIFICIO_JUGADOR_H
 
 #include <string>
+#include <sstream>
 #include "lista.h"
 #include "herramientas.h"
 #include "errores.h"
+#include "formatos.h"
 
 
 using namespace std;
@@ -16,7 +18,7 @@ private:
     string nombre;
     char identificador;
     int cantidad_construidos;
-    Lista<Coordenadas*> ubicacion;
+    Lista<Coordenadas*> ubicaciones;
     int vida;
 
 public:
@@ -44,11 +46,19 @@ public:
 
     // pre:
     // pos:
-    int obtener_cantidad_construidos();
+    int obtener_cantidad_construidos() const;
 
     // pre:
     // pos:
-    int obtener_vida();
+    string obtener_ubicaciones_construidas_str() const;
+
+    // pre:
+    // pos:
+    int obtener_vida() const;
+
+    // pre:
+    // pos: si no tiene 100 de vida es porque necesita repararse
+    bool necesita_reparacion();
 
     // pre:
     // pos:

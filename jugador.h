@@ -57,10 +57,6 @@ public:
         Jugador();
 
         // pre: -
-        // pos: CONSTRUCTOR por parametros de un jugador
-//        Jugador(char id, Jugador_t jugador);
-
-        // pre: -
         // pos: DESTRUCTOR del jugador
         ~Jugador();
 
@@ -81,12 +77,12 @@ public:
         void crear_grafo(const Mapa &mapa);
 
         // pre: -
-        // pos: muestra el inventario del jugador
-        void mostrar_inventario();
+        // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
+        void sortear_objetivos_secundarios();
 
         // pre: -
-        // pos: agrega un material a la lista de materiales del jugador
-        void agregar_material_a_lista(Material* material);
+        // pos: agrega un tipo de material al inventario del jugador
+        void agregar_material_al_inventario(Material* material);
 
         // pre:
         // pos:
@@ -100,17 +96,22 @@ public:
         // pos:
         //int buscar_edificio_por_nombre(string nombre);
 
-        // pre: -
-        // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
-        void sortear_objetivos_secundarios();
-
-
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido
         bool chequear_objetivos_secundarios();
 
-        //pre: -  // DEBERIA SER PRIVADO
-        //post: Crea un objetivo al azar
+        // pre: -
+        // pos: muestra el inventario del jugador
+        void mostrar_inventario();
+
+        // pre: -
+        // pos: muestra los edificios construidos por el jugador (FALTA RESTANTES HASTA MAXIMO - NECESITO DIC catalogo :( -))
+        void listar_edificios_construidos();
+
+
+private:
+        //pre: opcion entre 0 y 8
+        //post: devuelve uno de los objetivos que salio en el "sorteo"
         Objetivo* sortear_objetivos(int opcion_objetivo);
 
 };

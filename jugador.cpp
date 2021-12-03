@@ -17,17 +17,6 @@ Jugador::Jugador(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
-Jugador::Jugador(char id, Jugador_t jugador){
-
-    this -> jugador = jugador;
-    this -> identificador = id;
-    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false); 
-}
-*/
-
-// ------------------------------------------------------------------------------------------------------------
-
 Jugador::~Jugador(){
     
     delete objetivo_principal;
@@ -36,16 +25,6 @@ Jugador::~Jugador(){
     for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i)
         delete mis_edificios.consulta(i);
 
-
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Jugador::mostrar_inventario(){
-
-    inventario.mostrar_inventario();
 
 }
 
@@ -83,6 +62,7 @@ void Jugador::asignar_ubicacion_jugador(int coord_x, int coord_y){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 void Jugador::crear_grafo(const Mapa &mapa){
 
     this -> grafo = new Grafo(mapa,jugador);
@@ -93,9 +73,29 @@ void Jugador::crear_grafo(const Mapa &mapa){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::agregar_material_a_lista(Material* material){
+void Jugador::sortear_objetivos_secundarios(){
 
-    inventario.agregar_material_a_lista(material);
+    Lista<int> opciones_objetivos;
+    int opcion_elegida;
+
+    for(int i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
+        opciones_objetivos.alta(i,i);
+    }
+
+    while( objetivos_secundarios.obtener_longitud() == CANT_OBJETIVOS_SORTEADOS){
+        opcion_elegida = opciones_objetivos.bajar_aleatorio();
+        objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::agregar_material_al_inventario(Material* material){
+
+    inventario.agregar_material_a_lista(material); // deberiamos sacarle el "lista"
 
 }
 
@@ -175,25 +175,6 @@ int Jugador::buscar_edificio_por_nombre(string nombre){
 }
 */
 
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Jugador::sortear_objetivos_secundarios(){
-
-    Lista<int> opciones_objetivos;
-    int opcion_elegida;
-
-    for(int i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
-        opciones_objetivos.alta(i,i);
-    }
-
-    while( objetivos_secundarios.obtener_longitud() == CANT_OBJETIVOS_SORTEADOS){
-        opcion_elegida = opciones_objetivos.bajar_aleatorio();
-        objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
-    }
-
-}
-
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -208,6 +189,58 @@ bool Jugador::chequear_objetivos_secundarios(){
     }
 
     return (cantidad_objetivos_secundarios_cumplidos >= 2); // CANTIDAD_OBJ_SECUNDARIOS_PA_GANAR = 2
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::mostrar_inventario(){
+
+    inventario.mostrar_inventario();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::listar_edificios_construidos(){
+
+        cout
+        << NEGRITA << SUBRAYADO
+        << left
+        << setw(22)
+        << "Nombre del edificio"
+        << left
+        << setw(13)
+        << "Construidos"
+        << left
+        << setw(24)
+        << "¿Necesita reparacion?"
+        << left
+        << setw(33)
+        << "Coordenadas donde se encuentran"
+        << FIN_DE_FORMATO
+        << endl;
+
+    for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i){
+        cout
+            << left
+            << setw(22)
+            << mis_edificios.consulta_const(i) -> obtener_nombre()
+            << left
+            << setw(13)
+            << mis_edificios.consulta_const(i) -> obtener_cantidad_construidos()
+            << left
+            << setw(24)
+            << mis_edificios.consulta_const(i) -> obtener_vida() // no esta bien la de NECESITA REPARACION y hay que pasarlo a SI NO (o poner hp/hptotal)
+            << left
+            << setw(33)   
+            << mis_edificios.consulta_const(i) -> obtener_ubicaciones_construidas_str()
+            << endl;
+    }
 
 }
 

@@ -44,6 +44,25 @@ void Andypolis::cargar_informacion_jugadores(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Andypolis::cargar_inventarios(ifstream& archivo_mats){
+
+    string linea_leida;
+    
+    while(getline(archivo_mats, linea_leida)){
+
+        Parser parser(linea_leida);
+        Material* material_leido_uno = parser.procesar_entrada_material(JUGADOR_UNO);
+        jugador_uno.agregar_material_al_inventario(material_leido_uno);
+        Material* material_leido_dos = parser.procesar_entrada_material(JUGADOR_DOS);
+        jugador_dos.agregar_material_al_inventario(material_leido_dos);
+        
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::cargar_diccionario(ifstream& archivo_edif){
 
     string linea_leida;
@@ -221,42 +240,20 @@ Estado_t Andypolis::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugad
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_inventarios(ifstream& archivo_mats){
-
-    string linea_leida;
-    
-    while(getline(archivo_mats, linea_leida)){
-
-        Parser parser(linea_leida);
-        Material* material_leido_uno = parser.procesar_entrada_material(JUGADOR_UNO);
-        jugador_uno.agregar_material_a_lista(material_leido_uno);
-        Material* material_leido_dos = parser.procesar_entrada_material(JUGADOR_DOS);
-        jugador_dos.agregar_material_a_lista(material_leido_dos);
-        
-    }
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
 void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int coord_x, int coord_y, Jugador_t jugador){
+  
     int vida = 0;
 
-    if(nombre == STR_MINA || nombre == STR_FABRICA){
+    if(nombre == STR_MINA || nombre == STR_FABRICA)
         vida = 100;
-    }else{
+    else
         vida = 50;
-    }
 
-    if(jugador == JUGADOR_UNO){
 
+    if(jugador == JUGADOR_UNO)
         jugador_uno.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
-
-
-    }else{
+    else
         jugador_dos.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
-    }
 }
 
 
@@ -268,8 +265,20 @@ void Andypolis::mostrar_inventario(Jugador_t jugador){
         jugador_uno.mostrar_inventario();
 
     if(jugador == JUGADOR_DOS)
-        jugador_dos.mostrar_inventario();
-    
+        jugador_dos.mostrar_inventario();    
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::listar_edificios_construidos(Jugador_t jugador){
+
+    if(jugador == JUGADOR_UNO)
+        jugador_uno.listar_edificios_construidos();
+    if(jugador == JUGADOR_DOS)
+        jugador_dos.listar_edificios_construidos();
 
 }
 

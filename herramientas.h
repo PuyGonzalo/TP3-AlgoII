@@ -3,6 +3,7 @@
 
 #include <string>
 
+
 using namespace std;
 
 struct Coordenadas{ // MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM

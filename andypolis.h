@@ -51,6 +51,10 @@ public:
     // pos: completa la informacion de los jugadores (excepto ubicacion, claro)
     void cargar_informacion_jugadores();
 
+    // pre:
+    // pos:
+    void cargar_inventarios(ifstream& archivo_mats);
+
     // pre: bien formado
     // pos: carga el diccionario (no le deciamos catalogo? xd)
     void cargar_diccionario(ifstream& archivo_edif);
@@ -60,20 +64,16 @@ public:
     Estado_t cargar_ubicaciones(ifstream& archivo_ubics);
 
     // pre: -
-    // pos: carga los edificios de un jugador en particular
-    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics);
-
-    // pre: -
     // pos: carga los materiales en el mapa
     Estado_t cargar_materiales_mapa(ifstream& archivo_ubics);
 
     // pre: -
+    // pos: carga los edificios de un jugador en particular
+    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics);
+
+    // pre: -
     // pos: posiciona un jugador en el mapa
     Estado_t posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador);
-
-    // pre:
-    // pos:
-    void cargar_inventarios(ifstream& archivo_mats);
 
     // pre:
     // pos:
@@ -82,6 +82,10 @@ public:
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);
+
+    // pre: -
+    // pos: mostrar edificios construidos (FALTA RESTANTES HASTA MAXIMO)
+    void listar_edificios_construidos(Jugador_t jugador);
 
     // pre: -
     // pos: muestra el mapa

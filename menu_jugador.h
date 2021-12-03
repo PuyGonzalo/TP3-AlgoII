@@ -34,14 +34,23 @@ enum Opciones_menu{
 };
 
 
-const string MSJ_MENU_BIENVENIDA_JUGADOR = R"(
- _______ ___     ___     ___ _______   __   __ __    _ _______   _______ _______ _______ ___ _______ __    _ 
-|       |   |   |   |   |   |   _   | |  | |  |  |  | |   _   | |       |       |       |   |       |  |  | |
-|    ___|   |   |   |   |   |  |_|  | |  | |  |   |_| |  |_|  | |   _   |    _  |       |   |   _   |   |_| |
-|   |___|   |   |   |   |   |       | |  |_|  |       |       | |  | |  |   |_| |       |   |  | |  |       |
-|    ___|   |___|   |___|   |       | |       |  _    |       | |  |_|  |    ___|      _|   |  |_|  |  _    |
-|   |___|       |   |       |   _   | |       | | |   |   _   | |       |   |   |     |_|   |       | | |   |
-|_______|_______|___|_______|__| |__| |_______|_|  |__|__| |__| |_______|___|   |_______|___|_______|_|  |__|)";
+const string MSJ_MENU_BIENVENIDA_JUGADOR_UNO = R"(
+     ___  __   __  _______  _______  ______   _______  ______      ____  
+    |   ||  | |  ||       ||   _   ||      | |       ||    _ |    |    | 
+    |   ||  | |  ||    ___||  |_|  ||  _    ||   _   ||   | ||     |   | 
+    |   ||  |_|  ||   | __ |       || | |   ||  | |  ||   |_||_    |   | 
+ ___|   ||       ||   ||  ||       || |_|   ||  |_|  ||    __  |   |   | 
+|       ||       ||   |_| ||   _   ||       ||       ||   |  | |   |   | 
+|_______||_______||_______||__| |__||______| |_______||___|  |_|   |___|)";
+
+const string MSJ_MENU_BIENVENIDA_JUGADOR_DOS = R"(
+     ___  __   __  _______  _______  ______   _______  ______      _______ 
+    |   ||  | |  ||       ||   _   ||      | |       ||    _ |    |       |
+    |   ||  | |  ||    ___||  |_|  ||  _    ||   _   ||   | ||    |____   |
+    |   ||  |_|  ||   | __ |       || | |   ||  | |  ||   |_||_    ____|  |
+ ___|   ||       ||   ||  ||       || |_|   ||  |_|  ||    __  |  | ______|
+|       ||       ||   |_| ||   _   ||       ||       ||   |  | |  | |_____ 
+|_______||_______||_______||__| |__||______| |_______||___|  |_|  |_______|)";
 
 
 const string MSJ_MENU_OPCION_1 = "1. Construir edificio por nombre";
@@ -58,8 +67,7 @@ const string MSJ_MENU_OPCION_11 = "11. Moverse a una coordenada";
 const string MSJ_MENU_OPCION_12 = "12. Finalizar turno";
 const string MSJ_MENU_OPCION_13 = "13. Guardar y salir";
 
-const string MSJ_MENU_INGRESO_OPCION_JUG_UNO = "Juega el JUGADOR 1"; // cambiar por JUEGA EL JUGADOR X
-const string MSJ_MENU_INGRESO_OPCION_JUG_DOS = "Juega el JUGADOR 2"; // cambiar por JUEGA EL JUGADOR X
+const string MSJ_MENU_INGRESO_OPCION = "Elija una opcion";
 
 
 const string MSJ_INGRESO_EDIFICIO_DEMOLER = "Ingresa el nombre del edificio a demoler:";
@@ -72,7 +80,7 @@ const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
 
 // pre: - 
 // pos: muestra el menu
-void mostrar_menu_jugador();
+void mostrar_menu_jugador(Jugador_t jugador);
 
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)

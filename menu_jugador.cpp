@@ -8,23 +8,34 @@ using namespace std;
 // ------------------------------------------------------------------------------------------------------------
 
 
-void mostrar_menu_jugador(){
-    cout << endl << endl;
-    cout << TAB <<NEGRITA<< MSJ_MENU_BIENVENIDA_JUGADOR <<FIN_DE_FORMATO<< endl<<endl;
+void mostrar_menu_jugador(Jugador_t jugador){
+    cout << endl;
+
+    string FONDO = "";
+
+    if(jugador == JUGADOR_UNO){
+        cout << TAB << NEGRITA << MSJ_MENU_BIENVENIDA_JUGADOR_UNO << FIN_DE_FORMATO <<endl;
+        FONDO = FONDO_COLOR_ROSA;
+    }
+    else if(jugador == JUGADOR_DOS){
+        cout << TAB << NEGRITA << MSJ_MENU_BIENVENIDA_JUGADOR_DOS << FIN_DE_FORMATO <<endl;
+        FONDO = FONDO_COLOR_PURPURA_OSCURO;
+    }
+
     cout << TAB << "╔════════════════════════════════════════╗" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_1 << string(6, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_2 << string(3, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_3 << string(1, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_4 << string(2, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_5 << string(1, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_6 << string(21, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_7 << string(14, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_8 << string(17, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_9 << string(18, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_10 << string(4, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_11 << string(10, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_12 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
-    cout << TAB << "║ " << FONDO_COLOR_PURPURA  << MSJ_MENU_OPCION_13 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_1 << string(6, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_2 << string(3, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_3 << string(1, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_4 << string(2, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_5 << string(1, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_6 << string(21, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_7 << string(14, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_8 << string(17, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_9 << string(18, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_10 << string(4, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_11 << string(10, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_12 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_13 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
 }
 
@@ -48,7 +59,7 @@ void procesar_juego(Andypolis& andypolis){
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
-                mostrar_menu_jugador();
+                mostrar_menu_jugador(jugador_A);
                 estado = ingreso_menu(opcion, andypolis, jugador_A);
                 if(estado != OK)
                     imprimir_error(estado);
@@ -58,7 +69,7 @@ void procesar_juego(Andypolis& andypolis){
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
-                mostrar_menu_jugador();
+                mostrar_menu_jugador(jugador_B);
                 estado = ingreso_menu(opcion, andypolis, jugador_B);
                 if(estado != OK)
                     imprimir_error(estado);
@@ -98,11 +109,9 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
     Estado_t estado = OK;
     string  opcion_elegida;
 
-    if(jugador == JUGADOR_UNO)
-        cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION_JUG_UNO << FIN_DE_FORMATO <<endl;
-    else if(jugador == JUGADOR_DOS)
-         cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION_JUG_DOS << FIN_DE_FORMATO <<endl;
-    getline(cin, opcion_elegida);
+
+    cout << TAB << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION << FIN_DE_FORMATO <<endl;
+    cout << '>' << ESPACIO << PARPADEO_CURSOR; getline(cin, opcion_elegida); cout << FIN_DE_FORMATO;
 
     if(!es_un_numero(opcion_elegida))
         return ERROR_ENTRADA_INVALIDA;
@@ -134,7 +143,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
             if(system(CLR_SCREEN));
-            //andypolis.listar_edificios_construidos();
+            andypolis.listar_edificios_construidos(jugador);
             break;
 
         case DEMOLER_EDIFICIO_POR_COORD: 
@@ -159,7 +168,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case MOSTRAR_INVENTARIO:
             if(system(CLR_SCREEN));
-            //andypolis.mostrar_inventario();
+            andypolis.mostrar_inventario(jugador);
             break;
 
         case MOSTRAR_OBJETIVOS:
