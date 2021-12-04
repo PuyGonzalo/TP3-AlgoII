@@ -16,6 +16,7 @@ private:
     ABBNodo<T,C>* insertar(ABBNodo<T,C>* nodo, T* dato, C clave);
     //void imprimir_en_orden(ABBNodo<T,C>* nodo); // Posiblemente lo saque
     ABBNodo<T,C>* buscar(ABBNodo<T,C>* nodo, C clave);
+    ABBNodo<T,C>* buscar_const(ABBNodo<T,C>* nodo, C clave) const;
     C buscar_minimo(ABBNodo<T,C>* nodo);
     C buscar_maximo(ABBNodo<T,C>* nodo);
     C sucesor(ABBNodo<T,C>* nodo);
@@ -177,6 +178,23 @@ ABBNodo<T,C>* ABB<T,C>::buscar(ABBNodo<T,C>* nodo, C clave){
 
 
 template <typename T, typename C>
+ABBNodo<T,C>* ABB<T,C>::buscar_const(ABBNodo<T,C>* nodo, C clave) const{
+
+    if (nodo == NULL || nodo -> obtener_clave() == clave){
+        return nodo;
+    }
+
+    if (clave > nodo -> obtener_clave())
+        return buscar_const(nodo -> obtener_derecha(), clave);
+    
+    return buscar_const(nodo -> obtener_izquierda(), clave);
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
 bool ABB<T,C>::buscar(C clave){
 
     ABBNodo<T,C>* resultado = buscar(this -> raiz, clave);
@@ -203,7 +221,7 @@ ABBNodo<T,C>* ABB<T,C>::consultar(C clave){
 template <typename T, typename C>
 ABBNodo<T,C>* ABB<T,C>::consultar_const(C clave) const{
 
-    ABBNodo<T,C>* resultado = buscar(this -> raiz, clave);
+    ABBNodo<T,C>* resultado = buscar_const(this -> raiz, clave);
 
     return resultado;
 }

@@ -30,6 +30,10 @@ public:
 
     // pre:
     // pos:
+    T* obtener_dato_const() const;
+
+    // pre:
+    // pos:
     C obtener_clave();
 
     // pre:
@@ -114,6 +118,16 @@ ABBNodo<T,C>::~ABBNodo(){
 
 template <typename T, typename C>
 T* ABBNodo<T,C>::obtener_dato(){
+
+    return this -> dato;
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
+T* ABBNodo<T,C>::obtener_dato_const() const{
 
     return this -> dato;
 }

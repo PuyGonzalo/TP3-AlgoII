@@ -201,16 +201,16 @@ int Jugador::buscar_edificio_por_identificador(char identificador){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/* No se si va a ser util la dejo por si las dudas
+
 int Jugador::buscar_edificio_por_nombre(string nombre){
 
     int pos = -1;
     bool encontrado = false;
     int i = 0;
 
-    while(i < mis_edificios.obtener_longitud() && !encontrado){
+    while(i < mis_edificios.obtener_cantidad() && !encontrado){
 
-        if(mis_edificios.consultar(i) -> obtener_nombre() == nombre){
+        if(mis_edificios.consulta(i) -> obtener_nombre() == nombre){
             pos = i;
             encontrado = true;
         }
@@ -220,7 +220,36 @@ int Jugador::buscar_edificio_por_nombre(string nombre){
 
     return pos;
 }
-*/
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario){
+    
+    Estado_t estado;
+
+    if(diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() < inventario.obtener_cantidad_de_piedra()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() < inventario.obtener_cantidad_de_madera()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() < inventario.obtener_cantidad_de_metal()){
+            
+        estado = OK;
+    }else return estado = ERROR_MATERIALES_INSUFICIENTES; // no tiene sentido continuar si pasa esto, creo
+
+    int posicion_edificio = buscar_edificio_por_nombre(nombre);
+
+    if(posicion_edificio != -1){ // Esto es, que ya hay un edificio de este tipo
+        if(mis_edificios.consulta(posicion_edificio) -> obtener_cantidad_construidos() < diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_maximos_permitidos()){
+
+            estado = OK;
+        }else estado = ERROR_MAXIMO_EDIFICIOS_ALCANZADO;
+    } else estado = OK; //Si no esta en los edificios del jugador, claramente no hay construidos y no se supero la cantidad maxima permitida
+
+    // MMMMMMMMMM
+
+    return estado;
+}
 
 
 // ------------------------------------------------------------------------------------------------------------

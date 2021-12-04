@@ -277,6 +277,73 @@ Estado_t Andypolis::comprar_bombas(Jugador_t jugador){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+bool Andypolis::esta_edificio(string nombre){
+
+    return diccionario.buscar(nombre);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, Jugador_t jugador){
+
+    Estado_t estado;
+ 
+    if((estado = mapa.verificar_coordenadas_construccion(coord_x, coord_y)) != OK)
+        return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
+
+    if(jugador == JUGADOR_UNO){
+
+        estado = jugador_uno.verificar_condiciones_construccion(nombre, diccionario);
+
+        if(estado == OK){
+            string linea = construir_string_edificio(nombre, coord_x, coord_y);
+            Parser parser(linea);
+            estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+        }
+    }
+
+    if(jugador == JUGADOR_DOS){
+
+        estado = jugador_dos.verificar_condiciones_construccion(nombre, diccionario);
+
+        if(estado == OK){
+            string linea = construir_string_edificio(nombre, coord_x, coord_y);
+            Parser parser(linea);
+            estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+        }
+    }
+    
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Andypolis::construir_string_edificio(string nombre, int coord_x, int coord_y){
+
+    string linea;
+
+    linea.append(nombre);
+    linea.append(ESPACIO);
+    linea.append("(");
+    linea.append(to_string(coord_x));
+    linea.append(", ");
+    linea.append(to_string(coord_y));
+    linea.append(")");
+
+    return linea;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::mostrar_inventario(Jugador_t jugador){
 
     if(jugador == JUGADOR_UNO)

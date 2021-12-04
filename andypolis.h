@@ -83,6 +83,18 @@ public:
     // pos:
     Estado_t comprar_bombas(Jugador_t jugador);
 
+    // pre:
+    // pos:
+    bool esta_edificio(string nombre);
+
+    // pre:
+    // pos:
+    Estado_t construir_edificio(string nombre, int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre:
+    // pos:
+    string construir_string_edificio(string nombre, int coord_x, int coord_y);
+
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);

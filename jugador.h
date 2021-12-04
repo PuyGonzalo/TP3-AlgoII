@@ -9,6 +9,7 @@
 #include "objetivo.h"
 #include "vector.h"
 #include "lista.h"
+#include "ABB.h"
 
 #include "edificio_jugador.h"
 #include "Objetivos/armado.h"
@@ -102,7 +103,11 @@ public:
 
         // pre:
         // pos:
-        //int buscar_edificio_por_nombre(string nombre);
+        int buscar_edificio_por_nombre(string nombre);
+
+        // pre:
+        // pos:
+        Estado_t verificar_condiciones_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido

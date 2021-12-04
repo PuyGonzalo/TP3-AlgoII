@@ -350,3 +350,27 @@ char Mapa::obtener_recurso_de_casillero( int coord_x, int coord_y){
 double Mapa::obtener_cantidad_recurso_de_casillero( int coord_x, int coord_y){
     return this -> mapa[coord_x][coord_y] -> obtener_cantidad_recurso_de_casillero();
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Mapa::verificar_coordenadas_construccion(int coord_x, int coord_y){
+    Estado_t estado;
+
+    if(coord_x < this -> cantidad_filas && coord_y < this -> cantidad_columnas){
+        
+        if(this -> se_puede_construir(coord_x, coord_y)){
+
+            if(!(this -> casillero_esta_ocupado(coord_x, coord_y))){
+
+                estado = OK;
+            } else estado = ERROR_CASILLERO_OCUPADO;
+        } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
+    }else estado = ERROR_POSICION_INEXISTENTE;
+
+    return estado;
+}
+
+
+//

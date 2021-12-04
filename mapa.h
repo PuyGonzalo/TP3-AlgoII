@@ -111,6 +111,9 @@ public:
     // pos: devuelve la cantidad de material brindado de un casillero que tiene un edificio con la capacidad de brindar materiales
     double obtener_cantidad_recurso_de_casillero( int coord_x, int coord_y);
 
+    // pre:
+    // pos:
+    Estado_t verificar_coordenadas_construccion(int coord_x, int coord_y);
 };
 
 

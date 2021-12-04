@@ -17,8 +17,13 @@ const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a c
 
 // -------------------------------------------- FUNCIONES --------------------------------------------
 
-
+// pre:
+// pos:
 Estado_t comprar_bombas(Andypolis &andypolis, Jugador_t jugador);
+
+// pre:
+// pos:
+Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador);
 
 
 

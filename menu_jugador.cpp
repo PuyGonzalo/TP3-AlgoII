@@ -138,7 +138,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             if(system(CLR_SCREEN));
-            //estado = construir_edificio_por_nombre(andypolis);
+            estado = construir_edificio_por_nombre(andypolis, jugador);
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
