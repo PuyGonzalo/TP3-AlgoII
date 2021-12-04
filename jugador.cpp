@@ -102,6 +102,16 @@ double Jugador::obtener_cantidad_andycoins(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+double Jugador::obtener_energia(){
+
+    return this -> energia;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::sortear_objetivos_secundarios(){
 
     Lista<int> opciones_objetivos;
@@ -403,4 +413,29 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
 
     return aux;
 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario){
+
+    int pos_edificio = buscar_edificio_por_nombre(nombre_edificio);
+
+    if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
+        mis_edificios.consulta(pos_edificio)->restar_cantidad_construidos(); 
+    }
+    else{
+        delete mis_edificios.consulta(pos_edificio);
+        mis_edificios.baja(pos_edificio);
+    }
+
+    inventario.sumar_cantidad_materiales_construccion(
+        diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_piedra() /2,
+        diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_madera() /2,
+        diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_metal() /2
+    ); 
+
+    restar_energia(15); //HARCODEADOOOOOO
 }

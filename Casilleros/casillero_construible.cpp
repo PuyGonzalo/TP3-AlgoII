@@ -114,3 +114,12 @@ double Casillero_construible::obtener_cantidad_recurso_de_casillero(){
     return edificio_construido -> obtener_cantidad_recurso();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_construible::obtener_creador_edificio(Jugador_t &jugador){
+
+    jugador = edificio_construido->obtener_creador();
+}

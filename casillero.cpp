@@ -131,3 +131,8 @@ void Casillero::posicionar_jugador(Jugador_t jugador){
     this -> jugador_en_casillero = jugador;
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+

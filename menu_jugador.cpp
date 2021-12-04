@@ -150,7 +150,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case DEMOLER_EDIFICIO_POR_COORD: 
             if(system(CLR_SCREEN));
-            //estado = demoler_edificio_por_coordenada(andypolis);
+            andypolis.mostrar_mapa();
+            estado = demoler_edificio_por_coordenada(andypolis, jugador);
+            andypolis.mostrar_mapa();
             break;
 
         case ATACAR_EDIFICIO_POR_COORD:

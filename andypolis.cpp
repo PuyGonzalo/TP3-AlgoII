@@ -347,20 +347,40 @@ string Andypolis::construir_string_edificio(string nombre, int coord_x, int coor
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
+
 Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador){
 
     Estado_t estado;
     string nombre_edificio;
 
-    if((estado = mapa.verificar_coordenadas_demolicion(coord_x, coord_y)) != OK)
+    if((estado = mapa.verificar_coordenadas_demolicion(coord_x, coord_y, jugador)) != OK)
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
 
-    
-    
+    if( jugador == JUGADOR_UNO){
+        if(jugador_uno.obtener_energia() < (double) 15){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+        else {
+            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+            estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+            jugador_uno.demoler_edificio(nombre_edificio, diccionario);
+        }
+    }
 
+    if( jugador == JUGADOR_DOS){
+        if(jugador_dos.obtener_energia() < (double) 15){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+        else {
+            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+            estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+            jugador_dos.demoler_edificio(nombre_edificio, diccionario);
+        }
+    }
+
+    return estado;
 }
-*/
+
 
 // ------------------------------------------------------------------------------------------------------------
 

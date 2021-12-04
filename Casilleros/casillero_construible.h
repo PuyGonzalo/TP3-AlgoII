@@ -54,6 +54,10 @@ public:
     // pos: obtiene la cantidad de material que brinda el edificio en el casillero
     double obtener_cantidad_recurso_de_casillero();
 
+    // pre: 
+    // pos: 
+    void obtener_creador_edificio(Jugador_t &jugador);
+
 };
 
 

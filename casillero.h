@@ -50,6 +50,10 @@ public:
     // pos: devuelve la coordenada x del casillero
     int obtener_coordenada_y();
 
+    // pre: 
+    // pos: 
+    virtual void obtener_creador_edificio(Jugador_t &jugador){};
+
     // pre: -
     // pos: obtiene el peso (costo de energia) de un jugador para pasar por la superficie del casillero
     int obtener_peso(Jugador_t jugador);

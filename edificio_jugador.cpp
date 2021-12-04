@@ -151,3 +151,8 @@ Estado_t Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 
 
 // ------------------------------------------------------------------------------------------------------------
+
+
+void Edificio_jugador::restar_cantidad_construidos(){
+    this-> cantidad_construidos--;
+}

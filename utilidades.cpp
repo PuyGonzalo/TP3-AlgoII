@@ -41,7 +41,7 @@ Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador){
 
 // -------------------------------------------------------------------------------------------
 
-/*
+
 Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
 
     string coord_x, coord_y;
@@ -58,6 +58,6 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 
     return andypolis.destruir_edificio_de_coord(stoi(coord_x), stoi(coord_y), jugador);
 }
-*/
+
 
 // -------------------------------------------------------------------------------------------

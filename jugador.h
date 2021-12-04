@@ -87,6 +87,10 @@ public:
         void crear_grafo(const Mapa &mapa);
 
         // pre: -
+        // pos: devuelve la cantidad de energia que tiene el jugador
+        double obtener_energia();
+
+        // pre: -
         // pos: devuelve la cantidad de andycoins que tiene el jugador
         double obtener_cantidad_andycoins();
 
@@ -133,6 +137,10 @@ public:
         // pre: -
         // pos: muestra los edificios construidos por el jugador (FALTA RESTANTES HASTA MAXIMO - NECESITO DIC catalogo :( -))
         void listar_edificios_construidos();
+
+        // pre:
+        // pos:
+        void demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario);
 
 
 private:

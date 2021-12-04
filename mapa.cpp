@@ -198,7 +198,7 @@ Estado_t Mapa::destruir_edificio_en_coord(int coord_x, int coord_y){
     if(mapa[coord_x][coord_y] -> es_casillero_construible()){
         if(casillero_esta_ocupado(coord_x,coord_y)){
             mapa[coord_x][coord_y] -> destruir_edificio();
-            } else estado = ERROR_CASILLERO_VACIO;
+        } else estado = ERROR_CASILLERO_VACIO;
     } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
 
     return estado;
@@ -376,7 +376,7 @@ Estado_t Mapa::verificar_coordenadas_construccion(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Mapa::verificar_coordenadas_demolicion(int coord_x, int coord_y){
+Estado_t Mapa::verificar_coordenadas_demolicion(int coord_x, int coord_y, Jugador_t jugador){
     Estado_t estado;
 
     if(coord_x < this -> cantidad_filas && coord_y < this -> cantidad_columnas){
@@ -385,10 +385,25 @@ Estado_t Mapa::verificar_coordenadas_demolicion(int coord_x, int coord_y){
 
             if(this -> casillero_esta_ocupado(coord_x, coord_y)){
 
-                estado = OK;
+                if( this-> obtener_creador_edificio(coord_x, coord_y) == jugador){
+                    estado = OK;
+                }else estado = ERROR_EDIFICIO_AJENO;
             } else estado = ERROR_CASILLERO_VACIO;
         } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
     }else estado = ERROR_POSICION_INEXISTENTE;
 
     return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Jugador_t Mapa::obtener_creador_edificio(int coord_x, int coord_y){
+    
+    Jugador_t jugador;
+
+    mapa[coord_x][coord_y]->obtener_creador_edificio(jugador);
+
+    return jugador;
 }

@@ -72,6 +72,11 @@ public:
     // pos:
     Estado_t quitar_coordenadas_a_lista(int coord_x, int coord_y);
 
+    // pre:
+    // pos:
+    void restar_cantidad_construidos();
+
+
 
 
 };

@@ -97,7 +97,7 @@ public:
 
     // pre:
     // pos:
-    //Estado_t destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
+    Estado_t destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
 
     // pre: -
     // pos: muestra el inventario del jugador pedido
