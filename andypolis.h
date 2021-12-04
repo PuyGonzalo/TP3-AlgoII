@@ -79,6 +79,10 @@ public:
     // pos:
     void cargar_edificio_a_jugador(string nombre, char identificador, int coord_x, int coord_y, Jugador_t jugador);
 
+    // pre:
+    // pos:
+    Estado_t comprar_bombas(Jugador_t jugador);
+
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);

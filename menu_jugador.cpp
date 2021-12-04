@@ -111,7 +111,7 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
 
 
     cout << TAB << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION << FIN_DE_FORMATO <<endl;
-    cout << '>' << ESPACIO << PARPADEO_CURSOR; getline(cin, opcion_elegida); cout << FIN_DE_FORMATO;
+    cout << '>' << ESPACIO; getline(cin, opcion_elegida); cout << FIN_DE_FORMATO;
 
     if(!es_un_numero(opcion_elegida))
         return ERROR_ENTRADA_INVALIDA;
@@ -163,7 +163,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
         
         case COMPRAR_BOMBAS: 
             if(system(CLR_SCREEN));
-            //estado = consultar_coordenada(andypolis);
+            estado = comprar_bombas(andypolis, jugador);
             break;
 
         case MOSTRAR_INVENTARIO:

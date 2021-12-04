@@ -11,6 +11,7 @@
 
 using namespace std;
 
+const int PRECIO_BOMBA = 100;
 
 class Inventario{
 
@@ -75,6 +76,11 @@ public:
     void sumar_cantidad_material(char identificador, double cantidad);
 
     // pre: -
+    // pos: se resta una cantidad especifica de un material especifico en funcion de su identificador
+    void restar_cantidad_material(char identificador, double cantidad);
+
+
+    // pre: -
     // pos: mustra el inventario
     void mostrar_inventario();
 
@@ -87,11 +93,11 @@ public:
     int obtener_andycoins_gastadas() const;
 
     //Para el objetivo bombardero
-    void aumentar_bomas_usadas(int cantidad);
+    void aumentar_bombas_usadas(int cantidad);
     int obtener_bombas_usadas() const;
 
     //Para el objetivo extremista:
-    void aumentar_bomas_compradas(int cantidad);
+    void aumentar_bombas_compradas(int cantidad);
     int obtener_bombas_compradas() const;
 
 };

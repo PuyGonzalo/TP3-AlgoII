@@ -77,12 +77,20 @@ public:
         void crear_grafo(const Mapa &mapa);
 
         // pre: -
+        // pos: devuelve la cantidad de andycoins que tiene el jugador
+        double obtener_cantidad_andycoins();
+
+        // pre: -
         // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
         void sortear_objetivos_secundarios();
 
         // pre: -
         // pos: agrega un tipo de material al inventario del jugador
         void agregar_material_al_inventario(Material* material);
+
+        // pre: -
+        // pos: compra bombas para el jugador (y devuelve un error si no tiene las andycoins necesarias)
+        Estado_t comprar_bombas();
 
         // pre:
         // pos:

@@ -5,7 +5,11 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Bombas::Bombas(double cantidad) : Material(cantidad) {} // no tiene identif o ponemos '?'
+Bombas::Bombas(double cantidad) : Material(cantidad) {
+
+    this -> identificador = IDENTIF_BOMBA;
+
+}
 
 
 // ------------------------------------------------------------------------------------------------------------

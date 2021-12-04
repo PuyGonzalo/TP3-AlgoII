@@ -16,8 +16,7 @@ const char IDENTIF_PIEDRA = 'S';
 const char IDENTIF_MADERA = 'W';
 const char IDENTIF_METAL = 'I';
 const char IDENTIF_ANDYCOINS = 'C';
-const char IDENTIF_BOMBA = 'X';
-// BOMBA NO TIENE IDENTIFICADOR -> PONER IDENTIF_BOMBA = "X" o PONERLO DIRECTO EN CONSTRUCTOR? 
+const char IDENTIF_BOMBA = 'X'; // dejar esto?
 
 
 class Material{

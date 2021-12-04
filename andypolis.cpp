@@ -259,6 +259,24 @@ void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+Estado_t Andypolis::comprar_bombas(Jugador_t jugador){
+
+    Estado_t estado = OK;
+    
+    if(jugador == JUGADOR_UNO)
+        estado = jugador_uno.comprar_bombas();
+    if(jugador == JUGADOR_DOS)
+        estado = jugador_dos.comprar_bombas();    
+        
+
+    return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 void Andypolis::mostrar_inventario(Jugador_t jugador){
 
     if(jugador == JUGADOR_UNO)

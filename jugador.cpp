@@ -73,6 +73,16 @@ void Jugador::crear_grafo(const Mapa &mapa){
 // ------------------------------------------------------------------------------------------------------------
 
 
+double Jugador::obtener_cantidad_andycoins(){
+
+    return this -> inventario.obtener_cantidad_de_andycoins();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::sortear_objetivos_secundarios(){
 
     Lista<int> opciones_objetivos;
@@ -96,6 +106,43 @@ void Jugador::sortear_objetivos_secundarios(){
 void Jugador::agregar_material_al_inventario(Material* material){
 
     inventario.agregar_material_a_lista(material); // deberiamos sacarle el "lista"
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Jugador::comprar_bombas(){
+
+    if( energia < 5)
+        return ERROR_ENERGIA_INSUFICIENTE; 
+
+    string cantidad_a_comprar;
+
+    cout << TAB << NEGRITA << SUBRAYADO << "Ingresa la cantidad de bombas que desea comprar:" << FIN_DE_FORMATO << endl;
+    cout << '>' << ESPACIO; getline(cin, cantidad_a_comprar); cout << FIN_DE_FORMATO;
+
+    if(!es_un_numero(cantidad_a_comprar))
+        return ERROR_ENTRADA_INVALIDA;
+
+    int cantidad = stoi(cantidad_a_comprar);
+
+    // ingreso arriba, lo demas abajo (esto es para que me vuelva al menu si no tiene energia...)
+
+    if( cantidad * PRECIO_BOMBA > inventario.obtener_cantidad_de_andycoins() ) // hay 3 returns aca pero tengo sueño, hacer funcion PRIVADA que chequee condic?
+        return ERROR_ANDYCOINS_INSUFICIENTES;
+
+    inventario.sumar_cantidad_material(IDENTIF_BOMBA,cantidad);
+    inventario.restar_cantidad_material(IDENTIF_ANDYCOINS, cantidad*PRECIO_BOMBA);
+    inventario.aumentar_bombas_compradas(cantidad);
+
+    cout << TAB << TAB << NEGRITA << "Adquiriste " << cantidad << " bombas" << FIN_DE_FORMATO << endl;
+    cout << TAB << NEGRITA << "Te quedan " << inventario.obtener_cantidad_de_andycoins() << " andycoins... ¡Cuidalas!" << FIN_DE_FORMATO << endl;
+
+    this -> energia-=5; // const int ENERGIA_COMPRAR_BOMBAS = 5;
+
+    return OK;
 
 }
 

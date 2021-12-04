@@ -24,6 +24,8 @@ const string STR_ERROR_CASILLERO_NO_TRANSITABLE = "¡El casillero no es del tipo
 const string STR_ERROR_PAR_COORDENADAS_INVALIDAS = "¡Alguna de esas coordenadas no es un numero!";
 const string STR_ERROR_CASILLERO_VACIO = "¡Este casillero esta vacio!";
 const string STR_ERROR_RECOLECCION_MATERIALES = "¡No hay edificios de los cuales recolectar materiales!";
+const string STR_ERROR_ANDYCOINS_INSUFICIENTES = "¡No tenes suficientes andycoins para comprar!";
+const string STR_ERROR_ENERGIA_INSUFICIENTE = "¡No tenes suficiente energia para realizar esta acción!";
 
 const string STR_ADVERTENCIA_LLUVIA_RECURSOS = "Advertencia: No hay suficientes casilleros para realizar la lluvia de materiales";
 const string STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO = "Advertencia: En el archivo ubicaciones.txt habia un edificio que estaba en una posicion invalida.";
@@ -46,6 +48,8 @@ const string errores[] = {
 	STR_ERROR_PAR_COORDENADAS_INVALIDAS,
 	STR_ERROR_CASILLERO_VACIO,
     STR_ERROR_RECOLECCION_MATERIALES,
+	STR_ERROR_ANDYCOINS_INSUFICIENTES,
+	STR_ERROR_ENERGIA_INSUFICIENTE,
 	STR_ADVERTENCIA_LLUVIA_RECURSOS,
 	STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO
 };
@@ -68,8 +72,10 @@ enum Estado_t {
 	ERROR_PAR_COORDENADAS_INVALIDAS = 14,
     ERROR_CASILLERO_VACIO = 15,
     ERROR_RECOLECCION_MATERIALES = 16,
-	ADVERTENCIA_LLUVIA_RECURSOS = 17,
-	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 18,
+	ERROR_ANDYCOINS_INSUFICIENTES = 17,
+	ERROR_ENERGIA_INSUFICIENTE = 18,
+	ADVERTENCIA_LLUVIA_RECURSOS = 19,
+	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 20,
 	ADVERTENCIA_UBICACIONES_VACIO = 200};
 
 

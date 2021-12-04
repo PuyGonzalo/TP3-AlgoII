@@ -66,6 +66,7 @@ void Inventario::mostrar_inventario(){
 // ------------------------------------------------------------------------------------------------------------
 
 int Inventario::buscar_material(char identificador) const{
+
     int i = 0;
     int ubicacion = -1;
     bool material_encontrado = false;
@@ -77,7 +78,7 @@ int Inventario::buscar_material(char identificador) const{
         }
         ++i;
     }
-
+    
     return ubicacion;
 }
 
@@ -180,6 +181,18 @@ void Inventario::sumar_cantidad_material(char identificador, double cantidad){
     materiales.consultar(ubicacion) -> sumar_cantidad(cantidad);
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Inventario::restar_cantidad_material(char identificador, double cantidad){
+    
+    int ubicacion = buscar_material(identificador);
+
+    materiales.consultar(ubicacion) -> restar_cantidad(cantidad);
+}
+
+
 // ------------------------------------------------------------------------------------------------------------
 
 void Inventario::guardar_inventario(ofstream& archivo_materiales){
@@ -213,7 +226,7 @@ int Inventario::obtener_andycoins_gastadas() const{
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Inventario::aumentar_bomas_usadas(int cantidad){
+void Inventario::aumentar_bombas_usadas(int cantidad){
     bombas_usadas += cantidad;
 }
 
@@ -229,7 +242,7 @@ int Inventario::obtener_bombas_usadas() const{
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Inventario::aumentar_bomas_compradas(int cantidad){
+void Inventario::aumentar_bombas_compradas(int cantidad){
     bombas_compradas += cantidad;
 }
 
