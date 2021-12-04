@@ -33,6 +33,7 @@ const char IDENTIFICADOR_JUGADOR_DOS = 'U';
 const int CANT_OBJETIVOS_SORTEADOS = 3;
 const int CANT_OBJETIVOS_SECUNDARIOS = 10;
 const int CANT_MAX_ENERGIA = 100;
+const double CANTIDAD_ENERGIA_NECESARIA_P_CONSTRUIR = 15;
 
 
 
@@ -60,6 +61,14 @@ public:
         // pre: -
         // pos: DESTRUCTOR del jugador
         ~Jugador();
+
+        // pre:
+        // pos:
+        void agregar_energia(double energia);
+
+        // pre:
+        // pos:
+        void restar_energia(double energia);
 
         // pre: -
         // pos: asigna el identificador al jugador (con el que será visto en el mapa)
@@ -108,6 +117,10 @@ public:
         // pre:
         // pos:
         Estado_t verificar_condiciones_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
+
+        // pre:
+        // pos:
+        void restar_materiales_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido

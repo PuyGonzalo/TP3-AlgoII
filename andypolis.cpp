@@ -303,6 +303,8 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
             Parser parser(linea);
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
             cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+            jugador_uno.restar_materiales_construccion(nombre, diccionario);
+            jugador_uno.restar_energia((double)15); //desharcodear
         }
     }
 
@@ -315,6 +317,8 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
             Parser parser(linea);
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
             cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+            jugador_dos.restar_materiales_construccion(nombre, diccionario);
+            jugador_dos.restar_energia((double)15); //desharcodear
         }
     }
     
@@ -340,6 +344,23 @@ string Andypolis::construir_string_edificio(string nombre, int coord_x, int coor
     return linea;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+/*
+Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador){
+
+    Estado_t estado;
+    string nombre_edificio;
+
+    if((estado = mapa.verificar_coordenadas_demolicion(coord_x, coord_y)) != OK)
+        return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
+
+    
+    
+
+}
+*/
 
 // ------------------------------------------------------------------------------------------------------------
 

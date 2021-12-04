@@ -138,7 +138,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             if(system(CLR_SCREEN));
+            andypolis.mostrar_mapa();
             estado = construir_edificio_por_nombre(andypolis, jugador);
+            andypolis.mostrar_mapa();
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
@@ -148,7 +150,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case DEMOLER_EDIFICIO_POR_COORD: 
             if(system(CLR_SCREEN));
-            //andypolis.mostrar_catalogo();
+            //estado = demoler_edificio_por_coordenada(andypolis);
             break;
 
         case ATACAR_EDIFICIO_POR_COORD:

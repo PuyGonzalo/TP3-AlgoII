@@ -373,4 +373,22 @@ Estado_t Mapa::verificar_coordenadas_construccion(int coord_x, int coord_y){
 }
 
 
-//
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Mapa::verificar_coordenadas_demolicion(int coord_x, int coord_y){
+    Estado_t estado;
+
+    if(coord_x < this -> cantidad_filas && coord_y < this -> cantidad_columnas){
+        
+        if(this -> se_puede_construir(coord_x, coord_y)){
+
+            if(this -> casillero_esta_ocupado(coord_x, coord_y)){
+
+                estado = OK;
+            } else estado = ERROR_CASILLERO_VACIO;
+        } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
+    }else estado = ERROR_POSICION_INEXISTENTE;
+
+    return estado;
+}

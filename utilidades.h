@@ -25,6 +25,8 @@ Estado_t comprar_bombas(Andypolis &andypolis, Jugador_t jugador);
 // pos:
 Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador);
 
-
+// pre:
+// pos:
+Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador);
 
 #endif // UTILIDADES_H

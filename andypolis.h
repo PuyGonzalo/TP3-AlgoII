@@ -95,6 +95,10 @@ public:
     // pos:
     string construir_string_edificio(string nombre, int coord_x, int coord_y);
 
+    // pre:
+    // pos:
+    //Estado_t destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
+
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);

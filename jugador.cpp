@@ -17,6 +17,7 @@ Jugador::Jugador(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 Jugador::~Jugador(){
     
     delete objetivo_principal;
@@ -31,6 +32,24 @@ Jugador::~Jugador(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
+void Jugador::agregar_energia(double energia){
+    
+    this -> energia += energia;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::restar_energia(double energia){
+    
+    if(this -> energia > energia)
+        this -> energia -= energia;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 void Jugador::asignar_identificador(char identif){
 
@@ -230,6 +249,9 @@ Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Da
     
     Estado_t estado;
 
+    if(energia < CANTIDAD_ENERGIA_NECESARIA_P_CONSTRUIR)
+        return estado = ERROR_ENERGIA_INSUFICIENTE;
+
     if(diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() < inventario.obtener_cantidad_de_piedra()
         && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() < inventario.obtener_cantidad_de_madera()
         && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() < inventario.obtener_cantidad_de_metal()){
@@ -249,6 +271,19 @@ Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Da
     // MMMMMMMMMM
 
     return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::restar_materiales_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario){
+
+    inventario.restar_cantidad_materiales_construccion(
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra(),
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera(),
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal()    
+    );
 }
 
 

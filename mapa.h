@@ -114,6 +114,10 @@ public:
     // pre:
     // pos:
     Estado_t verificar_coordenadas_construccion(int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    Estado_t verificar_coordenadas_demolicion(int coord_x, int coord_y);
 };
 
 
