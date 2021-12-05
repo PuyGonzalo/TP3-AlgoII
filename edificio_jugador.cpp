@@ -133,8 +133,8 @@ int Edificio_jugador::buscar_coordenadas_en_lista(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
-
+void Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
+    /*
     Estado_t estado = OK;
 
     int pos = buscar_coordenadas_en_lista(coord_x, coord_y);
@@ -147,6 +147,11 @@ Estado_t Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
     }
 
     return estado;
+    */
+
+   int pos = buscar_coordenadas_en_lista(coord_x, coord_y);
+
+    ubicaciones.baja(pos);
 }
 
 

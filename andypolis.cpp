@@ -364,7 +364,7 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
         else {
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            jugador_uno.demoler_edificio(nombre_edificio, diccionario);
+            jugador_uno.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
         }
     }
 
@@ -375,7 +375,7 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
         else {
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            jugador_dos.demoler_edificio(nombre_edificio, diccionario);
+            jugador_dos.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
         }
     }
 

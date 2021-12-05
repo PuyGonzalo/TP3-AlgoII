@@ -442,12 +442,13 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario){
+void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y){
 
     int pos_edificio = buscar_edificio_por_nombre(nombre_edificio);
 
     if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
-        mis_edificios.consulta(pos_edificio)->restar_cantidad_construidos(); 
+        mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
+        mis_edificios.consulta(pos_edificio) -> quitar_coordenadas_a_lista(coord_x, coord_y);
     }
     else{
         delete mis_edificios.consulta(pos_edificio);
@@ -458,7 +459,7 @@ void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,
         diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_piedra() /2,
         diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_madera() /2,
         diccionario.consultar_const(nombre_edificio)->obtener_dato_const()->obtener_costo_metal() /2
-    ); 
+    );
 
     restar_energia(15); //HARCODEADOOOOOO
 }
