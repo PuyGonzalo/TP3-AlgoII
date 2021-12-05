@@ -431,3 +431,16 @@ void Andypolis::mostrar_mapa(){
     mapa.mostrar_mapa();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{
+
+    Estado_t estado = OK;
+
+    return estado = mapa.consultar_casillero(coord_x,coord_y);
+
+}
+

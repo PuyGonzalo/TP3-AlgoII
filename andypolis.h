@@ -115,6 +115,10 @@ public:
     // pos: Se muestran por consola los objetivos del jugador junto con su progreso
     void mostrar_objetivos(Jugador_t jugador);
 
+    // pre:
+    // pos:
+    Estado_t consultar_casillero_de_mapa(int coord_x, int coord_y) const;
+
 
 };
 

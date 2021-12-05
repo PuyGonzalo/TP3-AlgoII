@@ -172,7 +172,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSULTAR_COORDENADA: 
             if(system(CLR_SCREEN));
-            //estado = comprar_bombas(andypolis, jugador);
+            estado = consultar_coordenada(andypolis);
             break;
         
         case MOSTRAR_INVENTARIO:

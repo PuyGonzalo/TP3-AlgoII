@@ -61,3 +61,24 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 
 
 // -------------------------------------------------------------------------------------------
+
+
+Estado_t consultar_coordenada(const Andypolis &andypolis){
+
+    Estado_t estado = OK;
+    string coord_x, coord_y;
+
+    cout << TAB << SUBRAYADO << "Ingrese las coordenadas que quiere consultar:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+
+
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+
+    estado = andypolis.consultar_casillero_de_mapa(stoi(coord_x),stoi(coord_y));
+
+    return estado;
+
+}
