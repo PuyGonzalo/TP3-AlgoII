@@ -26,12 +26,11 @@ bool Cansado::chequear_cumplimiento( const double &cant_energia, const Inventari
 }
 
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Cansado::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){     
-    return std::to_string((CANT_MAX_ENERGIA-cant_energia) % CANT_MAX_ENERGIA ) + "%";
+string Cansado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){     
+    return PROGRESO_OBJ + std::to_string((100-cant_energia)) + " energia";
    
 }     
-*/

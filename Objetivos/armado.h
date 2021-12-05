@@ -14,7 +14,7 @@ class Armado: public Objetivo {
 
         string obtener_condiciones();
         bool chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios); 
-        //string obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador*> & catalogo);
+        string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios);
 };
 
 #endif

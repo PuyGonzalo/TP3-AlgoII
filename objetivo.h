@@ -28,7 +28,7 @@ const string OBJ_CANSADO = " Objetivo Cansado";
 const string OBJ_CONSTRUCTOR = "Objetivo Constructor";
 const string OBJ_ARMADO = "Objetivo Armado";
 const string OBJ_EXTREMISTA = "Objetivo Extremista";
-const string PROGRESO_OBJ = " El objetivo tienen un progreso de : ";
+const string PROGRESO_OBJ = " Para cumplir este objetivo hacen falta: ";
 
 enum Objetivo_secundario_t{
     OPC_COMPRAR_ANDYNOPOLIS,
@@ -58,7 +58,7 @@ class Objetivo{
 
         virtual string obtener_condiciones() = 0;
         virtual bool chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0; 
-        //virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0;
+        virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0;
 };
 
 

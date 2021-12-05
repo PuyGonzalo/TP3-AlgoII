@@ -31,16 +31,16 @@ bool Alto_nubes::chequear_cumplimiento(const double &cant_energia, const Inventa
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
-string Alto_nubes::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & mis_edificios){
 
-    int cant_contruidos = 0;
-    for(int i=0; i < mis_edificios.obtener_longitud(); i++){
-        if( mis_edificios.consultar(i) -> nombre_edificio ==STR_OBELISCO )
-            cant_contruidos = mis_edificios.consultar(i) -> cantidad_construidos;
+string Alto_nubes::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+
+    int cantidad_construidos = 0; 
+
+    for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
+        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO) 
+            cantidad_construidos++;
     }
     
-    return std::to_string( cant_contruidos % CANT_OBELISCOS ) + "%";
+    return PROGRESO_OBJ+ std::to_string( CANT_OBELISCOS-cantidad_construidos ) + " obelisco";
    
 }
-*/

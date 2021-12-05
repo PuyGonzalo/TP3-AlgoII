@@ -27,13 +27,10 @@ bool Bombardero::chequear_cumplimiento(  const double &cant_energia, const Inven
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
-string Bombardero::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
-    int ubicacion = invectario.ubicacion_material_en_lista('X');
-    int bombas_usadas = 0;
-    invetario.consulta(ubicacion)->obtener_bombas_usadas(bombas_usadas);
 
-    return std::to_string(bombas_usadas % CANT_BOMBAS_USADAS ) + "%";
+string Bombardero::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+
+
+    return PROGRESO_OBJ + std::to_string( CANT_BOMBAS_USADAS - inventario.obtener_bombas_usadas() ) + " bombas usadas";
    
 }
-*/

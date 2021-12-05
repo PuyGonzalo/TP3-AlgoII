@@ -25,14 +25,12 @@ bool Edad_piedra::chequear_cumplimiento( const double &cant_energia, const Inven
     return (inventario.obtener_cantidad_de_piedra() > CANT_PIEDRA);
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Edad_piedra::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
-    int ubicacion = invectario.ubicacion_material_en_lista('S');
-    int cant_piedras = invetario.consulta(ubicacion)->obtener_cantidad();
-    return std::to_string( cant_piedras % CANT_PIEDRA ) + "%";
+string Edad_piedra::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+
+    return PROGRESO_OBJ + std::to_string( CANT_PIEDRA - inventario.obtener_cantidad_de_piedra() ) + " piedras";
    
 }
-*/

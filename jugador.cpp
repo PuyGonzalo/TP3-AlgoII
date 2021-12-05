@@ -116,12 +116,13 @@ void Jugador::sortear_objetivos_secundarios(){
 
     Lista<int> opciones_objetivos;
     int opcion_elegida;
+    int i ;
 
     for(int i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
         opciones_objetivos.alta(i,i);
     }
 
-    for(int i =0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+    for( i=0; i < CANT_OBJETIVOS_SORTEADOS +1; i++){
         opcion_elegida = opciones_objetivos.bajar_aleatorio();
         objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
 
@@ -136,10 +137,12 @@ void Jugador::mostrar_objetivos(){
 
     cout << objetivo_principal->obtener_nombre() << endl;
     cout << objetivo_principal->obtener_condiciones() << endl;
+    cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
 
-    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS ; i++){
         cout << objetivos_secundarios.consultar(i)->obtener_nombre() << endl;
         cout << objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
+        cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
     }
 
 }
@@ -320,7 +323,7 @@ bool Jugador::chequear_objetivos_secundarios(){
 
     int cantidad_objetivos_secundarios_cumplidos = 0;
     
-    for(int i = 0 ; i < objetivos_secundarios.obtener_longitud() ; ++i){
+    for(int i = 0 ; i < CANT_OBJETIVOS_SORTEADOS ; ++i){
         if( objetivos_secundarios.consultar(i) -> chequear_cumplimiento(energia,inventario,mis_edificios) )
             cantidad_objetivos_secundarios_cumplidos++;
     }

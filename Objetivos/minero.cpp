@@ -33,25 +33,18 @@ bool Minero::chequear_cumplimiento(const double &cant_energia, const Inventario 
 
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Minero::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
-    int cant_minas = 0;
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA )
-            if(catalogo.consultar(i) -> cantidad_construidos)
-                cant_minas++;
-    }
-    
-     for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_MINA_ORO ) 
-            if(catalogo.consultar(i) -> cantidad_construidos)
-                cant_minas++;
+string Minero::obtener_progreso(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+    int contador = 0;
+
+    for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i){
+        if(mis_edificios.consulta_const(i) -> obtener_nombre() == STR_MINA || mis_edificios.consulta_const(i) -> obtener_nombre() == STR_MINA_ORO)
+            contador++;
     }
 
-    return std::to_string(cant_minas % CANT_MINAS ) + "%";
+    return PROGRESO_OBJ + std::to_string(CANT_MINAS - contador ) + " minas";
    
 }
-*/

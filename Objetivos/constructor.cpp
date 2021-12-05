@@ -26,21 +26,14 @@ bool  Constructor::chequear_cumplimiento( const double &cant_energia, const Inve
     return false;
 }
 
-/*
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-string  Constructor::obtener_progreso(  double &cant_energia,   Inventario & inventario,   Lista<Edificio_jugador> & catalogo){
+string  Constructor::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     
-    int  construidos = 0;
-    int i;
-   
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if(catalogo.consultar(i) -> cant_contruidos == 0 )
-             construidos++;
-    }
 
-    return std::to_string(  construidos % i ) + "%";
+
+    return PROGRESO_OBJ + std::to_string( CANTIDAD_EDIFICIOS_OBJETIVO- mis_edificios.obtener_cantidad() ) + " edificios";
    
 }
-*/
