@@ -141,6 +141,10 @@ public:
         // pre:
         // pos:
         void demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario);
+        
+        // pre: El vector de objetivos_secundarios esta completo
+        // pos: Se imprimen todos los objetivos secundarios y el objetivo principal por consola
+        void mostrar_objetivos();
 
 
 private:

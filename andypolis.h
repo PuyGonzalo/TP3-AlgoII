@@ -111,6 +111,10 @@ public:
     // pos: muestra el mapa
     void mostrar_mapa();
 
+    // pre: Objetivos del jugador han sido iniciliazados
+    // pos: Se muestran por consola los objetivos del jugador junto con su progreso
+    void mostrar_objetivos(Jugador_t jugador);
+
 
 };
 

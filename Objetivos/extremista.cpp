@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Extremista::Extremista(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
+Extremista::Extremista() : Objetivo(OBJ_EXTREMISTA, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

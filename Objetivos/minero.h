@@ -9,7 +9,7 @@ const string CONDICIONES_MINERO = "Haber construido una mina de cada tipo.";
 class Minero: public Objetivo {
     
     public:
-        Minero(string nombre_obj, bool realizado);
+        Minero();
         ~Minero(){};
 
         string obtener_condiciones();

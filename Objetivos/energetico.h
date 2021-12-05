@@ -10,7 +10,7 @@ const string CONDICIONES_ENERGETICO = "Haber terminado un turno con 100 puntos d
 class Energetico: public Objetivo {
 
     public:
-        Energetico(string nombre_obj, bool realizado);
+        Energetico();
         ~Energetico(){};
 
         string obtener_condiciones();

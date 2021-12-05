@@ -8,7 +8,7 @@ const string CONDICIONES_CONSTRUCTOR = "Construir un edificio de cada tipo";
 class Constructor: public Objetivo {
     
     public:
-        Constructor(string nombre_obj, bool realizado);
+        Constructor();
         ~Constructor(){};
 
         string obtener_condiciones();

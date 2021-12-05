@@ -31,7 +31,7 @@ public:
     Vector(int tam);
 
     // Constructor de copia (Dejar?)
-    //Vector(const Vector<D>& vec);
+    Vector(const Vector <D> &);
 
     // pre: dato tiene que ser un Dato valido
     // pos: Inserta el dato, en la ultima posicion
@@ -90,6 +90,21 @@ Vector<D>::Vector(int tam){
 
     for(int i = 0; i < tam; ++i)
         datos[i] = NULL;
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename D>
+Vector<D>::Vector(const Vector <D> & vector)
+{
+	this ->longitud = vector.longitud;
+
+	datos = new D[vector.capacidad];
+
+	for (int i=0; i < longitud ; i++)
+	   this -> datos[i] = vector.datos[i];	
 }
 
 

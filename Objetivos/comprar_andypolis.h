@@ -9,7 +9,7 @@ const string CONDICIONES_COMPRAR_ANDYPOLIS = " Haber juntado 100.000 andycoins a
 class Comprar_andypolis : public Objetivo {
 
     public:
-        Comprar_andypolis(string nombre_obj, bool realizado);
+        Comprar_andypolis();
         ~Comprar_andypolis(){};
 
         string obtener_condiciones();

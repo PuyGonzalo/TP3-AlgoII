@@ -9,7 +9,7 @@ const int CANT_OBELISCOS = 1;
 class Alto_nubes: public Objetivo {
 
     public:
-        Alto_nubes(string nombre_obj, bool realizado);
+        Alto_nubes();
         ~Alto_nubes(){};
 
         string obtener_condiciones();

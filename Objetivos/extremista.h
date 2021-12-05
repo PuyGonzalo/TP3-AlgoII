@@ -9,7 +9,7 @@ const string CONDICIONES_EXTREMISTA = "Haber comprado 500 bombas en una partida"
 class Extremista: public Objetivo {
 
     public:
-        Extremista(string nombre_obj, bool realizado);
+        Extremista();
         ~Extremista(){};
 
         string obtener_condiciones();

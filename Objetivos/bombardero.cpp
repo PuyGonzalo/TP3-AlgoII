@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Bombardero::Bombardero(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
+Bombardero::Bombardero() : Objetivo(OBJ_BOMBARDERO, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

@@ -9,7 +9,7 @@ const string CONDICIONES_ARMADO = "Tener 10 bombas en el inventario";
 class Armado: public Objetivo {
 
     public:
-        Armado(string nombre_obj, bool realizado);
+        Armado();
         ~Armado(){};
 
         string obtener_condiciones();

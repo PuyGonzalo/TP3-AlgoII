@@ -5,11 +5,12 @@
 
 Jugador::Jugador(){
 
+
     this -> identificador = ' ';
     this -> jugador = NADIE;
     ubicacion.coordenada_x = -1;
     ubicacion.coordenada_y = -1;
-    this -> objetivo_principal = new Alto_nubes(OBJ_MAS_ALTO_NUBES, false);
+    this -> objetivo_principal = new Alto_nubes();
     energia = 50; // primer turno imagino que es cuando se crea..
 
 }
@@ -25,8 +26,7 @@ Jugador::~Jugador(){
 
     for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i)
         delete mis_edificios.consulta(i);
-
-
+    
 }
 
 
@@ -121,9 +121,25 @@ void Jugador::sortear_objetivos_secundarios(){
         opciones_objetivos.alta(i,i);
     }
 
-    while( objetivos_secundarios.obtener_longitud() == CANT_OBJETIVOS_SORTEADOS){
+    for(int i =0; i < CANT_OBJETIVOS_SORTEADOS; i++){
         opcion_elegida = opciones_objetivos.bajar_aleatorio();
         objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
+
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::mostrar_objetivos(){
+
+    cout << objetivo_principal->obtener_nombre() << endl;
+    cout << objetivo_principal->obtener_condiciones() << endl;
+
+    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+        cout << objetivos_secundarios.consultar(i)->obtener_nombre() << endl;
+        cout << objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
     }
 
 }
@@ -375,39 +391,39 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
     switch(opcion_objetivo){
         
         case OPC_COMPRAR_ANDYNOPOLIS:
-            aux = new Comprar_andypolis(OBJ_COMPRAR_ANDYNOPOLIS, false);
+            aux = new Comprar_andypolis();
             break;
 
         case OPC_EDAD_PIEDRA:
-            aux = new Edad_piedra(OBJ_EDAD_PIEDRA, false);
+            aux = new Edad_piedra();
             break;
         
         case OPC_BOMBARDERO:
-            aux = new Bombardero(OBJ_BOMBARDERO, false);
+            aux = new Bombardero();
             break;
         
         case OPC_ENERGETICO:
-            aux = new Energetico(OBJ_ENERGETICO, false);
+            aux = new Energetico();
             break;
         
         case OPC_LETRADO:
-            aux = new Letrado(OBJ_LETRADO, false);
+            aux = new Letrado();
             break;
         
         case OPC_MINERO:
-            aux = new Minero(OBJ_MINERO, false);
+            aux = new Minero();
             break;
         
         case OPC_CANSADO:
-            aux = new Cansado(OBJ_CANSADO, false);
+            aux = new Cansado();
             break;
 
         case OPC_CONSTRUCTOR:
-            aux = new Constructor(OBJ_CONSTRUCTOR, false);
+            aux = new Constructor();
             break;
 
         case OPC_ARMADO:
-            aux = new Armado(OBJ_ARMADO, false);
+            aux = new Armado();
             break;
     }
 

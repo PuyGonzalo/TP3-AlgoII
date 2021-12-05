@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Energetico::Energetico(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
+Energetico::Energetico() : Objetivo(OBJ_ENERGETICO, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

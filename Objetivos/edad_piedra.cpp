@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Edad_piedra::Edad_piedra(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
+Edad_piedra::Edad_piedra() : Objetivo(OBJ_EDAD_PIEDRA, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

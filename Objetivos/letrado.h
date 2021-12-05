@@ -9,7 +9,7 @@ const string CONDICIONES_LETRADO = "Haber construido el máximo posible de escue
 class Letrado: public Objetivo {
 
     public:
-        Letrado(string nombre_obj, bool realizado);
+        Letrado();
         ~Letrado(){};
 
         string obtener_condiciones();

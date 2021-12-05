@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Constructor::Constructor(string nombre_obj, bool realizado) : Objetivo(nombre_obj,realizado){}
+Constructor::Constructor() : Objetivo(OBJ_CONSTRUCTOR, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

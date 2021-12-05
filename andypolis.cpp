@@ -28,6 +28,7 @@ Andypolis::~Andypolis(){}
 
 void Andypolis::cargar_informacion_jugadores(){
 
+
     this -> jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
     this -> jugador_uno.asignar_numero_jugador(JUGADOR_UNO);
     this -> jugador_uno.sortear_objetivos_secundarios();
@@ -392,6 +393,19 @@ void Andypolis::mostrar_inventario(Jugador_t jugador){
 
     if(jugador == JUGADOR_DOS)
         jugador_dos.mostrar_inventario();    
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::mostrar_objetivos(Jugador_t jugador){
+    if(jugador == JUGADOR_UNO)
+        jugador_uno.mostrar_objetivos();
+
+    if(jugador == JUGADOR_DOS)
+        jugador_dos.mostrar_objetivos();    
 
 }
 

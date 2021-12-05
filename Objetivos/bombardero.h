@@ -9,7 +9,7 @@ const string CONDICIONES_BOMBARDERO = "Haber usado 5 bombas";
 
 class Bombardero: public Objetivo {
     public:
-        Bombardero(string nombre_obj, bool realizado);
+        Bombardero();
         ~Bombardero(){};
 
         string obtener_condiciones();

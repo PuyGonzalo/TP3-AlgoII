@@ -182,7 +182,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case MOSTRAR_OBJETIVOS:
             if(system(CLR_SCREEN));
-            //estado = andypolis.recolectar_materiales();
+            andypolis.mostrar_objetivos(jugador);
             break;
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:

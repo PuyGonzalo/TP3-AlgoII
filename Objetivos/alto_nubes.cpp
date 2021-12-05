@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Alto_nubes::Alto_nubes(string nombre_obj, bool realizado) : Objetivo(nombre_obj , realizado){}
+Alto_nubes::Alto_nubes() : Objetivo(OBJ_MAS_ALTO_NUBES, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

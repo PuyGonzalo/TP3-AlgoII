@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Comprar_andypolis::Comprar_andypolis(string nombre_obj, bool realizado) : Objetivo(nombre_obj, realizado){}
+Comprar_andypolis::Comprar_andypolis() : Objetivo(OBJ_COMPRAR_ANDYNOPOLIS, false){}
 
 
 // ------------------------------------------------------------------------------------------------------------

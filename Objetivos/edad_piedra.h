@@ -10,7 +10,7 @@ const string CONDICIONES_EDAD_PIEDRA = "Tener en el inventario 50000 piedras";
 class Edad_piedra: public Objetivo {
     
     public:
-        Edad_piedra(string nombre_obj, bool realizado);
+        Edad_piedra();
         ~Edad_piedra(){};
 
         string obtener_condiciones();

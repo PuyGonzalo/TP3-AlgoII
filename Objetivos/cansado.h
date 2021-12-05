@@ -8,7 +8,7 @@ const string CONDICIONES_CANSADO = "Terminar un turno con 0 de energía.";
 class Cansado: public Objetivo {
     
     public:
-        Cansado(string nombre_obj, bool realizado);
+        Cansado();
         ~Cansado(){};
 
         string obtener_condiciones();
