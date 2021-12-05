@@ -1,7 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-const int VECTOR_TAMANIO_INICIAL = 2;
+const int VECTOR_TAMANIO_INICIAL = 3;
 
 
 template <typename D>
@@ -101,7 +101,7 @@ Vector<D>::Vector(const Vector <D> & vector)
 {
 	this ->longitud = vector.longitud;
 
-	datos = new D[vector.capacidad];
+	datos = new D*[vector.capacidad];
 
 	for (int i=0; i < longitud ; i++)
 	   this -> datos[i] = vector.datos[i];	
@@ -136,8 +136,8 @@ void Vector<D>::redimensionar(int nuevo_tam){
     D** aux;
     aux = new D * [nuevo_tam];
 
-    for(int i = 0; i < longitud; ++i){
-        if(i < capacidad)
+    for(int i = 0; i < nuevo_tam ; ++i){
+        if(i < capacidad )
             aux[i] = datos[i];
         else
             aux[i] = NULL;

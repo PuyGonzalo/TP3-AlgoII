@@ -214,7 +214,6 @@ Tipo Lista<Tipo>::bajar_aleatorio(){
     this -> baja(posicion_aleatoria);
     
     return temporal;
-
 } 
 
 #endif // LISTA_H

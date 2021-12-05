@@ -118,15 +118,15 @@ void Jugador::sortear_objetivos_secundarios(){
     int opcion_elegida;
     int i ;
 
-    for(int i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
+    for( i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
         opciones_objetivos.alta(i,i);
     }
 
-    for( i=0; i < CANT_OBJETIVOS_SORTEADOS +1; i++){
+    for( i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
         opcion_elegida = opciones_objetivos.bajar_aleatorio();
         objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
-
     }
+
 }
 
 
@@ -139,7 +139,7 @@ void Jugador::mostrar_objetivos(){
     cout << objetivo_principal->obtener_condiciones() << endl;
     cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
 
-    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS ; i++){
+    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
         cout << objetivos_secundarios.consultar(i)->obtener_nombre() << endl;
         cout << objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
         cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
@@ -427,6 +427,10 @@ Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
 
         case OPC_ARMADO:
             aux = new Armado();
+            break;
+        
+        case OPC_EXTREMISTA:
+            aux = new Extremista();
             break;
     }
 
