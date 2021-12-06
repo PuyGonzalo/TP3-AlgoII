@@ -18,17 +18,17 @@ const int CANT_OBJ_ARMADO = 10;
 
 
 const string OBJ_MAS_ALTO_NUBES = "Objetivo Mas alto que las nubes"; // para que queremos realmente esto?
-const string OBJ_COMPRAR_ANDYNOPOLIS = " Objetivo Comprar Andynopolis";
-const string OBJ_EDAD_PIEDRA = " Objetivo Edad de Piedra";
-const string OBJ_BOMBARDERO = " Objetivo Bombardero";
+const string OBJ_COMPRAR_ANDYNOPOLIS = "Objetivo Comprar Andynopolis";
+const string OBJ_EDAD_PIEDRA = "Objetivo Edad de Piedra";
+const string OBJ_BOMBARDERO = "Objetivo Bombardero";
 const string OBJ_ENERGETICO = "Objetivo Energetico";
 const string OBJ_LETRADO = "Objetivo Letrado";
 const string OBJ_MINERO = "Objetivo Minero";
-const string OBJ_CANSADO = " Objetivo Cansado";
+const string OBJ_CANSADO = "Objetivo Cansado";
 const string OBJ_CONSTRUCTOR = "Objetivo Constructor";
 const string OBJ_ARMADO = "Objetivo Armado";
 const string OBJ_EXTREMISTA = "Objetivo Extremista";
-const string PROGRESO_OBJ = " Para cumplir este objetivo hacen falta: ";
+const string PROGRESO_OBJ = "Para cumplir este objetivo hacen falta: ";
 
 enum Objetivo_secundario_t{
     OPC_COMPRAR_ANDYNOPOLIS,

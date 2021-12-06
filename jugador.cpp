@@ -162,14 +162,29 @@ void Jugador::sortear_objetivos_secundarios(){
 
 
 void Jugador::mostrar_objetivos(){
+cout
+    << endl << TAB << NEGRITA << SUBRAYADO
+    << left
+    << setw(40)
+    << "Objetivo"
+    << left
+    << setw(80)
+    << "Descripcion"
+    << FIN_DE_FORMATO
+    << endl;
 
-    cout << objetivo_principal->obtener_nombre() << endl;
-    cout << objetivo_principal->obtener_condiciones() << endl;
+
+    cout
+        << TAB
+        << left << setw(40) << objetivo_principal->obtener_nombre()
+        << left << setw(80) <<  objetivo_principal->obtener_condiciones() << endl;
    // cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
 
     for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
-        cout << objetivos_secundarios.consultar(i)->obtener_nombre() << endl;
-        cout << objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
+        cout
+        << TAB
+        << left << setw(40) << objetivos_secundarios.consultar(i)->obtener_nombre()
+        << left << setw(80) <<  objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
         //cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
     }
 
