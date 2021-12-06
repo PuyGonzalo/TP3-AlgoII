@@ -1,7 +1,9 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 
-#include<iostream>
+#include <iostream>
+#include <algorithm>
+#include <random>
 #include "edificio.h"
 #include "herramientas.h"
 #include "inventario.h"
@@ -150,7 +152,7 @@ public:
 private:
         //pre: opcion entre 0 y 8
         //post: devuelve uno de los objetivos que salio en el "sorteo"
-        Objetivo* sortear_objetivos(int opcion_objetivo);
+        Objetivo* generar_objetivos_secundarios(int opcion_objetivo);
 
 };
 

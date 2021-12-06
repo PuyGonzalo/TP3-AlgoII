@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <cstdlib>
 #include <stdio.h>
 #include "nodo.h"
 
@@ -210,7 +211,7 @@ template <typename Tipo>
 Tipo Lista<Tipo>::bajar_aleatorio(){
 
     int posicion_aleatoria = rand() % cantidad;
-    Tipo temporal = this-> consulta(posicion_aleatoria);
+    Tipo temporal = this -> consulta(posicion_aleatoria);
     this -> baja(posicion_aleatoria);
     
     return temporal;

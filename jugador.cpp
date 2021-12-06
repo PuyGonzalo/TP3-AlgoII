@@ -114,6 +114,7 @@ double Jugador::obtener_energia(){
 
 void Jugador::sortear_objetivos_secundarios(){
 
+    
     Lista<int> opciones_objetivos;
     int opcion_elegida;
     int i ;
@@ -124,8 +125,31 @@ void Jugador::sortear_objetivos_secundarios(){
 
     for( i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
         opcion_elegida = opciones_objetivos.bajar_aleatorio();
-        objetivos_secundarios.insertar( (sortear_objetivos(opcion_elegida)) );
+        objetivos_secundarios.insertar( (generar_objetivos_secundarios(opcion_elegida)) );
     }
+    
+    
+    
+
+   /*
+   int vec_aux[] = {0,1,2,3,4,5,6,7,8,9};
+   
+   int n = sizeof(vec_aux) / sizeof(vec_aux[0]);
+
+    unsigned seed = rand() % n;
+
+   shuffle(vec_aux, vec_aux + n , default_random_engine(seed));
+
+   for(int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+        objetivos_secundarios.insertar( (generar_objetivos_secundarios(vec_aux[i+1])) );
+    }
+    
+    for(int i=0; i < 10; ++i){
+        cout << vec_aux[i] << endl;
+    }
+    cout << endl;
+    */
+    
 
 }
 
@@ -137,12 +161,12 @@ void Jugador::mostrar_objetivos(){
 
     cout << objetivo_principal->obtener_nombre() << endl;
     cout << objetivo_principal->obtener_condiciones() << endl;
-    cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
+   // cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
 
     for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
         cout << objetivos_secundarios.consultar(i)->obtener_nombre() << endl;
         cout << objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
-        cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
+        //cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
     }
 
 }
@@ -387,7 +411,7 @@ void Jugador::listar_edificios_construidos(){
 
 // ------------------------------------------------------------------------------------------------------------
 
-Objetivo* Jugador::sortear_objetivos(int opcion_objetivo){
+Objetivo* Jugador::generar_objetivos_secundarios(int opcion_objetivo){
 
     Objetivo* aux = nullptr;
 

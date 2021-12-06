@@ -1,7 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-const int VECTOR_TAMANIO_INICIAL = 3;
+const int VECTOR_TAMANIO_INICIAL = 2;
 
 
 template <typename D>
