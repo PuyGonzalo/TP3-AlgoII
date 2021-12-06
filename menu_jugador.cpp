@@ -45,8 +45,6 @@ void mostrar_menu_jugador(Jugador_t jugador){
 
 void procesar_juego(Andypolis& andypolis){
 
-    // Esto lo hago para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
-	srand( (unsigned int)time(NULL) );
 
     int opcion = 0;
 	Estado_t estado = OK;

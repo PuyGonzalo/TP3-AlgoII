@@ -20,6 +20,9 @@ const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
 
 int main (void){
     if(system(CLR_SCREEN)) return 1;
+
+	// Esto lo hago para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
+	srand( (unsigned int)time(NULL) );
 	
     // Abro archivos de lectura
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);

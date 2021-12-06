@@ -114,7 +114,9 @@ double Jugador::obtener_energia(){
 
 void Jugador::sortear_objetivos_secundarios(){
 
-    
+    // Decidir si usamos esta forma:
+
+    /*
     Lista<int> opciones_objetivos;
     int opcion_elegida;
     int i ;
@@ -127,28 +129,30 @@ void Jugador::sortear_objetivos_secundarios(){
         opcion_elegida = opciones_objetivos.bajar_aleatorio();
         objetivos_secundarios.insertar( (generar_objetivos_secundarios(opcion_elegida)) );
     }
+    */
     
     
     
 
-   /*
-   int vec_aux[] = {0,1,2,3,4,5,6,7,8,9};
+   // O esta:
+   int arreglo_aux[] = {0,1,2,3,4,5,6,7,8,9};
    
-   int n = sizeof(vec_aux) / sizeof(vec_aux[0]);
+   int n = sizeof(arreglo_aux) / sizeof(arreglo_aux[0]);
 
-    unsigned seed = rand() % n;
-
-   shuffle(vec_aux, vec_aux + n , default_random_engine(seed));
+   shuffle(arreglo_aux, arreglo_aux + n, default_random_engine(random_device()()));
 
    for(int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
-        objetivos_secundarios.insertar( (generar_objetivos_secundarios(vec_aux[i+1])) );
+        objetivos_secundarios.insertar( (generar_objetivos_secundarios(arreglo_aux[i])) );
     }
     
+    /*
     for(int i=0; i < 10; ++i){
-        cout << vec_aux[i] << endl;
+        cout << arreglo_aux[i] << endl;
     }
     cout << endl;
     */
+    
+    
     
 
 }
