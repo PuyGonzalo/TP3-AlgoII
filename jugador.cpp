@@ -303,6 +303,7 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
         int pos = buscar_edificio_por_identificador(identificador);
 
         if( pos != -1 ){
+            this->mis_edificios.consulta(pos) -> agregar_vida( vida);
             this -> mis_edificios.consulta(pos)->agregar_coordenadas_a_lista(coord_x, coord_y);
 
         }else{
@@ -310,15 +311,17 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
             Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador);
             this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
             int pos_nuevo_edif = mis_edificios.obtener_cantidad() - 1;
-            this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
             this->mis_edificios.consulta(pos_nuevo_edif) -> agregar_vida( vida);
+            this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+            
         }
     }else{
         Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador);
         this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
         int pos_nuevo_edif = this -> mis_edificios.obtener_cantidad() - 1;
-        this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
         this->mis_edificios.consulta(pos_nuevo_edif) -> agregar_vida( vida);
+        this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+        
     }
 }
 
