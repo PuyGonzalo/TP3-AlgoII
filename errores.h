@@ -8,6 +8,7 @@ using namespace std;
 
 // SEGURO HAYA QUE CAMBIAR ALGUNOS ERRORES
 const string STR_OK = "Ok";
+const string STR_ERROR_EDIFICIO_NO_REPARABLE = "¡Este edificio no puede ser reparado!";
 const string STR_ERROR_EDIFICIO_AJENO = "¡Este edificio no es de tu propiedad!";
 const string STR_ERROR_EDIFICIO_PROPIO = "¡Este edificio es de tu propiedad!";
 const string STR_ERROR_BOMBAS_INSUFICIENTES = "¡No tienes bombas para atacar a tu oponente!";
@@ -57,6 +58,7 @@ const string errores[] = {
 	STR_ERROR_EDIFICIO_AJENO,
 	STR_ERROR_EDIFICIO_PROPIO,
 	STR_ERROR_BOMBAS_INSUFICIENTES,
+	STR_ERROR_EDIFICIO_NO_REPARABLE,
 	STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO
 	
 };
@@ -85,7 +87,8 @@ enum Estado_t {
 	ERROR_EDIFICIO_AJENO = 20,
 	ERROR_EDIFICIO_PROPIO = 21,
 	ERROR_BOMBAS_INSUFICIENTES = 22,
-	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 23,
+	ERROR_EDIFICIO_NO_REPARABLE = 23,
+	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 24,
 	ADVERTENCIA_UBICACIONES_VACIO = 200};
 
 

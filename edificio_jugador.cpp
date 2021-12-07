@@ -124,9 +124,7 @@ string Edificio_jugador::obtener_vida_str() const{
 
 
 bool Edificio_jugador::puede_repararse( int posicion){
-
-    return (this -> vida.consulta_const( posicion) < 100);
-    
+    return (this -> vida.consulta_const( posicion) == 50);
 }
 
 
@@ -218,7 +216,20 @@ void Edificio_jugador::restar_cantidad_construidos(){
     this-> cantidad_construidos--;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Edificio_jugador::restar_vida( int posicion ){
 
     this -> vida.modificar( vida.consulta(posicion)-50, posicion);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Edificio_jugador::sumar_vida( int posicion ){
+
+    this -> vida.modificar( vida.consulta(posicion)+50, posicion);
 }

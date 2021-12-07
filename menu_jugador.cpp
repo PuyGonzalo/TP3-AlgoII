@@ -162,7 +162,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case REPARAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
-            //andypolis.mostrar_andypolis();
+            andypolis.mostrar_mapa();
+            estado = reparar_edificio_por_coordenada(andypolis, jugador);
+            andypolis.mostrar_mapa();
             break;
         
         case COMPRAR_BOMBAS: 

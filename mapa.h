@@ -123,6 +123,10 @@ public:
     // pos:
     Estado_t verificar_coordenadas_ataque(int coord_x, int coord_y, Jugador_t jugador);
 
+    // pre:
+    // pos:
+    Estado_t verificar_coordenadas_reparacion(int coord_x, int coord_y, Jugador_t jugador);
+
     // pre: 
     // pos: 
     Jugador_t obtener_creador_edificio(int coord_x, int coord_y);

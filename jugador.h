@@ -100,6 +100,10 @@ public:
         // pos:
         int obtener_vida_edificio( int posicion_edificio, int orden_edificio);
 
+        // pre:
+        // pos:
+        void sumar_vida_edificio( int posicion_edificio, int orden_edificio);
+
 
         // pre: -
         // pos: devuelve la cantidad de bombas que tiene el jugador
@@ -135,7 +139,15 @@ public:
 
         // pre:
         // pos:
+        Estado_t verificar_condiciones_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario);
+
+        // pre:
+        // pos:
         void restar_materiales_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
+
+        // pre:
+        // pos:
+        void restar_materiales_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
         // pre:
         // pos:
@@ -176,6 +188,10 @@ public:
         // pre:
         // pos: Devuelve la posicion en la lista de coordenadas
         int buscar_posicion_coordenadas( int posicion_edificio, int coord_x, int coord_y);
+
+        // pre:
+        // post:
+        bool puede_repararse_edificio( int posicion, int orden_edificio);
 
 
 private:

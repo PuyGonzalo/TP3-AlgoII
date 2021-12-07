@@ -96,6 +96,10 @@ public:
     // pos:
     void restar_vida( int posicion );
 
+    // pre:
+    // pos:
+    void sumar_vida( int posicion );
+
 
 
 

@@ -404,7 +404,10 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
             posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
             orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
 
-            if( jugador_dos.obtener_vida_edificio( posicion_edificio, orden_edificio) == 100 ){
+
+            if( jugador_dos.obtener_vida_edificio(posicion_edificio, orden_edificio) == 100 ){
+                    jugador_dos.restar_vida_edificio(posicion_edificio, orden_edificio);
+
             }
             else{
                 jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
@@ -413,6 +416,7 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
 
             jugador_uno.restar_bombas();
             jugador_uno.aumentar_bombas_usadas();
+            jugador_uno.restar_energia(30);
         }
     }
 
@@ -440,6 +444,69 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
 
             jugador_dos.restar_bombas();
             jugador_dos.aumentar_bombas_usadas();
+            jugador_dos.restar_energia(30);
+        }
+    }
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador){
+
+    Estado_t estado;
+    string nombre_edificio;
+    int posicion_edificio, orden_edificio;
+
+    if((estado = mapa.verificar_coordenadas_reparacion(coord_x, coord_y, jugador)) != OK)
+        return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
+        
+    
+    if( jugador == JUGADOR_UNO){
+        if(jugador_uno.obtener_energia() < (double) 25){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+
+        nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+        posicion_edificio = jugador_uno.buscar_edificio_por_nombre(nombre_edificio);
+        orden_edificio = jugador_uno.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
+
+        if(!jugador_uno.puede_repararse_edificio(posicion_edificio, orden_edificio)){
+            return estado = ERROR_EDIFICIO_NO_REPARABLE;
+        }
+            
+        
+        estado = jugador_uno.verificar_condiciones_construccion(nombre_edificio, diccionario);
+
+        if(estado == OK){
+           
+            jugador_uno.sumar_vida_edificio(posicion_edificio, orden_edificio); 
+            jugador_uno.restar_materiales_reparacion(nombre_edificio, diccionario);
+            jugador_uno.restar_energia((double)25); //desharcodear
+        }
+    }
+
+    if( jugador == JUGADOR_DOS){
+        if(jugador_dos.obtener_energia() < (double) 25){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+
+        nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+        posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
+        orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
+
+        if(!jugador_dos.puede_repararse_edificio(posicion_edificio, orden_edificio))
+            return estado = ERROR_EDIFICIO_NO_REPARABLE;
+        
+        estado = jugador_dos.verificar_condiciones_construccion(nombre_edificio, diccionario);
+
+        if(estado == OK){
+           
+            jugador_dos.sumar_vida_edificio(posicion_edificio, orden_edificio); 
+            jugador_dos.restar_materiales_reparacion(nombre_edificio, diccionario);
+            jugador_dos.restar_energia((double)25); //desharcodear
         }
     }
     return estado;

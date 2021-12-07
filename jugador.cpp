@@ -71,6 +71,26 @@ void Jugador::asignar_numero_jugador(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
+bool Jugador::puede_repararse_edificio( int posicion_edificio, int orden_edificio){
+
+    bool estado = false;
+    cout << "Entro en puede repararse" << endl;
+
+    if(this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_MINA ||
+        this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_MINA_ORO ||
+        this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_FABRICA 
+    ){
+        cout << "Entro en el if" << endl;
+        estado = this -> mis_edificios.consulta(posicion_edificio)->puede_repararse(orden_edificio); 
+    }
+    
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::asignar_ubicacion_jugador(int coord_x, int coord_y){
 
     this -> ubicacion.coordenada_x = coord_x;
@@ -142,6 +162,16 @@ void Jugador::aumentar_bombas_usadas(){
 int Jugador::obtener_vida_edificio( int posicion_edificio, int orden_edificio){
 
     return this->mis_edificios.consulta_const(posicion_edificio)->obtener_vida(orden_edificio);
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::sumar_vida_edificio( int posicion_edificio, int orden_edificio){
+
+    return this->mis_edificios.consulta_const(posicion_edificio)->sumar_vida(orden_edificio);
 
 }
 
@@ -390,16 +420,32 @@ Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Da
         estado = OK;
     }else return estado = ERROR_MATERIALES_INSUFICIENTES; // no tiene sentido continuar si pasa esto, creo
 
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Jugador::verificar_condiciones_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario){
+    
+    Estado_t estado;
+
+    if(energia < 25) //HARCADEO
+        return estado = ERROR_ENERGIA_INSUFICIENTE;
+
+    if(diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() /4 < inventario.obtener_cantidad_de_piedra()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() /4 < inventario.obtener_cantidad_de_madera()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() /4 < inventario.obtener_cantidad_de_metal()){
+            
+        estado = OK;
+    }else return estado = ERROR_MATERIALES_INSUFICIENTES; // no tiene sentido continuar si pasa esto, creo
+
     int posicion_edificio = buscar_edificio_por_nombre(nombre);
 
     if(posicion_edificio != -1){ // Esto es, que ya hay un edificio de este tipo
-        if(mis_edificios.consulta(posicion_edificio) -> obtener_cantidad_construidos() < diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_maximos_permitidos()){
-
-            estado = OK;
-        }else estado = ERROR_MAXIMO_EDIFICIOS_ALCANZADO;
+        estado = ERROR_NO_HAY_CONSTRUIDOS;
     } else estado = OK; //Si no esta en los edificios del jugador, claramente no hay construidos y no se supero la cantidad maxima permitida
-
-    // MMMMMMMMMM
 
     return estado;
 }
@@ -414,6 +460,19 @@ void Jugador::restar_materiales_construccion(string nombre, const ABB<Datos_edif
     diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra(),
     diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera(),
     diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal()    
+    );
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::restar_materiales_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario){
+
+    inventario.restar_cantidad_materiales_construccion(
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() /4,
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() /4,
+    diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() /4    
     );
 }
 

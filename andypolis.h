@@ -103,6 +103,10 @@ public:
     // pos:
     Estado_t atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
 
+    // pre:
+    // pos:
+    Estado_t reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
+
     // pre: -
     // pos: muestra el inventario del jugador pedido
     void mostrar_inventario(Jugador_t jugador);

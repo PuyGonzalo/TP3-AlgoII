@@ -33,6 +33,10 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 // pos:
 Estado_t atacar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador);
 
+// pre:
+// pos:
+Estado_t reparar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador);
+
 // pre: -
 // pos: funcion para el menu para pedirle al usuario datos para consultar un casillero de andypolis
 Estado_t consultar_coordenada(const Andypolis &andypolis);
