@@ -102,10 +102,64 @@ double Jugador::obtener_cantidad_andycoins(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+double Jugador::obtener_cantidad_bombas(){
+
+    return this -> inventario.obtener_cantidad_de_bombas();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 double Jugador::obtener_energia(){
 
     return this -> energia;
 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::restar_bombas(){
+
+    this -> inventario.restar_cantidad_material('X', 1);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::aumentar_bombas_usadas(){
+    this -> inventario.aumentar_bombas_usadas(1);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Jugador::obtener_vida_edificio( int posicion_edificio, int orden_edificio){
+
+    return this->mis_edificios.consulta_const(posicion_edificio)->obtener_vida(orden_edificio);
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Jugador::buscar_posicion_coordenadas( int posicion_edificio, int coord_x, int coord_y){
+    return this -> mis_edificios.consulta(posicion_edificio)->buscar_coordenadas_en_lista(coord_x, coord_y);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::restar_vida_edificio( int posicion_edificio, int orden_edificio){
+
+    return this->mis_edificios.consulta_const(posicion_edificio)->restar_vida(orden_edificio);
 }
 
 
@@ -253,16 +307,18 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
 
         }else{
 
-            Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
+            Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador);
             this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
             int pos_nuevo_edif = mis_edificios.obtener_cantidad() - 1;
             this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+            this->mis_edificios.consulta(pos_nuevo_edif) -> agregar_vida( vida);
         }
     }else{
-        Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador, vida);
+        Edificio_jugador* nuevo_edif = new Edificio_jugador(nombre, identificador);
         this -> mis_edificios.alta(nuevo_edif, mis_edificios.obtener_cantidad());
         int pos_nuevo_edif = this -> mis_edificios.obtener_cantidad() - 1;
         this -> mis_edificios.consulta(pos_nuevo_edif) -> agregar_coordenadas_a_lista(coord_x, coord_y);
+        this->mis_edificios.consulta(pos_nuevo_edif) -> agregar_vida( vida);
     }
 }
 
@@ -401,7 +457,7 @@ void Jugador::listar_edificios_construidos(){
         << "Construidos"
         << left
         << setw(24)
-        << "¿Necesita reparacion?"
+        << "Vida del edificio"
         << left
         << setw(33)
         << "Coordenadas donde se encuentran"
@@ -418,7 +474,7 @@ void Jugador::listar_edificios_construidos(){
             << mis_edificios.consulta_const(i) -> obtener_cantidad_construidos()
             << left
             << setw(24)
-            << mis_edificios.consulta_const(i) -> obtener_vida() // no esta bien la de NECESITA REPARACION y hay que pasarlo a SI NO (o poner hp/hptotal)
+            << mis_edificios.consulta_const(i) -> obtener_vida_edificios_str()
             << left
             << setw(33)   
             << mis_edificios.consulta_const(i) -> obtener_ubicaciones_construidas_str()
@@ -488,10 +544,12 @@ Objetivo* Jugador::generar_objetivos_secundarios(int opcion_objetivo){
 void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y){
 
     int pos_edificio = buscar_edificio_por_nombre(nombre_edificio);
+    int orden_edificio = buscar_posicion_coordenadas(pos_edificio, coord_x, coord_y);
 
     if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
         mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
         mis_edificios.consulta(pos_edificio) -> quitar_coordenadas_a_lista(coord_x, coord_y);
+        mis_edificios.consulta(pos_edificio) -> quitar_vida(orden_edificio);
     }
     else{
         delete mis_edificios.consulta(pos_edificio);
@@ -505,4 +563,24 @@ void Jugador::demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,
     );
 
     restar_energia(15); //HARCODEADOOOOOO
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::destruir_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y){
+
+    int pos_edificio = buscar_edificio_por_nombre(nombre_edificio);
+    int orden_edificio = buscar_posicion_coordenadas(pos_edificio, coord_x, coord_y);
+
+    if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
+        mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
+        mis_edificios.consulta(pos_edificio) -> quitar_coordenadas_a_lista(coord_x, coord_y);
+        mis_edificios.consulta(pos_edificio) -> quitar_vida(orden_edificio);
+    }
+    else{
+        delete mis_edificios.consulta(pos_edificio);
+        mis_edificios.baja(pos_edificio);
+    }
 }

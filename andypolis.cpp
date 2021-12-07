@@ -90,8 +90,6 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
     Estado_t estado_materiales = OK;
     streampos pos_inicial_archivo = 0;
 
-    // IMPLEMENTACION GONA 
-
     getline(archivo_ubics,linea_leida); // Leo la primer linea del archivo ubicaciones
     Parser parser(linea_leida);
 
@@ -102,7 +100,6 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
 
         archivo_ubics.seekg(pos_inicial_archivo); // Vuevlo a colocar el cursor de lectura en el inicio.
         estado_materiales = cargar_materiales_mapa(archivo_ubics);
-        // El metodo de arriba me deja el archivo pipicucu, justo para leer el "1 (69, 420)" jugador 1.
         estado_edificios = cargar_edificios_jugador(archivo_ubics);
     }else{
 
@@ -379,6 +376,71 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
         }
     }
 
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador){
+
+    Estado_t estado;
+    string nombre_edificio;
+    int posicion_edificio, orden_edificio;
+
+    if((estado = mapa.verificar_coordenadas_ataque(coord_x, coord_y, jugador)) != OK)
+        return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
+
+    if( jugador == JUGADOR_UNO){
+        if(jugador_uno.obtener_energia() < (double) 30){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+        if(!jugador_uno.obtener_cantidad_bombas()){
+            return estado = ERROR_BOMBAS_INSUFICIENTES;
+        }
+        else {
+            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+            posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
+            orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
+
+            if( jugador_dos.obtener_vida_edificio( posicion_edificio, orden_edificio) == 100 ){
+                    jugador_dos.restar_vida_edificio( posicion_edificio, orden_edificio);
+            }
+            else{
+                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+                jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+            }
+
+            jugador_uno.restar_bombas();
+            jugador_uno.aumentar_bombas_usadas();
+        }
+    }
+
+    if( jugador == JUGADOR_DOS){
+        if(jugador_dos.obtener_energia() < (double) 30){ //DESHARCODEAR
+            return estado = ERROR_ENERGIA_INSUFICIENTE;
+        }
+        if(!jugador_dos.obtener_cantidad_bombas()){
+            return estado = ERROR_BOMBAS_INSUFICIENTES;
+        }
+        else {
+            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+            posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
+            orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
+
+            if( jugador_uno.obtener_vida_edificio(posicion_edificio, orden_edificio) == 100 ){
+                    jugador_uno.restar_vida_edificio(posicion_edificio, orden_edificio);
+            }
+            else{
+                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+                jugador_uno.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+            }
+
+            jugador_dos.restar_bombas();
+            jugador_dos.aumentar_bombas_usadas();
+        }
+    }
     return estado;
 }
 

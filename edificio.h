@@ -36,7 +36,6 @@ protected:
     char identificador;
     Jugador_t creador;
 
-
 public:
     // Metodos
 

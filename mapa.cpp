@@ -399,6 +399,29 @@ Estado_t Mapa::verificar_coordenadas_demolicion(int coord_x, int coord_y, Jugado
 // ------------------------------------------------------------------------------------------------------------
 
 
+Estado_t Mapa::verificar_coordenadas_ataque(int coord_x, int coord_y, Jugador_t jugador){
+    Estado_t estado;
+
+    if(coord_x < this -> cantidad_filas && coord_y < this -> cantidad_columnas){
+        
+        if(this -> se_puede_construir(coord_x, coord_y)){
+
+            if(this -> casillero_esta_ocupado(coord_x, coord_y)){
+
+                if( this-> obtener_creador_edificio(coord_x, coord_y) != jugador){
+                    estado = OK;
+                }else estado = ERROR_EDIFICIO_PROPIO;
+            } else estado = ERROR_CASILLERO_VACIO;
+        } else estado = ERROR_CASILLERO_NO_CONSTRUIBLE;
+    }else estado = ERROR_POSICION_INEXISTENTE;
+
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 Jugador_t Mapa::obtener_creador_edificio(int coord_x, int coord_y){
     
     Jugador_t jugador;

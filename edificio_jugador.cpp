@@ -6,19 +6,17 @@ Edificio_jugador::Edificio_jugador(){
     this -> nombre = "";
     this -> identificador = ' ';
     this -> cantidad_construidos = 0;
-    this -> vida = 0;
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-Edificio_jugador::Edificio_jugador(string nombre, char identificador, int vida){
+Edificio_jugador::Edificio_jugador(string nombre, char identificador){
 
     this -> nombre = nombre;
     this -> identificador = identificador;
     this -> cantidad_construidos = 0; // Cuando lo creo no tengo construidos
-    this -> vida = vida;
 }
 
 
@@ -56,6 +54,10 @@ int Edificio_jugador::obtener_cantidad_construidos() const{
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+
 string Edificio_jugador::obtener_ubicaciones_construidas_str() const{
 
     stringstream sstream;
@@ -71,22 +73,59 @@ string Edificio_jugador::obtener_ubicaciones_construidas_str() const{
 
 }
 
+
 // ------------------------------------------------------------------------------------------------------------
 
 
-int Edificio_jugador::obtener_vida() const{
 
-    return this -> vida;
+string Edificio_jugador::obtener_vida_edificios_str() const{
+
+    stringstream sstream;
+
+    if(cantidad_construidos != 0){
+        for(int i = 0; i < vida.obtener_cantidad() ; ++i){  
+            sstream << vida.consulta_const(i) << " ";
+        }
+    }
+
+    return sstream.str();   
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Edificio_jugador::obtener_vida( int posicion ) const{
+
+    return this -> vida.consulta_const(posicion);
 
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
+/*
+string Edificio_jugador::obtener_vida_str() const{
 
-bool Edificio_jugador::necesita_reparacion(){
+    stringstream sstream;
 
-    return (this -> vida < 100); // ESTO ESTA MAL.. LOS DE 50 NO ES QUE NECESITEN REPARACION POR ESTAR <100...
+    for( int i=0; i < cantidad_construidos; i++){
+        sstream << '(' << ubicaciones.consulta_const(i) -> coordenada_x
+            << ',' << " " << ubicaciones.consulta_const(i) -> coordenada_y << ") ";
+        }
+    }
+
+    return sstream.str();   
+
+}*/
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Edificio_jugador::puede_repararse( int posicion){
+
+    return (this -> vida.consulta_const( posicion) < 100);
     
 }
 
@@ -106,6 +145,14 @@ void Edificio_jugador::agregar_coordenadas_a_lista(int coord_x, int coord_y){
     this -> cantidad_construidos++;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Edificio_jugador::agregar_vida(int cantidad){
+
+    this->vida.alta(cantidad, vida.obtener_cantidad());
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -158,6 +205,20 @@ void Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Edificio_jugador::quitar_vida( int orden_edificio){
+
+    ubicaciones.baja(orden_edificio);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Edificio_jugador::restar_cantidad_construidos(){
     this-> cantidad_construidos--;
+}
+
+void Edificio_jugador::restar_vida( int posicion ){
+
+    this -> vida.modificar( vida.consulta(posicion)-50, posicion);
 }

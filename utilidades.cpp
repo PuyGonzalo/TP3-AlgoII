@@ -63,6 +63,27 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 // -------------------------------------------------------------------------------------------
 
 
+Estado_t atacar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
+
+    string coord_x, coord_y;
+
+    cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere atacar:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+
+
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+
+    return andypolis.atacar_edificio_de_coord(stoi(coord_x), stoi(coord_y), jugador);
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+
 Estado_t consultar_coordenada(const Andypolis &andypolis){
 
     Estado_t estado = OK;

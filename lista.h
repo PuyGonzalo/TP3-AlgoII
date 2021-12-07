@@ -29,8 +29,16 @@ public:
     void alta(Tipo d, int pos);
 
     // pre: posicion menor al largo de la lista (cantidad)
+    // pos: da de alta un dato en un posicion en particular
+    void modificar(Tipo valor, int pos);
+
+    // pre: posicion menor al largo de la lista (cantidad)
     // pre: devuelve el dato contenido en el nodo de una posicion en particular
     Tipo consulta(int pos);
+
+    // pre: posicion menor al largo de la lista (cantidad)
+    // pre: devuelve el dato contenido en el nodo de una posicion en particular
+    int obtener_posicion(Tipo dato);
 
     // pre: posicion menor al largo de la lista (cantidad)
     // pre: devuelve el dato contenido en el nodo de una posicion en particular
@@ -142,6 +150,33 @@ template <typename Tipo>
 Tipo Lista<Tipo>::consulta(int pos) {
     Nodo<Tipo>* aux = obtener_nodo(pos);
     return aux -> obtener_dato();
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename Tipo>
+void Lista<Tipo>::modificar( Tipo valor, int pos) {
+    Nodo<Tipo>* aux = primero;
+    for (int i = 0; i < pos; i++)
+        aux = aux->obtener_siguiente_const();
+
+    aux->cambiar_dato(valor);
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename Tipo>
+int Lista<Tipo>::obtener_posicion( Tipo dato) {
+    Nodo<Tipo>* aux = primero;
+    int i;
+    for (i = 0; aux->obtener_dato_const() != dato ; i++)
+        aux = aux->obtener_siguiente();
+
+    return i;
 }
 
 

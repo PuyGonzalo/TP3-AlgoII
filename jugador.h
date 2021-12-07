@@ -96,6 +96,15 @@ public:
         // pos: devuelve la cantidad de andycoins que tiene el jugador
         double obtener_cantidad_andycoins();
 
+        // pre:
+        // pos:
+        int obtener_vida_edificio( int posicion_edificio, int orden_edificio);
+
+
+        // pre: -
+        // pos: devuelve la cantidad de bombas que tiene el jugador
+        double obtener_cantidad_bombas();
+
         // pre: -
         // pos: Creo los objetivos secundarios en el vector de objetivos_secundarios
         void sortear_objetivos_secundarios();
@@ -116,8 +125,8 @@ public:
         // pos:
         int buscar_edificio_por_identificador(char identificador);
 
-        // pre:
-        // pos:
+        // pre: Lista de edificios cargado desde el archivo
+        // pos: Posicion del edificio en la lista.
         int buscar_edificio_por_nombre(string nombre);
 
         // pre:
@@ -127,6 +136,18 @@ public:
         // pre:
         // pos:
         void restar_materiales_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
+
+        // pre:
+        // pos:
+        void restar_vida_edificio(int posicion_edificio, int orden_edificio);
+
+        // pre:
+        // pos:
+        void restar_bombas();
+
+        // pre:
+        // pos:
+        void aumentar_bombas_usadas();
 
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido
@@ -143,10 +164,18 @@ public:
         // pre:
         // pos:
         void demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y);
+
+        // pre:
+        // pos:
+        void destruir_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y);
         
         // pre: El vector de objetivos_secundarios esta completo
         // pos: Se imprimen todos los objetivos secundarios y el objetivo principal por consola
         void mostrar_objetivos();
+
+        // pre:
+        // pos: Devuelve la posicion en la lista de coordenadas
+        int buscar_posicion_coordenadas( int posicion_edificio, int coord_x, int coord_y);
 
 
 private:

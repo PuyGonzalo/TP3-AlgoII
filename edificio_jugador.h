@@ -19,7 +19,7 @@ private:
     char identificador;
     int cantidad_construidos;
     Lista<Coordenadas*> ubicaciones;
-    int vida;
+    Lista<int> vida;
 
 public:
     // Metodos
@@ -30,7 +30,7 @@ public:
 
     // pre: -
     // pos: Constructor por parametros
-    Edificio_jugador(string nombre, char identificador, int vida);
+    Edificio_jugador(string nombre, char identificador );
 
     // pre: -
     // pos: Destruye los recursos utilizados
@@ -54,11 +54,19 @@ public:
 
     // pre:
     // pos:
-    int obtener_vida() const;
+    string obtener_vida_edificios_str() const;
+
+    // pre:
+    // pos:
+    int obtener_vida( int posicion ) const;
+
+    // pre:
+    // pos:
+    //string obtener_vida_str() const;
 
     // pre:
     // pos: si no tiene 100 de vida es porque necesita repararse
-    bool necesita_reparacion();
+    bool puede_repararse( int posicion );
 
     // pre:
     // pos:
@@ -66,6 +74,10 @@ public:
 
     // pre:
     // pos:
+    void agregar_vida(int cantidad);
+
+    // pre:
+    // pos: Devuelve la posicion en la lista de coordenadas
     int buscar_coordenadas_en_lista(int coord_x, int coord_y);
 
     // pre:
@@ -74,7 +86,15 @@ public:
 
     // pre:
     // pos:
+    void quitar_vida( int orden_edificio );
+
+    // pre:
+    // pos:
     void restar_cantidad_construidos();
+
+    // pre:
+    // pos:
+    void restar_vida( int posicion );
 
 
 
