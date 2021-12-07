@@ -207,7 +207,7 @@ void Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 
 void Edificio_jugador::quitar_vida( int orden_edificio){
 
-    ubicaciones.baja(orden_edificio);
+    vida.baja(orden_edificio);
 }
 
 

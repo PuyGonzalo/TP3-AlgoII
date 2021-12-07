@@ -404,14 +404,11 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
             posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
             orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
 
-            cout<< "SELECCIONO" << nombre_edificio << posicion_edificio << orden_edificio;
-
             if( jugador_dos.obtener_vida_edificio( posicion_edificio, orden_edificio) == 100 ){
-                    jugador_dos.restar_vida_edificio( posicion_edificio, orden_edificio);
             }
             else{
-                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
                 jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
             }
 
             jugador_uno.restar_bombas();
@@ -431,14 +428,14 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
             posicion_edificio = jugador_uno.buscar_edificio_por_nombre(nombre_edificio);
             orden_edificio = jugador_uno.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
 
-            cout<< "SELECCIONO" << nombre_edificio << posicion_edificio << orden_edificio;
 
             if( jugador_uno.obtener_vida_edificio(posicion_edificio, orden_edificio) == 100 ){
                     jugador_uno.restar_vida_edificio(posicion_edificio, orden_edificio);
+
             }
             else{
-                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
                 jugador_uno.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
             }
 
             jugador_dos.restar_bombas();

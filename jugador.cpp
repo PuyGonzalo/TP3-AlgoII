@@ -578,9 +578,9 @@ void Jugador::destruir_edificio(string nombre_edificio, const ABB<Datos_edificio
     int orden_edificio = buscar_posicion_coordenadas(pos_edificio, coord_x, coord_y);
 
     if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
-        mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
         mis_edificios.consulta(pos_edificio) -> quitar_coordenadas_a_lista(coord_x, coord_y);
         mis_edificios.consulta(pos_edificio) -> quitar_vida(orden_edificio);
+        mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
     }
     else{
         delete mis_edificios.consulta(pos_edificio);
