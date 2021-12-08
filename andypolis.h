@@ -125,7 +125,7 @@ public:
 
     // pre: -
     // pos: muestra el mapa
-    void mostrar_mapa();
+    void mostrar_mapa(int pos_visual_x, int pos_visual_y);
 
     // pre: Objetivos del jugador han sido iniciliazados
     // pos: Se muestran por consola los objetivos del jugador junto con su progreso

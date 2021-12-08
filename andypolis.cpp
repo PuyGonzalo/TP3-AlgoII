@@ -318,7 +318,7 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     if(jugador == JUGADOR_UNO){
         
         estado = jugador_uno.verificar_condiciones_construccion(nombre, diccionario);
-        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO
+        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO (meter un clr screen en ese metodo)
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
@@ -327,13 +327,14 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
             cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
             jugador_uno.restar_materiales_construccion(nombre, diccionario);
             jugador_uno.restar_energia((double)15); //desharcodear
+            cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se construyo " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
         }
     }
 
     if(jugador == JUGADOR_DOS){
         
         estado = jugador_dos.verificar_condiciones_construccion(nombre, diccionario);
-        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO
+        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO (meter un clr screen en ese metodo)
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
@@ -342,6 +343,7 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
             cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
             jugador_dos.restar_materiales_construccion(nombre, diccionario);
             jugador_dos.restar_energia((double)15); //desharcodear
+            cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se construyo " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
         }
     }
     
@@ -558,9 +560,9 @@ void Andypolis::listar_edificios_construidos(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::mostrar_mapa(){
+void Andypolis::mostrar_mapa(int pos_visual_x, int pos_visual_y){
 
-    mapa.mostrar_mapa();
+    mapa.mostrar_mapa(pos_visual_x, pos_visual_y);
 
 }
 

@@ -9,6 +9,7 @@
 #include "Casilleros/casillero_construible.h"
 #include "Casilleros/casillero_inaccesible.h"
 #include "Casilleros/casillero_transitable.h"
+#include "gotoxy.h"
 
 
 class Mapa{
@@ -84,8 +85,8 @@ public:
     Estado_t consultar_casillero(int coord_x, int coord_y) const;
 
     // pre: -
-    // pos: muestra el mapa con sus edificios y materiales
-    void mostrar_mapa();
+    // pos: muestra el mapa con sus edificios y materiales a partir de unas coordenadas para la consola (visual)
+    void mostrar_mapa(int pos_visual_x, int pos_visual_y);
 
     // pre: -
     // pos: imprime la leyenda del mapa (las referencias de que es cada cosa)

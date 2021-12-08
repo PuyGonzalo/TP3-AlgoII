@@ -9,6 +9,7 @@
 #include "andypolis.h"
 #include "utilidades.h"
 #include "herramientas.h"
+#include "gotoxy.h"
 
 
 using namespace std;
@@ -80,7 +81,7 @@ const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
 
 // pre: - 
 // pos: muestra el menu
-void mostrar_menu_jugador(Jugador_t jugador);
+void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis);
 
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)

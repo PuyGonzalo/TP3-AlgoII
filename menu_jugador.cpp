@@ -8,8 +8,7 @@ using namespace std;
 // ------------------------------------------------------------------------------------------------------------
 
 
-void mostrar_menu_jugador(Jugador_t jugador){
-    cout << endl;
+void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 
     string FONDO = "";
 
@@ -37,6 +36,10 @@ void mostrar_menu_jugador(Jugador_t jugador){
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_12 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_13 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
+
+    //andypolis.mostrar_mapa(60,10);
+
+
 }
 
 
@@ -53,11 +56,10 @@ void procesar_juego(Andypolis& andypolis){
     sortear_jugadores(jugador_A, jugador_B);
     
     while(opcion != GUARDAR_SALIR){
-        andypolis.mostrar_mapa();
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
-                mostrar_menu_jugador(jugador_A);
+                mostrar_menu_jugador(jugador_A, andypolis);
                 estado = ingreso_menu(opcion, andypolis, jugador_A);
                 if(estado != OK)
                     imprimir_error(estado);
@@ -67,7 +69,7 @@ void procesar_juego(Andypolis& andypolis){
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
-                mostrar_menu_jugador(jugador_B);
+                mostrar_menu_jugador(jugador_B, andypolis);
                 estado = ingreso_menu(opcion, andypolis, jugador_B);
                 if(estado != OK)
                     imprimir_error(estado);
@@ -138,7 +140,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa();
+            andypolis.mostrar_mapa(16,1);
             estado = construir_edificio_por_nombre(andypolis, jugador);
             break;
 
@@ -149,19 +151,19 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case DEMOLER_EDIFICIO_POR_COORD: 
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa();
+            andypolis.mostrar_mapa(16,1);
             estado = demoler_edificio_por_coordenada(andypolis, jugador);
             break;
 
         case ATACAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa();
+            andypolis.mostrar_mapa(16,1);
             estado = atacar_edificio_por_coordenada(andypolis, jugador);
             break;
 
         case REPARAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa();
+            andypolis.mostrar_mapa(16,1);
             estado = reparar_edificio_por_coordenada(andypolis, jugador);
             break;
         

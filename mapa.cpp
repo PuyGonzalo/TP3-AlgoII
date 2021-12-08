@@ -239,11 +239,14 @@ Estado_t Mapa::consultar_casillero(int coord_x, int coord_y) const{
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Mapa::mostrar_mapa(){
+void Mapa::mostrar_mapa(int pos_visual_x, int pos_visual_y){
 
     //imprimir_leyenda_mapa();
 
+    //Gotoxy gotoxy;
+
     for (int i = 0 ; i < cantidad_filas ; ++i){
+        //cout << gotoxy.pos(pos_visual_x,pos_visual_y+i);
         cout << "\t\t";
         for (int j = 0 ; j < cantidad_columnas ; ++j){
             mapa[i][j] -> imprimir_casillero();
