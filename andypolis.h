@@ -80,6 +80,10 @@ public:
     void cargar_edificio_a_jugador(string nombre, char identificador, int coord_x, int coord_y, Jugador_t jugador);
 
     // pre:
+    // pos: 
+    double obtener_energia_jugador(Jugador_t jugador);
+
+    // pre:
     // pos:
     Estado_t comprar_bombas(Jugador_t jugador);
 

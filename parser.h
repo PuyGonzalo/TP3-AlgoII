@@ -78,8 +78,8 @@ public:
     // pos: Crea un objeto del tipo Datos_edificio
     Datos_edificio* procesar_entrada_edificio();
 
-    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt" o con una linea del tipo "ubicaciones.txt" pero si se esta seguro de estar leyendo un edificio.
-    // pos: Devuelve la primer letra del nombre en mayuscula (identificador)
+    // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
+    // pos: Devuelve la primer letra del nombre en mayuscula (identificador) o una G en caso de una mina de oro
     char obtener_identificador_edificio();
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "edificios.txt"
@@ -127,6 +127,10 @@ public:
     // pre: Parser tiene que estar instanciado con una linea del tipo "ubicaciones.txt"
     // pos: Devuelve el nombre del elemento leido (puede ser un jugador, un material o un edificio)
     string nombre_elemento_ubicaciones();
+
+    // pre: Parser tiene que estar instanciado con una linea del tipo "ubicaciones.txt"
+    // pos: Devuelve la primer letra del nombre en mayuscula (identificador) o una G en caso de una mina de oro
+    char obtener_identificador_edificio_ubicaciones();
 
     // pre: Parser tiene que estar instanciado con una linea del tipo "ubicaciones.txt"
     // pos: Obtiene la coordenada X

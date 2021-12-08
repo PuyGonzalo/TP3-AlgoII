@@ -74,13 +74,9 @@ void Jugador::asignar_numero_jugador(Jugador_t jugador){
 bool Jugador::puede_repararse_edificio( int posicion_edificio, int orden_edificio){
 
     bool estado = false;
-    cout << "Entro en puede repararse" << endl;
 
     if(this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_MINA ||
-        this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_MINA_ORO ||
-        this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_FABRICA 
-    ){
-        cout << "Entro en el if" << endl;
+            this -> mis_edificios.consulta(posicion_edificio)->obtener_nombre() == STR_FABRICA){
         estado = this -> mis_edificios.consulta(posicion_edificio)->puede_repararse(orden_edificio); 
     }
     
@@ -246,31 +242,37 @@ void Jugador::sortear_objetivos_secundarios(){
 
 
 void Jugador::mostrar_objetivos(){
-cout
-    << endl << TAB << NEGRITA << SUBRAYADO
-    << left
-    << setw(40)
-    << "Objetivo"
-    << left
-    << setw(80)
-    << "Descripcion"
-    << FIN_DE_FORMATO
-    << endl;
 
+    actualizar_estado_objetivos();
 
     cout
-        << TAB
-        << left << setw(40) << objetivo_principal->obtener_nombre()
-        << left << setw(80) <<  objetivo_principal->obtener_condiciones() << endl;
-   // cout << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios)<<endl;
+        << endl << TAB << NEGRITA << SUBRAYADO
+        << left
+        << setw(30)
+        << "Objetivo"
+        << left
+        << setw(70)
+        << "Descripcion"
+        << left
+        << setw(48)
+        << "Progreso"
+        << FIN_DE_FORMATO
+        << endl;
 
-    for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+
         cout
-        << TAB
-        << left << setw(40) << objetivos_secundarios.consultar(i)->obtener_nombre()
-        << left << setw(80) <<  objetivos_secundarios.consultar(i)->obtener_condiciones() << endl;
-        //cout << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios)<<endl;
-    }
+            << TAB
+            << left << setw(30) << objetivo_principal->obtener_nombre()
+            << left << setw(70) <<  objetivo_principal->obtener_condiciones()
+            << left << setw(48) << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios) << endl;
+
+        for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
+            cout
+            << TAB
+            << left << setw(30) << objetivos_secundarios.consultar(i)->obtener_nombre()
+            << left << setw(70) <<  objetivos_secundarios.consultar(i)->obtener_condiciones()
+            << left << setw(48) << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios) << endl;
+        }
 
 }
 
@@ -289,9 +291,6 @@ void Jugador::agregar_material_al_inventario(Material* material){
 
 
 Estado_t Jugador::comprar_bombas(){
-
-    if( energia < 5)
-        return ERROR_ENERGIA_INSUFICIENTE; 
 
     string cantidad_a_comprar;
 
@@ -480,12 +479,24 @@ void Jugador::restar_materiales_reparacion(string nombre, const ABB<Datos_edific
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Jugador::chequear_objetivos_secundarios(){
+void Jugador::actualizar_estado_objetivos(){
+
+    objetivo_principal -> actualizar_cumplimiento(energia,inventario,mis_edificios);
+
+    for(int i = 0 ; i < objetivos_secundarios.obtener_longitud() ; ++i)
+        objetivos_secundarios.consultar(i)->actualizar_cumplimiento(energia,inventario,mis_edificios);
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Jugador::victoria_por_objetivos_secundarios(){
 
     int cantidad_objetivos_secundarios_cumplidos = 0;
     
     for(int i = 0 ; i < CANT_OBJETIVOS_SORTEADOS ; ++i){
-        if( objetivos_secundarios.consultar(i) -> chequear_cumplimiento(energia,inventario,mis_edificios) )
+        if( objetivos_secundarios.consultar(i) -> chequear_cumplimiento() )
             cantidad_objetivos_secundarios_cumplidos++;
     }
 

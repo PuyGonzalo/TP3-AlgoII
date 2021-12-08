@@ -20,14 +20,14 @@ string Letrado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Letrado::chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Letrado::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     /* Hay que usar el ABB?
     for(int i=0; i < catalogo.obtener_longitud(); i++){
         if( catalogo.consultar(i) -> nombre_edificio == STR_ESCUELA ) 
             return ( catalogo.consultar(i) -> cantidad_construidos == CANT_ESCUELAS_MAXIMO);
     }
 */
-    return false;
+    this -> cumplido = false;
 }
 
 
@@ -43,5 +43,12 @@ string Letrado::obtener_progreso( const double &cant_energia, const Inventario &
     
     return std::to_string( cant_contruidos % CANT_ESCUELAS ) + "%";
    */
-    return PROGRESO_OBJ + " Letrado";
+      
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
+
+    stringstream sstream;
+    sstream << "OBJETIVO" << "LETRAD";
+
+    return sstream.str();
 }

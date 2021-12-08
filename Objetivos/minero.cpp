@@ -20,7 +20,7 @@ string Minero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Minero::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Minero::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
     int contador = 0;
 
@@ -29,8 +29,7 @@ bool Minero::chequear_cumplimiento(const double &cant_energia, const Inventario 
             contador++;
     }
 
-    return(contador == 2); // CANTIDAD_DE_MINAS = 2;
-
+    this -> cumplido = (contador == CANT_MINAS_OBJETIVO);
 }
 
 
@@ -38,6 +37,11 @@ bool Minero::chequear_cumplimiento(const double &cant_energia, const Inventario 
 
 
 string Minero::obtener_progreso(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+        
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
+
+    
     int contador = 0;
 
     for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i){
@@ -45,6 +49,9 @@ string Minero::obtener_progreso(  const double &cant_energia, const Inventario &
             contador++;
     }
 
-    return PROGRESO_OBJ + std::to_string(CANT_MINAS - contador ) + " minas";
+    stringstream sstream;
+    sstream << "Falta/n construir " << CANT_MINAS_OBJETIVO - contador << " tipo/s de mina";
+
+    return sstream.str();
    
 }

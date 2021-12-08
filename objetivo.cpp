@@ -10,6 +10,14 @@ Objetivo::Objetivo(string nombre_obj, bool realizado){
     this -> cumplido = realizado;
 }
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Objetivo::chequear_cumplimiento(){
+
+    return this -> cumplido;
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 

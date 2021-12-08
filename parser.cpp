@@ -117,7 +117,7 @@ char Parser::obtener_identificador_edificio(){
 
     identificador = toupper(this->entrada[0][POS_PRIMERA_LETRA],loc);
 
-    return identificador;
+    return nombre_edificio() == STR_MINA_ORO ? 'G' : identificador;
 
 }
 
@@ -228,19 +228,19 @@ Edificio* Parser::procesar_entrada_ubicaciones_edificios(Jugador_t jugador){
     Edificio* edificio = nullptr;
 
     if(nombre_elemento_ubicaciones() == STR_MINA){
-        edificio = new Mina(obtener_identificador_edificio(), jugador);
+        edificio = new Mina(obtener_identificador_edificio_ubicaciones(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_P_ELECTRICA){
-        edificio = new Planta_electrica(obtener_identificador_edificio(), jugador);
+        edificio = new Planta_electrica(obtener_identificador_edificio_ubicaciones(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_ESCUELA){
-        edificio = new Escuela(obtener_identificador_edificio(), jugador);
+        edificio = new Escuela(obtener_identificador_edificio_ubicaciones(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_OBELISCO){
-        edificio = new Obelisco(obtener_identificador_edificio(), jugador);
+        edificio = new Obelisco(obtener_identificador_edificio_ubicaciones(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_FABRICA){
-        edificio = new Fabrica(obtener_identificador_edificio(), jugador);
+        edificio = new Fabrica(obtener_identificador_edificio_ubicaciones(), jugador);
     } else if(nombre_elemento_ubicaciones() == STR_MINA_ORO){
-        edificio = new Mina_oro(obtener_identificador_edificio(), jugador);
+        edificio = new Mina_oro(obtener_identificador_edificio_ubicaciones(), jugador);
     } else {
-        edificio = new Aserradero(obtener_identificador_edificio(), jugador);
+        edificio = new Aserradero(obtener_identificador_edificio_ubicaciones(), jugador);
     }
 
     return edificio;
@@ -284,6 +284,21 @@ string Parser::nombre_elemento_ubicaciones(){
     nombre_elemento.append(this->entrada[i]);
     
     return nombre_elemento;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+char Parser::obtener_identificador_edificio_ubicaciones(){
+
+    char identificador;
+    locale loc;
+
+    identificador = toupper(this->entrada[0][POS_PRIMERA_LETRA],loc);
+
+    return nombre_elemento_ubicaciones() == STR_MINA_ORO ? 'G' : identificador;
 
 }
 

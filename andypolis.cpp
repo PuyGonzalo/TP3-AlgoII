@@ -199,7 +199,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
             int coordenada_x = parser.obtener_coordenada_x();
             int coordenada_y = parser.obtener_coordenada_y();
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_UNO), coordenada_x, coordenada_y);
-            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coordenada_x, coordenada_y, JUGADOR_UNO);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coordenada_x, coordenada_y, JUGADOR_UNO);
         }
 
     }
@@ -213,7 +213,7 @@ Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
         int coordenada_x = parser.obtener_coordenada_x();
         int coordenada_y = parser.obtener_coordenada_y();
         estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(JUGADOR_DOS), coordenada_x, coordenada_y);
-        cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coordenada_x, coordenada_y, JUGADOR_DOS);
+        cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coordenada_x, coordenada_y, JUGADOR_DOS);
     }
 
     return estado;
@@ -255,6 +255,15 @@ void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int
 }
 
 
+double Andypolis::obtener_energia_jugador(Jugador_t jugador){
+
+    if(jugador == JUGADOR_UNO)
+        return jugador_uno.obtener_energia();
+    return jugador_dos.obtener_energia();
+
+}
+
+
 // ------------------------------------------------------------------------------------------------------------
 
 
@@ -290,31 +299,33 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     Estado_t estado;
  
     if((estado = mapa.verificar_coordenadas_construccion(coord_x, coord_y)) != OK)
-        return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
+        return estado; //Si las coordenadas tienen algun problema no tiene sentido continuar.
 
     if(jugador == JUGADOR_UNO){
-
+        
         estado = jugador_uno.verificar_condiciones_construccion(nombre, diccionario);
+        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
             Parser parser(linea);
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
-            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
             jugador_uno.restar_materiales_construccion(nombre, diccionario);
             jugador_uno.restar_energia((double)15); //desharcodear
         }
     }
 
     if(jugador == JUGADOR_DOS){
-
+        
         estado = jugador_dos.verificar_condiciones_construccion(nombre, diccionario);
+        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
             Parser parser(linea);
             estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
-            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio(), coord_x, coord_y, jugador);
+            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
             jugador_dos.restar_materiales_construccion(nombre, diccionario);
             jugador_dos.restar_energia((double)15); //desharcodear
         }
@@ -355,25 +366,16 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
 
     if( jugador == JUGADOR_UNO){
-        if(jugador_uno.obtener_energia() < (double) 15){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
-        else {
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
             jugador_uno.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
-        }
     }
 
     if( jugador == JUGADOR_DOS){
-        if(jugador_dos.obtener_energia() < (double) 15){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
-        else {
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
             jugador_dos.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
-        }
+
     }
 
     return estado;
@@ -393,9 +395,6 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
 
     if( jugador == JUGADOR_UNO){
-        if(jugador_uno.obtener_energia() < (double) 30){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
         if(!jugador_uno.obtener_cantidad_bombas()){
             return estado = ERROR_BOMBAS_INSUFICIENTES;
         }
@@ -421,9 +420,6 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
     }
 
     if( jugador == JUGADOR_DOS){
-        if(jugador_dos.obtener_energia() < (double) 30){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
         if(!jugador_dos.obtener_cantidad_bombas()){
             return estado = ERROR_BOMBAS_INSUFICIENTES;
         }
@@ -465,10 +461,6 @@ Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_
         
     
     if( jugador == JUGADOR_UNO){
-        if(jugador_uno.obtener_energia() < (double) 25){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
-
         nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
         posicion_edificio = jugador_uno.buscar_edificio_por_nombre(nombre_edificio);
         orden_edificio = jugador_uno.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
@@ -489,10 +481,6 @@ Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_
     }
 
     if( jugador == JUGADOR_DOS){
-        if(jugador_dos.obtener_energia() < (double) 25){ //DESHARCODEAR
-            return estado = ERROR_ENERGIA_INSUFICIENTE;
-        }
-
         nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
         posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
         orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);

@@ -161,9 +161,13 @@ public:
         // pos:
         void aumentar_bombas_usadas();
 
+        // pre:
+        // pos:
+        void actualizar_estado_objetivos();
+
         //pre: -
         //post: Devuelvo la condicion del objetivo si esta cumplido
-        bool chequear_objetivos_secundarios();
+        bool victoria_por_objetivos_secundarios();
 
         // pre: -
         // pos: muestra el inventario del jugador

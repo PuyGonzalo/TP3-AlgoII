@@ -19,9 +19,11 @@ string Comprar_andypolis::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Comprar_andypolis::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Comprar_andypolis::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+    
     double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
-    return ( total > CANT_ANDYCOINS);
+    this -> cumplido = ( total > CANT_ANDYCOINS_OBJETIVO);
+
 }
 
 
@@ -29,8 +31,15 @@ bool Comprar_andypolis::chequear_cumplimiento(const double &cant_energia, const 
 
 
 string Comprar_andypolis::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
-     double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
+      
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
+  
+    double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
 
-    return PROGRESO_OBJ + std::to_string( CANT_ANDYCOINS - total ) + " andycoins";
+    stringstream sstream;
+    sstream << "Faltan obtener " << CANT_ANDYCOINS_OBJETIVO - total << " andycoins";
+
+    return sstream.str();
    
 }

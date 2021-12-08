@@ -19,9 +19,9 @@ string Armado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Armado::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Armado::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
-    return ( inventario.obtener_cantidad_de_bombas() < CANT_BOMBAS_ALMACENADAS );
+    this -> cumplido = (inventario.obtener_cantidad_de_bombas() < CANT_BOMBAS_OBJETIVO);
  
 }
 
@@ -31,7 +31,12 @@ bool Armado::chequear_cumplimiento(const double &cant_energia, const Inventario 
 
 string Armado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
 
-    return PROGRESO_OBJ + std::to_string( CANT_BOMBAS_ALMACENADAS - inventario.obtener_cantidad_de_bombas()) + " bombas";
+    stringstream sstream;
+    sstream << "Falta/n comprar " << CANT_BOMBAS_OBJETIVO - inventario.obtener_cantidad_de_bombas() << " bomba/s";
+
+    return sstream.str();
    
 }

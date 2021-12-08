@@ -3,7 +3,7 @@
 
 #include "../objetivo.h"
 
-const int CANT_BOMBAS_ALMACENADAS = 10;
+const int CANT_BOMBAS_OBJETIVO = 10;
 const string CONDICIONES_ARMADO = "Tener 10 bombas en el inventario";
 
 class Armado: public Objetivo {
@@ -13,7 +13,7 @@ class Armado: public Objetivo {
         ~Armado(){};
 
         string obtener_condiciones();
-        bool chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios); 
+        void actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios); 
         string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios);
 };
 

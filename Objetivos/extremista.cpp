@@ -19,9 +19,10 @@ string Extremista::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Extremista::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Extremista::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
-    return( inventario.obtener_bombas_compradas() < CANT_BOMBAS_COMPRADAS);
+    this -> cumplido = (inventario.obtener_bombas_compradas() < CANT_BOMBAS_COMPRADAS_OBJETIVO);
+
 }
 
 
@@ -29,7 +30,14 @@ bool Extremista::chequear_cumplimiento(const double &cant_energia, const Inventa
 
 
 string Extremista::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+    
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
 
-    return PROGRESO_OBJ + std::to_string(CANT_BOMBAS_COMPRADAS  - inventario.obtener_bombas_compradas() ) + " bombas compradas";
-   
+
+    stringstream sstream;
+    sstream << "Falta/n comprar " << CANT_BOMBAS_COMPRADAS_OBJETIVO  - inventario.obtener_bombas_compradas() << " bomba/s";
+
+    return sstream.str();
+
 }

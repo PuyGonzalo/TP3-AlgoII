@@ -17,18 +17,18 @@ const int CANT_OBJ_CANSADO = 0;
 const int CANT_OBJ_ARMADO = 10;
 
 
-const string OBJ_MAS_ALTO_NUBES = "Objetivo Mas alto que las nubes"; // para que queremos realmente esto?
-const string OBJ_COMPRAR_ANDYNOPOLIS = "Objetivo Comprar Andynopolis";
-const string OBJ_EDAD_PIEDRA = "Objetivo Edad de Piedra";
-const string OBJ_BOMBARDERO = "Objetivo Bombardero";
-const string OBJ_ENERGETICO = "Objetivo Energetico";
-const string OBJ_LETRADO = "Objetivo Letrado";
-const string OBJ_MINERO = "Objetivo Minero";
-const string OBJ_CANSADO = "Objetivo Cansado";
-const string OBJ_CONSTRUCTOR = "Objetivo Constructor";
-const string OBJ_ARMADO = "Objetivo Armado";
-const string OBJ_EXTREMISTA = "Objetivo Extremista";
-const string PROGRESO_OBJ = "Para cumplir este objetivo hacen falta: ";
+const string OBJ_MAS_ALTO_NUBES = "Mas alto que las nubes"; // para que queremos realmente esto?
+const string OBJ_COMPRAR_ANDYNOPOLIS = "Comprar Andynopolis";
+const string OBJ_EDAD_PIEDRA = "Edad de Piedra";
+const string OBJ_BOMBARDERO = "Bombardero";
+const string OBJ_ENERGETICO = "Energetico";
+const string OBJ_LETRADO = "Letrado";
+const string OBJ_MINERO = "Minero";
+const string OBJ_CANSADO = "Cansado";
+const string OBJ_CONSTRUCTOR = "Constructor";
+const string OBJ_ARMADO = "Armado";
+const string OBJ_EXTREMISTA = "Extremista";
+const string OBJ_CUMPLIDO =  "¡OBJETIVO CUMPLIDO!";
 
 enum Objetivo_secundario_t{
     OPC_COMPRAR_ANDYNOPOLIS,
@@ -56,8 +56,10 @@ class Objetivo{
 
         string obtener_nombre();
 
+        bool chequear_cumplimiento();
+
         virtual string obtener_condiciones() = 0;
-        virtual bool chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0; 
+        virtual void actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0; 
         virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0;
 };
 

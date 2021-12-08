@@ -9,6 +9,9 @@ Inventario::Inventario(){
 
     this -> jugador = NADIE;
     this -> cantidad_materiales = 0;
+    this -> andycoins_gastadas = 0;
+    this -> bombas_compradas = 0;
+    this -> bombas_usadas = 0;
 
 }
 

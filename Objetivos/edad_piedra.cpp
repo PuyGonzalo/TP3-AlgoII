@@ -20,9 +20,10 @@ string Edad_piedra::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Edad_piedra::chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Edad_piedra::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
-    return (inventario.obtener_cantidad_de_piedra() > CANT_PIEDRA);
+    this -> cumplido = (inventario.obtener_cantidad_de_piedra() > CANT_PIEDRA_OBJETIVO);
+
 }
 
 
@@ -30,7 +31,13 @@ bool Edad_piedra::chequear_cumplimiento( const double &cant_energia, const Inven
 
 
 string Edad_piedra::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+    
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
 
-    return PROGRESO_OBJ + std::to_string( CANT_PIEDRA - inventario.obtener_cantidad_de_piedra() ) + " piedras";
+    stringstream sstream;
+    sstream << "Falta juntar " << CANT_PIEDRA_OBJETIVO - inventario.obtener_cantidad_de_piedra() << " de piedra";
+
+    return sstream.str();
    
 }

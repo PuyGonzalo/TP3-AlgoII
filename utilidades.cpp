@@ -8,6 +8,9 @@
 
 Estado_t comprar_bombas(Andypolis &andypolis, Jugador_t jugador){
 
+    if( andypolis.obtener_energia_jugador(jugador) < 5)
+        return ERROR_ENERGIA_INSUFICIENTE; 
+
     return andypolis.comprar_bombas(jugador);
 
 }
@@ -17,6 +20,10 @@ Estado_t comprar_bombas(Andypolis &andypolis, Jugador_t jugador){
 
 
 Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador){
+
+    if(andypolis.obtener_energia_jugador(jugador) < 15) // deshardc
+        return ERROR_ENERGIA_INSUFICIENTE;
+
     string nombre;
     string coord_x, coord_y;
     //Estado_t estado = OK;
@@ -44,6 +51,9 @@ Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador){
 
 Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
 
+    if(andypolis.obtener_energia_jugador(jugador) < 15)
+        return ERROR_ENERGIA_INSUFICIENTE;
+
     string coord_x, coord_y;
 
     cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere demoler:" << FIN_DE_FORMATO << endl;
@@ -65,6 +75,10 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 
 Estado_t atacar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
 
+    if(andypolis.obtener_energia_jugador(jugador) < 30) //DESHARCODEAR
+        return ERROR_ENERGIA_INSUFICIENTE;
+
+
     string coord_x, coord_y;
 
     cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere atacar:" << FIN_DE_FORMATO << endl;
@@ -85,6 +99,9 @@ Estado_t atacar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador)
 
 
 Estado_t reparar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
+
+    if(andypolis.obtener_energia_jugador(jugador) < 25)
+        return ERROR_ENERGIA_INSUFICIENTE;
 
     string coord_x, coord_y;
 

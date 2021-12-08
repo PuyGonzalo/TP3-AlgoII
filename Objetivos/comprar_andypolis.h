@@ -3,8 +3,8 @@
 
 #include "../objetivo.h"
 
-const int CANT_ANDYCOINS = 100000;
-const string CONDICIONES_COMPRAR_ANDYPOLIS = " Haber juntado 100.000 andycoins a lo largo de la partida (las monedas gastadas también cuentan para este objetivo)";
+const int CANT_ANDYCOINS_OBJETIVO = 100000;
+const string CONDICIONES_COMPRAR_ANDYPOLIS = "Haber juntado 100.000 andycoins a lo largo de la partida";
 
 class Comprar_andypolis : public Objetivo {
 
@@ -14,7 +14,7 @@ class Comprar_andypolis : public Objetivo {
 
         string obtener_condiciones();
         
-        bool chequear_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios); 
+        void actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios); 
         string obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios);
 };
 

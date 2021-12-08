@@ -19,9 +19,10 @@ string Bombardero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Bombardero::chequear_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Bombardero::actualizar_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
    
-   return (  inventario.obtener_bombas_usadas() > CANT_BOMBAS_USADAS);
+   this -> cumplido = (inventario.obtener_bombas_usadas() > CANT_BOMBAS_USADAS_OBJETIVO);
+
 }
 
 
@@ -29,8 +30,13 @@ bool Bombardero::chequear_cumplimiento(  const double &cant_energia, const Inven
 
 
 string Bombardero::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+    
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
 
+    stringstream sstream;
+    sstream << "Falta/n usar " << CANT_BOMBAS_USADAS_OBJETIVO - inventario.obtener_bombas_usadas() << " bomba/s";
 
-    return PROGRESO_OBJ + std::to_string( CANT_BOMBAS_USADAS - inventario.obtener_bombas_usadas() ) + " bombas usadas";
+    return sstream.str();
    
 }

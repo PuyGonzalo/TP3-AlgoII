@@ -19,13 +19,13 @@ string Alto_nubes::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Alto_nubes::chequear_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Alto_nubes::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
     
     for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
-        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO) 
-            return (mis_edificios.consulta_const(i) -> obtener_cantidad_construidos() == 1);
+        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO)
+            this -> cumplido = (mis_edificios.consulta_const(i) -> obtener_cantidad_construidos() == 1);
     }
-    return false;
+
 }
 
 
@@ -34,13 +34,20 @@ bool Alto_nubes::chequear_cumplimiento(const double &cant_energia, const Inventa
 
 string Alto_nubes::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
 
+    if(this -> cumplido)
+        return OBJ_CUMPLIDO;
+
     int cantidad_construidos = 0; 
 
     for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
         if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO) 
             cantidad_construidos++;
     }
-    
-    return PROGRESO_OBJ+ std::to_string( CANT_OBELISCOS-cantidad_construidos ) + " obelisco";
+
+    stringstream sstream;
+    sstream << "Falta construir " << CANT_OBELISCOS-cantidad_construidos << " obelisco";
+
+    return sstream.str();
+
    
 }
