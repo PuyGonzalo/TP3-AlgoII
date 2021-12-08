@@ -68,8 +68,8 @@ public:
         // pos:
         void agregar_energia(double energia);
 
-        // pre:
-        // pos:
+        // pre: que una funciona mas externa chequee que no quede negativa la energia
+        // pos: resta energia
         void restar_energia(double energia);
 
         // pre: -

@@ -179,24 +179,11 @@ int Edificio_jugador::buscar_coordenadas_en_lista(int coord_x, int coord_y){
 
 
 void Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
-    /*
-    Estado_t estado = OK;
-
-    int pos = buscar_coordenadas_en_lista(coord_x, coord_y);
-
-    if(pos != -1){
-        ubicaciones.baja(pos);
-    }
-    else{
-        estado = ERROR_POSICION_INEXISTENTE;
-    }
-
-    return estado;
-    */
 
    int pos = buscar_coordenadas_en_lista(coord_x, coord_y);
-
-    ubicaciones.baja(pos);
+   delete ubicaciones.consulta(pos);
+   ubicaciones.baja(pos);
+   
 }
 
 
@@ -206,6 +193,7 @@ void Edificio_jugador::quitar_coordenadas_a_lista(int coord_x, int coord_y){
 void Edificio_jugador::quitar_vida( int orden_edificio){
 
     vida.baja(orden_edificio);
+
 }
 
 
@@ -213,7 +201,9 @@ void Edificio_jugador::quitar_vida( int orden_edificio){
 
 
 void Edificio_jugador::restar_cantidad_construidos(){
+
     this-> cantidad_construidos--;
+    
 }
 
 

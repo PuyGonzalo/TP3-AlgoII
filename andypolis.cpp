@@ -255,6 +255,9 @@ void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
 double Andypolis::obtener_energia_jugador(Jugador_t jugador){
 
     if(jugador == JUGADOR_UNO)
@@ -263,6 +266,17 @@ double Andypolis::obtener_energia_jugador(Jugador_t jugador){
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Andypolis::agregar_energia_jugador(Jugador_t jugador){
+
+    if(jugador == JUGADOR_UNO)
+        jugador_uno.agregar_energia(25); // HARDCODEADOOO
+    else if(jugador == JUGADOR_DOS)
+        jugador_dos.agregar_energia(25);
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -368,13 +382,13 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
     if( jugador == JUGADOR_UNO){
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            jugador_uno.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+            jugador_uno.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
     }
 
     if( jugador == JUGADOR_DOS){
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            jugador_dos.demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+            jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
 
     }
 

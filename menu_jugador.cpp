@@ -53,7 +53,7 @@ void procesar_juego(Andypolis& andypolis){
     sortear_jugadores(jugador_A, jugador_B);
     
     while(opcion != GUARDAR_SALIR){
-
+        andypolis.mostrar_mapa();
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
@@ -108,7 +108,9 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
     string  opcion_elegida;
 
 
-    cout << TAB << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION << FIN_DE_FORMATO <<endl;
+    cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION
+    << " (Tiene " << andypolis.obtener_energia_jugador(jugador) << " de energia)" 
+    << FIN_DE_FORMATO <<endl;
     cout << '>' << ESPACIO; getline(cin, opcion_elegida); cout << FIN_DE_FORMATO;
 
     if(!es_un_numero(opcion_elegida))
@@ -138,7 +140,6 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
             if(system(CLR_SCREEN));
             andypolis.mostrar_mapa();
             estado = construir_edificio_por_nombre(andypolis, jugador);
-            andypolis.mostrar_mapa();
             break;
 
         case LISTAR_EDIFICIOS_CONSTRUIDOS:
@@ -150,21 +151,18 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
             if(system(CLR_SCREEN));
             andypolis.mostrar_mapa();
             estado = demoler_edificio_por_coordenada(andypolis, jugador);
-            andypolis.mostrar_mapa();
             break;
 
         case ATACAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
             andypolis.mostrar_mapa();
             estado = atacar_edificio_por_coordenada(andypolis, jugador);
-            andypolis.mostrar_mapa();
             break;
 
         case REPARAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
             andypolis.mostrar_mapa();
             estado = reparar_edificio_por_coordenada(andypolis, jugador);
-            andypolis.mostrar_mapa();
             break;
         
         case COMPRAR_BOMBAS: 
@@ -199,6 +197,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case FINALIZAR_TURNO:
             if(system(CLR_SCREEN));
+            andypolis.agregar_energia_jugador(jugador);
             //estado = lluvia_de_recursos(andypolis);
             break;
 

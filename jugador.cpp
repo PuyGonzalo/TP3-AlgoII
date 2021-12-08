@@ -34,8 +34,9 @@ Jugador::~Jugador(){
 
 
 void Jugador::agregar_energia(double energia){
-    
-    this -> energia += energia;
+    if(this -> energia + energia >= 100) // deshardcodear
+        this -> energia = 100;
+    else this -> energia += energia;
 }
 
 
@@ -44,8 +45,8 @@ void Jugador::agregar_energia(double energia){
 
 void Jugador::restar_energia(double energia){
     
-    if(this -> energia > energia)
-        this -> energia -= energia;
+    this -> energia -= energia;
+    
 }
 
 
@@ -332,7 +333,7 @@ void Jugador::agregar_edificio(string nombre, char identificador, int vida, int 
         int pos = buscar_edificio_por_identificador(identificador);
 
         if( pos != -1 ){
-            this->mis_edificios.consulta(pos) -> agregar_vida( vida);
+            this->mis_edificios.consulta(pos) -> agregar_vida(vida);
             this -> mis_edificios.consulta(pos)->agregar_coordenadas_a_lista(coord_x, coord_y);
 
         }else{
@@ -647,10 +648,10 @@ void Jugador::destruir_edificio(string nombre_edificio, const ABB<Datos_edificio
     int pos_edificio = buscar_edificio_por_nombre(nombre_edificio);
     int orden_edificio = buscar_posicion_coordenadas(pos_edificio, coord_x, coord_y);
 
-    if(mis_edificios.consulta(pos_edificio)->obtener_cantidad_construidos() > 1){
+    if(mis_edificios.consulta(pos_edificio) -> obtener_cantidad_construidos() > 1){
         mis_edificios.consulta(pos_edificio) -> quitar_coordenadas_a_lista(coord_x, coord_y);
         mis_edificios.consulta(pos_edificio) -> quitar_vida(orden_edificio);
-        mis_edificios.consulta(pos_edificio)-> restar_cantidad_construidos();
+        mis_edificios.consulta(pos_edificio) -> restar_cantidad_construidos();
     }
     else{
         delete mis_edificios.consulta(pos_edificio);

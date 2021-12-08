@@ -85,6 +85,10 @@ public:
 
     // pre:
     // pos:
+    void agregar_energia_jugador(Jugador_t jugador);
+
+    // pre:
+    // pos:
     Estado_t comprar_bombas(Jugador_t jugador);
 
     // pre:

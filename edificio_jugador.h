@@ -80,8 +80,8 @@ public:
     // pos: Devuelve la posicion en la lista de coordenadas
     int buscar_coordenadas_en_lista(int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: tiene que ser una coorenada existente (chequear en funciones mas externas)
+    // pos: 
     void quitar_coordenadas_a_lista(int coord_x, int coord_y);
 
     // pre:
