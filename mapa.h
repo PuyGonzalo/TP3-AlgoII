@@ -19,7 +19,7 @@ private:
     Casillero*** mapa;
     int cantidad_filas;
     int cantidad_columnas;
-    Lista<Coordenadas*> casilleros_transitables_disponibles;
+    Lista<Coordenadas*> casilleros_transitables_disponibles; //CUADNO EL JUGADOR PASE POR UNA DE ESAS COORD TIENE QUE LLEVARSE EL MATERIAL
 
 public:
     // Metodos
@@ -51,6 +51,10 @@ public:
     // pre: el casillero debe ser valido
     // pos: devuelve el peso (costo de energia) para el jugador que pase por dicho casillero debido a la superf que se halle ahi
     int obtener_peso_casillero(int coord_x, int coord_y, Jugador_t jugador) const;
+
+    // pre: coordenada valida
+    // pos: devuelve el indice de la lista de casilleros transitables disponibles de una coordenada pedida
+    int obtener_indice_casillero_transitable(int coord_x, int coord_y);
 
     // pre: coordenadas validas (depende de mapa.txt)
     // pos: devuelve si un casillero particular del mapa es transitable

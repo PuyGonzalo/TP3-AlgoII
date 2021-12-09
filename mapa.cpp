@@ -126,6 +126,30 @@ int Mapa::obtener_peso_casillero(int coord_x, int coord_y, Jugador_t jugador) co
 // ------------------------------------------------------------------------------------------------------------
 
 
+int Mapa::obtener_indice_casillero_transitable(int coord_x, int coord_y){
+
+    int i = 0;
+    int posicion = -1;
+    bool encontrado = false;
+
+    while( i < casilleros_transitables_disponibles.obtener_cantidad() && !encontrado){
+        
+        if(casilleros_transitables_disponibles.consulta(i) -> coordenada_x == coord_x && casilleros_transitables_disponibles.consulta(i) -> coordenada_y == coord_y){
+            encontrado = true;
+            posicion = i;
+        }
+
+        ++i;
+    }
+
+    return posicion;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 bool Mapa::se_puede_transitar(int coord_x, int coord_y){
 
     return mapa[coord_x][coord_y] -> es_casillero_transitable();
@@ -169,7 +193,7 @@ Estado_t Mapa::asignar_edificio_en_coord(Edificio* edificio, int coord_x, int co
 
     Estado_t estado = OK;
 
-    if(mapa[coord_x][coord_y] -> es_casillero_construible()){
+    if(mapa[coord_x][coord_y] -> es_casillero_construible()){ // usar se puede construir
         if(!(casillero_esta_ocupado(coord_x,coord_y)) ){
             mapa[coord_x][coord_y] -> construir_edificio(edificio);
             } else {
@@ -195,7 +219,7 @@ Estado_t Mapa::destruir_edificio_en_coord(int coord_x, int coord_y){
 
     Estado_t estado = OK;
 
-    if(mapa[coord_x][coord_y] -> es_casillero_construible()){
+    if(mapa[coord_x][coord_y] -> es_casillero_construible()){ // usar se puede construir
         if(casillero_esta_ocupado(coord_x,coord_y)){
             mapa[coord_x][coord_y] -> destruir_edificio();
         } else estado = ERROR_CASILLERO_VACIO;
@@ -215,6 +239,14 @@ Estado_t Mapa::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador){
         return ERROR_POSICION_INEXISTENTE;
 
     mapa[coord_x][coord_y] -> posicionar_jugador(jugador);
+
+    if(se_puede_transitar(coord_x,coord_y)){
+        int ind = obtener_indice_casillero_transitable(coord_x, coord_y);
+        delete casilleros_transitables_disponibles.consulta(ind);
+        casilleros_transitables_disponibles.baja(ind);
+    }
+
+
     return OK;
 
 }
@@ -308,9 +340,13 @@ int Mapa::cantidad_casilleros_transitables_disponibles(){
 Estado_t Mapa::agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y){
     Estado_t estado = OK;
 
-    if(mapa[coord_x][coord_y] -> es_casillero_transitable()){
+    if(se_puede_transitar(coord_x,coord_y)){
         if(!(casillero_esta_ocupado(coord_x, coord_y))){
             mapa[coord_x][coord_y] -> poner_material(material);
+            int ind = obtener_indice_casillero_transitable(coord_x, coord_y);
+            delete casilleros_transitables_disponibles.consulta(ind);
+            casilleros_transitables_disponibles.baja(ind);
+
         }else estado = ERROR_CASILLERO_OCUPADO;
 
     }else estado = ERROR_CASILLERO_NO_TRANSITABLE;

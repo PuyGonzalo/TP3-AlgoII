@@ -50,12 +50,17 @@ void procesar_juego(Andypolis& andypolis){
 
 
     int opcion = 0;
+    int turno = 0;
 	Estado_t estado = OK;
 
     Jugador_t jugador_A = NADIE , jugador_B = NADIE;
     sortear_jugadores(jugador_A, jugador_B);
     
     while(opcion != GUARDAR_SALIR){
+        
+        if(!(turno%2))
+            andypolis.lluvia_de_recursos();
+
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
@@ -66,6 +71,8 @@ void procesar_juego(Andypolis& andypolis){
             }
         }
 
+        turno++;
+
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
@@ -75,6 +82,8 @@ void procesar_juego(Andypolis& andypolis){
                     imprimir_error(estado);
             }      
         }
+
+        turno++;
 
     }
 

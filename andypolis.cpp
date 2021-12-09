@@ -520,6 +520,56 @@ Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_
 // ------------------------------------------------------------------------------------------------------------
 
 
+Estado_t Andypolis::lluvia_de_recursos(){
+
+    int cantidad_lluvia_piedra, cantidad_lluvia_madera, cantidad_lluvia_metal, cantidad_lluvia_andycoins;
+
+    cantidad_lluvia_piedra = rand() % RAND_MAX_PIEDRA + 1;
+    cantidad_lluvia_madera = rand() % RAND_MAX_MADERA;
+    cantidad_lluvia_metal = rand() % RAND_MAX_METAL + 2;
+    cantidad_lluvia_andycoins = rand() % RAND_MAX_ANDYCOINS;
+
+    int casilleros_disponibles = mapa.cantidad_casilleros_transitables_disponibles();
+    if(cantidad_lluvia_andycoins + cantidad_lluvia_madera + cantidad_lluvia_piedra + cantidad_lluvia_metal > casilleros_disponibles)
+        return ADVERTENCIA_LLUVIA_RECURSOS;
+
+
+    string piedra = "piedra 100";
+    string madera = "madera 50";
+    string metal = "metal 50";
+    string andycoins = "andycoins 250"; // metodo parser igual a procesar pero con otro nombre "procesas_entrada_mateiral_lluva"
+    
+
+    for(int i = 1; i <= cantidad_lluvia_piedra; ++i){
+        Parser parser(piedra);
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO)); // RE COCHINOOO ¿cambiar?
+    }
+
+    for(int i = 1; i <= cantidad_lluvia_madera; ++i){
+        Parser parser(madera);
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+    }
+
+    for(int i = 1; i <= cantidad_lluvia_metal; ++i){
+        Parser parser(metal);
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+    }
+
+    for(int i = 1; i <= cantidad_lluvia_andycoins; ++i){
+        Parser parser(metal);
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+    }
+
+    cout << endl << TAB << FONDO_COLOR_AZUL << NEGRITA << "¡LLUVIA DE RECURSOS!" << FIN_DE_FORMATO << endl;
+
+    return OK;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::mostrar_inventario(Jugador_t jugador){
 
     if(jugador == JUGADOR_UNO)

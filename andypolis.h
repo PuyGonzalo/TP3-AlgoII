@@ -26,6 +26,13 @@ const string CONFIRMACION_AFIRMATIVA_CONSTRUCCION = "SI";
 const string CONFIRMACION_NEGATIVA_CONSTRUCCION = "NO";
 
 
+const int RAND_MAX_PIEDRA = 2;
+const int RAND_MAX_MADERA = 3;
+const int RAND_MAX_METAL = 4;
+const int RAND_MAX_ANDYCOINS = 1;
+
+
+
 class Andypolis{
 
 private:
@@ -114,6 +121,10 @@ public:
     // pre:
     // pos:
     Estado_t reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre: -
+    // pos: LLUVIA DE RECURSOS chocolate raaain
+    Estado_t lluvia_de_recursos();
 
     // pre: -
     // pos: muestra el inventario del jugador pedido
