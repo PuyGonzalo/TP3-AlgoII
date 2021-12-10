@@ -155,6 +155,66 @@ void Jugador::aumentar_bombas_usadas(){
 
 // ------------------------------------------------------------------------------------------------------------
 
+void Jugador::recolectar_recursos(Mapa &mapa){
+
+    int x = 0;
+    int y = 0;
+    double cantidad_a_agregar = 0;
+    char identificador = ' ';
+
+    for(int i = 0; i < mis_edificios.obtener_cantidad(); ++i){
+
+        if(mis_edificios.consulta(i) -> obtener_cantidad_construidos() > 0){
+            for(int j = 0; j < mis_edificios.consulta(i) -> obtener_cantidad_construidos() ; ++j){
+
+                if(mis_edificios.consulta(i) -> obtener_nombre() == STR_P_ELECTRICA){
+                    x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
+                    y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
+                    cantidad_a_agregar = mapa.recolectar_recursos_casillero(x,y);
+                    agregar_energia(cantidad_a_agregar);
+                }
+
+                x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
+                y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
+                identificador = mapa.obtener_identificador_recurso_de_casillero(x,y);
+                cantidad_a_agregar = mapa.recolectar_recursos_casillero(x,y);
+
+                inventario.sumar_cantidad_material(identificador, cantidad_a_agregar);
+
+            }
+        }
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::depositar_recursos(Mapa &mapa){
+
+    int x = 0;
+    int y = 0;
+    double cantidad_a_agregar = 0;
+    char identificador = ' ';
+
+    for(int i = 0; i < mis_edificios.obtener_cantidad(); ++i){
+        if(mis_edificios.consulta(i) -> obtener_cantidad_construidos() > 0){
+            for(int j = 0; j < mis_edificios.consulta(i) -> obtener_cantidad_construidos() ; ++j){
+
+                x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
+                y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
+                identificador = mapa.obtener_identificador_recurso_de_casillero(x,y);
+                mapa.depositar_recurso_casillero(x,y);
+
+            }
+        }
+    }
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 int Jugador::obtener_vida_edificio( int posicion_edificio, int orden_edificio){
 

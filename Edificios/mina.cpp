@@ -22,7 +22,7 @@ string Mina::obtener_tipo_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Mina::obtener_recurso(){
+char Mina::obtener_identificador_recurso(){
     return this -> identificador_material_brindado;
 }
 
@@ -30,6 +30,8 @@ char Mina::obtener_recurso(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Mina::obtener_cantidad_recurso(){
-    return this -> cantidad_material_brindado;
+void Mina::depositar_recurso(){
+
+    this -> deposito += cantidad_material_brindado;
+
 }

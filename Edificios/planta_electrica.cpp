@@ -22,6 +22,8 @@ string Planta_electrica::obtener_tipo_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Planta_electrica::obtener_cantidad_recurso(){
-    return this -> cantidad_energia_brindada;
+void Planta_electrica::depositar_recurso(){
+
+    this -> deposito += cantidad_energia_brindada;
+
 }

@@ -163,6 +163,14 @@ public:
 
         // pre:
         // pos:
+        void recolectar_recursos(Mapa &mapa);
+
+        // pre:
+        // pos:
+        void depositar_recursos(Mapa &mapa);
+
+        // pre:
+        // pos:
         void actualizar_estado_objetivos();
 
         // pre:

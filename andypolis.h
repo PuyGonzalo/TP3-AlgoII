@@ -128,6 +128,9 @@ public:
 
     // pre: -
     // pos: 
+    void recolectar_recursos_jugador(Jugador_t jugador);
+
+    // falta depositar
 
     // pre: -
     // pos: se fija si el jugador gano (claramente va a actualizar primero el estado de los objetivos)

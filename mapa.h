@@ -110,11 +110,15 @@ public:
 
     // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
     // pos: devuelve el identificador de un casillero que tiene un edificio con la capacidad de brindar materiales
-    char obtener_recurso_de_casillero(int coord_x, int coord_y);
+    char obtener_identificador_recurso_de_casillero(int coord_x, int coord_y);
 
     // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
     // pos: devuelve la cantidad de material brindado de un casillero que tiene un edificio con la capacidad de brindar materiales
-    double obtener_cantidad_recurso_de_casillero( int coord_x, int coord_y);
+    double recolectar_recursos_casillero( int coord_x, int coord_y);
+
+    // pre:
+    // pos:
+    void depositar_recurso_casillero(int coord_x, int coord_y);
 
     // pre:
     // pos:

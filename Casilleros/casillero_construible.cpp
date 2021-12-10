@@ -103,9 +103,9 @@ string Casillero_construible::obtener_nombre_objeto_de_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Casillero_construible::obtener_recurso_de_casillero(){
+char Casillero_construible::obtener_identificador_recurso_de_casillero(){
     
-    return edificio_construido -> obtener_recurso();
+    return edificio_construido -> obtener_identificador_recurso();
 }
 
 
@@ -113,9 +113,19 @@ char Casillero_construible::obtener_recurso_de_casillero(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Casillero_construible::obtener_cantidad_recurso_de_casillero(){
+double Casillero_construible::recolectar_recursos(){
 
-    return edificio_construido -> obtener_cantidad_recurso();
+    return edificio_construido -> recolectar_recursos();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_construible::depositar_recurso_casillero(){
+
+    edificio_construido -> depositar_recurso();
 
 }
 

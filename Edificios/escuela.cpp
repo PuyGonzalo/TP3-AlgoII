@@ -23,7 +23,7 @@ string Escuela::obtener_tipo_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Escuela::obtener_recurso(){
+char Escuela::obtener_identificador_recurso(){
 
     return this -> identificador_material_brindado;
 }
@@ -32,7 +32,8 @@ char Escuela::obtener_recurso(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Escuela::obtener_cantidad_recurso(){
+void Escuela::depositar_recurso(){
 
-    return this -> cantidad_material_brindado;
+    this -> deposito += cantidad_material_brindado;
+
 }

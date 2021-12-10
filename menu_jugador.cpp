@@ -199,7 +199,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case RECOLETAR_RECURSOS_PRODUCIDOS:
             if(system(CLR_SCREEN));
-            //estado = lluvia_de_recursos(andypolis);
+            andypolis.recoletactar_recursos_jugador(jugador);
             break;
 
         case MOVERSE_A_UNA_COORD:
@@ -215,7 +215,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
             }
             andypolis.agregar_energia_jugador(jugador, 20); // HARDCODEADOOO
             ++turno;
-            //estado = lluvia_de_recursos(andypolis);
+            // agregar turno sin recolect
             break;
 
         case GUARDAR_SALIR:

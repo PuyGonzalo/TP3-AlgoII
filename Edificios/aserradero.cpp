@@ -23,7 +23,7 @@ string Aserradero::obtener_tipo_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Aserradero::obtener_recurso(){
+char Aserradero::obtener_identificador_recurso(){
 
     return this -> identificador_material_brindado;
 }
@@ -32,7 +32,8 @@ char Aserradero::obtener_recurso(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Aserradero::obtener_cantidad_recurso(){
+void Aserradero::depositar_recurso(){
 
-    return this -> cantidad_material_brindado;
+    this -> deposito+= cantidad_material_brindado ;
+    
 }

@@ -29,11 +29,11 @@ public:
 
     // pre: -
     // pos: 
-    char obtener_recurso();
+    char obtener_identificador_recurso();
 
     // pre: -
-    // pos: 
-    double obtener_cantidad_recurso();
+    // pos: deposita 50 andycoins en el deposito
+    void depositar_recurso();
 };
 
 #endif //MINA_ORO

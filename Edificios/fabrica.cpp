@@ -22,7 +22,7 @@ string Fabrica::obtener_tipo_edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Fabrica::obtener_recurso(){
+char Fabrica::obtener_identificador_recurso(){
 
     return this -> identificador_material_brindado;
 }
@@ -31,7 +31,8 @@ char Fabrica::obtener_recurso(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Fabrica::obtener_cantidad_recurso(){
+void Fabrica::depositar_recurso(){
     
-    return this -> cantidad_material_brindado;
+    this -> deposito += cantidad_material_brindado;
+
 }

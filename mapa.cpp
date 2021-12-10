@@ -378,18 +378,27 @@ void Mapa::agregar_material_en_coordenada_transitable_aleatoria(Material* materi
 // ------------------------------------------------------------------------------------------------------------
 
 
-char Mapa::obtener_recurso_de_casillero( int coord_x, int coord_y){
-    return this -> mapa[coord_x][coord_y] -> obtener_recurso_de_casillero();
+char Mapa::obtener_identificador_recurso_de_casillero( int coord_x, int coord_y){
+    return this -> mapa[coord_x][coord_y] -> obtener_identificador_recurso_de_casillero();
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-double Mapa::obtener_cantidad_recurso_de_casillero( int coord_x, int coord_y){
-    return this -> mapa[coord_x][coord_y] -> obtener_cantidad_recurso_de_casillero();
+double Mapa::recolectar_recursos_casillero( int coord_x, int coord_y){
+    return this -> mapa[coord_x][coord_y] -> recolectar_recursos();
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Mapa::depositar_recurso_casillero(int coord_x, int coord_y){
+
+    this -> mapa[coord_x][coord_y] -> depositar_recurso_casillero();
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 

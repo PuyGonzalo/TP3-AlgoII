@@ -28,11 +28,11 @@ public:
 
     // pre: -
     // pos: Energia no tiene un identificador, asi que este metodo simplemente devuelve un espacio en blanco
-    char obtener_recurso(){return ' ';}
+    char obtener_identificador_recurso(){return ' ';}
 
     // pre: -
-    // pos: Devuelve la cantidad de energia que devuelve la planta electrica.
-    double obtener_cantidad_recurso();
+    // pos: deposita 15 de energia en el deposito
+    void depositar_recurso();
 };
 
 

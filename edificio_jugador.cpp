@@ -77,6 +77,25 @@ string Edificio_jugador::obtener_ubicaciones_construidas_str() const{
 // ------------------------------------------------------------------------------------------------------------
 
 
+int Edificio_jugador::obtener_coord_x_ubicacion(int pos){
+
+    return ubicaciones.consulta_const(pos) -> coordenada_x;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Edificio_jugador::obtener_coord_y_ubicacion(int pos){
+
+    return ubicaciones.consulta_const(pos) -> coordenada_y;
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 
 string Edificio_jugador::obtener_vida_edificios_str() const{
 

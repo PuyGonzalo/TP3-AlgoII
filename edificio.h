@@ -35,6 +35,7 @@ protected:
     // Atributos
     char identificador;
     Jugador_t creador;
+    double deposito;
 
 public:
     // Metodos
@@ -57,11 +58,15 @@ public:
 
     // pre: -
     // pos: obtiene (en caso de poder brindar materiales) el identificador del material que brinda el edificio
-    virtual char obtener_recurso() = 0;
+    virtual char obtener_identificador_recurso() const = 0; 
 
     // pre: -
-    // pos: obtiene (en caso de poder brindar materiales) la cantidad de material que brinda el edificio
-    virtual double obtener_cantidad_recurso() = 0;
+    // pos:
+    virtual void depositar_recurso(){};
+
+    // pre: -
+    // pos: obtiene (en caso de poder brindar materiales/energia) la cantidad de material/energia acumulada en el deposito del edificio
+    double recolectar_recursos();
 
     // pre: -
     // pos: devuelve el identificador del edificio

@@ -30,11 +30,11 @@ public:
 
     // pre: -
     // pos: obtiene el identificador del material que brinda
-    char obtener_recurso();
+    char obtener_identificador_recurso();
 
     // pre: -
-    // pos: obtiene la cantidad de material que brinda
-    double obtener_cantidad_recurso();
+    // pos: deposita 25 de madera en el deposito
+    void depositar_recurso();
 };
 
 

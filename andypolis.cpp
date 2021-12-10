@@ -567,6 +567,24 @@ Estado_t Andypolis::lluvia_de_recursos(){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
+
+    if(jugador == JUGADOR_UNO)
+        jugador_uno.recolectar_recursos(mapa);
+    else if(jugador == JUGADOR_DOS)
+        jugador_dos.recolectar_recursos(mapa);
+
+    // anotar lo de ari de armar una lista de coords y que andypolis actualice el mapa (no rompe encapsulamiento pero es mas largo :p)
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 bool Andypolis::gano_el_jugador(Jugador_t jugador){
 
     bool gano = false;

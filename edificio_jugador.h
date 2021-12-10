@@ -53,6 +53,14 @@ public:
     string obtener_ubicaciones_construidas_str() const;
 
     // pre:
+    // pos: devuelve la coordenada x de la ubicacion del edificio en la posicion pos de la lista
+    int obtener_coord_x_ubicacion(int pos);
+
+    // pre:
+    // pos: devuelve la coordenada x de la ubicacion del edificio en la posicion pos de la lista
+    int obtener_coord_y_ubicacion(int pos);
+
+    // pre:
     // pos:
     string obtener_vida_edificios_str() const;
 

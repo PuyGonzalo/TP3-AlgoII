@@ -87,12 +87,16 @@ public:
     virtual void construir_edificio(Edificio* edificio){};
 
     // pre: usar habiendo chequeado que el casillero esta ocupado
-    // pos: metodo virtual para que <los casilleros construibles> devuelvan QUE material que brindan (si tienen un edificio)
-    virtual char obtener_recurso_de_casillero() = 0; // virtual puro porque metodo virtual con ret =/= void
+    // pos: metodo virtual para que <los casilleros construibles> devuelvan QUE brindan (si tienen un edificio)
+    virtual char obtener_identificador_recurso_de_casillero() = 0; // virtual puro porque metodo virtual con ret =/= void
 
     // pre: usar habiendo chequeado que el casillero esta ocupado
     // pos: metodo virtual para que <los casilleros construibles> devuelvan la cantidad material que brindan (si tienen un edificio)
-    virtual double obtener_cantidad_recurso_de_casillero() = 0;
+    virtual double recolectar_recursos() = 0;
+
+    // pre:
+    // pos:
+    virtual void depositar_recurso_casillero(){};
 
     // pre: -
     // pos: elimina el edificio del casillero (solo en construible)

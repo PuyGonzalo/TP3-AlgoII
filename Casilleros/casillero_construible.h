@@ -48,11 +48,15 @@ public:
 
     // pre: antes de llamarla tiene que verificarse que efectivamente el casillero este ocupado
     // pos: obtiene el identificador del material que brinda el edificio en el casillero
-    char obtener_recurso_de_casillero();
+    char obtener_identificador_recurso_de_casillero();
 
     // pre: antes de llamarla tiene que verificarse que efectivamente el casillero este ocupado
-    // pos: obtiene la cantidad de material que brinda el edificio en el casillero
-    double obtener_cantidad_recurso_de_casillero();
+    // pos: le devuelve al jugador el acumulado de materiales que tiene el edificio del casillero en su deposito
+    double recolectar_recursos();
+
+    // pre:
+    // pos:
+    void depositar_recurso_casillero();
 
     // pre: 
     // pos: 

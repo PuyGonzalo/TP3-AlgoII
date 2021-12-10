@@ -29,11 +29,11 @@ public:
 
     // pre: -
     // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
-    char obtener_recurso();
+    char obtener_identificador_recurso();
 
     // pre: -
-    // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
-    double obtener_cantidad_recurso();
+    // pos: deposita 25 andycoins en el deposito
+    void depositar_recurso();
 };
 
 

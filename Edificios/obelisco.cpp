@@ -12,4 +12,5 @@ Obelisco::Obelisco(char identificador, Jugador_t creador): Edificio(identificado
 string Obelisco::obtener_tipo_edificio(){
     
     return STR_OBELISCO;
+    
 }
