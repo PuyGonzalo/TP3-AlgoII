@@ -56,10 +56,14 @@ void Casillero_transitable::imprimir_casillero(){
 void Casillero_transitable::consultar_casillero(){
 
     cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero transitable y ";
-    if(!ocupado){
+    if(ocupado){
+        if(hay_jugador()){
+            cout << "en mi casillero esta el jugador "<< jugador_en_casillero << FIN_DE_FORMATO << endl;
+        } else{
+            cout << "tengo " <<  material_ocupado -> obtener_nombre_material() << " en mi casillero" << FIN_DE_FORMATO << endl;
+        }
+    } else{
         cout << "estoy vacio" << FIN_DE_FORMATO << endl;
-    } else {
-        cout << "tengo " << material_ocupado -> obtener_nombre_material() << " en mi casillero" << FIN_DE_FORMATO << endl;
     }
 
 }

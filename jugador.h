@@ -165,8 +165,16 @@ public:
         // pos:
         void actualizar_estado_objetivos();
 
+        // pre:
+        // pos: actualiza el estado de los objs del jugador y devuelve true si el jugador gano el juevo ya sea por objetivo principal o objetivos secundarios
+        bool gane_el_juego();
+
+        // pre:
+        // pos: devuelve verdadero si el jugador gano por objetivo principal (construir el obelisco)
+        bool victoria_por_objetivo_principal();
+
         //pre: -
-        //post: Devuelvo la condicion del objetivo si esta cumplido
+        //post: devuelve verdadero si el jugador gano por objetivos secundarios (cumplio 2 de los 3 asignados)
         bool victoria_por_objetivos_secundarios();
 
         // pre: -

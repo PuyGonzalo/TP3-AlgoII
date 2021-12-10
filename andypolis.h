@@ -92,7 +92,7 @@ public:
 
     // pre:
     // pos:
-    void agregar_energia_jugador(Jugador_t jugador);
+    void agregar_energia_jugador(Jugador_t jugador, double energia);
 
     // pre:
     // pos:
@@ -125,6 +125,13 @@ public:
     // pre: -
     // pos: LLUVIA DE RECURSOS chocolate raaain
     Estado_t lluvia_de_recursos();
+
+    // pre: -
+    // pos: 
+
+    // pre: -
+    // pos: se fija si el jugador gano (claramente va a actualizar primero el estado de los objetivos)
+    bool gano_el_jugador(Jugador_t jugador);
 
     // pre: -
     // pos: muestra el inventario del jugador pedido

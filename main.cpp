@@ -40,17 +40,17 @@ int main (void){
     archivo_entrada_ubicaciones.close();
     archivo_entrada_mapa.close();
 
-/*
+
 	// Abro los archivos de escritura para guardar el juego
-	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
-    ofstream archivo_salida_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::trunc);
-	
+//	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
+//  ofstream archivo_salida_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::trunc);
+
 	// Guardo los cambios
-	// ########## GUARDADO
+//	guardar_cambios(andypolis, archivo_salida_materiales, archivo_salida_ubicaciones);
 
 	// Cierros los archivos de escritura
-	archivo_salida_materiales.close();
-	archivo_salida_ubicaciones.close();
-*/
+//	archivo_salida_materiales.close();
+//	archivo_salida_ubicaciones.close();
+
     return 0;
 }

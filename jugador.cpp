@@ -489,6 +489,33 @@ void Jugador::actualizar_estado_objetivos(){
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Jugador::gane_el_juego(){
+
+    actualizar_estado_objetivos();
+
+    bool gane = false;
+
+    if(victoria_por_objetivo_principal() || victoria_por_objetivos_secundarios())
+        gane = true;
+
+    return gane;
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Jugador::victoria_por_objetivo_principal(){
+
+    return ( objetivo_principal -> chequear_cumplimiento() );
+
+}
+
+
 // ------------------------------------------------------------------------------------------------------------
 
 

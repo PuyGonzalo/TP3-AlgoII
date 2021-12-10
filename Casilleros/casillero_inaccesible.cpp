@@ -37,6 +37,10 @@ void Casillero_inaccesible::imprimir_casillero(){
 
 void Casillero_inaccesible::consultar_casillero(){
 
-    cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero inaccesible y obviamente estoy vacio" << FIN_DE_FORMATO << endl;
-
+    cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero inaccesible y ";
+    if(hay_jugador()){
+        cout << "en mi casillero esta el jugador "<< jugador_en_casillero << FIN_DE_FORMATO << endl;
+    } else{
+        cout << "estoy vacio" << FIN_DE_FORMATO << endl;
+    }
 }

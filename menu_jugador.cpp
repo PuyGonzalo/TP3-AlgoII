@@ -63,27 +63,28 @@ void procesar_juego(Andypolis& andypolis){
 
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
-            while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
-                mostrar_menu_jugador(jugador_A, andypolis);
-                estado = ingreso_menu(opcion, andypolis, jugador_A);
-                if(estado != OK)
+            while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){ // agregar que si el jugador tiene 0 se finaliza automatico (molesto para debug)
+                mostrar_menu_jugador(jugador_A, andypolis);                // if(energia == 0) opcion = FINALIZAR_TURNO es lo mas logico (asi check objetivos)
+                estado = ingreso_menu(opcion, andypolis, jugador_A, turno);
+                if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
+                else if(estado == ESTADO_JUGADOR_GANADOR)
+                    opcion = GUARDAR_SALIR; // tal vez haya que comentarla porque puede ser molesto para debug
+
             }
         }
-
-        turno++;
 
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
                 mostrar_menu_jugador(jugador_B, andypolis);
-                estado = ingreso_menu(opcion, andypolis, jugador_B);
-                if(estado != OK)
+                estado = ingreso_menu(opcion, andypolis, jugador_B, turno);
+                if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
+                else if(estado == ESTADO_JUGADOR_GANADOR)
+                    opcion = GUARDAR_SALIR; // tal vez haya que comentarla porque puede ser molesto para debug
             }      
         }
-
-        turno++;
 
     }
 
@@ -113,7 +114,7 @@ void sortear_jugadores(Jugador_t &jugador_A, Jugador_t &jugador_B){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
+Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador, int &turno){
     
     Estado_t estado = OK;
     string  opcion_elegida;
@@ -129,7 +130,7 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
 
     opcion = stoi(opcion_elegida);
 
-    estado = procesar_opcion(opcion,andypolis,jugador);
+    estado = procesar_opcion(opcion,andypolis,jugador,turno);
 
     return estado;
 }
@@ -138,7 +139,7 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jugador){
+Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jugador, int &turno){
 
     Estado_t estado = OK;
     string str_edificio;
@@ -208,7 +209,12 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case FINALIZAR_TURNO:
             if(system(CLR_SCREEN));
-            andypolis.agregar_energia_jugador(jugador);
+            if(andypolis.gano_el_jugador(jugador)){
+                mostrar_pantalla_final(jugador);
+                return ESTADO_JUGADOR_GANADOR;
+            }
+            andypolis.agregar_energia_jugador(jugador, 20); // HARDCODEADOOO
+            ++turno;
             //estado = lluvia_de_recursos(andypolis);
             break;
 
@@ -224,3 +230,36 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
     return estado;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+
+void mostrar_pantalla_final(Jugador_t jugador){
+
+
+    cout << NEGRITA << TAB << MSJ_FELICITACIONES_FINAL << FIN_DE_FORMATO << endl;
+    if(jugador == JUGADOR_UNO)
+        cout << NEGRITA << TAB << TAB << MSJ_MENU_BIENVENIDA_JUGADOR_UNO << FIN_DE_FORMATO << endl;
+    else if(jugador == JUGADOR_DOS)
+        cout << NEGRITA << TAB << TAB << MSJ_MENU_BIENVENIDA_JUGADOR_DOS << ARTE_PANTALLA_FINAL << FIN_DE_FORMATO << endl;
+    
+    cout << endl << endl;
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones){
+
+    cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥" << endl << endl
+    << TAB << TAB << TAB << TAB << "# Ivan Lisman" << endl
+    << TAB << TAB << TAB << TAB << "# El magnífico Ivan Lisman" << endl
+    << TAB << TAB << TAB << TAB << "# Lazurro" << endl;
+
+}
+

@@ -35,6 +35,28 @@ enum Opciones_menu{
 };
 
 
+
+// HAY QUE BUSCAR UNA FORMA DE "TABEAR" ESTOS MENSAJES (RAW STRING LITERAL)
+const string ARTE_PANTALLA_FINAL = R"(
+         __
+ _(\    |@@|
+(__/\__ \--/ __
+   \___|----|  |   __
+       \ }{ /\ )_ / _\
+       /\__/\ \__O (__
+      (--/\--)    \__/
+      _)(  )(_
+     `---''---`)";
+
+const string MSJ_FELICITACIONES_FINAL = R"(
+ _______  _______  ___      ___   _______  ___   _______  _______  _______  ___   _______  __    _  _______  _______ 
+|       ||       ||   |    |   | |       ||   | |       ||   _   ||       ||   | |       ||  |  | ||       ||       |
+|    ___||    ___||   |    |   | |       ||   | |_     _||  |_|  ||       ||   | |   _   ||   |_| ||    ___||  _____|
+|   |___ |   |___ |   |    |   | |       ||   |   |   |  |       ||       ||   | |  | |  ||       ||   |___ | |_____ 
+|    ___||    ___||   |___ |   | |      _||   |   |   |  |       ||      _||   | |  |_|  ||  _    ||    ___||_____  |
+|   |    |   |___ |       ||   | |     |_ |   |   |   |  |   _   ||     |_ |   | |       || | |   ||   |___  _____| |
+|___|    |_______||_______||___| |_______||___|   |___|  |__| |__||_______||___| |_______||_|  |__||_______||_______|)";
+
 const string MSJ_MENU_BIENVENIDA_JUGADOR_UNO = R"(
      ___  __   __  _______  _______  ______   _______  ______      ____  
     |   ||  | |  ||       ||   _   ||      | |       ||    _ |    |    | 
@@ -93,18 +115,22 @@ void sortear_jugadores(Jugador_t &jugador_A, Jugador_t &jugador_B);
 
 // pre: -
 // pos: valida y procesa la opcion (existe para modularizar mejor)
-Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador);
+Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador, int &turno);
 
 // pre: ingreso_menu() ya valida el puntero nulo
 // pos: realiza la opcion del menu que el usuario elija
-Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jugador);
+Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jugador, int &turno);
 
 // pre: -
 // pos: suma una cantidad "secreta" de un material dependiendo que codigo se ponga
 Estado_t menu_secreto(Inventario inventario, string codigo);
 
 // pre: -
-// pos: guarda todos los cambios que haya realizado el jugador
+// pos: muestra una pantalla final felicitando al ganador
+void mostrar_pantalla_final(Jugador_t jugador);
+
+// pre: -
+// pos: guarda todos los cambios que haya realizado el jugador + CREDITOS
 void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones);
 
 

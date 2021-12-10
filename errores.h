@@ -31,9 +31,6 @@ const string STR_ERROR_RECOLECCION_MATERIALES = "¡No hay edificios de los cuale
 const string STR_ERROR_ANDYCOINS_INSUFICIENTES = "¡No tenes suficientes andycoins para comprar!";
 const string STR_ERROR_ENERGIA_INSUFICIENTE = "¡No tenes suficiente energia para realizar esta acción!";
 
-const string STR_ADVERTENCIA_LLUVIA_RECURSOS = "Advertencia: No hay suficientes casilleros para realizar la lluvia de materiales";
-const string STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO = "Advertencia: En el archivo ubicaciones.txt habia un edificio que estaba en una posicion invalida.";
-
 const string errores[] = {
 	STR_OK,
 	STR_ERROR_ENTRADA_INVALIDA,
@@ -54,13 +51,10 @@ const string errores[] = {
     STR_ERROR_RECOLECCION_MATERIALES,
 	STR_ERROR_ANDYCOINS_INSUFICIENTES,
 	STR_ERROR_ENERGIA_INSUFICIENTE,
-	STR_ADVERTENCIA_LLUVIA_RECURSOS,
 	STR_ERROR_EDIFICIO_AJENO,
 	STR_ERROR_EDIFICIO_PROPIO,
 	STR_ERROR_BOMBAS_INSUFICIENTES,
-	STR_ERROR_EDIFICIO_NO_REPARABLE,
-	STR_ADVERTENCIA_UBICACIONES_MAL_FORMADO
-	
+	STR_ERROR_EDIFICIO_NO_REPARABLE
 };
 
 enum Estado_t {
@@ -83,13 +77,12 @@ enum Estado_t {
     ERROR_RECOLECCION_MATERIALES = 16,
 	ERROR_ANDYCOINS_INSUFICIENTES = 17,
 	ERROR_ENERGIA_INSUFICIENTE = 18,
-	ADVERTENCIA_LLUVIA_RECURSOS = 19,
-	ERROR_EDIFICIO_AJENO = 20,
-	ERROR_EDIFICIO_PROPIO = 21,
-	ERROR_BOMBAS_INSUFICIENTES = 22,
-	ERROR_EDIFICIO_NO_REPARABLE = 23,
-	ADVERTENCIA_UBICACIONES_MAL_FORMADO = 24,
-	ADVERTENCIA_UBICACIONES_VACIO = 200};
+	ERROR_EDIFICIO_AJENO = 10,
+	ERROR_EDIFICIO_PROPIO = 20,
+	ERROR_BOMBAS_INSUFICIENTES = 21,
+	ERROR_EDIFICIO_NO_REPARABLE = 22,
+	ADVERTENCIA_LLUVIA_RECURSOS = 100,
+	ESTADO_JUGADOR_GANADOR = 200};
 
 
 //####################################################### FUNCIONES #################################################################

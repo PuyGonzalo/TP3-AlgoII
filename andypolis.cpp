@@ -269,12 +269,12 @@ double Andypolis::obtener_energia_jugador(Jugador_t jugador){
 
 // ------------------------------------------------------------------------------------------------------------
 
-void Andypolis::agregar_energia_jugador(Jugador_t jugador){
+void Andypolis::agregar_energia_jugador(Jugador_t jugador, double energia){
 
     if(jugador == JUGADOR_UNO)
-        jugador_uno.agregar_energia(25); // HARDCODEADOOO
+        jugador_uno.agregar_energia(energia);
     else if(jugador == JUGADOR_DOS)
-        jugador_dos.agregar_energia(25);
+        jugador_dos.agregar_energia(energia);
 
 }
 
@@ -566,6 +566,19 @@ Estado_t Andypolis::lluvia_de_recursos(){
 
 }
 
+
+bool Andypolis::gano_el_jugador(Jugador_t jugador){
+
+    bool gano = false;
+
+    if (jugador == JUGADOR_UNO)
+        gano = jugador_uno.gane_el_juego();
+    else if (jugador == JUGADOR_DOS)
+        gano = jugador_dos.gane_el_juego();
+
+    return gano;
+
+}
 
 // ------------------------------------------------------------------------------------------------------------
 

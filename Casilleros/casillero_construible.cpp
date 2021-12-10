@@ -53,13 +53,17 @@ void Casillero_construible::imprimir_casillero(){
 
 void Casillero_construible::consultar_casillero(){
  
-    cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero construible y";
-    if(!ocupado){
-        cout << " estoy vacio" << FIN_DE_FORMATO << endl;
-    } else {
-        cout << " hay construido un/a " << edificio_construido -> obtener_tipo_edificio() << " en mi casillero" << FIN_DE_FORMATO << endl;
+    cout << TAB << NEGRITA << FONDO_COLOR_ANARANJADO << "Soy un casillero construible y ";
+    if(ocupado){
+        if(hay_jugador()){
+            cout << "en mi casillero esta el jugador "<< jugador_en_casillero << FIN_DE_FORMATO << endl;
+        } else{
+            cout << "hay construido un/a " << edificio_construido -> obtener_tipo_edificio() << " del jugador " << 
+            edificio_construido -> obtener_creador() << " en mi casillero" << FIN_DE_FORMATO << endl;
+        }
+    } else{
+        cout << "estoy vacio" << FIN_DE_FORMATO << endl;
     }
-
 }
 
 
