@@ -16,11 +16,11 @@ Edificio::Edificio(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Edificio::Edificio(char identificador, Jugador_t creador){
+Edificio::Edificio(char identificador, Jugador_t creador, double deposito){
 
     this -> identificador = identificador;
     this -> creador = creador;
-    this -> deposito = 0;
+    this -> deposito = deposito;
 
 }
 

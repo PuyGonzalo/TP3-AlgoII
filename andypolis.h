@@ -130,7 +130,9 @@ public:
     // pos: 
     void recolectar_recursos_jugador(Jugador_t jugador);
 
-    // falta depositar
+    // pre: -
+    // pos: deposita los recursos de los edificios del jugador que termino su turno
+    void depositar_recursos_jugador(Jugador_t jugador);
 
     // pre: -
     // pos: se fija si el jugador gano (claramente va a actualizar primero el estado de los objetivos)

@@ -17,7 +17,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR escuela
-    Escuela(char identificador, Jugador_t creador);
+    Escuela(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR escuela

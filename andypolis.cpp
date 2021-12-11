@@ -585,6 +585,20 @@ void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Andypolis::depositar_recursos_jugador(Jugador_t jugador){
+
+    if(jugador == JUGADOR_UNO)
+        jugador_uno.depositar_recursos(mapa);
+    else if(jugador == JUGADOR_DOS)
+        jugador_dos.depositar_recursos(mapa);
+
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 bool Andypolis::gano_el_jugador(Jugador_t jugador){
 
     bool gano = false;

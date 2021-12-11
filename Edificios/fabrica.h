@@ -17,7 +17,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR fabrica
-    Fabrica(char identificador, Jugador_t creador);
+    Fabrica(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR fabrica

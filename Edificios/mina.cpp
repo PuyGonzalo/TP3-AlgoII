@@ -4,7 +4,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Mina::Mina(char identificador, Jugador_t creador) : Edificio(identificador, creador) {
+Mina::Mina(char identificador, Jugador_t creador, double deposito) : Edificio(identificador, creador, deposito) {
 
     this -> identificador_material_brindado = IDENTIF_PIEDRA;
     this -> cantidad_material_brindado = CANTIDAD_PIEDRA_BRINDADA;

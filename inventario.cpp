@@ -47,7 +47,7 @@ void Inventario::agregar_material_a_lista(Material* material){
 void Inventario::mostrar_inventario(){
 
     cout
-    << endl << TAB << NEGRITA << SUBRAYADO
+    << endl << TAB << TAB << NEGRITA << SUBRAYADO
     << left
     << setw(10)
     << "Material"
@@ -60,7 +60,7 @@ void Inventario::mostrar_inventario(){
 
     for(int i = 0 ; i < cantidad_materiales ; ++i)
         cout
-        << TAB
+        << TAB << TAB
         << left << setw(10) << materiales.consultar(i) -> obtener_nombre_material()
         << left << setw(9) << materiales.consultar(i) -> obtener_cantidad() << endl;
 

@@ -18,7 +18,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR aserradero
-    Aserradero(char identificador, Jugador_t creador);
+    Aserradero(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR aserradero

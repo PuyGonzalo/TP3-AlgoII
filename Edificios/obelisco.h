@@ -10,7 +10,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR obelisco
-    Obelisco(char identificador, Jugador_t creador);
+    Obelisco(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR obelisco

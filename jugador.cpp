@@ -172,18 +172,23 @@ void Jugador::recolectar_recursos(Mapa &mapa){
                     y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
                     cantidad_a_agregar = mapa.recolectar_recursos_casillero(x,y);
                     agregar_energia(cantidad_a_agregar);
+                } else {
+
+                    x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
+                    y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
+                    identificador = mapa.obtener_identificador_recurso_de_casillero(x,y);
+                    cantidad_a_agregar = mapa.recolectar_recursos_casillero(x,y);
+                    inventario.sumar_cantidad_material(identificador, cantidad_a_agregar);
+
                 }
-
-                x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
-                y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
-                identificador = mapa.obtener_identificador_recurso_de_casillero(x,y);
-                cantidad_a_agregar = mapa.recolectar_recursos_casillero(x,y);
-
-                inventario.sumar_cantidad_material(identificador, cantidad_a_agregar);
 
             }
         }
     }
+
+    cout << FONDO_COLOR_AGUAOSCURO << TAB << TAB << "¡Recolección exitosa!" << endl;
+    cout << TAB << "Tu inventario ahora quedo de la siguiente manera:" << FIN_DE_FORMATO << endl;
+    mostrar_inventario();
 
 }
 
@@ -195,8 +200,6 @@ void Jugador::depositar_recursos(Mapa &mapa){
 
     int x = 0;
     int y = 0;
-    double cantidad_a_agregar = 0;
-    char identificador = ' ';
 
     for(int i = 0; i < mis_edificios.obtener_cantidad(); ++i){
         if(mis_edificios.consulta(i) -> obtener_cantidad_construidos() > 0){
@@ -204,7 +207,6 @@ void Jugador::depositar_recursos(Mapa &mapa){
 
                 x = mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j);
                 y = mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j);
-                identificador = mapa.obtener_identificador_recurso_de_casillero(x,y);
                 mapa.depositar_recurso_casillero(x,y);
 
             }

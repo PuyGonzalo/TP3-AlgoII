@@ -3,6 +3,7 @@
 
 #include <string>
 #include <sstream>
+#include <iostream>
 //#include "lista.h"
 #include "errores.h"
 #include "herramientas.h"
@@ -46,7 +47,7 @@ public:
 
     // pre: identificador valido (entre los que hay en la consigna)
     // pos: CONSTRUCTOR con parametro
-    Edificio(char identificador, Jugador_t creador);
+    Edificio(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR de edificios
@@ -58,7 +59,7 @@ public:
 
     // pre: -
     // pos: obtiene (en caso de poder brindar materiales) el identificador del material que brinda el edificio
-    virtual char obtener_identificador_recurso() const = 0; 
+    virtual char obtener_identificador_recurso() = 0; 
 
     // pre: -
     // pos:

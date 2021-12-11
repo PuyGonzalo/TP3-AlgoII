@@ -1,6 +1,6 @@
 #include "mina_oro.h"
 
-Mina_oro::Mina_oro(char identificador, Jugador_t creador) : Edificio(identificador, creador){
+Mina_oro::Mina_oro(char identificador, Jugador_t creador, double deposito) : Edificio(identificador, creador, deposito){
 
     this -> identificador_material_brindado = IDENTIF_ANDYCOINS;
     this -> cantidad_material_brindado = CANTIDAD_ANDYCOINS_BRINDADAS_MINA_ORO;

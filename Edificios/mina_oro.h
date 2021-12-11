@@ -17,7 +17,7 @@ public:
 
     // pre: -
     // pos: CONSTRUCTOR escuela
-    Mina_oro(char identificador, Jugador_t creador);
+    Mina_oro(char identificador, Jugador_t creador, double deposito);
 
     // pre: -
     // pos: DESTRUCTOR escuela
