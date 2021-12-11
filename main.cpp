@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <filesystem>
 #include "inventario.h"
 #include "jugador.h"
 #include "errores.h"
@@ -16,8 +17,8 @@ const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt"; // Cambio el f
 const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
 const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
 const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
-
-
+const string PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA = "Archivos/materiales_nueva_partida.txt";
+const string PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA = "Archivos/ubicaciones_nueva_partida.txt";
 int main (void){
     if(system(CLR_SCREEN)) return 1;
 
@@ -25,11 +26,20 @@ int main (void){
 	srand( (unsigned int)time(NULL) );
 	
     // Abro archivos de lectura
+	ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA);
 	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
     ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
-    ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES);
     ifstream archivo_entrada_mapa(PATH_ENTRADA_MAPA);
 
+	// NUEVA_PARTIDA:
+	archivo_entrada_ubicaciones.seekg(0, ios::end);
+	// Si el archivo esta vacio tellg() me devuelve cero!
+	if( !archivo_entrada_ubicaciones.tellg() ){
+	
+		cout << "Archivo ubicaciones vacio" <<  endl;
+		return 0;
+	}
+		
  	// ########## JUEGO
 	Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
 	procesar_juego(andypolis);
