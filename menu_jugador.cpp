@@ -46,6 +46,49 @@ void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void mostrar_menu_partida_nueva(){
+
+    string FONDO = "";
+    
+    cout << TAB << NEGRITA << MSJ_MENU_BIENVENIDA_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
+    FONDO = FONDO_COLOR_ANARANJADO;
+
+    cout << TAB << "╔════════════════════════════════════════╗" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_1 << string(6, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_2 << string(10, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_3 << string(23, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_4 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_5 << string(20, ' ') << FIN_DE_FORMATO << " ║" << endl;
+    cout << TAB << "╚════════════════════════════════════════╝" << endl;
+
+    //andypolis.mostrar_mapa(60,10);
+
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void partida_nueva(Andypolis& andypolis){
+    int opcion = 0;
+   	Estado_t estado = OK;
+    
+    while(opcion != GUARDAR_SALIR_PARTIDA_NUEVA){
+        
+        if(opcion != GUARDAR_SALIR_PARTIDA_NUEVA){
+            mostrar_menu_partida_nueva();
+            estado = ingreso_menu_partida_nueva(opcion, andypolis);
+            if(estado != OK)
+                imprimir_error(estado);
+        }
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void procesar_juego(Andypolis& andypolis){
 
 
@@ -135,6 +178,28 @@ Estado_t ingreso_menu(int &opcion , Andypolis &andypolis, Jugador_t jugador, int
     return estado;
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis){
+    
+    Estado_t estado = OK;
+    string  opcion_elegida;
+
+
+    cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION<< FIN_DE_FORMATO <<endl;
+    cout << '>' << ESPACIO; getline(cin, opcion_elegida); cout << FIN_DE_FORMATO;
+
+    if(!es_un_numero(opcion_elegida))
+        return ERROR_ENTRADA_INVALIDA;
+
+    opcion = stoi(opcion_elegida);
+
+    //estado = procesar_opcion(opcion,andypolis,jugador,turno);
+
+    return estado;
+}
 
 // ------------------------------------------------------------------------------------------------------------
 

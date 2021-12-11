@@ -34,6 +34,13 @@ enum Opciones_menu{
 	GUARDAR_SALIR = 13,
 };
 
+enum Opciones_menu_partida_nueva_t{
+	MODIFICAR_EDIFICIO_POR_NOMBRE_PARTIDA_NUEVA = 1,
+	LISTAR_TODOS_LOS_EDIFICIOS_PARTIDA_NUEVA = 2,
+	MOSTRAR_MAPA_PARTIDA_NUEVA = 3,
+	COMENZAR_PARTIDA_PARTIDA_NUEVA = 4,
+	GUARDAR_SALIR_PARTIDA_NUEVA = 5,
+};
 
 
 // HAY QUE BUSCAR UNA FORMA DE "TABEAR" ESTOS MENSAJES (RAW STRING LITERAL)
@@ -75,6 +82,31 @@ const string MSJ_MENU_BIENVENIDA_JUGADOR_DOS = R"(
 |       ||       ||   |_| ||   _   ||       ||       ||   |  | |  | |_____ 
 |_______||_______||_______||__| |__||______| |_______||___|  |_|  |_______|)";
 
+const string MSJ_MENU_BIENVENIDA_PARTIDA_NUEVA = R"(
+
+ _______  ___   _______  __    _  __   __  _______  __    _  ___   ______   _______  _______ 
+|  _    ||   | |       ||  |  | ||  | |  ||       ||  |  | ||   | |      | |       ||       |
+| |_|   ||   | |    ___||   |_| ||  |_|  ||    ___||   |_| ||   | |  _    ||   _   ||  _____|
+|       ||   | |   |___ |       ||       ||   |___ |       ||   | | | |   ||  | |  || |_____ 
+|  _   | |   | |    ___||  _    ||       ||    ___||  _    ||   | | |_|   ||  |_|  ||_____  |
+| |_|   ||   | |   |___ | | |   | |     | |   |___ | | |   ||   | |       ||       | _____| |
+|_______||___| |_______||_|  |__|  |___|  |_______||_|  |__||___| |______| |_______||_______|
+                                 _______                                                                         
+                                 |   _   |                                                                        
+                                 |  |_|  |                                                                        
+                                 |       |                                                                        
+                                 |       |                                                                        
+                                 |   _   |                                                                        
+                                 |__| |__|                                                                        
+ _______  __    _  ______   __   __  _______  _______  ___      ___   _______                
+|   _   ||  |  | ||      | |  | |  ||       ||       ||   |    |   | |       |               
+|  |_|  ||   |_| ||  _    ||  |_|  ||    _  ||   _   ||   |    |   | |  _____|               
+|       ||       || | |   ||       ||   |_| ||  | |  ||   |    |   | | |_____                
+|       ||  _    || |_|   ||_     _||    ___||  |_|  ||   |___ |   | |_____  |               
+|   _   || | |   ||       |  |   |  |   |    |       ||       ||   |  _____| |               
+|__| |__||_|  |__||______|   |___|  |___|    |_______||_______||___| |_______|               
+)";
+
 
 const string MSJ_MENU_OPCION_1 = "1. Construir edificio por nombre";
 const string MSJ_MENU_OPCION_2 = "2. Listar mis edificios construidos";
@@ -89,6 +121,12 @@ const string MSJ_MENU_OPCION_10 = "10. Recolectar recursos producidos";
 const string MSJ_MENU_OPCION_11 = "11. Moverse a una coordenada";
 const string MSJ_MENU_OPCION_12 = "12. Finalizar turno";
 const string MSJ_MENU_OPCION_13 = "13. Guardar y salir";
+
+const string MSJ_MENU_PARTIDA_NUEVA_OPCION_1 = "1. Modificar edificio por nombre";
+const string MSJ_MENU_PARTIDA_NUEVA_OPCION_2 = "2. Listar todos los edificos";
+const string MSJ_MENU_PARTIDA_NUEVA_OPCION_3 = "3. Mostrar mapa";
+const string MSJ_MENU_PARTIDA_NUEVA_OPCION_4 = "4. Comenzar partida";
+const string MSJ_MENU_PARTIDA_NUEVA_OPCION_5 = "5. Guardar y salir";
 
 const string MSJ_MENU_INGRESO_OPCION = "Elija una opcion";
 
@@ -105,9 +143,21 @@ const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
 // pos: muestra el menu
 void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis);
 
+// pre: - 
+// pos: muestra el menu
+void mostrar_menu_partida_nueva();
+
+// pre:
+// post:
+Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis);
+
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)
 void procesar_juego(Andypolis& andypolis); 
+
+// pre:
+// post: 
+void partida_nueva(Andypolis& andypolis);
 
 // pre: -
 // pos: asigna quien va a ir primero (jugador A) y quien ira segundo (jugador B) en el primer par de turnos

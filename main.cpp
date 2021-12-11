@@ -27,7 +27,7 @@ int main (void){
 	
     // Abro archivos de lectura
 	ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA);
-	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES);
+	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA);
     ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
     ifstream archivo_entrada_mapa(PATH_ENTRADA_MAPA);
 
@@ -37,11 +37,16 @@ int main (void){
 	if( !archivo_entrada_ubicaciones.tellg() ){
 	
 		cout << "Archivo ubicaciones vacio" <<  endl;
+		Andypolis nuevo_andypolis(archivo_entrada_edificios,  archivo_entrada_mapa,archivo_entrada_materiales);
+		partida_nueva(nuevo_andypolis);
 		return 0;
 	}
+	/*else{
+		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
+	}*/
 		
  	// ########## JUEGO
-	Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
+	 Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales);
 	procesar_juego(andypolis);
 
     // Cierro archivos de lectura
