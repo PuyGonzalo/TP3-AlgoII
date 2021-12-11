@@ -1,5 +1,5 @@
-#ifndef MENU_JUGADOR_H
-#define MENU_JUGADOR_H
+#ifndef JUEGO_H
+#define JUEGO_H
 
 #include <sstream>
 #include <string>
@@ -202,4 +202,4 @@ void mostrar_pantalla_final(Jugador_t jugador);
 void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones, ofstream& archivo_salida_edificios);
 
 
-#endif //MENU_JUGADOR_H
+#endif //JUEGO_H

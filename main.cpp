@@ -1,6 +1,4 @@
-#include "menu_jugador.h"
-
-
+#include "juego.h"
 
 using namespace std;
 
