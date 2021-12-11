@@ -49,6 +49,57 @@ Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador){
 // -------------------------------------------------------------------------------------------
 
 
+Estado_t modificar_edificio_por_nombre(Andypolis &andypolis){
+
+    string nombre;
+    string madera, metal, piedra;
+    Estado_t estado = OK;
+
+    cout << TAB << SUBRAYADO << MSJ_INGRESO_EDIFICIO_MODIFICAR << FIN_DE_FORMATO << endl;
+    cout << "> ";
+    getline(cin, nombre);
+    if(!andypolis.esta_edificio(nombre))
+        estado = ERROR_EDIFICIO_INEXISTENTE;
+
+    if(nombre == STR_OBELISCO)
+        estado = ERROR_MODIFICAR_OBELISICO;
+
+
+    cout << endl << TAB << SUBRAYADO << "Ingrese la cantidad de material que quiere modificar del edificio:" << FIN_DE_FORMATO << endl;
+    cout << "Cantidad de piedra > "; getline(cin, piedra);
+    cout << endl <<  "Cantidad de madera > "; getline(cin, madera);
+    cout << endl <<  "Cantidad de madera > "; getline(cin, metal);
+
+    if(!es_un_numero(piedra) || !es_un_numero(madera) || !es_un_numero(metal))
+        estado = ERROR_MATERIALES_INVALIDOS;
+
+    if( validar_cantidad_materiales(piedra, madera, metal) != OK )
+        estado = ERROR_CANTIDAD_MATERIALES_INVALIDOS;    
+     
+    andypolis.modificar_edificio(nombre, stoi(piedra), stoi(madera), stoi(metal));
+
+    return estado;
+}
+
+// -------------------------------------------------------------------------------------------
+
+
+Estado_t validar_cantidad_materiales(string piedra, string  madera, string metal){
+
+    Estado_t estado = OK;
+
+    if(stoi(piedra) > 50000 || stoi(madera) > 50000|| stoi(metal) > 50000)
+        estado = ERROR_CANTIDAD_MATERIALES_INVALIDOS;
+    
+    if(stoi(piedra) < 0 || stoi(madera) < 0|| stoi(metal) < 0)
+        estado = ERROR_CANTIDAD_MATERIALES_INVALIDOS;
+
+    return estado;
+}
+
+// -------------------------------------------------------------------------------------------
+
+
 Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador){
 
     if(andypolis.obtener_energia_jugador(jugador) < 15)

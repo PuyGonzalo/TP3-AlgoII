@@ -52,6 +52,21 @@ public:
     // pos:
     int obtener_maximos_permitidos();
 
+    // pre:
+    // pos:
+    double modificar_costo_piedra( int cantidad);
+
+    // pre:
+    // pos:
+    double modificar_costo_madera(int cantidad);
+
+    // pre:
+    // pos:
+    double modificar_costo_metal(int cantidad);
+
+
+    
+
 };
 
 #endif // DATOS_EDIFICIO_H

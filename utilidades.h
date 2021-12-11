@@ -14,6 +14,8 @@ using namespace std;
 
 const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";
 
+const string MSJ_INGRESO_EDIFICIO_MODIFICAR = "Ingresa el nombre del edifico a modificar:";
+
 
 // -------------------------------------------- FUNCIONES --------------------------------------------
 
@@ -24,6 +26,7 @@ Estado_t comprar_bombas(Andypolis &andypolis, Jugador_t jugador);
 // pre:
 // pos:
 Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador);
+
 
 // pre:
 // pos:
@@ -41,4 +44,13 @@ Estado_t reparar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 // pos: funcion para el menu para pedirle al usuario datos para consultar un casillero de andypolis
 Estado_t consultar_coordenada(const Andypolis &andypolis);
 
+// -------------------------------- NUEVA PARTIDA ---------------------------------------------------
+
+// pre:
+// pos:
+Estado_t modificar_edificio_por_nombre(Andypolis &andypolis);
+
+// pre:
+// pos:
+Estado_t validar_cantidad_materiales(string piedra, string  madera, string metal);
 #endif // UTILIDADES_H

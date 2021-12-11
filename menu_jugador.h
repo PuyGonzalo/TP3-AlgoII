@@ -133,6 +133,7 @@ const string MSJ_MENU_INGRESO_OPCION = "Elija una opcion";
 
 const string MSJ_INGRESO_EDIFICIO_DEMOLER = "Ingresa el nombre del edificio a demoler:";
 const string MSJ_DESPEDIDA = "¡Hasta la proxima!";
+const string MSJ_PARTIDA_NUEVA = "¡Comienza una nueva partida!";
 
 
 //####################################################### FUNCIONES #################################################################
@@ -150,6 +151,10 @@ void mostrar_menu_partida_nueva();
 // pre:
 // post:
 Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis);
+
+// pre:
+// post:
+Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis);
 
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)

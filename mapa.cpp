@@ -501,3 +501,26 @@ Jugador_t Mapa::obtener_creador_edificio(int coord_x, int coord_y){
 
     return jugador;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Coordenadas Mapa::obtener_coordenadas_casillero_transitable_aleatorio(){
+    
+    int coord_x, coord_y;
+    Coordenadas aux;
+
+    coord_x = rand() % cantidad_columnas;
+    coord_y = rand() % cantidad_filas;
+
+    while( !mapa[coord_x][coord_y]->es_casillero_transitable()){
+        coord_x = rand() % cantidad_columnas;
+        coord_y = rand() % cantidad_filas;
+    }
+
+    aux.coordenada_x = coord_x;
+    aux.coordenada_y = coord_y;
+
+    return aux;  
+}

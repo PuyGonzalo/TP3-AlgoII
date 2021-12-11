@@ -112,6 +112,10 @@ public:
 
     // pre:
     // pos:
+    void modificar_edificio(string nombre, int piedra_nuevo , int madera_nuevo, int metal_nuevo);
+
+    // pre:
+    // pos:
     string construir_string_edificio(string nombre, int coord_x, int coord_y);
 
     // pre:
@@ -150,6 +154,10 @@ public:
     // pos: mostrar edificios construidos (FALTA RESTANTES HASTA MAXIMO)
     void listar_edificios_construidos(Jugador_t jugador);
 
+    // pre:
+    // pos:
+    void listar_edificios_diccionario();
+
     // pre: -
     // pos: muestra el mapa
     void mostrar_mapa(int pos_visual_x, int pos_visual_y);
@@ -161,6 +169,10 @@ public:
     // pre:
     // pos:
     Estado_t consultar_casillero_de_mapa(int coord_x, int coord_y) const;
+
+    // pre:
+    // pos:
+    void sortear_ubicacion_jugadores();
 
 
 };

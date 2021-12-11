@@ -8,6 +8,8 @@ using namespace std;
 
 // SEGURO HAYA QUE CAMBIAR ALGUNOS ERRORES
 const string STR_OK = "Ok";
+const string STR_ERROR_MODIFICAR_OBELISICO = "¡ No se puede modificar el Obelisco!";
+const string STR_ERROR_CANTIDAD_MATERIALES_INVALIDOS = "¡La cantidad ingresada de algun material es incorrecta!";
 const string STR_ERROR_EDIFICIO_NO_REPARABLE = "¡Este edificio no puede ser reparado!";
 const string STR_ERROR_EDIFICIO_AJENO = "¡Este edificio no es de tu propiedad!";
 const string STR_ERROR_EDIFICIO_PROPIO = "¡Este edificio es de tu propiedad!";
@@ -26,6 +28,7 @@ const string STR_ERROR_CASILLERO_NO_CONSTRUIBLE = "¡Este casillero no es constr
 const string STR_ERROR_CASILLERO_OCUPADO = "¡El casillero esta ocupado!";
 const string STR_ERROR_CASILLERO_NO_TRANSITABLE = "¡El casillero no es del tipo transitable!";
 const string STR_ERROR_PAR_COORDENADAS_INVALIDAS = "¡Alguna de esas coordenadas no es un numero!";
+const string STR_ERROR_MATERIALES_INVALIDOS = "¡Alguna de esas materiales no es un numero!";
 const string STR_ERROR_CASILLERO_VACIO = "¡Este casillero esta vacio!";
 const string STR_ERROR_RECOLECCION_MATERIALES = "¡No hay edificios de los cuales recolectar materiales!";
 const string STR_ERROR_ANDYCOINS_INSUFICIENTES = "¡No tenes suficientes andycoins para comprar!";
@@ -54,6 +57,9 @@ const string errores[] = {
 	STR_ERROR_EDIFICIO_AJENO,
 	STR_ERROR_EDIFICIO_PROPIO,
 	STR_ERROR_BOMBAS_INSUFICIENTES,
+	STR_ERROR_MATERIALES_INVALIDOS,
+	STR_ERROR_CANTIDAD_MATERIALES_INVALIDOS,
+	STR_ERROR_MODIFICAR_OBELISICO,
 	STR_ERROR_EDIFICIO_NO_REPARABLE
 };
 
@@ -81,6 +87,9 @@ enum Estado_t {
 	ERROR_EDIFICIO_PROPIO = 20,
 	ERROR_BOMBAS_INSUFICIENTES = 21,
 	ERROR_EDIFICIO_NO_REPARABLE = 22,
+	ERROR_MATERIALES_INVALIDOS = 23,
+	ERROR_CANTIDAD_MATERIALES_INVALIDOS = 24,
+	ERROR_MODIFICAR_OBELISICO = 25,
 	ADVERTENCIA_LLUVIA_RECURSOS = 100,
 	ESTADO_JUGADOR_GANADOR = 200};
 

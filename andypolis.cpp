@@ -369,6 +369,22 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Andypolis::modificar_edificio(string nombre, int piedra_nuevo , int madera_nuevo, int metal_nuevo){
+
+
+
+    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_piedra(piedra_nuevo);
+    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_madera(madera_nuevo);
+    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_metal(metal_nuevo);
+    
+    cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se modifico " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 string Andypolis::construir_string_edificio(string nombre, int coord_x, int coord_y){
 
     string linea;
@@ -669,6 +685,16 @@ void Andypolis::listar_edificios_construidos(Jugador_t jugador){
 
 // ------------------------------------------------------------------------------------------------------------
 
+/*
+void Andypolis::listar_edificios_diccionario( ){
+   
+    diccionario.impimir_en();
+}
+*/
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Andypolis::mostrar_mapa(int pos_visual_x, int pos_visual_y){
 
@@ -686,5 +712,20 @@ Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{
 
     return estado = mapa.consultar_casillero(coord_x,coord_y);
 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::sortear_ubicacion_jugadores(){
+
+    Coordenadas coordenada = mapa.obtener_coordenadas_casillero_transitable_aleatorio();
+    jugador_uno.asignar_ubicacion_jugador( coordenada.coordenada_x, coordenada.coordenada_y);
+    mapa.posicionar_jugador( coordenada.coordenada_x, coordenada.coordenada_y ,JUGADOR_UNO);
+
+    coordenada = mapa.obtener_coordenadas_casillero_transitable_aleatorio();
+    jugador_dos.asignar_ubicacion_jugador(coordenada.coordenada_x, coordenada.coordenada_y);
+    mapa.posicionar_jugador(coordenada.coordenada_x, coordenada.coordenada_y ,JUGADOR_DOS);
 }
 

@@ -56,6 +56,10 @@ public:
     // pos: devuelve el indice de la lista de casilleros transitables disponibles de una coordenada pedida
     int obtener_indice_casillero_transitable(int coord_x, int coord_y);
 
+    // pre:
+    // post:
+    Coordenadas obtener_coordenadas_casillero_transitable_aleatorio();
+
     // pre: coordenadas validas (depende de mapa.txt)
     // pos: devuelve si un casillero particular del mapa es transitable
     bool se_puede_transitar(int coord_x, int coord_y);

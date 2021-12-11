@@ -59,6 +59,32 @@ double Datos_edificio::obtener_costo_metal(){
     return this -> costo_metal;
 }
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Datos_edificio::modificar_costo_piedra( int cantidad){
+
+    return this -> costo_piedra = cantidad;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Datos_edificio::modificar_costo_madera(int cantidad){
+
+    return this -> costo_madera = cantidad;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Datos_edificio::modificar_costo_metal(int cantidad){
+
+    return this -> costo_metal = cantidad;
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 

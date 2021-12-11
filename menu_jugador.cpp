@@ -73,9 +73,9 @@ void partida_nueva(Andypolis& andypolis){
     int opcion = 0;
    	Estado_t estado = OK;
     
-    while(opcion != GUARDAR_SALIR_PARTIDA_NUEVA){
+    while(opcion != GUARDAR_SALIR_PARTIDA_NUEVA && opcion != COMENZAR_PARTIDA_PARTIDA_NUEVA){
         
-        if(opcion != GUARDAR_SALIR_PARTIDA_NUEVA){
+        if(opcion != GUARDAR_SALIR_PARTIDA_NUEVA && opcion != COMENZAR_PARTIDA_PARTIDA_NUEVA){
             mostrar_menu_partida_nueva();
             estado = ingreso_menu_partida_nueva(opcion, andypolis);
             if(estado != OK)
@@ -196,7 +196,55 @@ Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis){
 
     opcion = stoi(opcion_elegida);
 
-    //estado = procesar_opcion(opcion,andypolis,jugador,turno);
+    estado = procesar_opcion_partida_nueva(opcion,andypolis);
+
+    return estado;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis){
+
+    Estado_t estado = OK;
+    //string str_edificio;
+    //string codigo_ingresado;
+
+
+    switch (opcion_elegida) {
+
+        case MODIFICAR_EDIFICIO_POR_NOMBRE_PARTIDA_NUEVA:
+            if(system(CLR_SCREEN));
+            estado = modificar_edificio_por_nombre(andypolis);
+            break;
+
+        case LISTAR_TODOS_LOS_EDIFICIOS_PARTIDA_NUEVA:
+            if(system(CLR_SCREEN));
+            //andypolis.listar_edificios_diccionario();
+            break;
+
+        case MOSTRAR_MAPA_PARTIDA_NUEVA: 
+            if(system(CLR_SCREEN));
+            andypolis.mostrar_mapa(16,1);
+            break;
+
+        case COMENZAR_PARTIDA_PARTIDA_NUEVA:
+            if(system(CLR_SCREEN));
+            andypolis.sortear_ubicacion_jugadores();
+            cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
+            cout << endl << endl;
+            break;
+
+        case GUARDAR_SALIR_PARTIDA_NUEVA:
+            if(system(CLR_SCREEN));
+            cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
+            cout << endl << endl;
+            break;
+
+        default: 
+            return ERROR_NUMERO_OPCION_INVALIDA;
+    }
 
     return estado;
 }
