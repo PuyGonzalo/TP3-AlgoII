@@ -46,6 +46,7 @@ Estado_t consultar_coordenada(const Andypolis &andypolis);
 
 // -------------------------------- NUEVA PARTIDA ---------------------------------------------------
 
+
 // pre:
 // pos:
 Estado_t modificar_edificio_por_nombre(Andypolis &andypolis);

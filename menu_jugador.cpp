@@ -231,9 +231,10 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case COMENZAR_PARTIDA_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
-            andypolis.sortear_ubicacion_jugadores();
+            //andypolis.sortear_ubicacion_jugadores();
             cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
+            procesar_juego(andypolis);
             break;
 
         case GUARDAR_SALIR_PARTIDA_NUEVA:
@@ -333,6 +334,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case GUARDAR_SALIR:
             if(system(CLR_SCREEN));
+            //guardar_cambios();
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
@@ -367,12 +369,56 @@ void mostrar_pantalla_final(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones){
+void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones, ofstream& archivo_salida_edificios){
 
     cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥" << endl << endl
     << TAB << TAB << TAB << TAB << "# Ivan Lisman" << endl
     << TAB << TAB << TAB << TAB << "# El magnífico Ivan Lisman" << endl
     << TAB << TAB << TAB << TAB << "# Lazurro" << endl;
 
+    	// Abro los archivos de escritura para guardar el juego
+//	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
+//  ofstream archivo_salida_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::trunc);
+
+	// Guardo los cambios
+//	guardar_cambios(andypolis, archivo_salida_materiales, archivo_salida_ubicaciones);
+
+	// Cierros los archivos de escritura
+//	archivo_salida_materiales.close();
+//	archivo_salida_ubicaciones.close();
+
 }
 
+
+
+void inicializar_juego(){
+
+    // Esto lo hago para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
+	srand( (unsigned int)time(NULL) );
+
+    // Abro archivos de lectura
+	ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA);
+	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA);
+    ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
+    ifstream archivo_entrada_mapa(PATH_ENTRADA_MAPA);
+
+	// NUEVA_PARTIDA:
+	archivo_entrada_ubicaciones.seekg(0, ios::end);
+	// Si el archivo esta vacio tellg() me devuelve cero!
+	if( !archivo_entrada_ubicaciones.tellg() ){
+	
+		cout << "Archivo ubicaciones vacio" <<  endl;
+		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,true);
+		partida_nueva(andypolis);
+	}
+	else{
+		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,false);
+		procesar_juego(andypolis);
+	}
+
+    // Cierro archivos de lectura
+	archivo_entrada_materiales.close(); 
+	archivo_entrada_edificios.close();
+    archivo_entrada_ubicaciones.close();
+    archivo_entrada_mapa.close();
+}

@@ -4,6 +4,9 @@
 #include <sstream>
 #include <string>
 #include <ctime>
+#include <iostream>
+#include <fstream>
+#include <filesystem>
 #include "errores.h"
 #include "formatos.h"
 #include "andypolis.h"
@@ -42,6 +45,12 @@ enum Opciones_menu_partida_nueva_t{
 	GUARDAR_SALIR_PARTIDA_NUEVA = 5,
 };
 
+const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt"; // Cambio el formato de archivos, ojo
+const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
+const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
+const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
+const string PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA = "Archivos/materiales_nueva_partida.txt";
+const string PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA = "Archivos/ubicaciones_nueva_partida.txt";
 
 // HAY QUE BUSCAR UNA FORMA DE "TABEAR" ESTOS MENSAJES (RAW STRING LITERAL)
 const string ARTE_PANTALLA_FINAL = R"(
@@ -180,13 +189,17 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 // pos: suma una cantidad "secreta" de un material dependiendo que codigo se ponga
 Estado_t menu_secreto(Inventario inventario, string codigo);
 
+// pre:
+// pos:
+void inicializar_juego();
+
 // pre: -
 // pos: muestra una pantalla final felicitando al ganador
 void mostrar_pantalla_final(Jugador_t jugador);
 
 // pre: -
 // pos: guarda todos los cambios que haya realizado el jugador + CREDITOS
-void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones);
+void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones, ofstream& archivo_salida_edificios);
 
 
 #endif //MENU_JUGADOR_H

@@ -46,13 +46,9 @@ private:
 public:
     // Metodos
 
-    // pre:
-    // post:
-    Andypolis(ifstream& archivo_edif, ifstream& archivo_mapa, ifstream& archivo_mats);
-
     // pre: archivos bien formados
     // pos: CONSTRUCTOR de andypolis a partir de todos los archivos
-    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats);
+    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats, bool partida_nueva);
 
     // pre: -
     // pos: DESTRUCTOR de andypolis

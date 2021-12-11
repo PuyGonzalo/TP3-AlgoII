@@ -5,27 +5,15 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_mapa, ifstream& archivo_mats)
+Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats, bool partida_nueva)
 : mapa(archivo_mapa){
 
     // cuando venga vacio va a haber que meter una logica por aca
     cargar_informacion_jugadores();
     cargar_diccionario(archivo_edif);
-    cargar_inventarios(archivo_mats);
- 
-}
+    if(!partida_nueva)
+        cargar_ubicaciones(archivo_ubics);
 
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats)
-: mapa(archivo_mapa){
-
-    // cuando venga vacio va a haber que meter una logica por aca
-    cargar_informacion_jugadores();
-    cargar_diccionario(archivo_edif);
-    cargar_ubicaciones(archivo_ubics);
     cargar_inventarios(archivo_mats);
  
 }
