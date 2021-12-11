@@ -13,8 +13,10 @@ private:
 
     // Metodos:
 
+    // Estos metodos son privados, porque manejan los nodos.
     ABBNodo<T,C>* insertar(ABBNodo<T,C>* nodo, T* dato, C clave);
-    //void imprimir_en_orden(ABBNodo<T,C>* nodo); // Posiblemente lo saque
+    void imprimir_en_orden(ABBNodo<T,C>* nodo);
+    void guardar_en_archivo(ABBNodo<T,C>* nodo, ofstream& archivo);
     ABBNodo<T,C>* buscar(ABBNodo<T,C>* nodo, C clave);
     ABBNodo<T,C>* buscar_const(ABBNodo<T,C>* nodo, C clave) const;
     C buscar_minimo(ABBNodo<T,C>* nodo);
@@ -38,9 +40,13 @@ public:
     // pos:
     void insertar(T* dato, C clave);
 
-    // pre:
+    // pre: Este metodo solo se puede usar si el arbol tiene como dato estructuras complejas, y ademas debe tener un metodo llamado mostrar_informacion()
+    // pos: 
+    void imprimir_en_orden();
+
+    // pre: En caso de tipo de dato complejo. Se asume que tiene defino el operador '<<'
     // pos:
-    //void imprimir_en_orden();
+    void guardar_en_archivo(ofstream& archivo);
 
     // pre:
     // pos:
@@ -154,28 +160,52 @@ void ABB<T,C>::insertar(T* dato, C clave){
 
 
 // -----------------------------------------------------------------------------------------
-/*
-// Este deberia sacarlo o modificarlo
+
+
 template <typename T, typename C>
 void ABB<T,C>::imprimir_en_orden(ABBNodo<T,C>* nodo){
 
     if (nodo != NULL){
         imprimir_en_orden(nodo -> obtener_izquierda());
-        std::cout << nodo -> obtener_dato() << ' ';
+        nodo -> obtener_dato() -> mostrar_informacion();
         imprimir_en_orden(nodo -> obtener_derecha());
     }
 }
-*/
+
 
 // -----------------------------------------------------------------------------------------
 
-/*
+
 template <typename T, typename C>
 void ABB<T,C>::imprimir_en_orden(){
     
     this -> imprimir_en_orden(this -> raiz);
 }
-*/
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
+void ABB<T,C>::guardar_en_archivo(ABBNodo<T,C>* nodo, ofstream& of){
+
+    if (nodo != NULL){
+        guardar(nodo -> obtener_izquierda(), of);
+        of << *(nodo -> obtener_dato());
+        guardar(nodo -> obtener_derecha(), of);
+    }
+}
+
+
+// -----------------------------------------------------------------------------------------
+
+
+template <typename T, typename C>
+void ABB<T,C>::guardar_en_archivo(ofstream& of){
+    
+    this -> guardar(this -> raiz, of);
+}
+
 
 // -----------------------------------------------------------------------------------------
 

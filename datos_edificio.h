@@ -2,6 +2,8 @@
 #define DATOS_EDIFICIO_H
 
 #include <string>
+#include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -64,7 +66,13 @@ public:
     // pos:
     double modificar_costo_metal(int cantidad);
 
+    // pre:
+    // pos:
+    friend ostream & operator<< (ostream& os, Datos_edificio const& de);
 
+    // pre:
+    // pos:
+    void mostrar_informacion();
     
 
 };

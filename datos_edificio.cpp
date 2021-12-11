@@ -93,3 +93,39 @@ int Datos_edificio::obtener_maximos_permitidos(){
 
     return this -> maximos_permitidos;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+ostream & operator<< (ostream& os, Datos_edificio const& de){
+
+    os << de.nombre << ' ' << de.costo_piedra << ' ' << de.costo_madera << ' ' << de.costo_metal << ' ' << de.maximos_permitidos << endl;
+
+    return os;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Datos_edificio::mostrar_informacion(){
+
+    cout
+        << left
+        << setw(30)
+        << this -> nombre
+        << left
+        << setw(24)
+        << this -> costo_piedra
+        << left
+        << setw(24)
+        << this -> costo_madera
+        << left
+        << setw(24)
+        << this -> costo_metal
+        << left
+        << setw(24)
+        << this -> maximos_permitidos
+        << endl;
+}

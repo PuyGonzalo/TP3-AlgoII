@@ -685,12 +685,33 @@ void Andypolis::listar_edificios_construidos(Jugador_t jugador){
 
 // ------------------------------------------------------------------------------------------------------------
 
-/*
+
 void Andypolis::listar_edificios_diccionario( ){
+
+    cout
+        << NEGRITA << SUBRAYADO
+        << left
+        << setw(30)
+        << "Nombre del edificio"
+        << left
+        << setw(24)
+        << "Cantidad de piedra"
+        << left
+        << setw(24)
+        << "Cantidad de madera"
+        << left
+        << setw(24)
+        << "Cantidad de metal"
+        << left
+        << setw(24)
+        << "Maximo de construcciones"
+        << FIN_DE_FORMATO
+        << endl;
+
    
-    diccionario.impimir_en();
+    diccionario.imprimir_en_orden();
 }
-*/
+
 
 
 // ------------------------------------------------------------------------------------------------------------

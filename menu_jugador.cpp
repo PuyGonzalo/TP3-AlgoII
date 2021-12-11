@@ -221,7 +221,7 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case LISTAR_TODOS_LOS_EDIFICIOS_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
-            //andypolis.listar_edificios_diccionario();
+            andypolis.listar_edificios_diccionario();
             break;
 
         case MOSTRAR_MAPA_PARTIDA_NUEVA: 
