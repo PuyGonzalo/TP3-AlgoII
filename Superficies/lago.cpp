@@ -8,8 +8,8 @@ Lago::Lago(char identificador) : Superficie(identificador) {
     this -> transitable = false;
     this -> construible = false;
     this -> accesible = false;
-    costo_energia_jugador[JUGADOR_UNO-1] = 2;
-    costo_energia_jugador[JUGADOR_DOS-1] = 5;
+    costo_energia_jugador[JUGADOR_UNO] = 2;
+    costo_energia_jugador[JUGADOR_DOS] = 5;
     
 }
 

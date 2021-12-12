@@ -87,7 +87,7 @@ string Parser::tipo_material(){
 
 double Parser::cantidad_material(Jugador_t jugador){
     
-    return stod(entrada[jugador]);
+    return stod(entrada[jugador + 1]);
 
 }
 

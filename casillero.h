@@ -13,7 +13,7 @@
 
 using namespace std;
 
-const char identificaciones_jugadores[3] = {' ','J','U'}; // CHE PERO EL EDIFICIO TIENE UN ATRIBUTO DE QUIEN ES EL CREADOR!
+const char identificaciones_jugadores[2] = {'J','U'}; // CHE PERO EL EDIFICIO TIENE UN ATRIBUTO DE QUIEN ES EL CREADOR!
 const string colores_jugador[2] = {TEXTO_PURPURA,TEXTO_PURPURA_OSCURO}; // (impresion de casilleros con edifs)
 
 class Casillero{

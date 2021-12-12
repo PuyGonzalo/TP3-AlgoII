@@ -18,13 +18,16 @@
 
 using namespace std;
 
+const int CANT_MAX_JUGADORES = 2;
+const int POS_JUGADOR_UNO = 0;
+const int POS_JUGADOR_DOS = 1;
+
 const int MAX_EDIF_CONSTRUIBLES_INICIAL = 3;
 const int AMPLIACION_EDIF_CONSTRUIBLES = 2;
 const char DELIM_ESPACIO = ' ';
 
 const string CONFIRMACION_AFIRMATIVA_CONSTRUCCION = "SI";
 const string CONFIRMACION_NEGATIVA_CONSTRUCCION = "NO";
-
 
 const int RAND_MAX_PIEDRA = 2;
 const int RAND_MAX_MADERA = 3;
@@ -39,8 +42,9 @@ private:
     // Atributos
     Mapa mapa;
     ABB<Datos_edificio,string> diccionario;
-    Jugador jugador_uno;
-    Jugador jugador_dos;
+    //Jugador jugador_uno;
+    //Jugador jugador_dos;
+    Jugador jugadores[CANT_MAX_JUGADORES];
 
 
 public:
@@ -168,7 +172,7 @@ public:
 
     // pre:
     // pos:
-    void sortear_ubicacion_jugadores();
+    //void sortear_ubicacion_jugadores();
 
     // pre:
     // pos:

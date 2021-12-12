@@ -12,9 +12,9 @@ struct Coordenadas{ // MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 };
 
 enum Jugador_t{ // MMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-    NADIE = 0,
-    JUGADOR_UNO = 1,
-    JUGADOR_DOS = 2
+    NADIE = 2,
+    JUGADOR_UNO = 0,
+    JUGADOR_DOS = 1
 };
 
 // pre: -

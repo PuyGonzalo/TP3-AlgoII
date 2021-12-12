@@ -30,7 +30,7 @@ Andypolis::~Andypolis(){}
 
 void Andypolis::cargar_informacion_jugadores(){
 
-
+    /*
     this -> jugador_uno.asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
     this -> jugador_uno.asignar_numero_jugador(JUGADOR_UNO);
     this -> jugador_uno.sortear_objetivos_secundarios();
@@ -40,6 +40,17 @@ void Andypolis::cargar_informacion_jugadores(){
     this -> jugador_dos.asignar_numero_jugador(JUGADOR_DOS);
     this -> jugador_dos.sortear_objetivos_secundarios();
     this -> jugador_dos.crear_grafo(mapa);
+    */
+
+    this -> jugadores[POS_JUGADOR_UNO].asignar_identificador(IDENTIFICADOR_JUGADOR_UNO);
+    this -> jugadores[POS_JUGADOR_UNO].asignar_numero_jugador(JUGADOR_UNO);
+    this -> jugadores[POS_JUGADOR_UNO].sortear_objetivos_secundarios();
+    this -> jugadores[POS_JUGADOR_UNO].crear_grafo(mapa);
+
+    this -> jugadores[POS_JUGADOR_DOS].asignar_identificador(IDENTIFICADOR_JUGADOR_DOS);
+    this -> jugadores[POS_JUGADOR_DOS].asignar_numero_jugador(JUGADOR_DOS);
+    this -> jugadores[POS_JUGADOR_DOS].sortear_objetivos_secundarios();
+    this -> jugadores[POS_JUGADOR_DOS].crear_grafo(mapa);
 
 }
 
@@ -55,9 +66,9 @@ void Andypolis::cargar_inventarios(fstream& archivo_mats){
 
         Parser parser(linea_leida);
         Material* material_leido_uno = parser.procesar_entrada_material(JUGADOR_UNO);
-        jugador_uno.agregar_material_al_inventario(material_leido_uno);
+        jugadores[POS_JUGADOR_UNO].agregar_material_al_inventario(material_leido_uno);
         Material* material_leido_dos = parser.procesar_entrada_material(JUGADOR_DOS);
-        jugador_dos.agregar_material_al_inventario(material_leido_dos);
+        jugadores[POS_JUGADOR_DOS].agregar_material_al_inventario(material_leido_dos);
         
     }
 }
@@ -189,10 +200,10 @@ Estado_t Andypolis::cargar_edificios_jugador(fstream& archivo_ubics){
         Parser parser(linea_leida);
 
         if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugador_uno.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
+            jugadores[POS_JUGADOR_UNO].asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_UNO);
         }else if(parser.nombre_elemento_ubicaciones() == "2"){
-            jugador_dos.asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
+            jugadores[POS_JUGADOR_DOS].asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
             mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_DOS);
             pos_archivo = archivo_ubics.tellg();
             fin_jugador_1 = true;
@@ -249,11 +260,14 @@ void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int
     else
         vida = 50;
 
+    jugadores[jugador].agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
 
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
     else
         jugador_dos.agregar_edificio(nombre, identificador, vida, coord_x, coord_y);
+    */    
 }
 
 
@@ -262,9 +276,12 @@ void Andypolis::cargar_edificio_a_jugador(string nombre, char identificador, int
 
 double Andypolis::obtener_energia_jugador(Jugador_t jugador){
 
+    /*
     if(jugador == JUGADOR_UNO)
         return jugador_uno.obtener_energia();
     return jugador_dos.obtener_energia();
+    */
+   return jugadores[jugador].obtener_energia();
 
 }
 
@@ -272,11 +289,13 @@ double Andypolis::obtener_energia_jugador(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 void Andypolis::agregar_energia_jugador(Jugador_t jugador, double energia){
-
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.agregar_energia(energia);
     else if(jugador == JUGADOR_DOS)
         jugador_dos.agregar_energia(energia);
+    */
+   jugadores[jugador].agregar_energia(energia);
 
 }
 
@@ -286,11 +305,13 @@ void Andypolis::agregar_energia_jugador(Jugador_t jugador, double energia){
 Estado_t Andypolis::comprar_bombas(Jugador_t jugador){
 
     Estado_t estado = OK;
-    
+    /*
     if(jugador == JUGADOR_UNO)
         estado = jugador_uno.comprar_bombas();
     if(jugador == JUGADOR_DOS)
-        estado = jugador_dos.comprar_bombas();    
+        estado = jugador_dos.comprar_bombas();
+    */
+   estado = jugadores[jugador].comprar_bombas();    
         
 
     return estado;
@@ -317,24 +338,24 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     if((estado = mapa.verificar_coordenadas_construccion(coord_x, coord_y)) != OK)
         return estado; //Si las coordenadas tienen algun problema no tiene sentido continuar.
 
-    if(jugador == JUGADOR_UNO){
+    
         
-        estado = jugador_uno.verificar_condiciones_construccion(nombre, diccionario);
+    estado = jugadores[jugador].verificar_condiciones_construccion(nombre, diccionario);
 
-        if( (estado = consultar_construccion_edificio()) != OK)
-            return estado;
+    if( (estado = consultar_construccion_edificio()) != OK)
+        return estado;
 
-        if(estado == OK){
-            string linea = construir_string_edificio(nombre, coord_x, coord_y);
-            Parser parser(linea);
-            estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
-            cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
-            jugador_uno.restar_materiales_construccion(nombre, diccionario);
-            jugador_uno.restar_energia((double)15); //desharcodear
-            cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se construyo " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
-        }
+    if(estado == OK){
+        string linea = construir_string_edificio(nombre, coord_x, coord_y);
+        Parser parser(linea);
+        estado = mapa.asignar_edificio_en_coord(parser.procesar_entrada_ubicaciones_edificios(jugador), coord_x, coord_y);
+        cargar_edificio_a_jugador(parser.nombre_elemento_ubicaciones(), parser.obtener_identificador_edificio_ubicaciones(), coord_x, coord_y, jugador);
+        jugadores[jugador].restar_materiales_construccion(nombre, diccionario);
+        jugadores[jugador].restar_energia((double)15); //desharcodear
+        cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se construyo " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
     }
 
+    /*
     if(jugador == JUGADOR_DOS){
         
         estado = jugador_dos.verificar_condiciones_construccion(nombre, diccionario);
@@ -352,6 +373,7 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
             cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se construyo " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
         }
     }
+    */
     
     return estado;
 }
@@ -380,9 +402,9 @@ void Andypolis::modificar_edificio(string nombre, int piedra_nuevo , int madera_
 
 
 
-    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_piedra(piedra_nuevo);
-    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_madera(madera_nuevo);
-    diccionario.consultar(nombre)->obtener_dato()->modificar_costo_metal(metal_nuevo);
+    diccionario.consultar(nombre) -> obtener_dato() -> modificar_costo_piedra(piedra_nuevo);
+    diccionario.consultar(nombre) -> obtener_dato() -> modificar_costo_madera(madera_nuevo);
+    diccionario.consultar(nombre) -> obtener_dato() -> modificar_costo_metal(metal_nuevo);
     
     cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se modifico " << nombre << " exitosamente!" <<FIN_DE_FORMATO<<endl;
 }
@@ -419,18 +441,17 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
     if((estado = mapa.verificar_coordenadas_demolicion(coord_x, coord_y, jugador)) != OK)
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
 
-    if( jugador == JUGADOR_UNO){
-            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
-            estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            jugador_uno.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
-    }
-
+    nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+    estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+    jugadores[jugador].destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+    /*
     if( jugador == JUGADOR_DOS){
             nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
             estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
             jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
 
     }
+    */
 
     return estado;
 }
@@ -448,31 +469,29 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
     if((estado = mapa.verificar_coordenadas_ataque(coord_x, coord_y, jugador)) != OK)
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
 
-    if( jugador == JUGADOR_UNO){
-        if(!jugador_uno.obtener_cantidad_bombas()){
-            return estado = ERROR_BOMBAS_INSUFICIENTES;
-        }
-        else {
-            nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
-            posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
-            orden_edificio = jugador_dos.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
-
-
-            if( jugador_dos.obtener_vida_edificio(posicion_edificio, orden_edificio) == 100 ){
-                    jugador_dos.restar_vida_edificio(posicion_edificio, orden_edificio);
-
-            }
-            else{
-                jugador_dos.destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
-                estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-            }
-
-            jugador_uno.restar_bombas();
-            jugador_uno.aumentar_bombas_usadas();
-            jugador_uno.restar_energia(30);
-        }
+    if(!jugadores[jugador].obtener_cantidad_bombas()){
+        return estado = ERROR_BOMBAS_INSUFICIENTES;
     }
+    else {
+        nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+        posicion_edificio = jugadores[jugador].buscar_edificio_por_nombre(nombre_edificio);
+        orden_edificio = jugadores[jugador].buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
 
+
+        if( jugadores[!jugador].obtener_vida_edificio(posicion_edificio, orden_edificio) == 100 ){
+                jugadores[!jugador].restar_vida_edificio(posicion_edificio, orden_edificio);
+
+        }
+        else{
+            jugadores[!jugador].destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+            estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
+        }
+
+        jugadores[jugador].restar_bombas();
+        jugadores[jugador].aumentar_bombas_usadas();
+        jugadores[jugador].restar_energia(30);
+        }
+    /*
     if( jugador == JUGADOR_DOS){
         if(!jugador_dos.obtener_cantidad_bombas()){
             return estado = ERROR_BOMBAS_INSUFICIENTES;
@@ -497,6 +516,7 @@ Estado_t Andypolis::atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t
             jugador_dos.restar_energia(30);
         }
     }
+    */
     return estado;
 }
 
@@ -514,26 +534,25 @@ Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_
         return estado; //Si las coordenadas tienen algun problmea no tiene sentido continuar.
         
     
-    if( jugador == JUGADOR_UNO){
-        nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
-        posicion_edificio = jugador_uno.buscar_edificio_por_nombre(nombre_edificio);
-        orden_edificio = jugador_uno.buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
+    nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
+    posicion_edificio = jugadores[jugador].buscar_edificio_por_nombre(nombre_edificio);
+    orden_edificio = jugadores[jugador].buscar_posicion_coordenadas( posicion_edificio, coord_x, coord_y);
 
-        if(!jugador_uno.puede_repararse_edificio(posicion_edificio, orden_edificio)){
-            return estado = ERROR_EDIFICIO_NO_REPARABLE;
-        }
-            
+    if(!jugadores[jugador].puede_repararse_edificio(posicion_edificio, orden_edificio)){
+        return estado = ERROR_EDIFICIO_NO_REPARABLE;
+    }
         
-        estado = jugador_uno.verificar_condiciones_construccion(nombre_edificio, diccionario);
+    
+    estado = jugadores[jugador].verificar_condiciones_construccion(nombre_edificio, diccionario);
 
-        if(estado == OK){
-           
-            jugador_uno.sumar_vida_edificio(posicion_edificio, orden_edificio); 
-            jugador_uno.restar_materiales_reparacion(nombre_edificio, diccionario);
-            jugador_uno.restar_energia((double)25); //desharcodear
-        }
+    if(estado == OK){
+        
+        jugadores[jugador].sumar_vida_edificio(posicion_edificio, orden_edificio); 
+        jugadores[jugador].restar_materiales_reparacion(nombre_edificio, diccionario);
+        jugadores[jugador].restar_energia((double)25); //desharcodear
     }
 
+    /*
     if( jugador == JUGADOR_DOS){
         nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
         posicion_edificio = jugador_dos.buscar_edificio_por_nombre(nombre_edificio);
@@ -551,6 +570,7 @@ Estado_t Andypolis::reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_
             jugador_dos.restar_energia((double)25); //desharcodear
         }
     }
+    */
     return estado;
 }
 
@@ -609,11 +629,15 @@ Estado_t Andypolis::lluvia_de_recursos(){
 
 
 void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
-
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.recolectar_recursos(mapa);
     else if(jugador == JUGADOR_DOS)
         jugador_dos.recolectar_recursos(mapa);
+
+    */
+
+   jugadores[jugador].recolectar_recursos(mapa);
 
     // anotar lo de ari de armar una lista de coords y que andypolis actualice el mapa (no rompe encapsulamiento pero es mas largo :p)
 
@@ -624,11 +648,13 @@ void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
 
 
 void Andypolis::depositar_recursos_jugador(Jugador_t jugador){
-
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.depositar_recursos(mapa);
     else if(jugador == JUGADOR_DOS)
         jugador_dos.depositar_recursos(mapa);
+    */
+   jugadores[jugador].depositar_recursos(mapa);
 
 
 }
@@ -640,13 +666,14 @@ void Andypolis::depositar_recursos_jugador(Jugador_t jugador){
 bool Andypolis::gano_el_jugador(Jugador_t jugador){
 
     bool gano = false;
-
+    /*
     if (jugador == JUGADOR_UNO)
         gano = jugador_uno.gane_el_juego( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
     else if (jugador == JUGADOR_DOS)
         gano = jugador_dos.gane_el_juego( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
+    */
 
-    return gano;
+    return gano = jugadores[jugador].gane_el_juego( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
 
 }
 
@@ -654,13 +681,14 @@ bool Andypolis::gano_el_jugador(Jugador_t jugador){
 
 
 void Andypolis::mostrar_inventario(Jugador_t jugador){
-
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.mostrar_inventario();
 
     if(jugador == JUGADOR_DOS)
         jugador_dos.mostrar_inventario();    
-
+    */
+   jugadores[jugador].mostrar_inventario();
 }
 
 
@@ -669,14 +697,14 @@ void Andypolis::mostrar_inventario(Jugador_t jugador){
 
 void Andypolis::mostrar_objetivos(Jugador_t jugador){
     
-    
-
+    /*
     if(jugador == JUGADOR_UNO){}
         jugador_uno.mostrar_objetivos( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
 
     if(jugador == JUGADOR_DOS)
         jugador_dos.mostrar_objetivos( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );    
-
+    */
+   jugadores[jugador].mostrar_objetivos( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
 }
 
 
@@ -684,12 +712,13 @@ void Andypolis::mostrar_objetivos(Jugador_t jugador){
 
 
 void Andypolis::listar_edificios_construidos(Jugador_t jugador){
-
+    /*
     if(jugador == JUGADOR_UNO)
         jugador_uno.listar_edificios_construidos();
     if(jugador == JUGADOR_DOS)
         jugador_dos.listar_edificios_construidos();
-
+    */
+    jugadores[jugador].listar_edificios_construidos();
 }
 
 
@@ -748,7 +777,7 @@ Estado_t Andypolis::consultar_casillero_de_mapa(int coord_x, int coord_y) const{
 
 // ------------------------------------------------------------------------------------------------------------
 
-
+/*
 void Andypolis::sortear_ubicacion_jugadores(){
 
     Coordenadas coordenada = mapa.obtener_coordenadas_casillero_transitable_aleatorio();
@@ -759,7 +788,7 @@ void Andypolis::sortear_ubicacion_jugadores(){
     jugador_dos.asignar_ubicacion_jugador(coordenada.coordenada_x, coordenada.coordenada_y);
     mapa.posicionar_jugador(coordenada.coordenada_x, coordenada.coordenada_y ,JUGADOR_DOS);
 }
-
+*/
 
 // ------------------------------------------------------------------------------------------------------------
 
