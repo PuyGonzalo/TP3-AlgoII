@@ -239,6 +239,7 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case GUARDAR_SALIR_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
+            //guargar_cambios_partida_nueva();
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
@@ -397,21 +398,32 @@ void inicializar_juego(){
 	srand( (unsigned int)time(NULL) );
 
     // Abro archivos de lectura
-	ifstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA);
-	ifstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA);
-    ifstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS);
-    ifstream archivo_entrada_mapa(PATH_ENTRADA_MAPA);
+	fstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
+	fstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA, ios::in);
+    fstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS, ios::in);
+    fstream archivo_entrada_mapa(PATH_ENTRADA_MAPA, ios::in);
 
 	// NUEVA_PARTIDA:
-	archivo_entrada_ubicaciones.seekg(0, ios::end);
+    if(!archivo_entrada_ubicaciones.is_open()){
+        
+        fstream archivo_entrada_ubicaciones;
+        archivo_entrada_ubicaciones.open(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::out);
+        archivo_entrada_ubicaciones.close();
+        archivo_entrada_ubicaciones.open(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
+
+    }
+    
+	archivo_entrada_ubicaciones.seekg(0, ios::end); 
 	// Si el archivo esta vacio tellg() me devuelve cero!
-	if( !archivo_entrada_ubicaciones.tellg() ){
-	
+
+	if( archivo_entrada_ubicaciones.tellg() == EOF ){
+        
 		cout << "Archivo ubicaciones vacio" <<  endl;
 		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,true);
 		partida_nueva(andypolis);
 	}
 	else{
+        cout << "Hola" << endl;
 		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,false);
 		procesar_juego(andypolis);
 	}

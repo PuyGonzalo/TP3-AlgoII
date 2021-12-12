@@ -26,7 +26,7 @@ public:
 
     // pre: archivo debe ser valido
     // pos: CONSTRUCTOR del mapa
-    Mapa(ifstream& archivo_mapa);
+    Mapa(fstream& archivo_mapa);
 
     // pre: archivo debe ser valido
     // pos: CONSTRUCTOR del mapa default

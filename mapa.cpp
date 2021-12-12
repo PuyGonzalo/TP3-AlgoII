@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Mapa::Mapa(ifstream& archivo_mapa){
+Mapa::Mapa(fstream& archivo_mapa){
 
     string letra_leida;
 

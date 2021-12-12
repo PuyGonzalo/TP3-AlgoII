@@ -48,7 +48,7 @@ public:
 
     // pre: archivos bien formados
     // pos: CONSTRUCTOR de andypolis a partir de todos los archivos
-    Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats, bool partida_nueva);
+    Andypolis(fstream& archivo_edif, fstream& archivo_ubics, fstream& archivo_mapa, fstream& archivo_mats, bool partida_nueva);
 
     // pre: -
     // pos: DESTRUCTOR de andypolis
@@ -60,23 +60,23 @@ public:
 
     // pre:
     // pos:
-    void cargar_inventarios(ifstream& archivo_mats);
+    void cargar_inventarios(fstream& archivo_mats);
 
     // pre: bien formado
     // pos: carga el diccionario (no le deciamos catalogo? xd)
-    void cargar_diccionario(ifstream& archivo_edif);
+    void cargar_diccionario(fstream& archivo_edif);
 
     // pre: -
     // pos: carga las ubicaciones de materiales y los edificios de cada jugador
-    Estado_t cargar_ubicaciones(ifstream& archivo_ubics);
+    Estado_t cargar_ubicaciones(fstream& archivo_ubics);
 
     // pre: -
     // pos: carga los materiales en el mapa
-    Estado_t cargar_materiales_mapa(ifstream& archivo_ubics);
+    Estado_t cargar_materiales_mapa(fstream& archivo_ubics);
 
     // pre: -
     // pos: carga los edificios de un jugador en particular
-    Estado_t cargar_edificios_jugador(ifstream& archivo_ubics);
+    Estado_t cargar_edificios_jugador(fstream& archivo_ubics);
 
     // pre: -
     // pos: posiciona un jugador en el mapa

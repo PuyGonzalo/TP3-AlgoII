@@ -5,7 +5,7 @@
 // ------------------------------------------------------------------------------------------------------------
 
 
-Andypolis::Andypolis(ifstream& archivo_edif, ifstream& archivo_ubics, ifstream& archivo_mapa, ifstream& archivo_mats, bool partida_nueva)
+Andypolis::Andypolis(fstream& archivo_edif, fstream& archivo_ubics, fstream& archivo_mapa, fstream& archivo_mats, bool partida_nueva)
 : mapa(archivo_mapa){
 
     // cuando venga vacio va a haber que meter una logica por aca
@@ -47,7 +47,7 @@ void Andypolis::cargar_informacion_jugadores(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_inventarios(ifstream& archivo_mats){
+void Andypolis::cargar_inventarios(fstream& archivo_mats){
 
     string linea_leida;
     
@@ -66,7 +66,7 @@ void Andypolis::cargar_inventarios(ifstream& archivo_mats){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Andypolis::cargar_diccionario(ifstream& archivo_edif){
+void Andypolis::cargar_diccionario(fstream& archivo_edif){
 
     string linea_leida;
 
@@ -84,7 +84,7 @@ void Andypolis::cargar_diccionario(ifstream& archivo_edif){
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
+Estado_t Andypolis::cargar_ubicaciones(fstream& archivo_ubics){
 
     string linea_leida;
     Estado_t estado = OK;
@@ -135,7 +135,7 @@ Estado_t Andypolis::cargar_ubicaciones(ifstream& archivo_ubics){
 
 // ------------------------------------------------------------------------------------------------------------
 
-Estado_t Andypolis::cargar_materiales_mapa(ifstream& archivo_ubics){//, streampos pos){
+Estado_t Andypolis::cargar_materiales_mapa(fstream& archivo_ubics){//, streampos pos){
 
     Estado_t estado = OK;
     string linea_leida;
@@ -172,7 +172,7 @@ Estado_t Andypolis::cargar_materiales_mapa(ifstream& archivo_ubics){//, streampo
 // ------------------------------------------------------------------------------------------------------------
 
 
-Estado_t Andypolis::cargar_edificios_jugador(ifstream& archivo_ubics){
+Estado_t Andypolis::cargar_edificios_jugador(fstream& archivo_ubics){
     //Este metodo deberiamos renombrarlo y ponerle tipo "cargar_edificios_y_jugadores" no ?
     // Sino, lo que puedo hacer es modularizarlo, haciendo otro metodo que lo unico que haga sea cargar los edificios y lo llamaria
     //donde dice (*). Y podria pasarle solo la linea leida. 

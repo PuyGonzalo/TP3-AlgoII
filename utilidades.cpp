@@ -59,10 +59,10 @@ Estado_t modificar_edificio_por_nombre(Andypolis &andypolis){
     cout << "> ";
     getline(cin, nombre);
     if(!andypolis.esta_edificio(nombre))
-        estado = ERROR_EDIFICIO_INEXISTENTE;
+        return ERROR_EDIFICIO_INEXISTENTE; // No tiene sentido seguir si esto sucede
 
     if(nombre == STR_OBELISCO)
-        estado = ERROR_MODIFICAR_OBELISICO;
+        return ERROR_MODIFICAR_OBELISICO; // No tiene sentido seguir si esto sucede
 
 
     cout << endl << TAB << SUBRAYADO << "Ingrese la cantidad de material que quiere modificar del edificio:" << FIN_DE_FORMATO << endl;
@@ -70,13 +70,14 @@ Estado_t modificar_edificio_por_nombre(Andypolis &andypolis){
     cout << endl <<  "Cantidad de madera > "; getline(cin, madera);
     cout << endl <<  "Cantidad de madera > "; getline(cin, metal);
 
-    if(!es_un_numero(piedra) || !es_un_numero(madera) || !es_un_numero(metal))
-        estado = ERROR_MATERIALES_INVALIDOS;
+    if(es_un_numero(piedra) && es_un_numero(madera) && es_un_numero(metal)){
 
-    if( validar_cantidad_materiales(piedra, madera, metal) != OK )
-        estado = ERROR_CANTIDAD_MATERIALES_INVALIDOS;    
-     
-    andypolis.modificar_edificio(nombre, stoi(piedra), stoi(madera), stoi(metal));
+        if( validar_cantidad_materiales(piedra, madera, metal) == OK ){
+            andypolis.modificar_edificio(nombre, stoi(piedra), stoi(madera), stoi(metal));
+        }else estado = ERROR_CANTIDAD_MATERIALES_INVALIDOS;
+            
+    }else estado = ERROR_MATERIALES_INVALIDOS;
+        
 
     return estado;
 }
