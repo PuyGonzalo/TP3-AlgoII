@@ -54,4 +54,13 @@ Estado_t modificar_edificio_por_nombre(Andypolis &andypolis);
 // pre:
 // pos:
 Estado_t validar_cantidad_materiales(string piedra, string  madera, string metal);
+
+// pre:
+// pos:
+void crear_archivo_vacio(string ruta_archivo, fstream& archivo);
+
+// pre:
+// pos:
+bool archivo_esta_vacio(fstream& archivo);
+
 #endif // UTILIDADES_H

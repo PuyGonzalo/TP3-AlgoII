@@ -3,6 +3,7 @@
 
 #include "ABB_Nodo.h"
 #include <iostream>
+#include <fstream>
 
 template <typename T, typename C>
 class ABB
@@ -16,7 +17,7 @@ private:
     // Estos metodos son privados, porque manejan los nodos.
     ABBNodo<T,C>* insertar(ABBNodo<T,C>* nodo, T* dato, C clave);
     void imprimir_en_orden(ABBNodo<T,C>* nodo);
-    void guardar_en_archivo(ABBNodo<T,C>* nodo, ofstream& archivo);
+    void guardar_en_archivo(ABBNodo<T,C>* nodo, fstream& archivo);
     ABBNodo<T,C>* buscar(ABBNodo<T,C>* nodo, C clave);
     ABBNodo<T,C>* buscar_const(ABBNodo<T,C>* nodo, C clave) const;
     C buscar_minimo(ABBNodo<T,C>* nodo);
@@ -44,9 +45,9 @@ public:
     // pos: 
     void imprimir_en_orden();
 
-    // pre: En caso de tipo de dato complejo. Se asume que tiene defino el operador '<<'
+    // pre: Este metodo solo se puede usar si el arbol tiene como dato estructuras complejas, y ademas debe tener un metodo llamado guardar_informacion()
     // pos:
-    void guardar_en_archivo(ofstream& archivo);
+    void guardar_en_archivo(fstream& archivo);
 
     // pre:
     // pos:
@@ -187,12 +188,12 @@ void ABB<T,C>::imprimir_en_orden(){
 
 
 template <typename T, typename C>
-void ABB<T,C>::guardar_en_archivo(ABBNodo<T,C>* nodo, ofstream& of){
+void ABB<T,C>::guardar_en_archivo(ABBNodo<T,C>* nodo, fstream& archivo){
 
     if (nodo != NULL){
-        guardar(nodo -> obtener_izquierda(), of);
-        of << *(nodo -> obtener_dato());
-        guardar(nodo -> obtener_derecha(), of);
+        guardar_en_archivo(nodo -> obtener_izquierda(), archivo);
+        nodo -> obtener_dato() -> guardar_informacion(archivo);
+        guardar_en_archivo(nodo -> obtener_derecha(), archivo);
     }
 }
 
@@ -201,9 +202,9 @@ void ABB<T,C>::guardar_en_archivo(ABBNodo<T,C>* nodo, ofstream& of){
 
 
 template <typename T, typename C>
-void ABB<T,C>::guardar_en_archivo(ofstream& of){
+void ABB<T,C>::guardar_en_archivo(fstream& archivo){
     
-    this -> guardar(this -> raiz, of);
+    this -> guardar_en_archivo(this -> raiz, archivo);
 }
 
 

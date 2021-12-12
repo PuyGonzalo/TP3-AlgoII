@@ -193,3 +193,43 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
     return estado;
 
 }
+
+
+// -------------------------------------------------------------------------------------------
+
+
+void crear_archivo_vacio(string ruta_archivo, fstream& archivo){
+
+    archivo.open(ruta_archivo, ios::out);
+    archivo.close();
+    archivo.open(ruta_archivo, ios::in);
+}
+
+
+
+bool archivo_esta_vacio(fstream& archivo){
+
+    if(archivo.peek() == fstream::traits_type::eof())
+        return true;
+
+    else return false;
+
+    // Me hinche las pelotas con esta forma xD, no se porq empezo a fallar.
+    // Cuando se crea el archivo andaba joya,
+    // pero cuando ya estaba creado y vacio no se porq compararlo contra EOF no funcionaba, tenia que comparar contra 0
+    // como habia hecho maxi en un principio (que se yo, puse la forma que usamos en el TP2 y anda joya para los dos casos, salu3)
+
+    // Dejo la otra forma comentada por si las dudas jeje
+/*
+    archivo.seekg(0, ios::end);
+
+    if( archivo.tellg() == EOF ){
+        
+        return true;
+    }
+    else{
+        archivo.seekg(0, ios::beg);
+        return false;
+    } 
+*/
+}

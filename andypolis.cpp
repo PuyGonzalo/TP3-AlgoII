@@ -92,7 +92,6 @@ Estado_t Andypolis::cargar_ubicaciones(fstream& archivo_ubics){
     Estado_t estado_materiales = OK;
     streampos pos_inicial_archivo = 0;
 
-    archivo_ubics.seekg(0, ios::beg);
     getline(archivo_ubics,linea_leida); // Leo la primer linea del archivo ubicaciones
     Parser parser(linea_leida);
 

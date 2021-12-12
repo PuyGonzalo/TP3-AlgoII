@@ -1,9 +1,10 @@
 #ifndef DATOS_EDIFICIO_H
 #define DATOS_EDIFICIO_H
 
-#include <string>
 #include <iostream>
+#include <fstream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -68,11 +69,11 @@ public:
 
     // pre:
     // pos:
-    friend ostream & operator<< (ostream& os, Datos_edificio const& de);
+    void mostrar_informacion();
 
     // pre:
     // pos:
-    void mostrar_informacion();
+    void guardar_informacion(fstream& archivo);
     
 
 };

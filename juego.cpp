@@ -378,8 +378,8 @@ void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, 
     << TAB << TAB << TAB << TAB << "# Lazurro" << endl;
 
     	// Abro los archivos de escritura para guardar el juego
-//	ofstream archivo_salida_materiales(PATH_ENTRADA_MATERIALES, ios::trunc);
-//  ofstream archivo_salida_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::trunc);
+//	fstream archivo_materiales(PATH_ENTRADA_MATERIALES, ios::out | ios::trunc);
+//  fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
 
 	// Guardo los cambios
 //	guardar_cambios(andypolis, archivo_salida_materiales, archivo_salida_ubicaciones);
@@ -398,39 +398,39 @@ void inicializar_juego(){
 	srand( (unsigned int)time(NULL) );
 
     // Abro archivos de lectura
-	fstream archivo_entrada_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
-	fstream archivo_entrada_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA, ios::in);
-    fstream archivo_entrada_edificios(PATH_ENTRADA_EDIFICIOS, ios::in);
-    fstream archivo_entrada_mapa(PATH_ENTRADA_MAPA, ios::in);
+	fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
+	fstream archivo_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA, ios::in);
+    fstream archivo_edificios(PATH_ENTRADA_EDIFICIOS, ios::in);
+    fstream archivo_mapa(PATH_ENTRADA_MAPA, ios::in);
 
 	// NUEVA_PARTIDA:
-    if(!archivo_entrada_ubicaciones.is_open()){
-        
-        fstream archivo_entrada_ubicaciones;
-        archivo_entrada_ubicaciones.open(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::out);
-        archivo_entrada_ubicaciones.close();
-        archivo_entrada_ubicaciones.open(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
+    if( !archivo_ubicaciones.is_open() ){
+
+        cout << "hola" << endl;
+        fstream archivo_ubicaciones;
+        crear_archivo_vacio(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, archivo_ubicaciones);
 
     }
     
-	archivo_entrada_ubicaciones.seekg(0, ios::end); 
-	// Si el archivo esta vacio tellg() me devuelve cero!
-
-	if( archivo_entrada_ubicaciones.tellg() == EOF ){
+	if( archivo_esta_vacio(archivo_ubicaciones) ){
         
-		cout << "Archivo ubicaciones vacio" <<  endl;
-		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,true);
+		cout << "Archivo ubicaciones vacio" <<  endl; // Esto no deberia decirlo centrado y con algun color ? Tipo advertencia ? O ni siquiera decirlo...
+		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,true);
 		partida_nueva(andypolis);
 	}
 	else{
-        cout << "Hola" << endl;
-		Andypolis andypolis(archivo_entrada_edificios, archivo_entrada_ubicaciones, archivo_entrada_mapa,archivo_entrada_materiales,false);
+        cout << "chau" << endl;
+		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,false);
 		procesar_juego(andypolis);
 	}
 
-    // Cierro archivos de lectura
-	archivo_entrada_materiales.close(); 
-	archivo_entrada_edificios.close();
-    archivo_entrada_ubicaciones.close();
-    archivo_entrada_mapa.close();
+    // Cierro archivos de lectura 
+    // Estos hay que cerrarlos ANTES porq la funcion que guarda los cambios necesita abrirlos como de escritura
+    // Sino, podemos hacer una funcion aparte que se llame, abrir archivo de escritura y que pregunta si archivo este abierto (archivo.is_open())
+    // En caso de estarlo lo cierra y lo abre nuevamente como de escritura.
+    // Si vamos por esa opcion, esto quedaria pero estaria cerrando los archivos de escritura xD (no es mala ehhh)
+	archivo_materiales.close(); 
+	archivo_edificios.close();
+    archivo_ubicaciones.close();
+    archivo_mapa.close();
 }
