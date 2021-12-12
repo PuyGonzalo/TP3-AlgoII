@@ -20,7 +20,7 @@ string Cansado::obtener_condiciones(){
 
 
 
-void Cansado::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Cansado::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     this -> cumplido = (cant_energia == 0);
 
@@ -31,7 +31,7 @@ void Cansado::actualizar_cumplimiento( const double &cant_energia, const Inventa
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Cansado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){     
+string Cansado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){     
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

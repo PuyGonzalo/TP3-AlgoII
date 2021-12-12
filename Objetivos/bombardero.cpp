@@ -19,7 +19,7 @@ string Bombardero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Bombardero::actualizar_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Bombardero::actualizar_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
    
    this -> cumplido = (inventario.obtener_bombas_usadas() > CANT_BOMBAS_USADAS_OBJETIVO);
 
@@ -29,7 +29,7 @@ void Bombardero::actualizar_cumplimiento(  const double &cant_energia, const Inv
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Bombardero::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Bombardero::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas ){
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

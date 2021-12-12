@@ -19,7 +19,7 @@ string  Constructor::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Constructor::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Constructor::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
 
     if(mis_edificios.obtener_cantidad() == CANTIDAD_EDIFICIOS_OBJETIVO){
         this -> cumplido = true;
@@ -31,7 +31,7 @@ void Constructor::actualizar_cumplimiento( const double &cant_energia, const Inv
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Constructor::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Constructor::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

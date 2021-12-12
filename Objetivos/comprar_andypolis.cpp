@@ -19,7 +19,7 @@ string Comprar_andypolis::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Comprar_andypolis::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Comprar_andypolis::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
     this -> cumplido = ( total > CANT_ANDYCOINS_OBJETIVO);
@@ -30,7 +30,7 @@ void Comprar_andypolis::actualizar_cumplimiento(const double &cant_energia, cons
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Comprar_andypolis::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Comprar_andypolis::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
       
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

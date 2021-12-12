@@ -20,35 +20,36 @@ string Letrado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Letrado::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
-    /* Hay que usar el ABB?
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio == STR_ESCUELA ) 
-            return ( catalogo.consultar(i) -> cantidad_construidos == CANT_ESCUELAS_MAXIMO);
+void Letrado::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
+    \
+    int cantidad_construidos = 0;
+
+    for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
+        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_ESCUELA ) 
+           cantidad_construidos =  mis_edificios.consulta_const(i) -> obtener_cantidad_construidos();
     }
-*/
-    this -> cumplido = false;
+
+    this -> cumplido = (cantidad_construidos == cant_maxima_escuelas);
 }
 
 
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Letrado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
-    /*int cant_contruidos = 0;
-    for(int i=0; i < catalogo.obtener_longitud(); i++){
-        if( catalogo.consultar(i) -> nombre_edificio ==STR_ESCUELA ) 
-           cant_contruidos =catalogo.consultar(i) -> cantidad_construidos;
-    }
-    
-    return std::to_string( cant_contruidos % CANT_ESCUELAS ) + "%";
-   */
+string Letrado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
       
     if(this -> cumplido)
         return OBJ_CUMPLIDO;
 
+    int cantidad_construidos = 0;
+
+    for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
+        if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_ESCUELA ) 
+           cantidad_construidos =  mis_edificios.consulta_const(i) -> obtener_cantidad_construidos();
+    }
+
     stringstream sstream;
-    sstream << "OBJETIVO" << "LETRAD";
+    sstream << "Falta/n construir" << cant_maxima_escuelas - cantidad_construidos << " escuelas";
 
     return sstream.str();
 }

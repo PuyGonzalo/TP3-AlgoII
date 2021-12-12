@@ -19,7 +19,7 @@ string Armado::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Armado::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Armado::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
 
     this -> cumplido = (inventario.obtener_cantidad_de_bombas() < CANT_BOMBAS_OBJETIVO);
  
@@ -29,7 +29,7 @@ void Armado::actualizar_cumplimiento(const double &cant_energia, const Inventari
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Armado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Armado::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
 
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

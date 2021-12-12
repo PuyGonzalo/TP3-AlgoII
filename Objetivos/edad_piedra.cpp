@@ -20,7 +20,7 @@ string Edad_piedra::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Edad_piedra::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Edad_piedra::actualizar_cumplimiento( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
 
     this -> cumplido = (inventario.obtener_cantidad_de_piedra() > CANT_PIEDRA_OBJETIVO);
 
@@ -30,7 +30,7 @@ void Edad_piedra::actualizar_cumplimiento( const double &cant_energia, const Inv
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Edad_piedra::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Edad_piedra::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

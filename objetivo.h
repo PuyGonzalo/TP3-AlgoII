@@ -59,8 +59,8 @@ class Objetivo{
         bool chequear_cumplimiento();
 
         virtual string obtener_condiciones() = 0;
-        virtual void actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0; 
-        virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios) = 0;
+        virtual void actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios, int cant_maxima_escuelas) = 0; 
+        virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios, int cant_maxima_escuelas) = 0;
 };
 
 

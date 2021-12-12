@@ -171,11 +171,11 @@ public:
 
         // pre:
         // pos:
-        void actualizar_estado_objetivos();
+        void actualizar_estado_objetivos( int cant_maxima_escuelas);
 
         // pre:
         // pos: actualiza el estado de los objs del jugador y devuelve true si el jugador gano el juevo ya sea por objetivo principal o objetivos secundarios
-        bool gane_el_juego();
+        bool gane_el_juego( int cant_maxima_escuelas);
 
         // pre:
         // pos: devuelve verdadero si el jugador gano por objetivo principal (construir el obelisco)
@@ -203,7 +203,7 @@ public:
         
         // pre: El vector de objetivos_secundarios esta completo
         // pos: Se imprimen todos los objetivos secundarios y el objetivo principal por consola
-        void mostrar_objetivos();
+        void mostrar_objetivos( int cant_maxima_escuelas);
 
         // pre:
         // pos: Devuelve la posicion en la lista de coordenadas

@@ -20,7 +20,7 @@ string Minero::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Minero::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Minero::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuela){
 
     int contador = 0;
 
@@ -36,7 +36,7 @@ void Minero::actualizar_cumplimiento(const double &cant_energia, const Inventari
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Minero::obtener_progreso(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Minero::obtener_progreso(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuela){
         
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

@@ -19,7 +19,7 @@ string Extremista::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Extremista::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Extremista::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
 
     this -> cumplido = (inventario.obtener_bombas_compradas() < CANT_BOMBAS_COMPRADAS_OBJETIVO);
 
@@ -29,7 +29,7 @@ void Extremista::actualizar_cumplimiento(const double &cant_energia, const Inven
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Extremista::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Extremista::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

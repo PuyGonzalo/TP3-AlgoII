@@ -19,7 +19,7 @@ string Alto_nubes::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Alto_nubes::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Alto_nubes::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
     
     for(int i=0; i < mis_edificios.obtener_cantidad(); i++){
         if( mis_edificios.consulta_const(i) -> obtener_nombre() == STR_OBELISCO)
@@ -32,7 +32,7 @@ void Alto_nubes::actualizar_cumplimiento(const double &cant_energia, const Inven
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Alto_nubes::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Alto_nubes::obtener_progreso( const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
 
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

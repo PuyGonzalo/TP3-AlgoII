@@ -19,7 +19,7 @@ string Energetico::obtener_condiciones(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Energetico::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+void Energetico::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     this -> cumplido = (cant_energia == CANT_ENERGIA_MAXIMA);
 
@@ -29,7 +29,7 @@ void Energetico::actualizar_cumplimiento(const double &cant_energia, const Inven
 // ------------------------------------------------------------------------------------------------------------
 
 
-string Energetico::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios){
+string Energetico::obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
     if(this -> cumplido)
         return OBJ_CUMPLIDO;

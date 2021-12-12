@@ -642,9 +642,9 @@ bool Andypolis::gano_el_jugador(Jugador_t jugador){
     bool gano = false;
 
     if (jugador == JUGADOR_UNO)
-        gano = jugador_uno.gane_el_juego();
+        gano = jugador_uno.gane_el_juego( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
     else if (jugador == JUGADOR_DOS)
-        gano = jugador_dos.gane_el_juego();
+        gano = jugador_dos.gane_el_juego( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
 
     return gano;
 
@@ -668,11 +668,14 @@ void Andypolis::mostrar_inventario(Jugador_t jugador){
 
 
 void Andypolis::mostrar_objetivos(Jugador_t jugador){
-    if(jugador == JUGADOR_UNO)
-        jugador_uno.mostrar_objetivos();
+    
+    
+
+    if(jugador == JUGADOR_UNO){}
+        jugador_uno.mostrar_objetivos( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );
 
     if(jugador == JUGADOR_DOS)
-        jugador_dos.mostrar_objetivos();    
+        jugador_dos.mostrar_objetivos( diccionario.consultar_const(STR_ESCUELA)->obtener_dato_const()->obtener_maximos_permitidos() );    
 
 }
 

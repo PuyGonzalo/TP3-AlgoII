@@ -304,9 +304,9 @@ void Jugador::sortear_objetivos_secundarios(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::mostrar_objetivos(){
+void Jugador::mostrar_objetivos( int cant_maxima_escuelas){
 
-    actualizar_estado_objetivos();
+    actualizar_estado_objetivos(cant_maxima_escuelas);
 
     cout
         << endl << TAB << NEGRITA << SUBRAYADO
@@ -327,14 +327,14 @@ void Jugador::mostrar_objetivos(){
             << TAB
             << left << setw(30) << objetivo_principal->obtener_nombre()
             << left << setw(70) <<  objetivo_principal->obtener_condiciones()
-            << left << setw(48) << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios) << endl;
+            << left << setw(48) << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl;
 
         for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
             cout
             << TAB
             << left << setw(30) << objetivos_secundarios.consultar(i)->obtener_nombre()
             << left << setw(70) <<  objetivos_secundarios.consultar(i)->obtener_condiciones()
-            << left << setw(48) << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios) << endl;
+            << left << setw(48) << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl;
         }
 
 }
@@ -542,12 +542,12 @@ void Jugador::restar_materiales_reparacion(string nombre, const ABB<Datos_edific
 // ------------------------------------------------------------------------------------------------------------
 
 
-void Jugador::actualizar_estado_objetivos(){
+void Jugador::actualizar_estado_objetivos( int cant_maxima_escuelas){
 
-    objetivo_principal -> actualizar_cumplimiento(energia,inventario,mis_edificios);
+    objetivo_principal -> actualizar_cumplimiento(energia,inventario,mis_edificios, cant_maxima_escuelas);
 
     for(int i = 0 ; i < objetivos_secundarios.obtener_longitud() ; ++i)
-        objetivos_secundarios.consultar(i)->actualizar_cumplimiento(energia,inventario,mis_edificios);
+        objetivos_secundarios.consultar(i)->actualizar_cumplimiento(energia,inventario,mis_edificios, cant_maxima_escuelas);
 
 }
 
@@ -555,9 +555,11 @@ void Jugador::actualizar_estado_objetivos(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-bool Jugador::gane_el_juego(){
+bool Jugador::gane_el_juego( int cant_maxima_escuelas){
 
-    actualizar_estado_objetivos();
+
+
+    actualizar_estado_objetivos(cant_maxima_escuelas);
 
     bool gane = false;
 
