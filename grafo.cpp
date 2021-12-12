@@ -27,6 +27,7 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
     }
 
     inicializar_matriz_adyacencia();
+    inicializar_matriz_recorridos();
 
     conectar_esquinas(mapa);
     conectar_orillas(mapa);
@@ -45,6 +46,10 @@ Grafo::~Grafo(){
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_adyacencia[i];
     delete [] matriz_adyacencia; // si quiero poner a nullptr tengo que ir 1 por una, no?
+
+    for(int i = 0; i < cantidad_vertices ; ++i)
+        delete [] matriz_recorridos[i];
+    delete [] matriz_recorridos; // si quiero poner a nullptr tengo que ir 1 por una, no?
 
     for(int i = 0; i < cantidad_filas ; ++i){
         for(int j = 0 ; j < cantidad_columnas ; ++j){
@@ -76,6 +81,24 @@ void Grafo::inicializar_matriz_adyacencia(){
                 matriz_adyacencia[i][j] = 0;
             else
                 matriz_adyacencia[i][j] = INFINITO;   
+        }
+    }
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::inicializar_matriz_recorridos(){
+
+    matriz_recorridos = new int*[cantidad_vertices];
+    for(int i = 0 ; i < cantidad_vertices ; ++i)
+        matriz_recorridos[i] = new int[cantidad_vertices];
+
+    for(int i = 0 ; i < cantidad_vertices ; ++i){
+        for(int j = 0 ; j < cantidad_vertices ; ++j){
+                matriz_recorridos[i][j] = 0; 
         }
     }
 
@@ -265,6 +288,61 @@ void Grafo::imprimir_matriz_ady(){
                 cout << "Inf" << '\t';
             else
                 cout << matriz_adyacencia[i][j] << '\t';
+        }
+        cout << endl;
+    }
+
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::camino_minimo_floyd_warshall(){
+    // i: filas, j:columnas, k:pivotes
+    int i, j, k;
+    
+    // La distancia de ir a un vertice hasta el mismo es cero:
+    for( i=0; i < cantidad_vertices; i++){
+        matriz_recorridos[i][i] = 0;
+    }
+
+    // Voy pivotenado con k, selecciono la columna y fila
+    // a partir del valor en k busco el siguiente en i y j
+    // si la suma de estos valor es mayor al de k me quedo con el de k
+    // sino me quedo con la suma de i+j. Los pesos estan en la matriz de adyacencia
+
+    for( k=0; k < cantidad_vertices; k++){
+
+        for( i=0; i < cantidad_vertices; i++){
+
+            for( j=0; j < cantidad_vertices; j++){
+
+                int dt = matriz_adyacencia[i][k] + matriz_adyacencia[k][j];
+
+                if( (dt < matriz_adyacencia[i][j]) ){
+
+                    matriz_adyacencia[i][j] = dt;
+                    matriz_recorridos[i][j] = k;
+                }
+            }   
+
+        }
+    }
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::imprimir_matriz_recorridos(){
+
+    for(int i = 0 ; i < 20 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
+        for(int j = 0 ; j < 20 ; ++j){
+            if(matriz_recorridos[i][j] == INFINITO)
+                cout << "Inf" << '\t';
+            else
+                cout <<matriz_recorridos[i][j] << '\t';
         }
         cout << endl;
     }

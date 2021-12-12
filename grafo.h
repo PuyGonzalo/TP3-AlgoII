@@ -12,6 +12,7 @@ private:
     // Atributos
     Jugador_t jugador;
     int** matriz_adyacencia;
+    int** matriz_recorridos;
     Vertice*** grafo;
     int cantidad_vertices;
     int cantidad_filas;
@@ -33,6 +34,10 @@ public:
     void inicializar_matriz_adyacencia();
 
     // pre: -
+    // pos: inicializa la matriz de adyacencia (para el grafo pedido en el TP)
+    void inicializar_matriz_recorridos();
+
+    // pre: -
     // pos: carga la matriz de adyacencia
     void cargar_matriz_adyacencia();
 
@@ -51,6 +56,15 @@ public:
 
     // FUNCION PARA DEBUGGER
     void imprimir_matriz_ady();
+    
+    // pre:
+    // post:
+    void camino_minimo_floyd_warshall();
+
+    // pre:
+    // post:
+    void imprimir_matriz_recorridos();
+    
 
 };
 
