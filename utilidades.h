@@ -63,4 +63,10 @@ void crear_archivo_vacio(string ruta_archivo, fstream& archivo);
 // pos:
 bool archivo_esta_vacio(fstream& archivo);
 
+// pre:
+// pos:
+Estado_t consultar_ubicacion_jugadroes(Andypolis& andypolis);
+
+
+
 #endif // UTILIDADES_H

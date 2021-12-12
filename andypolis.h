@@ -170,6 +170,14 @@ public:
     // pos:
     void sortear_ubicacion_jugadores();
 
+    // pre:
+    // pos:
+    Estado_t consultar_construccion_edificio();
+
+    // pre:
+    // pos:
+    bool es_transitable(int coord_x, int coord_y);
+
 
 };
 

@@ -231,7 +231,7 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case COMENZAR_PARTIDA_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
-            //andypolis.sortear_ubicacion_jugadores();
+            estado = consultar_ubicacion_jugadroes(andypolis);
             cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             procesar_juego(andypolis);
@@ -398,8 +398,8 @@ void inicializar_juego(){
 	srand( (unsigned int)time(NULL) );
 
     // Abro archivos de lectura
-	fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, ios::in);
-	fstream archivo_materiales(PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA, ios::in);
+	fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::in);
+	fstream archivo_materiales(PATH_ENTRADA_MATERIALES, ios::in);
     fstream archivo_edificios(PATH_ENTRADA_EDIFICIOS, ios::in);
     fstream archivo_mapa(PATH_ENTRADA_MAPA, ios::in);
 

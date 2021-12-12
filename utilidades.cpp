@@ -206,6 +206,8 @@ void crear_archivo_vacio(string ruta_archivo, fstream& archivo){
 }
 
 
+// -------------------------------------------------------------------------------------------
+
 
 bool archivo_esta_vacio(fstream& archivo){
 
@@ -232,4 +234,75 @@ bool archivo_esta_vacio(fstream& archivo){
         return false;
     } 
 */
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+
+Estado_t consultar_ubicacion_jugadroes(Andypolis& andypolis){
+
+    string coord_x, coord_y, jugador_string;
+
+    andypolis.mostrar_mapa(16,1);
+
+    cout << TAB << SUBRAYADO << "Ingrese el jugador que desea posicionar:" << FIN_DE_FORMATO << endl;
+    cout << "Numero del jugador > "; getline(cin, jugador_string); 
+
+    if(!es_un_numero(jugador_string) && stoi(jugador_string) <=2 )
+        return ERROR_JUGADOR_ELEGIDO_INCORRECTO;
+    
+    if( stoi(jugador_string) == JUGADOR_UNO){
+        cout << TAB << SUBRAYADO << "Ingrese la coordenadas del jugador 1:" << FIN_DE_FORMATO << endl;
+        cout << "Coordenada x > "; getline(cin, coord_x);
+        cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+        if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+            return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+        if( !andypolis.es_transitable(stoi(coord_x), stoi(coord_y)))
+            return ERROR_CASILLERO_NO_TRANSITABLE;
+
+        andypolis.posicionar_jugador( stoi(coord_x), stoi(coord_y), JUGADOR_UNO);
+
+        cout << TAB << SUBRAYADO << "Ingrese la coordenadas del jugador 2:" << FIN_DE_FORMATO << endl;
+        cout << "Coordenada x > "; getline(cin, coord_x);
+        cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+        if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+            return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+        if( !andypolis.es_transitable(stoi(coord_x), stoi(coord_y)))
+            return ERROR_CASILLERO_NO_TRANSITABLE;
+
+        return andypolis.posicionar_jugador(stoi(coord_x), stoi(coord_y), JUGADOR_DOS);
+    }
+
+    if( stoi(jugador_string) == JUGADOR_DOS){
+        cout << TAB << SUBRAYADO << "Ingrese la coordenadas del jugador 2:" << FIN_DE_FORMATO << endl;
+        cout << "Coordenada x > "; getline(cin, coord_x);
+        cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+        if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+            return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+        if( !andypolis.es_transitable(stoi(coord_x), stoi(coord_y)))
+            return ERROR_CASILLERO_NO_TRANSITABLE;
+
+        andypolis.posicionar_jugador( stoi(coord_x), stoi(coord_y), JUGADOR_DOS);
+
+        cout << TAB << SUBRAYADO << "Ingrese la coordenadas del jugador 1:" << FIN_DE_FORMATO << endl;
+        cout << "Coordenada x > "; getline(cin, coord_x);
+        cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+    
+        if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+            return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+        if( !andypolis.es_transitable(stoi(coord_x), stoi(coord_y)))
+            return ERROR_CASILLERO_NO_TRANSITABLE;
+
+        return andypolis.posicionar_jugador(stoi(coord_x), stoi(coord_y), JUGADOR_UNO);
+    }
+
+    return ERROR_JUGADOR_ELEGIDO_INCORRECTO;
 }

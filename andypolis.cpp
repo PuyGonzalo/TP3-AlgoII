@@ -320,7 +320,9 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     if(jugador == JUGADOR_UNO){
         
         estado = jugador_uno.verificar_condiciones_construccion(nombre, diccionario);
-        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO (meter un clr screen en ese metodo)
+
+        if( (estado = consultar_construccion_edificio()) != OK)
+            return estado;
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
@@ -336,7 +338,9 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     if(jugador == JUGADOR_DOS){
         
         estado = jugador_dos.verificar_condiciones_construccion(nombre, diccionario);
-        // ACA DEBERIAMOS PREGUNTARLE AL JUGADOR SI QUIERE O NO CONSTURIRLO (meter un clr screen en ese metodo)
+
+        if( (estado = consultar_construccion_edificio()) != OK)
+            return estado;
 
         if(estado == OK){
             string linea = construir_string_edificio(nombre, coord_x, coord_y);
@@ -350,6 +354,22 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
     }
     
     return estado;
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+
+Estado_t Andypolis::consultar_construccion_edificio(){
+
+    string opcion;
+    if(system(CLR_SCREEN));
+    cout << "Cumple con todos los requerimientos para construir el edificio"  << endl;
+    cout <<  SUBRAYADO << "Desea usted continuar?[ si / no ]" << FIN_DE_FORMATO << endl;
+    getline(cin, opcion);
+ 
+    return ( opcion.compare("si") !=0 )? ERROR_CONSTRUCCION_CANCELADA : OK ; //Prefieren poner un !OK
+
 }
 
 
@@ -737,3 +757,11 @@ void Andypolis::sortear_ubicacion_jugadores(){
     mapa.posicionar_jugador(coordenada.coordenada_x, coordenada.coordenada_y ,JUGADOR_DOS);
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+bool Andypolis::es_transitable(int coord_x, int coord_y){
+
+    return mapa.se_puede_transitar(coord_x, coord_y);
+}
