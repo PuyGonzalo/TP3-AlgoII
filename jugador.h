@@ -89,6 +89,10 @@ public:
         void crear_grafo(const Mapa &mapa);
 
         // pre: -
+        // pos: actualiza el grafo por si hubieron cambios
+        void actualizar_grafo(const Mapa &mapa);
+
+        // pre: -
         // pos: devuelve la cantidad de energia que tiene el jugador
         double obtener_energia();
 
@@ -103,7 +107,6 @@ public:
         // pre:
         // pos:
         void sumar_vida_edificio( int posicion_edificio, int orden_edificio);
-
 
         // pre: -
         // pos: devuelve la cantidad de bombas que tiene el jugador
@@ -168,6 +171,10 @@ public:
         // pre:
         // pos:
         void depositar_recursos(Mapa &mapa);
+
+        // pre:
+        // pos:
+        Estado_t moverse_a_una_coord(int coord_x, int coord_y, Lista<Coordenadas*> &camino);
 
         // pre:
         // pos:

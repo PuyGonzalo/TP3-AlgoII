@@ -7,24 +7,8 @@
 
 Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
 
-    this -> jugador = jugador;
-    this -> cantidad_filas = mapa.obtener_filas();
-    this -> cantidad_columnas = mapa.obtener_columnas();
-    this -> cantidad_vertices = cantidad_filas*cantidad_columnas;
-
-    // Creo el grafo (vertices "al aire")
-    grafo = new Vertice**[cantidad_filas];
-    for(int i = 0; i < cantidad_filas ; ++i){
-        grafo[i] = new Vertice*[cantidad_columnas];
-    }
-
-    int k = 0;
-    for(int i = 0 ; i < cantidad_filas; ++i){
-        for(int j = 0 ; j < cantidad_columnas ; ++j){
-            grafo[i][j] = new Vertice(k,i,j);
-            ++k;
-        }
-    }
+    asignar_datos_basicos(mapa,jugador);
+    crear_vertices();
 
     // Pesos en el grafo
     inicializar_matriz_adyacencia();
@@ -47,17 +31,54 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
 
 Grafo::~Grafo(){
 
+    destruir_matriz_adyancencia();
+    destruir_matriz_distancias();
+    destruir_matriz_recorridos();
+    destruir_vertices();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::destruir_matriz_adyancencia(){
+
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_adyacencia[i];
     delete [] matriz_adyacencia; // si quiero poner a nullptr tengo que ir 1 por una, no?
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::destruir_matriz_distancias(){
 
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_distancias[i];
     delete [] matriz_distancias; // si quiero poner a nullptr tengo que ir 1 por una, no?
 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::destruir_matriz_recorridos(){
+
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_recorridos[i];
     delete [] matriz_recorridos; // si quiero poner a nullptr tengo que ir 1 por una, no?
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::destruir_vertices(){
 
     for(int i = 0; i < cantidad_filas ; ++i){
         for(int j = 0 ; j < cantidad_columnas ; ++j){
@@ -70,6 +91,41 @@ Grafo::~Grafo(){
 
     delete [] grafo;
     grafo = nullptr;
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::asignar_datos_basicos(const Mapa &mapa, Jugador_t jugador){
+
+    this -> jugador = jugador;
+    this -> cantidad_filas = mapa.obtener_filas();
+    this -> cantidad_columnas = mapa.obtener_columnas();
+    this -> cantidad_vertices = cantidad_filas*cantidad_columnas;
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::crear_vertices(){
+
+    // Creo el grafo (vertices "al aire")
+    grafo = new Vertice**[cantidad_filas];
+    for(int i = 0; i < cantidad_filas ; ++i){
+        grafo[i] = new Vertice*[cantidad_columnas];
+    }
+
+    int k = 0;
+    for(int i = 0 ; i < cantidad_filas; ++i){
+        for(int j = 0 ; j < cantidad_columnas ; ++j){
+            grafo[i][j] = new Vertice(k,i,j);
+            ++k;
+        }
+    }
 
 }
 
@@ -129,13 +185,6 @@ void Grafo::inicializar_matriz_recorridos(){
                 matriz_recorridos[i][j] = j;
         }
     }
-
-    /* La inicializo como:
-                            01234
-                            01234
-                            01234
-                            01234
-    */
 
 }
 
@@ -315,6 +364,76 @@ void Grafo::conectar_centros(const Mapa &mapa){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Grafo::actualizar_grafo(const Mapa &mapa){
+
+    destruir_matriz_adyancencia();
+    
+    // Las otras matrices se van a actualizar cuando vuelva a correr el algoritmo (:
+    inicializar_matriz_adyacencia();
+
+    conectar_esquinas(mapa);
+    conectar_orillas(mapa);
+    conectar_centros(mapa);
+    
+    cargar_matriz_adyacencia();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int coord_destino_x, int coord_destino_y, double &energia_requerida, Lista<Coordenadas*> &camino){
+
+    camino_minimo_floyd_warshall();
+
+    Estado_t estado = OK;
+    bool vertice_encontrado = false;
+    int n = 0;
+
+    int indice_origen = grafo[coordenadas_origen.coordenada_x][coordenadas_origen.coordenada_y] -> obtener_indice();
+    int indice_destino = grafo[coord_destino_x][coord_destino_y] -> obtener_indice();
+
+    /*
+    if(matriz_distancias[indice_origen][indice_destino] == INFINITO)
+        return ERROR_NO SE PUEDE MOVER A ESTE LUGAR (hay un jugador o un edificio basicamente, hacer este error) 
+    */
+
+    energia_requerida = (double) matriz_distancias[indice_origen][indice_destino];
+
+
+    cout << "origen: " << indice_origen << " destino: " << indice_destino << endl; // HASTA ACA VA BIEN
+    
+    do{
+        Coordenadas* ubicacion_vertice = new Coordenadas;
+
+        for( int i = 0; i < cantidad_filas || !vertice_encontrado ; ++i){ // chequear
+            for( int j = 0; j < cantidad_columnas|| !vertice_encontrado ; ++j){
+                if(indice_origen == grafo[i][j] -> obtener_indice()){
+                    ubicacion_vertice -> coordenada_x = i;
+                    ubicacion_vertice -> coordenada_y = j;
+                    vertice_encontrado = true;
+                }
+            }
+        }
+
+        camino.alta(ubicacion_vertice,n);
+        ++n;
+
+        indice_origen = matriz_recorridos[indice_origen][indice_destino];
+        cout << "nuevo origen: " << indice_origen << " destino: " << indice_destino << endl; // si imprime esto y son iguales estos 2 indices es xq llego a guardarlo en el camino
+    } while(indice_origen != indice_destino);    
+    cout << "termine" << endl;
+
+
+    return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Grafo::camino_minimo_floyd_warshall(){
     // i: filas, j:columnas, k:pivotes
     int i, j, k;
@@ -345,7 +464,7 @@ void Grafo::camino_minimo_floyd_warshall(){
                     matriz_recorridos[i][j] = matriz_recorridos[i][k];
                 }
                 else if( matriz_distancias[i][j] == INFINITO)
-                    matriz_recorridos[i][j] = -1; // POSICION NO ENCONTRADA
+                    matriz_recorridos[i][j] = POSICION_IMPOSIBLE;
             }   
 
         }
@@ -391,10 +510,10 @@ void Grafo::imprimir_matriz_recorridos(){
     for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){ 
         cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
         for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
-            if(matriz_recorridos[i][j] == INFINITO)
-                cout << "Inf" << '\t';
+            if(matriz_recorridos[i][j] == -1)
+                cout << "IMP" << '\t';
             else
-                cout <<matriz_recorridos[i][j] << '\t';
+                cout << matriz_recorridos[i][j] << '\t';
         }
         cout << endl;
     }

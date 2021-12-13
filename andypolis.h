@@ -135,6 +135,10 @@ public:
     Estado_t lluvia_de_recursos();
 
     // pre: -
+    // pos: mueve al jugador a una coordenada
+    Estado_t moverse_a_una_coord(int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre: -
     // pos: 
     void recolectar_recursos_jugador(Jugador_t jugador);
 

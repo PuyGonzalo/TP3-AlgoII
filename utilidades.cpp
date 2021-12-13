@@ -198,6 +198,30 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
 // -------------------------------------------------------------------------------------------
 
 
+Estado_t moverse_a_una_coord(Andypolis &andypolis, Jugador_t jugador){
+
+    Estado_t estado = OK;
+    string coord_x, coord_y;
+
+    cout << TAB << SUBRAYADO << "Ingrese las coordenadas a las que desea movilizarse:" << FIN_DE_FORMATO << endl;
+    cout << "Coordenada x > "; getline(cin, coord_x);
+    cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
+
+
+    if(!es_un_numero(coord_x) || !es_un_numero(coord_y))
+        return ERROR_PAR_COORDENADAS_INVALIDAS;
+
+
+    estado = andypolis.moverse_a_una_coord(stoi(coord_x),stoi(coord_y), jugador);
+
+    return estado;
+
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+
 void crear_archivo_vacio(string ruta_archivo, fstream& archivo){
 
     archivo.open(ruta_archivo, ios::out);

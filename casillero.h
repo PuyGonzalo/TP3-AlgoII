@@ -10,6 +10,7 @@
 #include "edificio.h"
 #include "material.h"
 #include "herramientas.h"
+#include "vertice.h"
 
 using namespace std;
 

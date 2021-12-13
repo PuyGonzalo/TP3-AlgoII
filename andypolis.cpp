@@ -628,6 +628,28 @@ Estado_t Andypolis::lluvia_de_recursos(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Estado_t Andypolis::moverse_a_una_coord(int coord_x, int coord_y, Jugador_t jugador){
+
+    Estado_t estado = OK;
+    Lista<Coordenadas*> camino;
+
+    if(coord_x < mapa.obtener_columnas() && coord_y < mapa.obtener_filas()){
+        jugadores[jugador].actualizar_grafo(mapa);
+        estado = jugadores[jugador].moverse_a_una_coord(coord_x, coord_y, camino);
+        if(estado == OK)
+            posicionar_jugador(coord_x, coord_y, jugador); // ESTO DEBERIA IR YENDO DE CASILLERO EN CASILLERO EN LA ANIMACION, NO VA ACA
+            // metodo que hace la animacion (paso camino, voy dando DELETEANDO CORDS y dandolas de baja + AGARRAR LOS MATERIALES Y SUMARSELOS AL JUG!!!)
+    } else estado = ERROR_POSICION_INEXISTENTE;
+
+
+    return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
     /*
     if(jugador == JUGADOR_UNO)

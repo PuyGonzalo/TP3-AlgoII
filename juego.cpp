@@ -319,7 +319,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case MOVERSE_A_UNA_COORD:
             if(system(CLR_SCREEN));
-            //estado = lluvia_de_recursos(andypolis);
+            estado = moverse_a_una_coord(andypolis, jugador);
             break;
 
         case FINALIZAR_TURNO:

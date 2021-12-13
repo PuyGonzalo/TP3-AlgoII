@@ -5,6 +5,7 @@
 #include "vertice.h"
 #include "lista.h"
 
+const int POSICION_IMPOSIBLE = -1;
 
 class Grafo{
 
@@ -31,6 +32,30 @@ public:
     ~Grafo();
 
     // pre: -
+    // pos:
+    void destruir_matriz_adyancencia();
+
+    // pre: -
+    // pos:
+    void destruir_matriz_distancias();
+
+    // pre: -
+    // pos:
+    void destruir_matriz_recorridos();
+
+    // pre: -
+    // pos:
+    void destruir_vertices();
+
+    // pre: -
+    // pos:
+    void asignar_datos_basicos(const Mapa &mapa, Jugador_t jugador);
+
+    // pre: -
+    // pos:
+    void crear_vertices();
+
+    // pre: -
     // pos: inicializa la matriz de adyacencia (para el grafo pedido en el TP)
     void inicializar_matriz_adyacencia();
 
@@ -41,6 +66,7 @@ public:
     // pre: -
     // pos:
     void inicializar_matriz_distancias();
+
 
     // pre: -
     // pos: carga la matriz de adyacencia
@@ -57,6 +83,14 @@ public:
     // pre: -
     // pos: conecta los vertices "del centro del mapa"
     void conectar_centros(const Mapa &mapa);
+
+    // pre: -
+    // pos: 
+    void actualizar_grafo(const Mapa &mapa);
+
+    // pre: -
+    // pos:
+    Estado_t procesamiento_del_movimiento(Coordenadas coordenadas_origen, int coord_destino_x, int coord_destino_y, double &energia_requerida, Lista<Coordenadas*> &camino);
 
     // pre:
     // post:

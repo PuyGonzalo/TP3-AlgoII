@@ -1,3 +1,4 @@
+#include <iostream>
 #include "jugador.h"
 
 
@@ -101,7 +102,17 @@ void Jugador::asignar_ubicacion_jugador(int coord_x, int coord_y){
 
 void Jugador::crear_grafo(const Mapa &mapa){
 
-    this -> grafo = new Grafo(mapa,jugador);
+    this -> grafo = new Grafo(mapa, this -> jugador);
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Jugador::actualizar_grafo(const Mapa &mapa){
+
+    grafo -> actualizar_grafo(mapa);
 
 }
 
@@ -214,6 +225,28 @@ void Jugador::depositar_recursos(Mapa &mapa){
     }
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Jugador::moverse_a_una_coord(int coord_x, int coord_y, Lista<Coordenadas*> &camino){
+
+    Estado_t estado = OK;
+    double energia_requerida = 0;
+
+    estado = grafo -> procesamiento_del_movimiento(ubicacion, coord_x, coord_y, energia_requerida, camino);
+
+    if(this -> energia < energia_requerida)
+        estado = ERROR_ENERGIA_INSUFICIENTE;
+
+    if(estado == OK)
+        restar_energia(energia_requerida);
+
+    return estado;
+
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 
