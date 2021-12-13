@@ -393,7 +393,7 @@ void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida
 
     archivo_salida_edificios.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
 
-    andypolis.guardar_andypolis_partida_nueva( archivo_salida_edificios);
+    andypolis.guardar_andypolis_partida_nueva(archivo_salida_edificios);
 
 }
 

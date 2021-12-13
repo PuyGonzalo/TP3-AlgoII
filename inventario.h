@@ -92,6 +92,10 @@ public:
     // pos: guarda el inventario
     void guardar_inventario(ofstream& archivo_materiales);
 
+    // pre: -
+    // pos: guarda el inventario
+    string guardar_linea_inventario_en_string(int pos);
+
     //Para el objetivo comprar_andypolis:
 
     // pre: -

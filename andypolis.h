@@ -209,6 +209,10 @@ public:
     // pos:
     void guardar_materiales_en_archivo( fstream& archivo_salida_materiales );
 
+    // pre:
+    // pos:
+    string armar_str_para_guardar_inventario(int pos);
+
     // pre: 
     // pos: 
     void guardar_ubicaciones_en_archivo(fstream &archivo_salida);

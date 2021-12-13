@@ -228,7 +228,6 @@ public:
         // pos:
         bool puede_repararse_edificio( int posicion, int orden_edificio);
 
-
         // pre:
         // pos:
         void guardar_ubicacion_en_archivo( fstream &archivo_salida, Jugador_t jugador);
@@ -236,6 +235,18 @@ public:
         // pre:
         // pos:
         void guardar_mis_edificios_en_archivo(fstream &archivo_salida);
+
+        // pre:
+        // pos:
+        string obtener_str_nombre_material(int pos);
+
+        // pre:
+        // pos:
+        string obtener_str_cantidad_material(int pos);
+
+        // pre:
+        // pos:
+        int obtener_cantidad_de_materiales_en_inventario();
 
         
 

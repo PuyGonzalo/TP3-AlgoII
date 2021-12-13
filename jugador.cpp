@@ -796,3 +796,47 @@ void Jugador::guardar_mis_edificios_en_archivo(fstream &archivo_salida){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Jugador::obtener_str_nombre_material(int pos){
+
+    string nombre;
+    string linea = inventario.guardar_linea_inventario_en_string(pos);
+
+    stringstream ss(linea);
+
+    getline(ss, nombre, ',');
+
+    return nombre;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Jugador::obtener_str_cantidad_material(int pos){
+
+    string cantidad;
+    string linea = inventario.guardar_linea_inventario_en_string(pos);
+
+    stringstream ss(linea);
+
+    getline(ss, cantidad, ',');
+    getline(ss, cantidad, '\n');
+
+    return cantidad;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Jugador::obtener_cantidad_de_materiales_en_inventario(){
+
+    return inventario.obtener_cantidad_materiales();
+
+}
+
+

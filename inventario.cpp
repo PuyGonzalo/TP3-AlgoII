@@ -198,6 +198,7 @@ void Inventario::restar_cantidad_material(char identificador, double cantidad){
 
 // ------------------------------------------------------------------------------------------------------------
 
+
 void Inventario::guardar_inventario(ofstream& archivo_materiales){
 
     int i = 0;
@@ -212,6 +213,24 @@ void Inventario::guardar_inventario(ofstream& archivo_materiales){
     materiales.consultar(i) -> obtener_cantidad();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Inventario::guardar_linea_inventario_en_string(int pos){
+
+    stringstream ss;
+
+
+    ss << materiales.consultar_const(pos) -> obtener_nombre_material() << "," << to_string((int) materiales.consultar_const(pos) -> obtener_cantidad()) << endl;
+
+    return ss.str();
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
 
 void Inventario::aumentar_andycoins_gastadas(int cantidad){
     andycoins_gastadas+=cantidad;

@@ -550,6 +550,9 @@ Estado_t Andypolis::moverse_a_una_coord(int coord_x, int coord_y, Jugador_t juga
     Estado_t estado = OK;
     Lista<Coordenadas*> camino;
 
+    if(coord_x == jugadores[jugador].obtener_ubicacion().coordenada_x && coord_y == jugadores[jugador].obtener_ubicacion().coordenada_y)
+        return ERROR_MISMA_UBICACION; //No tiene sentido continuar si sucede esto
+
     if(coord_x < mapa.obtener_columnas() && coord_y < mapa.obtener_filas()){
         
         jugadores[jugador].actualizar_grafo(mapa);
@@ -762,22 +765,28 @@ void Andypolis::guardar_andypolis_partida_nueva( fstream& archivo_salida_edifici
 
 void Andypolis::guardar_materiales_en_archivo( fstream& archivo_salida_materiales ){
 
-    // No es lo mejor, pero es la mejor manera que nos encontramos por ahora: 
-    archivo_salida_materiales << STR_MADERA << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_madera() << " " 
-    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_madera() << endl;
-
-    archivo_salida_materiales << STR_METAL << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_metal() << " " 
-    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_metal() << endl;
-
-    archivo_salida_materiales << STR_PIEDRA << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_piedra() << " " 
-    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_piedra() << endl;
-
-    archivo_salida_materiales << STR_ANDYCOINS << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_andycoins() << " " 
-    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_andycoins() << endl;
-
-    archivo_salida_materiales << STR_BOMBAS << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_bombas() << " " 
-    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_bombas() << endl;
+    for(int i = 0; i < jugadores[JUGADOR_UNO].obtener_cantidad_de_materiales_en_inventario(); ++i){
+        string linea = armar_str_para_guardar_inventario(i);
+        archivo_salida_materiales << linea;
+    }
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Andypolis::armar_str_para_guardar_inventario(int pos){
+
+    stringstream ss;
+
+    ss << jugadores[JUGADOR_UNO].obtener_str_nombre_material(pos) << " " 
+    << jugadores[JUGADOR_UNO].obtener_str_cantidad_material(pos)  << " "
+    << jugadores[JUGADOR_DOS].obtener_str_cantidad_material(pos) << endl;
+
+    return ss.str();
+
+}
+
 
 
 // ------------------------------------------------------------------------------------------------------------
