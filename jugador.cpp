@@ -575,6 +575,14 @@ void Jugador::restar_materiales_reparacion(string nombre, const ABB<Datos_edific
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Jugador::sumar_cantidad_material_inventario(char identificador, double cantidad){
+    inventario.sumar_cantidad_material(identificador, cantidad);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Jugador::actualizar_estado_objetivos( int cant_maxima_escuelas){
 
     objetivo_principal -> actualizar_cumplimiento(energia,inventario,mis_edificios, cant_maxima_escuelas);
@@ -646,22 +654,7 @@ bool Jugador::victoria_por_objetivos_secundarios(){
 void Jugador::mostrar_inventario(){
 
     inventario.mostrar_inventario();
-
-    grafo -> camino_minimo_floyd_warshall();
-
-    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de adyacencia" << FIN_DE_FORMATO << endl;
-    grafo -> imprimir_matriz_ady();
-
-    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de recorridos: " << FIN_DE_FORMATO << endl;
-    grafo -> imprimir_matriz_recorridos();
-
-    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de distancias: "  << FIN_DE_FORMATO << endl;
-    grafo -> imprimir_matriz_distancias();
-
-    grafo -> imprimir_camino_minimo(0,10);
-    grafo -> imprimir_camino_minimo(0,31);
-    grafo -> imprimir_camino_minimo(0,19);
-
+    
 }
 
 

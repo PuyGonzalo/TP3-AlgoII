@@ -6,6 +6,7 @@
 #include <string>
 #include <locale>
 #include <iomanip>
+#include <unistd.h>
 #include "parser.h"
 #include "inventario.h"
 #include "jugador.h"
@@ -32,7 +33,7 @@ const string CONFIRMACION_NEGATIVA_CONSTRUCCION = "NO";
 const int RAND_MAX_PIEDRA = 2;
 const int RAND_MAX_MADERA = 3;
 const int RAND_MAX_METAL = 4;
-const int RAND_MAX_ANDYCOINS = 1;
+const int RAND_MAX_ANDYCOINS = 2;
 
 
 
@@ -137,6 +138,14 @@ public:
     // pre: -
     // pos: mueve al jugador a una coordenada
     Estado_t moverse_a_una_coord(int coord_x, int coord_y, Jugador_t jugador);
+
+    // pre:
+    // pos:
+    void realizar_movimiento(int coord_inicial_x, int coord_inicial_y, Jugador_t jugador, Lista<Coordenadas*> &camino);
+
+    // pre:
+    // pos:
+    void animacion_movimiento();
 
     // pre: -
     // pos: 

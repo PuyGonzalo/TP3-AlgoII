@@ -190,11 +190,9 @@ Estado_t Andypolis::cargar_edificios_jugador(fstream& archivo_ubics){
         Parser parser(linea_leida);
 
         if( parser.nombre_elemento_ubicaciones() == "1"){
-            jugadores[POS_JUGADOR_UNO].asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-            mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_UNO);
+            posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(), JUGADOR_UNO);
         }else if(parser.nombre_elemento_ubicaciones() == "2"){
-            jugadores[POS_JUGADOR_DOS].asignar_ubicacion_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y());
-            mapa.posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(),JUGADOR_DOS);
+            posicionar_jugador(parser.obtener_coordenada_x(),parser.obtener_coordenada_y(), JUGADOR_DOS);
             pos_archivo = archivo_ubics.tellg();
             fin_jugador_1 = true;
         }else{
@@ -230,7 +228,10 @@ Estado_t Andypolis::cargar_edificios_jugador(fstream& archivo_ubics){
 Estado_t Andypolis::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador){
 
     Estado_t estado = OK;
+    jugadores[jugador].asignar_ubicacion_jugador(coord_x, coord_y);
     estado = mapa.posicionar_jugador(coord_x,coord_y,jugador);
+    
+
 
     return estado;
 
@@ -530,7 +531,7 @@ Estado_t Andypolis::lluvia_de_recursos(){
     }
 
     for(int i = 1; i <= cantidad_lluvia_andycoins; ++i){
-        Parser parser(metal);
+        Parser parser(andycoins);
         mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
     }
 
@@ -555,8 +556,10 @@ Estado_t Andypolis::moverse_a_una_coord(int coord_x, int coord_y, Jugador_t juga
         estado = jugadores[jugador].moverse_a_una_coord(coord_x, coord_y, camino);
 
         if(estado == OK){
-            eliminar_posicion_jugador(jugador); //BORRO LA POSICION ANTERIOR DEL JUGADOR Y LUEGO LO UBICO EN LA NUEVA. En camino tengo el recorrido que hace
-            posicionar_jugador(coord_x, coord_y, jugador); // ESTO DEBERIA IR YENDO DE CASILLERO EN CASILLERO EN LA ANIMACION, NO VA ACA
+
+            realizar_movimiento(coord_x, coord_y, jugador, camino);
+            //eliminar_posicion_jugador(jugador); //BORRO LA POSICION ANTERIOR DEL JUGADOR Y LUEGO LO UBICO EN LA NUEVA. En camino tengo el recorrido que hace
+            //posicionar_jugador(coord_x, coord_y, jugador); // ESTO DEBERIA IR YENDO DE CASILLERO EN CASILLERO EN LA ANIMACION, NO VA ACA
             // metodo que hace la animacion (paso camino, voy dando DELETEANDO CORDS y dandolas de baja + AGARRAR LOS MATERIALES Y SUMARSELOS AL JUG!!!)
 
             /*
@@ -578,6 +581,48 @@ Estado_t Andypolis::moverse_a_una_coord(int coord_x, int coord_y, Jugador_t juga
     }
 
     return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::realizar_movimiento(int coord_inicial_x, int coord_inicial_y, Jugador_t jugador, Lista<Coordenadas*> &camino){
+    
+    char identificador;
+    double cantidad_a_sumar;
+
+    for(int i = 1; i < camino.obtener_cantidad(); ++i){ // camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y
+
+        eliminar_posicion_jugador(jugador); // Elimino posicion actual del jugador.
+        
+        if( mapa.se_puede_transitar(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y)
+            && mapa.casillero_esta_ocupado(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y) ){
+            
+            //ESTO SIGNIFICA QUE HAY UN MATERIAL. NO HACE FALTA CHEQUEAR SI HAY JUGADOR, PORQ EL CAMINO MINIMO YA ENTREGA UN CAMINO QUE EVITA LOS JUGADORES Y LOS EDIFICIOS CONSTRUIDOS
+            identificador = mapa.obtener_identificador_recurso_de_casillero(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y);
+            cantidad_a_sumar = mapa.recolectar_recursos_casillero(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y);
+            jugadores[jugador].sumar_cantidad_material_inventario(identificador, cantidad_a_sumar);
+            mapa.quitar_material_en_coordenadas(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y);
+            
+        }
+        
+
+        posicionar_jugador(camino.consulta(i) -> coordenada_x , camino.consulta(i) -> coordenada_y, jugador);
+        
+        animacion_movimiento();
+    }
+
+}
+
+void Andypolis::animacion_movimiento(){
+
+    if(system(CLR_SCREEN));
+
+    mostrar_mapa(16,1);
+
+    usleep(500000);
 
 }
 

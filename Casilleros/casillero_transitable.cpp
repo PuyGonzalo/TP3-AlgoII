@@ -88,3 +88,15 @@ string Casillero_transitable::obtener_nombre_objeto_de_casillero(){
     return material_ocupado -> obtener_nombre_material();
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Casillero_transitable::destruir_material(){
+
+    delete material_ocupado;
+    material_ocupado = nullptr;
+    this -> ocupado = false;
+
+}

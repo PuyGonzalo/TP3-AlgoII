@@ -107,6 +107,10 @@ public:
     // pos: elimina el edificio del casillero (solo en construible)
     virtual void destruir_edificio(){};
 
+    // pre:
+    // pos:
+    virtual void destruir_material(){};
+
     // pre: -
     // pos: pone un material en un casillero (solo en transitables)
     virtual void poner_material(Material* material){};

@@ -373,6 +373,21 @@ Estado_t Mapa::agregar_material_en_coordenadas(Material* material, int coord_x, 
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Mapa::quitar_material_en_coordenadas(int coord_x, int coord_y){
+
+    mapa[coord_x][coord_y]->destruir_material();
+
+    // Agrego la coordenada a la lista de transitables desocupados
+    Coordenadas* coord = new Coordenadas;
+    *coord = {coord_x, coord_y};
+
+    casilleros_transitables_disponibles.alta( coord, casilleros_transitables_disponibles.obtener_cantidad() );
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Mapa::agregar_material_en_coordenada_transitable_aleatoria(Material* material){
 
     // Agarro una coordenada aleatoria de la lista

@@ -158,6 +158,10 @@ public:
 
         // pre:
         // pos:
+        void sumar_cantidad_material_inventario(char identificador, double cantidad);
+
+        // pre:
+        // pos:
         void restar_vida_edificio(int posicion_edificio, int orden_edificio);
 
         // pre:

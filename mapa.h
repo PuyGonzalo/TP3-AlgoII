@@ -108,6 +108,10 @@ public:
     // pos: agrega un material a una coordenada particular
     Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
 
+    // pre: La coordenada debe tener un material!
+    // pos:
+    void quitar_material_en_coordenadas(int coord_x, int coord_y);
+
     // pre: -
     // pos: agrega un material en un casillero transitable DISPONIBLE ALEATORIO (y deja de estar disponible, claro)
     void agregar_material_en_coordenada_transitable_aleatoria(Material* material);
