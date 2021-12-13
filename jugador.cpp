@@ -616,6 +616,16 @@ bool Jugador::victoria_por_objetivo_principal(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+Coordenadas Jugador::obtener_ubicacion(){
+
+    return this->ubicacion;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 bool Jugador::victoria_por_objetivos_secundarios(){
 
     int cantidad_objetivos_secundarios_cumplidos = 0;

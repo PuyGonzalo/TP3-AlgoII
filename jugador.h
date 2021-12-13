@@ -97,6 +97,10 @@ public:
         double obtener_energia();
 
         // pre: -
+        // pos: devuelve la ubicacion que tiene el jugador
+        Coordenadas obtener_ubicacion();
+
+        // pre: -
         // pos: devuelve la cantidad de andycoins que tiene el jugador
         double obtener_cantidad_andycoins();
 

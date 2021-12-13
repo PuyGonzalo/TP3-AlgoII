@@ -144,3 +144,9 @@ void Casillero::posicionar_jugador(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Casillero::eliminar_jugador( ){
+    
+    this -> ocupado = false;
+    this -> jugador_en_casillero = NADIE;
+
+}

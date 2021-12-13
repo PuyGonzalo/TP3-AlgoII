@@ -110,6 +110,14 @@ public:
     // pre:
     // pos:
     void imprimir_camino_minimo(int origen, int destino);
+
+    // pre:
+    // pos:
+    Coordenadas encontrar_coordenadas_busqueda_binaria(Vertice *** matriz, int cant_filas, int cant_columnas, int clave);
+
+    // pre:
+    // pos:
+    Coordenadas encontrar_columna_busqueda_binaria(Vertice *** matriz, int cant_filas, int cant_columnas, int clave, int fila_encontrada);
     
 
 };

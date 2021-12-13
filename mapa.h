@@ -144,6 +144,10 @@ public:
     // pos: 
     Jugador_t obtener_creador_edificio(int coord_x, int coord_y);
 
+    // pre: 
+    // pos: 
+    Estado_t eliminar_posicion_jugador(int coord_x, int coord_y);
+
 
 };
 

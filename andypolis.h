@@ -186,6 +186,10 @@ public:
     // pos:
     bool es_transitable(int coord_x, int coord_y);
 
+    // pre:
+    // pos:
+    Estado_t eliminar_posicion_jugador( Jugador_t jugador);
+
 
 };
 

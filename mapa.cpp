@@ -237,7 +237,6 @@ Estado_t Mapa::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador){
 
     if(coord_x > cantidad_columnas || coord_y > cantidad_filas)
         return ERROR_POSICION_INEXISTENTE;
-
     mapa[coord_x][coord_y] -> posicionar_jugador(jugador);
 
     if(se_puede_transitar(coord_x,coord_y)){
@@ -246,6 +245,21 @@ Estado_t Mapa::posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador){
         casilleros_transitables_disponibles.baja(ind);
     }
 
+
+    return OK;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Estado_t Mapa::eliminar_posicion_jugador(int coord_x, int coord_y){
+
+    if(coord_x > cantidad_columnas || coord_y > cantidad_filas)
+        return ERROR_POSICION_INEXISTENTE;
+    
+    mapa[coord_x][coord_y] -> eliminar_jugador();
 
     return OK;
 

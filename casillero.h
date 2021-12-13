@@ -79,6 +79,10 @@ public:
     // pos: devuelve true si hay un jugador en el casillero (false si no)
     bool hay_jugador();
 
+    // pre: -
+    // pos: 
+    void eliminar_jugador();
+
     // pre: coordenada valida
     // pos: posiciona un jugador en el casillero
     void posicionar_jugador(Jugador_t jugador);

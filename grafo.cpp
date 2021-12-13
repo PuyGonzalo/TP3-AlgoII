@@ -386,14 +386,12 @@ void Grafo::actualizar_grafo(const Mapa &mapa){
 Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int coord_destino_x, int coord_destino_y, double &energia_requerida, Lista<Coordenadas*> &camino){
 
     camino_minimo_floyd_warshall();
-
     Estado_t estado = OK;
-    bool vertice_encontrado = false;
+    //bool vertice_encontrado = false;
     int n = 0;
 
-    int indice_origen = grafo[coordenadas_origen.coordenada_x][coordenadas_origen.coordenada_y] -> obtener_indice();
-    int indice_destino = grafo[coord_destino_x][coord_destino_y] -> obtener_indice();
-
+    int indice_origen = grafo[coordenadas_origen.coordenada_x][coordenadas_origen.coordenada_y] -> obtener_indice(); //Convierto las coordenadas iniciales del jugador a un "vertice"
+    int indice_destino = grafo[coord_destino_x][coord_destino_y] -> obtener_indice(); //Convierto las coordenadas finales del jugador a un "vertice"
     /*
     if(matriz_distancias[indice_origen][indice_destino] == INFINITO)
         return ERROR_NO SE PUEDE MOVER A ESTE LUGAR (hay un jugador o un edificio basicamente, hacer este error) 
@@ -401,35 +399,107 @@ Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int
 
     energia_requerida = (double) matriz_distancias[indice_origen][indice_destino];
 
+    imprimir_camino_minimo(indice_origen,indice_destino);
 
-    cout << "origen: " << indice_origen << " destino: " << indice_destino << endl; // HASTA ACA VA BIEN
-    
     do{
+
         Coordenadas* ubicacion_vertice = new Coordenadas;
 
-        for( int i = 0; i < cantidad_filas || !vertice_encontrado ; ++i){ // chequear
-            for( int j = 0; j < cantidad_columnas|| !vertice_encontrado ; ++j){
-                if(indice_origen == grafo[i][j] -> obtener_indice()){
-                    ubicacion_vertice -> coordenada_x = i;
-                    ubicacion_vertice -> coordenada_y = j;
-                    vertice_encontrado = true;
-                }
-            }
-        }
-
+        *ubicacion_vertice = encontrar_coordenadas_busqueda_binaria(grafo, cantidad_filas, cantidad_columnas, indice_origen);
         camino.alta(ubicacion_vertice,n);
         ++n;
 
         indice_origen = matriz_recorridos[indice_origen][indice_destino];
-        cout << "nuevo origen: " << indice_origen << " destino: " << indice_destino << endl; // si imprime esto y son iguales estos 2 indices es xq llego a guardarlo en el camino
-    } while(indice_origen != indice_destino);    
-    cout << "termine" << endl;
+    
+    }while(indice_origen != indice_destino);  
+    
+    Coordenadas* ubicacion_vertice = new Coordenadas;
+    *ubicacion_vertice = encontrar_coordenadas_busqueda_binaria(grafo, cantidad_filas, cantidad_columnas, indice_origen);
+    camino.alta(ubicacion_vertice,n);
 
 
     return estado;
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Coordenadas Grafo::encontrar_columna_busqueda_binaria(Vertice *** matriz, int cant_filas, int cant_columnas, int clave, int fila_encontrada)
+{
+    Coordenadas auxiliar;
+ 
+    int izquierda = 0, derecha = cant_columnas - 1, mitad;
+    bool hallado = false;
+    while (izquierda <= derecha && !hallado)
+    {
+        mitad = (izquierda + derecha) / 2;
+ 
+        if (matriz[fila_encontrada][mitad]-> obtener_indice() == clave)
+        {
+            auxiliar.coordenada_x = fila_encontrada;
+            auxiliar.coordenada_y = mitad;
+            hallado = true;
+        }
+ 
+        if (matriz[fila_encontrada][mitad]-> obtener_indice() > clave)
+            derecha = mitad - 1;
+        if (matriz[fila_encontrada][mitad]-> obtener_indice() < clave)
+            izquierda = mitad + 1;
+    }
+
+    return auxiliar;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+Coordenadas Grafo::encontrar_coordenadas_busqueda_binaria(Vertice *** matriz, int cant_filas, int cant_columnas, int clave)
+{
+    Coordenadas auxiliar;
+
+    int izquierda = 0, derecha = cant_filas - 1, mitad;
+    bool hallado = false;
+    while (izquierda <= derecha && !hallado)
+    {
+        mitad = (izquierda + derecha) / 2;
+        
+        // Chequeo en la fila del medio primero:
+
+        // Primer elemento
+        if (clave == matriz[mitad][0]-> obtener_indice() )
+        {
+            auxiliar.coordenada_x = mitad;
+            auxiliar.coordenada_y = 0;
+            hallado = true;
+        }
+    
+        // ultimo elemento
+        if (clave == matriz[mitad][cant_columnas - 1]-> obtener_indice() )
+        {
+            auxiliar.coordenada_x = mitad;
+            auxiliar.coordenada_y = cant_columnas - 1;
+            hallado = true;
+        }
+
+        // Chequeo si esta dentro de la fila:
+        if (clave > matriz[mitad][0]-> obtener_indice() && clave < matriz[mitad][cant_columnas - 1]-> obtener_indice() )
+        {
+            auxiliar = encontrar_columna_busqueda_binaria(matriz, cant_filas, cant_columnas, clave, mitad);
+            hallado = true;
+        }
+
+        // Si no esta la misma columna, actualizo a una nueva fila:
+        if (clave < matriz[mitad][0]-> obtener_indice() )
+            derecha = mitad - 1;
+        if (clave > matriz[mitad][cant_columnas - 1]-> obtener_indice() )
+            izquierda = mitad + 1;
+    }
+
+    return auxiliar;
+}
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -479,12 +549,12 @@ const int VERTICES_DEBUGGEO = 22;
 void Grafo::imprimir_matriz_ady(){
     cout << TAB;
     for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
-        cout << FONDO_COLOR_AMARILLO << k << TAB;
+        cout << FONDO_COLOR_PURPURA_OSCURO << k << TAB;
     cout << FIN_DE_FORMATO << endl;
 
 
     for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){ 
-                cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+                cout << FONDO_COLOR_PURPURA_OSCURO << i << FIN_DE_FORMATO << TAB;
         for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
             if(matriz_adyacencia[i][j] == INFINITO)
                 cout << "Inf" << '\t';
@@ -504,11 +574,11 @@ void Grafo::imprimir_matriz_ady(){
 void Grafo::imprimir_matriz_recorridos(){
     cout << TAB;
     for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
-        cout << FONDO_COLOR_AMARILLO << k << TAB;
+        cout << FONDO_COLOR_PURPURA_OSCURO << k << TAB;
     cout << FIN_DE_FORMATO << endl;
 
     for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){ 
-        cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+        cout << FONDO_COLOR_PURPURA_OSCURO << i << FIN_DE_FORMATO << TAB;
         for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
             if(matriz_recorridos[i][j] == -1)
                 cout << "IMP" << '\t';
@@ -528,11 +598,11 @@ void Grafo::imprimir_matriz_recorridos(){
 void Grafo::imprimir_matriz_distancias(){
     cout << TAB;
     for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
-        cout << FONDO_COLOR_AMARILLO << k << TAB ;
+        cout << FONDO_COLOR_PURPURA_OSCURO << k << TAB ;
     cout << FIN_DE_FORMATO << endl;
 
     for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){
-        cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+        cout << FONDO_COLOR_PURPURA_OSCURO << i << FIN_DE_FORMATO << TAB;
         for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
             if(matriz_distancias[i][j] == INFINITO)
                 cout << "Inf" << '\t';
