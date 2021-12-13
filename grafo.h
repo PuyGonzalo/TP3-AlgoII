@@ -33,6 +33,18 @@ public:
 
     // pre: -
     // pos:
+    void crear_matriz_adyancencia();
+
+    // pre: -
+    // pos:
+    void crear_matriz_distancias();
+
+    // pre: -
+    // pos:
+    void crear_matriz_recorridos();
+
+    // pre: -
+    // pos:
     void destruir_matriz_adyancencia();
 
     // pre: -

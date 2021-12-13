@@ -11,6 +11,7 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
     crear_vertices();
 
     // Pesos en el grafo
+    crear_matriz_adyancencia();
     inicializar_matriz_adyacencia();
 
     conectar_esquinas(mapa);
@@ -20,7 +21,9 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
     cargar_matriz_adyacencia();
 
     // Para camino minimo
+    crear_matriz_distancias();
     inicializar_matriz_distancias();
+    crear_matriz_recorridos();
     inicializar_matriz_recorridos();
 
 }
@@ -35,6 +38,41 @@ Grafo::~Grafo(){
     destruir_matriz_distancias();
     destruir_matriz_recorridos();
     destruir_vertices();
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::crear_matriz_adyancencia(){
+
+    matriz_adyacencia = new int*[cantidad_vertices];
+    for(int i = 0 ; i < cantidad_vertices ; ++i)
+        matriz_adyacencia[i] = new int[cantidad_vertices];
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::crear_matriz_distancias(){
+
+    matriz_distancias = new int*[cantidad_vertices];
+    for(int i = 0 ; i < cantidad_vertices ; ++i)
+        matriz_distancias[i] = new int[cantidad_vertices];
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::crear_matriz_recorridos(){
+
+    matriz_recorridos = new int*[cantidad_vertices];
+    for(int i = 0 ; i < cantidad_vertices ; ++i)
+        matriz_recorridos[i] = new int[cantidad_vertices];
 
 }
 
@@ -135,10 +173,6 @@ void Grafo::crear_vertices(){
 
 void Grafo::inicializar_matriz_adyacencia(){
 
-    matriz_adyacencia = new int*[cantidad_vertices];
-    for(int i = 0 ; i < cantidad_vertices ; ++i)
-        matriz_adyacencia[i] = new int[cantidad_vertices];
-
     for(int i = 0 ; i < cantidad_vertices ; ++i){
         for(int j = 0 ; j < cantidad_vertices ; ++j){
             if(i == j)
@@ -156,10 +190,6 @@ void Grafo::inicializar_matriz_adyacencia(){
 
 void Grafo::inicializar_matriz_distancias(){
 
-    matriz_distancias = new int*[cantidad_vertices];
-    for(int i = 0 ; i < cantidad_vertices ; ++i)
-        matriz_distancias[i] = new int[cantidad_vertices];
-
     for(int i = 0 ; i < cantidad_vertices ; ++i){
         for(int j = 0 ; j < cantidad_vertices ; ++j){
                 matriz_distancias[i][j] = matriz_adyacencia[i][j];
@@ -174,11 +204,6 @@ void Grafo::inicializar_matriz_distancias(){
 
 
 void Grafo::inicializar_matriz_recorridos(){
-
-    matriz_recorridos = new int*[cantidad_vertices];
-    for(int i = 0 ; i < cantidad_vertices ; ++i)
-        matriz_recorridos[i] = new int[cantidad_vertices];
-
 
     for(int i = 0 ; i < cantidad_vertices ; ++i){
         for(int j = 0 ; j < cantidad_vertices ; ++j){
@@ -369,6 +394,7 @@ void Grafo::actualizar_grafo(const Mapa &mapa){
     destruir_matriz_adyancencia();
     
     // Las otras matrices se van a actualizar cuando vuelva a correr el algoritmo (:
+    crear_matriz_adyancencia();
     inicializar_matriz_adyacencia();
 
     conectar_esquinas(mapa);
@@ -376,6 +402,8 @@ void Grafo::actualizar_grafo(const Mapa &mapa){
     conectar_centros(mapa);
     
     cargar_matriz_adyacencia();
+
+    inicializar_matriz_distancias();
 
 }
 
@@ -392,10 +420,10 @@ Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int
 
     int indice_origen = grafo[coordenadas_origen.coordenada_x][coordenadas_origen.coordenada_y] -> obtener_indice(); //Convierto las coordenadas iniciales del jugador a un "vertice"
     int indice_destino = grafo[coord_destino_x][coord_destino_y] -> obtener_indice(); //Convierto las coordenadas finales del jugador a un "vertice"
-    /*
+
     if(matriz_distancias[indice_origen][indice_destino] == INFINITO)
-        return ERROR_NO SE PUEDE MOVER A ESTE LUGAR (hay un jugador o un edificio basicamente, hacer este error) 
-    */
+        return ERROR_MOVIMIENTO_A_OCUPADO; 
+    
 
     energia_requerida = (double) matriz_distancias[indice_origen][indice_destino];
 

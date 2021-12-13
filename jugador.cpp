@@ -234,7 +234,7 @@ Estado_t Jugador::moverse_a_una_coord(int coord_x, int coord_y, Lista<Coordenada
 
     Estado_t estado = OK;
     double energia_requerida = 0;
-
+    
     estado = grafo -> procesamiento_del_movimiento(ubicacion, coord_x, coord_y, energia_requerida, camino);
 
     if(this -> energia < energia_requerida)

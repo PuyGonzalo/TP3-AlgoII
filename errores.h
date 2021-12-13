@@ -35,6 +35,7 @@ const string STR_ERROR_CASILLERO_VACIO = "¡Este casillero esta vacio!";
 const string STR_ERROR_RECOLECCION_MATERIALES = "¡No hay edificios de los cuales recolectar materiales!";
 const string STR_ERROR_ANDYCOINS_INSUFICIENTES = "¡No tenes suficientes andycoins para comprar!";
 const string STR_ERROR_ENERGIA_INSUFICIENTE = "¡No tenes suficiente energia para realizar esta acción!";
+const string STR_ERROR_MOVIMIENTO_A_OCUPADO = "¡No es posible moverse a este casillero, hay un edificio o un jugador!";
 
 const string errores[] = {
 	STR_OK,
@@ -64,7 +65,8 @@ const string errores[] = {
 	STR_ERROR_CANTIDAD_MATERIALES_INVALIDOS,
 	STR_ERROR_MODIFICAR_OBELISICO,
 	STR_ERROR_JUGADOR_ELEGIDO_INCORRECTO,
-	STR_ERROR_CONSTRUCCION_CANCELADA
+	STR_ERROR_CONSTRUCCION_CANCELADA,
+	STR_ERROR_MOVIMIENTO_A_OCUPADO
 	
 };
 
@@ -97,6 +99,7 @@ enum Estado_t {
 	ERROR_MODIFICAR_OBELISICO = 25,
 	ERROR_JUGADOR_ELEGIDO_INCORRECTO = 26,
 	ERROR_CONSTRUCCION_CANCELADA =27,
+	ERROR_MOVIMIENTO_A_OCUPADO = 28,
 	ADVERTENCIA_LLUVIA_RECURSOS = 100,
 	ESTADO_JUGADOR_GANADOR = 200};
 

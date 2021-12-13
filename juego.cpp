@@ -319,6 +319,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case MOVERSE_A_UNA_COORD:
             if(system(CLR_SCREEN));
+            andypolis.mostrar_mapa(16,1);
             estado = moverse_a_una_coord(andypolis, jugador);
             break;
 
