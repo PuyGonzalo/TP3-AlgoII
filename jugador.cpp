@@ -290,27 +290,6 @@ void Jugador::restar_vida_edificio( int posicion_edificio, int orden_edificio){
 
 void Jugador::sortear_objetivos_secundarios(){
 
-    // Decidir si usamos esta forma:
-
-    /*
-    Lista<int> opciones_objetivos;
-    int opcion_elegida;
-    int i ;
-
-    for( i = 0 ; i < CANT_OBJETIVOS_SECUNDARIOS; ++i){
-        opciones_objetivos.alta(i,i);
-    }
-
-    for( i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
-        opcion_elegida = opciones_objetivos.bajar_aleatorio();
-        objetivos_secundarios.insertar( (generar_objetivos_secundarios(opcion_elegida)) );
-    }
-    */
-    
-    
-    
-
-   // O esta:
    int arreglo_aux[] = {0,1,2,3,4,5,6,7,8,9};
    
    int n = sizeof(arreglo_aux) / sizeof(arreglo_aux[0]);
@@ -321,16 +300,6 @@ void Jugador::sortear_objetivos_secundarios(){
         objetivos_secundarios.insertar( (generar_objetivos_secundarios(arreglo_aux[i])) );
     }
     
-    /*
-    for(int i=0; i < 10; ++i){
-        cout << arreglo_aux[i] << endl;
-    }
-    cout << endl;
-    */
-    
-    
-    
-
 }
 
 
