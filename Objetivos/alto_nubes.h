@@ -9,11 +9,27 @@ const int CANT_OBELISCOS = 1;
 class Alto_nubes: public Objetivo {
 
     public:
-        Alto_nubes();
-        ~Alto_nubes(){};
 
+        // Metodos
+
+        // pre:
+        // pos:
+        Alto_nubes();
+
+        // pre:
+        // pos:
+        ~Alto_nubes(){};
+        
+        // pre:
+        // pos:
         string obtener_condiciones();
+
+        // pre:
+        // pos:
         void actualizar_cumplimiento(   const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas); 
+        
+        // pre:
+        // pos:
         string obtener_progreso(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas);
 };
 

@@ -49,7 +49,7 @@ string Letrado::obtener_progreso( const double &cant_energia, const Inventario &
     }
 
     stringstream sstream;
-    sstream << "Falta/n construir" << cant_maxima_escuelas - cantidad_construidos << " escuelas";
+    sstream << "Falta/n construir " << cant_maxima_escuelas - cantidad_construidos << " escuelas" << endl;
 
     return sstream.str();
 }

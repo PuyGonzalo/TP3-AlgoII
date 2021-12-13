@@ -512,7 +512,7 @@ Estado_t Andypolis::lluvia_de_recursos(){
     string piedra = "piedra 100";
     string madera = "madera 50";
     string metal = "metal 50";
-    string andycoins = "andycoins 250"; // metodo parser igual a procesar pero con otro nombre "procesas_entrada_mateiral_lluva"
+    string andycoins = "andycoins 250";
     
 
     for(int i = 1; i <= cantidad_lluvia_piedra; ++i){
@@ -558,25 +558,12 @@ Estado_t Andypolis::moverse_a_una_coord(int coord_x, int coord_y, Jugador_t juga
         if(estado == OK){
 
             realizar_movimiento(coord_x, coord_y, jugador, camino);
-            //eliminar_posicion_jugador(jugador); //BORRO LA POSICION ANTERIOR DEL JUGADOR Y LUEGO LO UBICO EN LA NUEVA. En camino tengo el recorrido que hace
-            //posicionar_jugador(coord_x, coord_y, jugador); // ESTO DEBERIA IR YENDO DE CASILLERO EN CASILLERO EN LA ANIMACION, NO VA ACA
-            // metodo que hace la animacion (paso camino, voy dando DELETEANDO CORDS y dandolas de baja + AGARRAR LOS MATERIALES Y SUMARSELOS AL JUG!!!)
-
-            /*
-            for < cantidad de elementos en lista camino
-            1- ELIMINAR posicion jugado
-            2- posiciono el jugador en (camino.consulta(i)->coordenada_x , camino.consulta(i)->coordenada_y)
-            3- SI ES TRANSITABLE Y ESTA OCUPADO Y NO ES UN JUGADOR (ES UN MATERIAL) -> recoger material -> obtener el elemento del casillero (material*) ==> material -> obtener_cantidad()
-            4- sumarle esa cantidad al jugador
-            5- sacar el material de ese casillero (delete a eso y apuntar material_ocupado = nullptr)
-            6- vuelvo al loop (1)
-            BIS -> IMPRIMIR MAPA Y METER UN PAUSE()
-            */
+            
         }
     } else estado = ERROR_POSICION_INEXISTENTE;
 
+    // Elimino los punteros a Coordenadas del camino
     for(int i = 0; i < camino.obtener_cantidad(); i++){
-        //cout << "(" << camino.consulta(i)->coordenada_x << "," << camino.consulta(i)->coordenada_y << ")" << endl;
         delete camino.consulta(i);
     }
 
