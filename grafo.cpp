@@ -26,14 +26,18 @@ Grafo::Grafo(const Mapa &mapa, Jugador_t jugador){
         }
     }
 
+    // Pesos en el grafo
     inicializar_matriz_adyacencia();
-    inicializar_matriz_recorridos();
 
     conectar_esquinas(mapa);
     conectar_orillas(mapa);
     conectar_centros(mapa);
-
+    
     cargar_matriz_adyacencia();
+
+    // Para camino minimo
+    inicializar_matriz_distancias();
+    inicializar_matriz_recorridos();
 
 }
 
@@ -46,6 +50,10 @@ Grafo::~Grafo(){
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_adyacencia[i];
     delete [] matriz_adyacencia; // si quiero poner a nullptr tengo que ir 1 por una, no?
+
+    for(int i = 0; i < cantidad_vertices ; ++i)
+        delete [] matriz_distancias[i];
+    delete [] matriz_distancias; // si quiero poner a nullptr tengo que ir 1 por una, no?
 
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_recorridos[i];
@@ -90,17 +98,44 @@ void Grafo::inicializar_matriz_adyacencia(){
 // ------------------------------------------------------------------------------------------------------------
 
 
+void Grafo::inicializar_matriz_distancias(){
+
+    matriz_distancias = new int*[cantidad_vertices];
+    for(int i = 0 ; i < cantidad_vertices ; ++i)
+        matriz_distancias[i] = new int[cantidad_vertices];
+
+    for(int i = 0 ; i < cantidad_vertices ; ++i){
+        for(int j = 0 ; j < cantidad_vertices ; ++j){
+                matriz_distancias[i][j] = matriz_adyacencia[i][j];
+        }
+    }
+
+}
+
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Grafo::inicializar_matriz_recorridos(){
 
     matriz_recorridos = new int*[cantidad_vertices];
     for(int i = 0 ; i < cantidad_vertices ; ++i)
         matriz_recorridos[i] = new int[cantidad_vertices];
 
+
     for(int i = 0 ; i < cantidad_vertices ; ++i){
         for(int j = 0 ; j < cantidad_vertices ; ++j){
-                matriz_recorridos[i][j] = 0; 
+                matriz_recorridos[i][j] = j;
         }
     }
+
+    /* La inicializo como:
+                            01234
+                            01234
+                            01234
+                            01234
+    */
 
 }
 
@@ -193,7 +228,7 @@ void Grafo::conectar_orillas(const Mapa &mapa){
         grafo[0][j] -> conectar_vertice(indice_der, peso_der);
 
         int indice_abajo = grafo[1][j] -> obtener_indice();
-        int peso_abajo = mapa.obtener_peso_casillero(0,j,jugador);
+        int peso_abajo = mapa.obtener_peso_casillero(1,j,jugador);
         grafo[0][j] -> conectar_vertice(indice_abajo, peso_abajo);
     }
 
@@ -277,13 +312,61 @@ void Grafo::conectar_centros(const Mapa &mapa){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::camino_minimo_floyd_warshall(){
+    // i: filas, j:columnas, k:pivotes
+    int i, j, k;
+    
+    // La distancia de ir a un vertice hasta el mismo es cero:
+    /*
+    for( i=0; i < cantidad_vertices; i++){
+        matriz_distancias[i][i] = 0;
+    }
+    */
+
+    // Voy pivotenado con k, selecciono la columna y fila
+    // a partir del valor en k busco el siguiente en i y j
+    // si la suma de estos valor es mayor al de k me quedo con el de k
+    // sino me quedo con la suma de i+j. Los pesos estan en la matriz de adyacencia
+
+    for( k = 0; k < cantidad_vertices; ++k){
+
+        for( i = 0; i < cantidad_vertices; ++i){
+
+            for( j = 0; j < cantidad_vertices; ++j){
+
+                int dt = matriz_distancias[i][k] + matriz_distancias[k][j];
+
+                if( (dt < matriz_distancias[i][j]) ){
+
+                    matriz_distancias[i][j] = dt;
+                    matriz_recorridos[i][j] = matriz_recorridos[i][k];
+                }
+                else if( matriz_distancias[i][j] == INFINITO)
+                    matriz_recorridos[i][j] = -1; // POSICION NO ENCONTRADA
+            }   
+
+        }
+    }
+}
+
+
 // -----------------------------------DEBUUGEEOO----------------------------------------------------------------------
 
+const int VERTICES_DEBUGGEO = 22;
 
 void Grafo::imprimir_matriz_ady(){
+    cout << TAB;
+    for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
+        cout << FONDO_COLOR_AMARILLO << k << TAB;
+    cout << FIN_DE_FORMATO << endl;
 
-    for(int i = 0 ; i < 20 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
-        for(int j = 0 ; j < 20 ; ++j){
+
+    for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){ 
+                cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+        for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
             if(matriz_adyacencia[i][j] == INFINITO)
                 cout << "Inf" << '\t';
             else
@@ -295,50 +378,19 @@ void Grafo::imprimir_matriz_ady(){
 
 }
 
-// ------------------------------------------------------------------------------------------------------------
-
-
-void Grafo::camino_minimo_floyd_warshall(){
-    // i: filas, j:columnas, k:pivotes
-    int i, j, k;
-    
-    // La distancia de ir a un vertice hasta el mismo es cero:
-    for( i=0; i < cantidad_vertices; i++){
-        matriz_recorridos[i][i] = 0;
-    }
-
-    // Voy pivotenado con k, selecciono la columna y fila
-    // a partir del valor en k busco el siguiente en i y j
-    // si la suma de estos valor es mayor al de k me quedo con el de k
-    // sino me quedo con la suma de i+j. Los pesos estan en la matriz de adyacencia
-
-    for( k=0; k < cantidad_vertices; k++){
-
-        for( i=0; i < cantidad_vertices; i++){
-
-            for( j=0; j < cantidad_vertices; j++){
-
-                int dt = matriz_adyacencia[i][k] + matriz_adyacencia[k][j];
-
-                if( (dt < matriz_adyacencia[i][j]) ){
-
-                    matriz_adyacencia[i][j] = dt;
-                    matriz_recorridos[i][j] = k;
-                }
-            }   
-
-        }
-    }
-}
-
 
 // ------------------------------------------------------------------------------------------------------------
 
 
 void Grafo::imprimir_matriz_recorridos(){
+    cout << TAB;
+    for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
+        cout << FONDO_COLOR_AMARILLO << k << TAB;
+    cout << FIN_DE_FORMATO << endl;
 
-    for(int i = 0 ; i < 20 ; ++i){ // 15 en vez de cantidad_vertices porque si no es enorme
-        for(int j = 0 ; j < 20 ; ++j){
+    for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){ 
+        cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+        for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
             if(matriz_recorridos[i][j] == INFINITO)
                 cout << "Inf" << '\t';
             else
@@ -346,6 +398,54 @@ void Grafo::imprimir_matriz_recorridos(){
         }
         cout << endl;
     }
+
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::imprimir_matriz_distancias(){
+    cout << TAB;
+    for (int k = 0 ; k < VERTICES_DEBUGGEO ; ++k)
+        cout << FONDO_COLOR_AMARILLO << k << TAB ;
+    cout << FIN_DE_FORMATO << endl;
+
+    for(int i = 0 ; i < VERTICES_DEBUGGEO ; ++i){
+        cout << FONDO_COLOR_AMARILLO << i << FIN_DE_FORMATO << TAB;
+        for(int j = 0 ; j < VERTICES_DEBUGGEO ; ++j){
+            if(matriz_distancias[i][j] == INFINITO)
+                cout << "Inf" << '\t';
+            else
+                cout <<matriz_distancias[i][j] << '\t';
+        }
+        cout << endl;
+    }
+
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Grafo::imprimir_camino_minimo(int origen, int destino){
+
+    cout << "ESTE CAMINO CUESTA ENERGIA: " << matriz_distancias[origen][destino] << ' ';
+
+    if(matriz_recorridos[origen][destino] == -1)
+        cout << "no way negro" << endl;
+    else{
+        cout << origen;
+        do{
+            cout << "->" << matriz_recorridos[origen][destino];
+            origen = matriz_recorridos[origen][destino];
+            cout << '(' << matriz_distancias[origen][destino] << ')';
+        }while(origen != destino);
+    }
+
+    cout << endl;
 
 
 }

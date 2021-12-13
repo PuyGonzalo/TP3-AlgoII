@@ -604,17 +604,20 @@ void Jugador::mostrar_inventario(){
 
     inventario.mostrar_inventario();
 
-    cout << "Imprimo el matriz de adyacencia" << endl;
+    grafo -> camino_minimo_floyd_warshall();
 
-    grafo->imprimir_matriz_ady();
+    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de adyacencia" << FIN_DE_FORMATO << endl;
+    grafo -> imprimir_matriz_ady();
 
-    grafo->camino_minimo_floyd_warshall();
+    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de recorridos: " << FIN_DE_FORMATO << endl;
+    grafo -> imprimir_matriz_recorridos();
 
-    cout << "Imprimo el matriz de recorridos despues hacer Floyd-Warshall: " << endl;
-    grafo->imprimir_matriz_recorridos();
+    cout << FONDO_COLOR_ROJO << "Imprimo el matriz de distancias: "  << FIN_DE_FORMATO << endl;
+    grafo -> imprimir_matriz_distancias();
 
-    cout << "Imprimo el matriz de adyacencia despues hacer Floyd-Warshall: "  << endl;
-    grafo->imprimir_matriz_ady();
+    grafo -> imprimir_camino_minimo(0,10);
+    grafo -> imprimir_camino_minimo(0,31);
+    grafo -> imprimir_camino_minimo(0,19);
 
 }
 

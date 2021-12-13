@@ -406,20 +406,16 @@ void inicializar_juego(){
 	// NUEVA_PARTIDA:
     if( !archivo_ubicaciones.is_open() ){
 
-        cout << "hola" << endl;
         fstream archivo_ubicaciones;
         crear_archivo_vacio(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, archivo_ubicaciones);
 
     }
     
 	if( archivo_esta_vacio(archivo_ubicaciones) ){
-        
-		cout << "Archivo ubicaciones vacio" <<  endl; // Esto no deberia decirlo centrado y con algun color ? Tipo advertencia ? O ni siquiera decirlo...
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,true);
 		partida_nueva(andypolis);
 	}
 	else{
-        cout << "chau" << endl;
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,false);
 		procesar_juego(andypolis);
 	}

@@ -47,7 +47,7 @@ string Superficie::obtener_color(){
 
 int Superficie::obtener_peso(Jugador_t jugador){
 
-    return costo_energia_jugador[jugador-1];
+    return costo_energia_jugador[jugador];
 
 }
 

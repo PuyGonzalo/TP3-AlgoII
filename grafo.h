@@ -12,6 +12,7 @@ private:
     // Atributos
     Jugador_t jugador;
     int** matriz_adyacencia;
+    int** matriz_distancias;
     int** matriz_recorridos;
     Vertice*** grafo;
     int cantidad_vertices;
@@ -38,6 +39,10 @@ public:
     void inicializar_matriz_recorridos();
 
     // pre: -
+    // pos:
+    void inicializar_matriz_distancias();
+
+    // pre: -
     // pos: carga la matriz de adyacencia
     void cargar_matriz_adyacencia();
 
@@ -53,17 +58,24 @@ public:
     // pos: conecta los vertices "del centro del mapa"
     void conectar_centros(const Mapa &mapa);
 
-
-    // FUNCION PARA DEBUGGER
-    void imprimir_matriz_ady();
-    
     // pre:
     // post:
     void camino_minimo_floyd_warshall();
 
+    // FUNCION PARA DEBUGGER
+    void imprimir_matriz_ady();
+
     // pre:
     // post:
     void imprimir_matriz_recorridos();
+
+    // pre:
+    // pos:
+    void imprimir_matriz_distancias();
+
+    // pre:
+    // pos:
+    void imprimir_camino_minimo(int origen, int destino);
     
 
 };
