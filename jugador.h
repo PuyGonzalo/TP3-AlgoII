@@ -225,13 +225,26 @@ public:
         int buscar_posicion_coordenadas( int posicion_edificio, int coord_x, int coord_y);
 
         // pre:
-        // post:
+        // pos:
         bool puede_repararse_edificio( int posicion, int orden_edificio);
+
+
+        // pre:
+        // pos:
+        void guardar_ubicacion_en_archivo( fstream &archivo_salida, Jugador_t jugador);
+
+        // pre:
+        // pos:
+        void guardar_mis_edificios_en_archivo(fstream &archivo_salida);
+
+        
+
+
 
 
 private:
         //pre: opcion entre 0 y 8
-        //post: devuelve uno de los objetivos que salio en el "sorteo"
+        //pos: devuelve uno de los objetivos que salio en el "sorteo"
         Objetivo* generar_objetivos_secundarios(int opcion_objetivo);
 
 };

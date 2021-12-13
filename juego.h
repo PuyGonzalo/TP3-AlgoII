@@ -45,12 +45,7 @@ enum Opciones_menu_partida_nueva_t{
 	GUARDAR_SALIR_PARTIDA_NUEVA = 5,
 };
 
-const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt"; // Cambio el formato de archivos, ojo
-const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
-const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
-const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
-const string PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA = "Archivos/materiales_nueva_partida.txt";
-const string PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA = "Archivos/ubicaciones_nueva_partida.txt";
+
 
 // HAY QUE BUSCAR UNA FORMA DE "TABEAR" ESTOS MENSAJES (RAW STRING LITERAL)
 const string ARTE_PANTALLA_FINAL = R"(
@@ -198,8 +193,12 @@ void inicializar_juego();
 void mostrar_pantalla_final(Jugador_t jugador);
 
 // pre: -
-// pos: guarda todos los cambios que haya realizado el jugador + CREDITOS
-void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones, ofstream& archivo_salida_edificios);
+// pos: guarda todos los cambios que haya realizado el jugador ( + CREDITOS)
+void guardar_cambios(Andypolis& andypolis, fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones);
+
+// pre: -
+// pos: guarda todos los cambios que haya realizado el jugador en la partida nueva
+void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida_edificios );
 
 
 #endif //JUEGO_H

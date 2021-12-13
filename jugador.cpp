@@ -769,3 +769,30 @@ void Jugador::destruir_edificio(string nombre_edificio, const ABB<Datos_edificio
         mis_edificios.baja(pos_edificio);
     }
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+
+void Jugador::guardar_ubicacion_en_archivo( fstream &archivo_salida, Jugador_t jugador){
+
+    // Imprimo la posicion del jugador uno:
+    archivo_salida << jugador + 1 << " (" << ubicacion.coordenada_x << ", " << ubicacion.coordenada_y << ")"<< endl;
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+void Jugador::guardar_mis_edificios_en_archivo(fstream &archivo_salida){
+
+    for( int i = 0; i < mis_edificios.obtener_cantidad(); ++i){
+        for( int j = 0 ; j < mis_edificios.consulta(i) -> obtener_cantidad_construidos() ; ++j ){
+            archivo_salida << mis_edificios.consulta(i) -> obtener_nombre() << " (" 
+            <<  mis_edificios.consulta(i) -> obtener_coord_x_ubicacion(j) << ", "
+            <<  mis_edificios.consulta(i) -> obtener_coord_y_ubicacion(j) << ")" << endl;
+        }
+    }
+}
+
+

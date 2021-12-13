@@ -43,8 +43,6 @@ private:
     // Atributos
     Mapa mapa;
     ABB<Datos_edificio,string> diccionario;
-    //Jugador jugador_uno;
-    //Jugador jugador_dos;
     Jugador jugadores[CANT_MAX_JUGADORES];
 
 
@@ -198,6 +196,23 @@ public:
     // pre:
     // pos:
     Estado_t eliminar_posicion_jugador( Jugador_t jugador);
+
+    // pre:
+    // pos:
+    void guardar_andypolis(  fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones );
+
+    // pre:
+    // pos:
+    void guardar_andypolis_partida_nueva(  fstream& archivo_salida_edificios );
+
+    // pre:
+    // pos:
+    void guardar_materiales_en_archivo( fstream& archivo_salida_materiales );
+
+    // pre: 
+    // pos: 
+    void guardar_ubicaciones_en_archivo(fstream &archivo_salida);
+
 
 
 };

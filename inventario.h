@@ -44,6 +44,10 @@ public:
     int buscar_material(char identificador) const;
 
     // pre: -
+    // pos:
+    int obtener_cantidad_materiales();
+
+    // pre: -
     // pos: obtiene cuanta cantidad de piedra hay en el inventario
     double obtener_cantidad_de_piedra() const;
 
@@ -89,15 +93,31 @@ public:
     void guardar_inventario(ofstream& archivo_materiales);
 
     //Para el objetivo comprar_andypolis:
+
+    // pre: -
+    // pos:
     void aumentar_andycoins_gastadas(int cantidad);
+
+    // pre: -
+    // pos:
     int obtener_andycoins_gastadas() const;
 
-    //Para el objetivo bombardero
+    // pre: -
+    // pos:
     void aumentar_bombas_usadas(int cantidad);
+
+    // pre: -
+    // pos:
     int obtener_bombas_usadas() const;
 
     //Para el objetivo extremista:
+
+    // pre: -
+    // pos:
     void aumentar_bombas_compradas(int cantidad);
+
+    // pre: -
+    // pos:
     int obtener_bombas_compradas() const;
 
 };

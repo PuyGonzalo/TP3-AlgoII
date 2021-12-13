@@ -239,7 +239,6 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case GUARDAR_SALIR_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
-            //guargar_cambios_partida_nueva();
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
@@ -336,7 +335,6 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case GUARDAR_SALIR:
             if(system(CLR_SCREEN));
-            //guardar_cambios();
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
             break;
@@ -371,26 +369,36 @@ void mostrar_pantalla_final(Jugador_t jugador){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void guardar_cambios(Andypolis& andypolis, ofstream& archivo_salida_materiales, ofstream& archivo_salida_ubicaciones, ofstream& archivo_salida_edificios){
+void guardar_cambios(Andypolis& andypolis, fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones){
 
-    cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥" << endl << endl
-    << TAB << TAB << TAB << TAB << "# Ivan Lisman" << endl
-    << TAB << TAB << TAB << TAB << "# El magnífico Ivan Lisman" << endl
-    << TAB << TAB << TAB << TAB << "# Lazurro" << endl;
+    // Cierros los archivos de lectura
+	archivo_salida_materiales.close();
+	archivo_salida_ubicaciones.close();
 
-    	// Abro los archivos de escritura para guardar el juego
-//	fstream archivo_materiales(PATH_ENTRADA_MATERIALES, ios::out | ios::trunc);
-//  fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
+    archivo_salida_materiales.open(PATH_ENTRADA_MATERIALES, ios::out | ios::trunc);
+    archivo_salida_ubicaciones.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
 
-	// Guardo los cambios
-//	guardar_cambios(andypolis, archivo_salida_materiales, archivo_salida_ubicaciones);
-
-	// Cierros los archivos de escritura
-//	archivo_salida_materiales.close();
-//	archivo_salida_ubicaciones.close();
+    andypolis.guardar_andypolis( archivo_salida_materiales, archivo_salida_ubicaciones);
 
 }
 
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida_edificios ){
+
+    // Cierros los archivos de lectura
+	archivo_salida_edificios.close();
+
+    archivo_salida_edificios.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
+
+    andypolis.guardar_andypolis_partida_nueva( archivo_salida_edificios);
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
 
 
 void inicializar_juego(){
@@ -415,11 +423,15 @@ void inicializar_juego(){
 	if( archivo_esta_vacio(archivo_ubicaciones) ){
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,true);
 		partida_nueva(andypolis);
+        guardar_cambios_partida_nueva(andypolis, archivo_edificios);
 	}
 	else{
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,false);
 		procesar_juego(andypolis);
+        guardar_cambios(andypolis, archivo_materiales, archivo_ubicaciones);
 	}
+
+    
 
     // Cierro archivos de lectura 
     // Estos hay que cerrarlos ANTES porq la funcion que guarda los cambios necesita abrirlos como de escritura

@@ -256,3 +256,11 @@ void Inventario::aumentar_bombas_compradas(int cantidad){
 int Inventario::obtener_bombas_compradas() const{
     return bombas_compradas;
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+int Inventario::obtener_cantidad_materiales(){
+    return cantidad_materiales;
+}

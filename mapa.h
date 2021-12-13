@@ -152,7 +152,12 @@ public:
     // pos: 
     Estado_t eliminar_posicion_jugador(int coord_x, int coord_y);
 
+    // pre: 
+    // pos:
+    void guardar_materiales_en_achivo( fstream & archivo_salida);
 
+
+    
 };
 
 

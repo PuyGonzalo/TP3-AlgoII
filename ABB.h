@@ -96,24 +96,6 @@ public:
     // pre:
     // pos:
     ~ABB<T,C>();
-/*
-    // pre:
-    // pos:
-    void impimir_pre();
-
-    // pre:
-    // pos:
-    void impimir_en();
-
-    // pre:
-    // pos:
-    void impimir_post();
-
-
-    void impimir_preorden(ABBNodo<T,C>* nodo);
-    void impimir_enorden(ABBNodo<T,C>* nodo);
-    void impimir_postorden(ABBNodo<T,C>* nodo);
-*/
 
 };
 
@@ -531,79 +513,3 @@ ABB<T,C>::~ABB<T,C>(){
 
 
 #endif // ABB_H
-
-// -----------------------------------------------------------------------------------------
-
-/*
-template <typename T, typename C>
-void ABB<T,C>::impimir_preorden(ABBNodo<T,C>* nodo){
-
-    if( nodo != nullptr){
-        cout << nodo->obtener_dato_const() << endl;
-        impimir_preorden( nodo->obtener_izquierda() );
-        impimir_preorden( nodo->obtener_derecha() );
-
-    }
-}
-
-
-// -----------------------------------------------------------------------------------------
-
-
-template <typename T, typename C>
-void ABB<T,C>::impimir_pre(){
-
-    impimir_preorden(raiz);
-}
-
-
-// -----------------------------------------------------------------------------------------
-
-
-template <typename T, typename C>
-void ABB<T,C>::impimir_enorden(ABBNodo<T,C>* nodo){
-
-    if( nodo != nullptr){
-        
-        impimir_preorden( nodo->obtener_izquierda() );
-        cout << nodo->obtener_dato_const() << endl;
-        impimir_preorden( nodo->obtener_derecha() );
-
-    }
-}
-
-
-// -----------------------------------------------------------------------------------------
-
-
-template <typename T, typename C>
-void ABB<T,C>::impimir_en(){
-
-    impimir_enorden(raiz);
-}
-
-
-// -----------------------------------------------------------------------------------------
-
-
-template <typename T, typename C>
-void ABB<T,C>::impimir_postorden(ABBNodo<T,C>* nodo){
-
-    if( nodo != nullptr){
-        
-        impimir_preorden( nodo->obtener_izquierda() );
-        impimir_preorden( nodo->obtener_derecha() );
-        cout << nodo->obtener_dato_const() << endl;
-
-    }
-}
-
-
-// -----------------------------------------------------------------------------------------
-
-
-template <typename T, typename C>
-void ABB<T,C>::impimir_post(){
-
-    impimir_postorden(raiz);
-}*/

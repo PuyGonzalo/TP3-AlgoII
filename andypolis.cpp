@@ -735,3 +735,67 @@ bool Andypolis::es_transitable(int coord_x, int coord_y){
 
     return mapa.se_puede_transitar(coord_x, coord_y);
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::guardar_andypolis(  fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones){
+
+    guardar_materiales_en_archivo(archivo_salida_materiales);
+
+    guardar_ubicaciones_en_archivo(archivo_salida_ubicaciones);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::guardar_andypolis_partida_nueva( fstream& archivo_salida_edificios ){
+
+    diccionario.guardar_en_archivo(archivo_salida_edificios); 
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::guardar_materiales_en_archivo( fstream& archivo_salida_materiales ){
+
+    // No es lo mejor, pero es la mejor manera que nos encontramos por ahora: 
+    archivo_salida_materiales << STR_MADERA << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_madera() << " " 
+    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_madera() << endl;
+
+    archivo_salida_materiales << STR_METAL << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_metal() << " " 
+    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_metal() << endl;
+
+    archivo_salida_materiales << STR_PIEDRA << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_piedra() << " " 
+    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_piedra() << endl;
+
+    archivo_salida_materiales << STR_ANDYCOINS << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_andycoins() << " " 
+    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_andycoins() << endl;
+
+    archivo_salida_materiales << STR_BOMBAS << " " << jugadores[JUGADOR_UNO].obtener_inventario().obtener_cantidad_de_bombas() << " " 
+    << jugadores[JUGADOR_DOS].obtener_inventario().obtener_cantidad_de_bombas() << endl;
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::guardar_ubicaciones_en_archivo(fstream &archivo_salida){
+
+    // Imprimo los materiales:
+    mapa.guardar_materiales_en_achivo(archivo_salida);
+
+    jugadores[JUGADOR_UNO].guardar_ubicacion_en_archivo(archivo_salida, JUGADOR_UNO);
+
+    // Imprimo los edificios del jugador uno:
+    jugadores[JUGADOR_UNO].guardar_mis_edificios_en_archivo(archivo_salida);
+
+    // Imprimo la posicion del jugador dos:
+    jugadores[JUGADOR_DOS].guardar_ubicacion_en_archivo(archivo_salida, JUGADOR_DOS);
+
+    // Imprimo los edificios del jugador dos:
+    jugadores[JUGADOR_DOS].guardar_mis_edificios_en_archivo(archivo_salida);
+}

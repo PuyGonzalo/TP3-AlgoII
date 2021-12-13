@@ -553,3 +553,19 @@ Coordenadas Mapa::obtener_coordenadas_casillero_transitable_aleatorio(){
 
     return aux;  
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Mapa::guardar_materiales_en_achivo( fstream &archivo_salida){
+
+    for(int i = 0 ; i < cantidad_filas ; ++i){
+        for(int j = 0 ; j < cantidad_columnas ; ++j){
+            if( mapa[i][j] -> es_casillero_transitable() && mapa[i][j] -> esta_ocupado() && (!mapa[i][j] -> hay_jugador()) )
+                archivo_salida << mapa[i][j] -> obtener_nombre_objeto_de_casillero() << " (" << i << ", " << j << ")" << endl;
+        }
+    }
+}
+
+
