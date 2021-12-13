@@ -20,8 +20,11 @@ string Bombardero::obtener_condiciones(){
 
 
 void Bombardero::actualizar_cumplimiento(  const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios,int cant_maxima_escuelas){
-   
-   this -> cumplido = (inventario.obtener_bombas_usadas() > CANT_BOMBAS_USADAS_OBJETIVO);
+
+   if(this -> cumplido) // Si el objetivo ya se cumplió no hace falta actualizar el cumplimiento.
+        return;
+
+   this -> cumplido = (inventario.obtener_bombas_usadas() >= CANT_BOMBAS_USADAS_OBJETIVO);
 
 }
 

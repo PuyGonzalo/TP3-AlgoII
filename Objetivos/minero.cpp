@@ -22,6 +22,9 @@ string Minero::obtener_condiciones(){
 
 void Minero::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuela){
 
+    if(this -> cumplido) // Si el objetivo ya se cumplió no hace falta actualizar el cumplimiento.
+        return;
+        
     int contador = 0;
 
     for(int i = 0 ; i < mis_edificios.obtener_cantidad() ; ++i){

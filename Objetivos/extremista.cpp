@@ -21,7 +21,10 @@ string Extremista::obtener_condiciones(){
 
 void Extremista::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
 
-    this -> cumplido = (inventario.obtener_bombas_compradas() < CANT_BOMBAS_COMPRADAS_OBJETIVO);
+    if(this -> cumplido) // Si el objetivo ya se cumplió no hace falta actualizar el cumplimiento.
+        return;
+
+    this -> cumplido = (inventario.obtener_bombas_compradas() >= CANT_BOMBAS_COMPRADAS_OBJETIVO);
 
 }
 

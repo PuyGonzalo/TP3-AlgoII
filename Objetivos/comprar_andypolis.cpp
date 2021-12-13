@@ -21,8 +21,11 @@ string Comprar_andypolis::obtener_condiciones(){
 
 void Comprar_andypolis::actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios ,int cant_maxima_escuelas){
     
+    if(this -> cumplido) // Si el objetivo ya se cumplió no hace falta actualizar el cumplimiento.
+        return;
+
     double total = ( (double) inventario.obtener_andycoins_gastadas() ) + inventario.obtener_cantidad_de_andycoins();
-    this -> cumplido = ( total > CANT_ANDYCOINS_OBJETIVO);
+    this -> cumplido = ( total >= CANT_ANDYCOINS_OBJETIVO);
 
 }
 
