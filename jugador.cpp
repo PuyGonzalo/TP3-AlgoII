@@ -360,14 +360,14 @@ void Jugador::mostrar_objetivos( int cant_maxima_escuelas){
             << TAB
             << left << setw(30) << objetivo_principal->obtener_nombre()
             << left << setw(70) <<  objetivo_principal->obtener_condiciones()
-            << left << setw(48) << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl;
+            << left << setw(48) << objetivo_principal->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl << endl;
 
         for( int i=0; i < CANT_OBJETIVOS_SORTEADOS; i++){
             cout
             << TAB
             << left << setw(30) << objetivos_secundarios.consultar(i)->obtener_nombre()
             << left << setw(70) <<  objetivos_secundarios.consultar(i)->obtener_condiciones()
-            << left << setw(48) << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl;
+            << left << setw(48) << objetivos_secundarios.consultar(i)->obtener_progreso(energia, inventario, mis_edificios, cant_maxima_escuelas) << endl << endl;
         }
 
 }
