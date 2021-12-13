@@ -340,3 +340,41 @@ int Parser::obtener_coordenada_y(){
     return i > 0 ? stoi(coordenada) : this -> entrada[cantidad_de_palabras - 1][0] - '0';
 
 }
+
+
+// --------------------------------------------------------------------------------------------------------------//
+//                                     +---------------------------+                                             //
+//                                     | Para  lluvia de recursos  |                                             //
+//                                     +---------------------------+                                             //
+// --------------------------------------------------------------------------------------------------------------//
+
+
+Material* Parser::procesar_entrada_material_lluvia(){
+
+    Material* material = nullptr;
+
+    if (tipo_material() == STR_PIEDRA){
+        material = new Piedra(cantidad_material_lluvia());
+    } else if (tipo_material() == STR_MADERA){
+        material = new Madera(cantidad_material_lluvia());
+    } else if (tipo_material() == STR_ANDYCOINS){
+        material = new Andycoins(cantidad_material_lluvia());
+    } else if (tipo_material() == STR_BOMBAS){
+        material = new Bombas(cantidad_material_lluvia());
+    } else {
+        material = new Metal(cantidad_material_lluvia());
+    }
+
+    return material;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+double Parser::cantidad_material_lluvia(){
+    
+    return stod(entrada[1]);
+
+}

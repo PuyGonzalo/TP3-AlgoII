@@ -517,22 +517,22 @@ Estado_t Andypolis::lluvia_de_recursos(){
 
     for(int i = 1; i <= cantidad_lluvia_piedra; ++i){
         Parser parser(piedra);
-        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO)); // RE COCHINOOO ¿cambiar?
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material_lluvia()); // RE COCHINOOO ¿cambiar?
     }
 
     for(int i = 1; i <= cantidad_lluvia_madera; ++i){
         Parser parser(madera);
-        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material_lluvia());
     }
 
     for(int i = 1; i <= cantidad_lluvia_metal; ++i){
         Parser parser(metal);
-        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material_lluvia());
     }
 
     for(int i = 1; i <= cantidad_lluvia_andycoins; ++i){
         Parser parser(andycoins);
-        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material(JUGADOR_UNO));
+        mapa.agregar_material_en_coordenada_transitable_aleatoria(parser.procesar_entrada_material_lluvia());
     }
 
     cout << endl << TAB << FONDO_COLOR_AZUL << NEGRITA << "¡LLUVIA DE RECURSOS!" << FIN_DE_FORMATO << endl;

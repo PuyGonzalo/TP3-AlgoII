@@ -140,8 +140,15 @@ public:
     // pos: Obtiene la coordenada Y
     int obtener_coordenada_y();
 
+    // ### Para lluvia de recursos ###
 
+    // pre:
+    // pos:
+    Material* procesar_entrada_material_lluvia();
 
+    // pre:
+    // pos:
+    double cantidad_material_lluvia();
 
 
 };
