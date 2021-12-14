@@ -33,12 +33,12 @@ public:
 
     // Metodos:
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Constructor clase ABB
     ABB();
     
-    // pre:
-    // pos:
+    // pre: ABB previemnte creado
+    // pos: Nodo inserrado en el orden correspondiente segun la clave
     void insertar(T* dato, C clave);
 
     // pre: Este metodo solo se puede usar si el arbol tiene como dato estructuras complejas, y ademas debe tener un metodo llamado mostrar_informacion()
@@ -49,52 +49,52 @@ public:
     // pos:
     void guardar_en_archivo(fstream& archivo);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve booleano verdadero si se encuentra el nodo que contiene la clave
     bool buscar(C clave);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve el nodo que contiene la clave
     ABBNodo<T,C>* consultar(C clave);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve el nodo que contiene la clave en modo const
     ABBNodo<T,C>* consultar_const(C clave) const;
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve la clave de menor valor que se encuentra en el arbol
     C buscar_minimo();
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve la clave de mayor valor que se encuentra en el arbol
     C buscar_maximo();
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve la clave del siguiente nodo en orden que corresponde en el arbol
     C sucesor(C clave);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve la clave del nodo previo en orden que corresponde en el arbol
     C predecesor(C clave);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Remueve un nodo del arbol buscado por clave
     void remover(C clave);
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Devuelve el nodo raiz del arbol
     ABBNodo<T,C>* obtener_raiz();
 
-    // pre:
-    // pos:
+    // pre: 
+    // pos: Bolleano verdadera en caso de no existir raiz en el arbol
     bool vacio();
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Remueve todo los nodos del arbol
     void remover_todo();
 
-    // pre:
-    // pos:
+    // pre: ABB previamnete creado
+    // pos: Destructor de la clase ABB
     ~ABB<T,C>();
 
 };

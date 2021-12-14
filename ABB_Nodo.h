@@ -16,76 +16,76 @@ private:
 public:
     // Metodos: 
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: Constructor de clase ABBNodo
     ABBNodo(T* dato, C clave);
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: Destructor de clase ABBNodo
     ~ABBNodo();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve el dato contenido en el nodo
     T* obtener_dato();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve el dato contenido en el nodo en modo const
     T* obtener_dato_const() const;
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve la clave contenido en el nodo
     C obtener_clave();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo contiene en su interior el dato
     void colocar_dato(T* dato);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo contiene en su interior la clave
     void colocar_clave(C clave);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo con punteros de padres y derecha inicializados
     void colocar_derecha(ABBNodo<T,C>* derecha, ABBNodo<T,C>* padre);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo con punteros de padres  e izquierda inicializados
     void colocar_izquierda(ABBNodo<T,C>* izquierda, ABBNodo<T,C>* padre);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo con punteros a derecha inicializado
     void colocar_derecha(ABBNodo<T,C>* derecha);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo con punteros a izquierda inicializado
     void colocar_izquierda(ABBNodo<T,C>* izquierda);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Nodo con punteros a padre inicializado
     void colocar_padre(ABBNodo<T,C>* padre);
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve piuntero a nodo ubicado a la derecha
     ABBNodo<T,C>* obtener_derecha();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve piuntero a nodo ubicado a la izquierda
     ABBNodo<T,C>* obtener_izquierda();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve piuntero a nodo ubicado a la padre
     ABBNodo<T,C>* obtener_padre();
     
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve bolleano verdadero si no tiene inicializados los punteros derecha e izquierda con un dato
     bool es_hoja();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve bolleano verdadero si tiene inicializado el puntero derecho
     bool tiene_solo_hijo_derecho();
 
-    // pre:
-    // pos:
+    // pre: Nodo previamente creado
+    // pos: Devuelve bolleano verdadero si tiene inicializado el puntero izquierdo
     bool tiene_solo_hijo_izquierdo();
 };
 

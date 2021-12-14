@@ -44,7 +44,7 @@ public:
     int buscar_material(char identificador) const;
 
     // pre: -
-    // pos:
+    // pos:Obtiene la cantidad de materiales
     int obtener_cantidad_materiales();
 
     // pre: -
@@ -99,29 +99,29 @@ public:
     //Para el objetivo comprar_andypolis:
 
     // pre: -
-    // pos:
+    // pos: Aumenta la cantidad de andycoins
     void aumentar_andycoins_gastadas(int cantidad);
 
     // pre: -
-    // pos:
+    // pos: obtiene la cantida de andycoinsb gastadas
     int obtener_andycoins_gastadas() const;
 
     // pre: -
-    // pos:
+    // pos: aumenta la cantidad de bombas usadas
     void aumentar_bombas_usadas(int cantidad);
 
     // pre: -
-    // pos:
+    // pos: obtiene la cantidad de bombas usadas
     int obtener_bombas_usadas() const;
 
     //Para el objetivo extremista:
 
     // pre: -
-    // pos:
+    // pos: aumenta la cantidad de bombas compradas
     void aumentar_bombas_compradas(int cantidad);
 
     // pre: -
-    // pos:
+    // pos: obtiene la cantidad de bombas usadas
     int obtener_bombas_compradas() const;
 
 };

@@ -70,8 +70,8 @@ int Casillero::obtener_peso(Jugador_t jugador){
     if(esta_ocupado()){
         if(hay_jugador() || es_casillero_construible()){
             peso = INFINITO;
-        } else peso = superficie -> obtener_peso(jugador); // hay un material (puedo pasarle por arriba)
-    } else peso = superficie -> obtener_peso(jugador); // no hay nada en el casillero
+        } else peso = superficie -> obtener_peso(jugador); 
+    } else peso = superficie -> obtener_peso(jugador); 
 
     return peso;
 

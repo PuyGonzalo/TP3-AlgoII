@@ -84,7 +84,7 @@ void Grafo::destruir_matriz_adyancencia(){
 
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_adyacencia[i];
-    delete [] matriz_adyacencia; // si quiero poner a nullptr tengo que ir 1 por una, no?
+    delete [] matriz_adyacencia; 
 
 }
 
@@ -96,7 +96,7 @@ void Grafo::destruir_matriz_distancias(){
 
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_distancias[i];
-    delete [] matriz_distancias; // si quiero poner a nullptr tengo que ir 1 por una, no?
+    delete [] matriz_distancias; 
 
 }
 
@@ -108,7 +108,7 @@ void Grafo::destruir_matriz_recorridos(){
 
     for(int i = 0; i < cantidad_vertices ; ++i)
         delete [] matriz_recorridos[i];
-    delete [] matriz_recorridos; // si quiero poner a nullptr tengo que ir 1 por una, no?
+    delete [] matriz_recorridos; 
 
 }
 
@@ -120,7 +120,7 @@ void Grafo::destruir_vertices(){
 
     for(int i = 0; i < cantidad_filas ; ++i){
         for(int j = 0 ; j < cantidad_columnas ; ++j){
-            delete grafo[i][j]; // tengo que ir 1 por 1 porque son estructuras complejas
+            delete grafo[i][j]; 
             grafo[i][j] = nullptr;
         }
         delete [] grafo[i];
@@ -289,8 +289,6 @@ void Grafo::conectar_esquinas(const Mapa &mapa){
 
 void Grafo::conectar_orillas(const Mapa &mapa){
 
-    // un metodo para c/u? y que el metodo sea conectar_vertice(indice,peso,indice,peso,indice,peso) o algo asi?
-
     // orilla de arriba
     for(int j = 1 ; j < cantidad_columnas-1 ; ++j){
         int indice_izq = grafo[0][j-1] -> obtener_indice();
@@ -393,7 +391,6 @@ void Grafo::actualizar_grafo(const Mapa &mapa){
 
     destruir_matriz_adyancencia();
     
-    // Las otras matrices se van a actualizar cuando vuelva a correr el algoritmo (:
     crear_matriz_adyancencia();
     inicializar_matriz_adyacencia();
 
@@ -415,7 +412,7 @@ Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int
 
     camino_minimo_floyd_warshall();
     Estado_t estado = OK;
-    //bool vertice_encontrado = false;
+
     int n = 0;
 
     int indice_origen = grafo[coordenadas_origen.coordenada_x][coordenadas_origen.coordenada_y] -> obtener_indice(); //Convierto las coordenadas iniciales del jugador a un "vertice"
@@ -570,7 +567,8 @@ void Grafo::camino_minimo_floyd_warshall(){
 }
 
 
-// -----------------------------------DEBUUGEEOO----------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+
 
 const int VERTICES_DEBUGGEO = 22;
 

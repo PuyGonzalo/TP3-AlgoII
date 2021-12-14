@@ -12,7 +12,7 @@ Jugador::Jugador(){
     ubicacion.coordenada_x = -1;
     ubicacion.coordenada_y = -1;
     this -> objetivo_principal = new Alto_nubes();
-    energia = 50; // primer turno imagino que es cuando se crea..
+    energia = 50; 
 
 }
 
@@ -35,8 +35,8 @@ Jugador::~Jugador(){
 
 
 void Jugador::agregar_energia(double energia){
-    if(this -> energia + energia >= 100) // deshardcodear
-        this -> energia = 100;
+    if(this -> energia + energia >= CANT_ENERGIA_MAXIMA) 
+        this -> energia = CANT_ENERGIA_MAXIMA;
     else this -> energia += energia;
 }
 
@@ -197,10 +197,11 @@ void Jugador::recolectar_recursos(Mapa &mapa){
         }
     }
 
-    cout << FONDO_COLOR_AGUAOSCURO << TAB << TAB << "¡Recolección exitosa!" << endl;
-    cout << TAB << "Tu inventario ahora quedo de la siguiente manera:" << FIN_DE_FORMATO << endl;
+    cout << FONDO_COLOR_AGUAOSCURO << TAB << TAB << MSJ_RECOLECCION_EXITOSA << endl;
+    cout << TAB << MSJ_ACTUALIZACION_INVENTARIO << FIN_DE_FORMATO << endl;
     mostrar_inventario();
 
+    
 }
 
 
@@ -347,7 +348,7 @@ void Jugador::mostrar_objetivos( int cant_maxima_escuelas){
 
 void Jugador::agregar_material_al_inventario(Material* material){
 
-    inventario.agregar_material_a_lista(material); // deberiamos sacarle el "lista"
+    inventario.agregar_material_a_lista(material); 
 
 }
 
@@ -359,7 +360,9 @@ Estado_t Jugador::comprar_bombas(){
 
     string cantidad_a_comprar;
 
-    cout << TAB << NEGRITA << SUBRAYADO << "Ingresa la cantidad de bombas que desea comprar:" << FIN_DE_FORMATO << endl;
+    
+
+    cout << TAB << NEGRITA << SUBRAYADO << MSG_CANTIDAD_BOMBAS_A_COMPRAR << FIN_DE_FORMATO << endl;
     cout << '>' << ESPACIO; getline(cin, cantidad_a_comprar); cout << FIN_DE_FORMATO;
 
     if(!es_un_numero(cantidad_a_comprar))
@@ -482,7 +485,7 @@ Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Da
         && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() < inventario.obtener_cantidad_de_metal()){
             
         estado = OK;
-    }else return estado = ERROR_MATERIALES_INSUFICIENTES; // no tiene sentido continuar si pasa esto, creo
+    }else return estado = ERROR_MATERIALES_INSUFICIENTES; 
 
     return estado;
 }
@@ -503,13 +506,13 @@ Estado_t Jugador::verificar_condiciones_reparacion(string nombre, const ABB<Dato
         && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() /4 < inventario.obtener_cantidad_de_metal()){
             
         estado = OK;
-    }else return estado = ERROR_MATERIALES_INSUFICIENTES; // no tiene sentido continuar si pasa esto, creo
+    }else return estado = ERROR_MATERIALES_INSUFICIENTES; 
 
     int posicion_edificio = buscar_edificio_por_nombre(nombre);
 
-    if(posicion_edificio != -1){ // Esto es, que ya hay un edificio de este tipo
+    if(posicion_edificio != -1){ 
         estado = ERROR_NO_HAY_CONSTRUIDOS;
-    } else estado = OK; //Si no esta en los edificios del jugador, claramente no hay construidos y no se supero la cantidad maxima permitida
+    } else estado = OK; 
 
     return estado;
 }
@@ -612,8 +615,8 @@ bool Jugador::victoria_por_objetivos_secundarios(){
             cantidad_objetivos_secundarios_cumplidos++;
     }
 
-    return (cantidad_objetivos_secundarios_cumplidos >= 2); // CANTIDAD_OBJ_SECUNDARIOS_PA_GANAR = 2
-
+    return (cantidad_objetivos_secundarios_cumplidos >= CANT_OBJETIVOS_SECUNDARIOS_PARA_GANAR); 
+    
 }
 
 

@@ -27,10 +27,6 @@ public:
     //POS: cambia hacia adonde apunta siguiente el nodo
     void cambiar_siguiente(Nodo* pn);
 
-    // pre: -
-    // pos: cambia donde apunta anterior el nodo
-    //void cambiar_anterior(Nodo* pn);
-
     //PRE: -
     //POS: obtiene el dato contenido en el nodo
     Tipo obtener_dato();
@@ -47,9 +43,6 @@ public:
     //POS: obtiene la direccion del nodo siguiente hacia el que esta apuntando el nodo
     Nodo* obtener_siguiente_const() const;
 
-    //PRE: -
-    //POS: obtiene la direccion del nodo anterior hacia el que esta apuntando el nodo
-    //Nodo* obtener_anterior();
 
 };
 

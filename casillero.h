@@ -14,14 +14,14 @@
 
 using namespace std;
 
-const char identificaciones_jugadores[2] = {'J','U'}; // CHE PERO EL EDIFICIO TIENE UN ATRIBUTO DE QUIEN ES EL CREADOR!
-const string colores_jugador[2] = {TEXTO_PURPURA,TEXTO_PURPURA_OSCURO}; // (impresion de casilleros con edifs)
+const char identificaciones_jugadores[2] = {'J','U'}; 
+const string colores_jugador[2] = {TEXTO_PURPURA,TEXTO_PURPURA_OSCURO}; 
 
 class Casillero{
 
 protected:
     // Atributos
-    Superficie* superficie = nullptr; // hasta no leer el mapa.txt no se que superficie tiene
+    Superficie* superficie = nullptr; 
     int coord_x;
     int coord_y;
     bool ocupado;
@@ -51,8 +51,8 @@ public:
     // pos: devuelve la coordenada x del casillero
     int obtener_coordenada_y();
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: devuelve el por referencia el tipo enumerativo correspondinte al constructor del edificio en el casillero
     virtual void obtener_creador_edificio(Jugador_t &jugador){};
 
     // pre: -
@@ -80,7 +80,7 @@ public:
     bool hay_jugador();
 
     // pre: -
-    // pos: 
+    // pos: Pone en falsso el atributo ocupado del casillero y como jugador pone a NADIE
     void eliminar_jugador();
 
     // pre: coordenada valida
@@ -99,16 +99,16 @@ public:
     // pos: metodo virtual para que <los casilleros construibles> devuelvan la cantidad material que brindan (si tienen un edificio)
     virtual double recolectar_recursos() = 0;
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Se instancia un material en el casillero para el casillero transitable
     virtual void depositar_recurso_casillero(){};
 
     // pre: -
     // pos: elimina el edificio del casillero (solo en construible)
     virtual void destruir_edificio(){};
 
-    // pre:
-    // pos:
+    // pre: - 
+    // pos: elimina un material contenido en un casillero transitable y pone el puntero nulo
     virtual void destruir_material(){};
 
     // pre: -

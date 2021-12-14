@@ -46,8 +46,6 @@ enum Opciones_menu_partida_nueva_t{
 };
 
 
-
-// HAY QUE BUSCAR UNA FORMA DE "TABEAR" ESTOS MENSAJES (RAW STRING LITERAL)
 const string ARTE_PANTALLA_FINAL = R"(
          __
  _(\    |@@|
@@ -149,23 +147,23 @@ const string MSJ_PARTIDA_NUEVA = "¡Comienza una nueva partida!";
 void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis);
 
 // pre: - 
-// pos: muestra el menu
+// pos: muestra el menu de la partida nueva en caso de tener texto de ubicaciones vacio
 void mostrar_menu_partida_nueva();
 
-// pre:
-// post:
+// pre: -
+// post: se valida la opcion ingresada por el usuario, andypolis previamente creada
 Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis);
 
-// pre:
-// post:
+// pre: opcion previemnte validada y andypolis creado
+// post: se procesa la opcion segun las posibilidades del switch 
 Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis);
 
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)
 void procesar_juego(Andypolis& andypolis); 
 
-// pre:
-// post: 
+// pre: andypolis previemnte creado
+// post: se encarga del menu de partida nueva validando y ejecutando las opciones seleccionadas por el ususario
 void partida_nueva(Andypolis& andypolis);
 
 // pre: -
@@ -184,8 +182,9 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 // pos: suma una cantidad "secreta" de un material dependiendo que codigo se ponga
 Estado_t menu_secreto(Inventario inventario, string codigo);
 
-// pre:
-// pos:
+// pre: - 
+// pos: Abre los archivos segun la ruta seleccionada, y segun el contenido de los mismos inicia o no una partida nueva, 
+// crea andypolis y se encarga de proceasar el juego
 void inicializar_juego();
 
 // pre: -

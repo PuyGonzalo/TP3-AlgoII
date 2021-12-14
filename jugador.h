@@ -36,8 +36,11 @@ const int CANT_OBJETIVOS_SORTEADOS = 3;
 const int CANT_OBJETIVOS_SECUNDARIOS = 10;
 const int CANT_MAX_ENERGIA = 100;
 const double CANTIDAD_ENERGIA_NECESARIA_P_CONSTRUIR = 15;
+const int  CANT_OBJETIVOS_SECUNDARIOS_PARA_GANAR = 2;
 
-
+const string MSJ_RECOLECCION_EXITOSA = "¡Recolección exitosa!";
+const string MSJ_ACTUALIZACION_INVENTARIO =  "Tu inventario ahora quedo de la siguiente manera:";
+const string MSG_CANTIDAD_BOMBAS_A_COMPRAR = "Ingresa la cantidad de bombas que desea comprar:";
 
 class Jugador{
 private:
@@ -45,7 +48,7 @@ private:
         char identificador;
         Jugador_t jugador;
         Coordenadas ubicacion;
-        Lista<Edificio_jugador*> mis_edificios; //con mis ladrillos
+        Lista<Edificio_jugador*> mis_edificios; 
 
         Grafo* grafo;
         Inventario inventario;
@@ -64,8 +67,8 @@ public:
         // pos: DESTRUCTOR del jugador
         ~Jugador();
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: agrega energia al jugador
         void agregar_energia(double energia);
 
         // pre: que una funciona mas externa chequee que no quede negativa la energia
@@ -104,12 +107,13 @@ public:
         // pos: devuelve la cantidad de andycoins que tiene el jugador
         double obtener_cantidad_andycoins();
 
-        // pre:
-        // pos:
+        // pre: edificio previamente cargado, valores de parametros positivos
+        // pos: Devuelve el valor de la vida del edificio en posicion edificio en mis edificio y de la posicion orden edificio en vida
         int obtener_vida_edificio( int posicion_edificio, int orden_edificio);
 
-        // pre:
-        // pos:
+
+        // pre: edificio previamente cargado, valores de parametros positivos
+        // pos: Suma el valor de la vida del edificio en posicion edificio en mis edificio y de la posicion orden edificio en vida
         void sumar_vida_edificio( int posicion_edificio, int orden_edificio);
 
         // pre: -
@@ -128,64 +132,64 @@ public:
         // pos: compra bombas para el jugador (y devuelve un error si no tiene las andycoins necesarias)
         Estado_t comprar_bombas();
 
-        // pre:
-        // pos:
+        // pre: Todos los parametros han sido previamente validados
+        // pos: Se crea un edificio jugador y se lo agrega en mis edifcios con los valores ingresados por paramtros
         void agregar_edificio(string nombre, char identificador, int vida, int coord_x, int coord_y);
 
-        // pre:
-        // pos:
+        // pre: Los edificios del jugador han sido previemnte creados
+        // pos: Deveulve la posicion en mis edifciios del edificio identificado con el char
         int buscar_edificio_por_identificador(char identificador);
 
         // pre: Lista de edificios cargado desde el archivo
         // pos: Posicion del edificio en la lista.
         int buscar_edificio_por_nombre(string nombre);
 
-        // pre:
-        // pos:
+        // pre: los parametros han sido validados
+        // pos: verifica que el jugador tiene los elementos necesarios para construir el edificio
         Estado_t verificar_condiciones_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
-        // pre:
-        // pos:
+        // pre: los parametros han sido validados
+        // pos: verifica que el jugador tiene los elementos necesarios para reparacion el edificio
         Estado_t verificar_condiciones_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
-        // pre:
-        // pos:
+        // pre: los parametros han sido validados
+        // pos: Resta los materiales del inventario del jugador por construccion
         void restar_materiales_construccion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
-        // pre:
-        // pos:
+        // pre: los parametros han sido validados
+        // pos: Resta los materiales del inventario del jugador por reparacion
         void restar_materiales_reparacion(string nombre, const ABB<Datos_edificio,string> &diccionario);
 
-        // pre:
-        // pos:
+        // pre: parametros validados
+        // pos: suma la cantidad de material identificado por el identificador en el inventario
         void sumar_cantidad_material_inventario(char identificador, double cantidad);
-
-        // pre:
-        // pos:
+        
+        // pre: parametros validados
+        // pos: resta la vida del edificio ubicado en posicion edificio de mis edificio en la posicion orden edificio de vida
         void restar_vida_edificio(int posicion_edificio, int orden_edificio);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: resta la cantida de bombas del jugador
         void restar_bombas();
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: aumenta la cantidad de bombas del jugador
         void aumentar_bombas_usadas();
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: recolecta el recursos que se ubica en la posicion segun el edificio
         void recolectar_recursos(Mapa &mapa);
 
-        // pre:
-        // pos:
+        /// pre: -
+        // pos: deposita el recursos que se ubica en la posicion segun el edificio
         void depositar_recursos(Mapa &mapa);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: utiliza el camino generado por caminos minimos del grafo para moverse por el mapa reci=olectando materiales
         Estado_t moverse_a_una_coord(int coord_x, int coord_y, Lista<Coordenadas*> &camino);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: actualiza lel estado de los objetivos verificando si se cumplen las condiciones
         void actualizar_estado_objetivos( int cant_maxima_escuelas);
 
         // pre:
@@ -208,12 +212,12 @@ public:
         // pos: muestra los edificios construidos por el jugador (FALTA RESTANTES HASTA MAXIMO - NECESITO DIC catalogo :( -))
         void listar_edificios_construidos();
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: Demuele el edificio de mis edifcios, del mapa y retorna al jugador un cuarto de los materiales de contruccion
         void demoler_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: destruye el edficio de mis edificios y del mapa
         void destruir_edificio(string nombre_edificio, const ABB<Datos_edificio,string> &diccionario, int coord_x, int coord_y);
         
         // pre: El vector de objetivos_secundarios esta completo
@@ -224,28 +228,27 @@ public:
         // pos: Devuelve la posicion en la lista de coordenadas
         int buscar_posicion_coordenadas( int posicion_edificio, int coord_x, int coord_y);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: inidica si el edificio puede ser reparado segun la cantidad de vida que tenga 
         bool puede_repararse_edificio( int posicion, int orden_edificio);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: guarda la ubicacion del jugador en el archivo
         void guardar_ubicacion_en_archivo( fstream &archivo_salida, Jugador_t jugador);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: guarda los edificios del jugador en el archivo
         void guardar_mis_edificios_en_archivo(fstream &archivo_salida);
 
-        // pre:
-        // pos:
+        // pre: -
+        // pos: obtiene el  nombre material de la posicion en el inventario
         string obtener_str_nombre_material(int pos);
-
-        // pre:
-        // pos:
+        // pre: -
+        // pos: obtiene la cantidad material de la posicion en el inventario
         string obtener_str_cantidad_material(int pos);
-
-        // pre:
-        // pos:
+        
+        // pre: -
+        // pos: obtiene la cantidad de  materiales en el inventario
         int obtener_cantidad_de_materiales_en_inventario();
 
         

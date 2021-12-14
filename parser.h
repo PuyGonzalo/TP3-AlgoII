@@ -53,8 +53,8 @@ public:
     // pos: Constructor de parser a partir de un string
     Parser(string linea);
 
-    // pre: -e
-    // pos: Destructor d parser
+    // pre: -
+    // pos: Destructor de parser
     ~Parser();
 
 
@@ -142,12 +142,12 @@ public:
 
     // ### Para lluvia de recursos ###
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Crea por memoria dinamica materiales con cantidad aleatorias determiandas segun la condicion del enunciado
     Material* procesar_entrada_material_lluvia();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Devuelve la cantidad de material obtenido en la lluvia de material
     double cantidad_material_lluvia();
 
 

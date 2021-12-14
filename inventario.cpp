@@ -20,12 +20,6 @@ Inventario::Inventario(){
 
 
 Inventario::~Inventario(){
-    // Esto no haria mas falta por como esta definido Vector
-    /* 
-    for (int i = 0 ; i < cantidad_materiales ; ++i){
-        delete lista_materiales.consulta(i);
-    }
-    */
 
 }
 

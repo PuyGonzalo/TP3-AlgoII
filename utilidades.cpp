@@ -34,8 +34,8 @@ Estado_t construir_edificio_por_nombre(Andypolis &andypolis, Jugador_t jugador){
     if(!andypolis.esta_edificio(nombre))
         return ERROR_EDIFICIO_INEXISTENTE;
 
-
-    cout << endl << TAB << SUBRAYADO << "Ingrese las coordenadas donde quiere construir el edificio:" << FIN_DE_FORMATO << endl;
+    
+    cout << endl << TAB << SUBRAYADO << MSG_UBICACION_CONSTRUCCION_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y);
 
@@ -65,7 +65,7 @@ Estado_t modificar_edificio_por_nombre(Andypolis &andypolis){
         return ERROR_MODIFICAR_OBELISICO; // No tiene sentido seguir si esto sucede
 
 
-    cout << endl << TAB << SUBRAYADO << "Ingrese la cantidad de material que quiere modificar del edificio:" << FIN_DE_FORMATO << endl;
+    cout << endl << TAB << SUBRAYADO << MSJ_UBICACION_MODIFICAR_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Cantidad de piedra > "; getline(cin, piedra);
     cout << endl <<  "Cantidad de madera > "; getline(cin, madera);
     cout << endl <<  "Cantidad de madera > "; getline(cin, metal);
@@ -108,7 +108,7 @@ Estado_t demoler_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 
     string coord_x, coord_y;
 
-    cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere demoler:" << FIN_DE_FORMATO << endl;
+    cout << TAB << SUBRAYADO << MSJ_UBICACION_DEMOLICION_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
     
@@ -133,7 +133,7 @@ Estado_t atacar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador)
 
     string coord_x, coord_y;
 
-    cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere atacar:" << FIN_DE_FORMATO << endl;
+    cout << TAB << SUBRAYADO << MSJ_UBICACION_ATACAR_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
     
@@ -157,7 +157,7 @@ Estado_t reparar_edificio_por_coordenada(Andypolis& andypolis, Jugador_t jugador
 
     string coord_x, coord_y;
 
-    cout << TAB << SUBRAYADO << "Ingrese la coordenadas del edificio que quiere reparar:" << FIN_DE_FORMATO << endl;
+    cout << TAB << SUBRAYADO << MSJ_UBICACION_REPARAR_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
     
@@ -179,7 +179,7 @@ Estado_t consultar_coordenada(const Andypolis &andypolis){
     Estado_t estado = OK;
     string coord_x, coord_y;
 
-    cout << TAB << SUBRAYADO << "Ingrese las coordenadas que quiere consultar:" << FIN_DE_FORMATO << endl;
+    cout << TAB << SUBRAYADO << MSJ_UBICACION_CONSULTAR_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
 
@@ -203,7 +203,7 @@ Estado_t moverse_a_una_coord(Andypolis &andypolis, Jugador_t jugador){
     Estado_t estado = OK;
     string coord_x, coord_y;
 
-    cout << TAB << SUBRAYADO << "Ingrese las coordenadas a las que desea movilizarse:" << FIN_DE_FORMATO << endl;
+    cout << TAB << SUBRAYADO <<MSJ_UBICACION_MOVERSE << FIN_DE_FORMATO << endl;
     cout << "Coordenada x > "; getline(cin, coord_x);
     cout << endl << "Coordenada y > "; getline(cin, coord_y); cout << endl;
 
@@ -240,24 +240,6 @@ bool archivo_esta_vacio(fstream& archivo){
 
     else return false;
 
-    // Me hinche las pelotas con esta forma xD, no se porq empezo a fallar.
-    // Cuando se crea el archivo andaba joya,
-    // pero cuando ya estaba creado y vacio no se porq compararlo contra EOF no funcionaba, tenia que comparar contra 0
-    // como habia hecho maxi en un principio (que se yo, puse la forma que usamos en el TP2 y anda joya para los dos casos, salu3)
-
-    // Dejo la otra forma comentada por si las dudas jeje
-/*
-    archivo.seekg(0, ios::end);
-
-    if( archivo.tellg() == EOF ){
-        
-        return true;
-    }
-    else{
-        archivo.seekg(0, ios::beg);
-        return false;
-    } 
-*/
 }
 
 

@@ -16,7 +16,7 @@ Edificio_jugador::Edificio_jugador(string nombre, char identificador){
 
     this -> nombre = nombre;
     this -> identificador = identificador;
-    this -> cantidad_construidos = 0; // Cuando lo creo no tengo construidos
+    this -> cantidad_construidos = 0; 
 }
 
 
@@ -119,24 +119,6 @@ int Edificio_jugador::obtener_vida( int posicion ) const{
     return this -> vida.consulta_const(posicion);
 
 }
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-/*
-string Edificio_jugador::obtener_vida_str() const{
-
-    stringstream sstream;
-
-    for( int i=0; i < cantidad_construidos; i++){
-        sstream << '(' << ubicaciones.consulta_const(i) -> coordenada_x
-            << ',' << " " << ubicaciones.consulta_const(i) -> coordenada_y << ") ";
-        }
-    }
-
-    return sstream.str();   
-
-}*/
 
 
 // ------------------------------------------------------------------------------------------------------------

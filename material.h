@@ -60,7 +60,6 @@ public:
     // pre: -
     // pos: obtiene que tipo/nombre de material es
     virtual string obtener_nombre_material() = 0;
-    // #### para mi PONERLE "NOMBRE en vez de tipo", no lo cambie para no romper el codigo q lo use
 
 };
 

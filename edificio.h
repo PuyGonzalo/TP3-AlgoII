@@ -18,7 +18,7 @@ const string STR_OBELISCO = "obelisco";
 const string STR_P_ELECTRICA = "planta electrica";
 const string STR_MINA_ORO = "mina oro";
 
-const int CANTIDAD_EDIFICIOS_OBJETIVO = 6; // No cuenta obelisco - objetivo constructor - (nombre mas lindo?)
+const int CANTIDAD_EDIFICIOS_OBJETIVO = 6;
 
 const string NOMBRES_EDIFICIOS[] = {
     STR_MINA,
@@ -62,7 +62,7 @@ public:
     virtual char obtener_identificador_recurso() = 0; 
 
     // pre: -
-    // pos:
+    // pos: Deposita el recurso segun el edificio 
     virtual void depositar_recurso(){};
 
     // pre: -

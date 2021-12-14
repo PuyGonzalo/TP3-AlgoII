@@ -51,15 +51,32 @@ class Objetivo{
         bool cumplido;
     
     public:
+        // pre: - 
+        // pos: Constructor Objetico por parametro
         Objetivo(string nombre_obj, bool realizado);
+
+        // pre: - 
+        // pos: Destructor Objetico por parametro
         virtual ~Objetivo(){};
 
+        // pre: - 
+        // pos: Constructor Objetico por parametro
         string obtener_nombre();
 
+        // pre: -
+        // pos: Verifica el cumplimiento del objetico
         bool chequear_cumplimiento();
 
+        // pre: -
+        // pos: Obtiene las condiciones para cumplir cono el objetivo
         virtual string obtener_condiciones() = 0;
+
+        // pre: -
+        // pos: modifica atributo cumplido si se cumplen las conidiciones, si esta complido no vuelve a verificar cumplimiento
         virtual void actualizar_cumplimiento(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios, int cant_maxima_escuelas) = 0; 
+        
+        // pre: -
+        // pos: Obtiene una string con la cantidad necesaria para cumplir con el objetivo
         virtual string obtener_progreso(const double &cant_energia, const Inventario &inventario, const Lista<Edificio_jugador*> &mis_edificios, int cant_maxima_escuelas) = 0;
 };
 

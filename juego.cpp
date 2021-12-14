@@ -37,7 +37,6 @@ void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_13 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
 
-    //andypolis.mostrar_mapa(60,10);
 
 
 }
@@ -60,8 +59,6 @@ void mostrar_menu_partida_nueva(){
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_4 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_5 << string(20, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
-
-    //andypolis.mostrar_mapa(60,10);
 
 
 }
@@ -106,13 +103,13 @@ void procesar_juego(Andypolis& andypolis){
 
         if(opcion != GUARDAR_SALIR){
             opcion = 0;
-            while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){ // agregar que si el jugador tiene 0 se finaliza automatico (molesto para debug)
-                mostrar_menu_jugador(jugador_A, andypolis);                // if(energia == 0) opcion = FINALIZAR_TURNO es lo mas logico (asi check objetivos)
+            while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){ 
+                mostrar_menu_jugador(jugador_A, andypolis);                
                 estado = ingreso_menu(opcion, andypolis, jugador_A, turno);
                 if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
                 else if(estado == ESTADO_JUGADOR_GANADOR)
-                    opcion = GUARDAR_SALIR; // tal vez haya que comentarla porque puede ser molesto para debug
+                    opcion = GUARDAR_SALIR; 
 
             }
         }
@@ -125,7 +122,7 @@ void procesar_juego(Andypolis& andypolis){
                 if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
                 else if(estado == ESTADO_JUGADOR_GANADOR)
-                    opcion = GUARDAR_SALIR; // tal vez haya que comentarla porque puede ser molesto para debug
+                    opcion = GUARDAR_SALIR; 
             }      
         }
 
@@ -139,7 +136,7 @@ void procesar_juego(Andypolis& andypolis){
 
 void sortear_jugadores(Jugador_t &jugador_A, Jugador_t &jugador_B){
 
-    int primero = rand()%100; // entre 1 y 2 es muy malo el rand()
+    int primero = rand()%100; 
 
     if(primero < 50){
         jugador_A = JUGADOR_UNO;
@@ -208,8 +205,6 @@ Estado_t ingreso_menu_partida_nueva(int &opcion , Andypolis &andypolis){
 Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis){
 
     Estado_t estado = OK;
-    //string str_edificio;
-    //string codigo_ingresado;
 
 
     switch (opcion_elegida) {
@@ -329,7 +324,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
                 return ESTADO_JUGADOR_GANADOR;
             }
             andypolis.depositar_recursos_jugador(jugador);
-            andypolis.agregar_energia_jugador(jugador, 20); // HARDCODEADOOO
+            andypolis.agregar_energia_jugador(jugador, 20);
             ++turno;
             break;
 
@@ -403,7 +398,6 @@ void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida
 
 void inicializar_juego(){
 
-    // Esto lo hago para que la secuencia de la cantidad de materiales que se genera con cada corrida del programa sea mas aleatoria.
 	srand( (unsigned int)time(NULL) );
 
     // Abro archivos de lectura
@@ -431,13 +425,6 @@ void inicializar_juego(){
         guardar_cambios(andypolis, archivo_materiales, archivo_ubicaciones);
 	}
 
-    
-
-    // Cierro archivos de lectura 
-    // Estos hay que cerrarlos ANTES porq la funcion que guarda los cambios necesita abrirlos como de escritura
-    // Sino, podemos hacer una funcion aparte que se llame, abrir archivo de escritura y que pregunta si archivo este abierto (archivo.is_open())
-    // En caso de estarlo lo cierra y lo abre nuevamente como de escritura.
-    // Si vamos por esa opcion, esto quedaria pero estaria cerrando los archivos de escritura xD (no es mala ehhh)
 	archivo_materiales.close(); 
 	archivo_edificios.close();
     archivo_ubicaciones.close();
