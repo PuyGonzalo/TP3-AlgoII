@@ -28,7 +28,7 @@ public:
     string obtener_tipo_edificio();
 
     // pre: -
-    // pos: 
+    // pos: obtiene el identificador del material que brinda
     char obtener_identificador_recurso();
 
     // pre: -

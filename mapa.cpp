@@ -543,7 +543,7 @@ Coordenadas Mapa::obtener_coordenadas_casillero_transitable_aleatorio(){
     coord_x = rand() % cantidad_columnas;
     coord_y = rand() % cantidad_filas;
 
-    while( !mapa[coord_x][coord_y]->es_casillero_transitable()){
+    while( !mapa[coord_x][coord_y] -> es_casillero_transitable()){
         coord_x = rand() % cantidad_columnas;
         coord_y = rand() % cantidad_filas;
     }

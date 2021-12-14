@@ -42,7 +42,7 @@ public:
     // pos: elimina el edificio del casillero
     virtual void destruir_edificio();
 
-    // pre: debe ser un casillero ocupado (validado en funcionas mas externas)
+    // pre: debe ser un casillero ocupado (validado en funciones mas externas)
     // pos: devuelve el nombre del edificio construido en el casillero
     string obtener_nombre_objeto_de_casillero();
 
@@ -54,12 +54,12 @@ public:
     // pos: le devuelve al jugador el acumulado de materiales que tiene el edificio del casillero en su deposito
     double recolectar_recursos();
 
-    // pre:
-    // pos:
+    // pre: antes de llamarla tiene que verificarse que efectivamente el casillero este ocupado
+    // pos: "deposita" un recurso en el deposito del edificio del casillero
     void depositar_recurso_casillero();
 
-    // pre: 
-    // pos: 
+    // pre: antes de llamarla tiene que verificarse que efectivamente el casillero este ocupado
+    // pos: devuelve a que jugador pertenece el edificio del casillero
     void obtener_creador_edificio(Jugador_t &jugador);
 
 };

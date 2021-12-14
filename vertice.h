@@ -47,10 +47,15 @@ public:
     // pos: devuelve cuantas conexines tiene el vertice
     int obtener_cantidad_conexiones();
 
+    // pre: - 
+    // pos: devuelve el indice del vertice al que esta conectado
     int obtener_elemento_de_lista_conexiones(int posicion);
+
+    // pre: - 
+    // pos: devuelve los pesos de la arista
     int obtener_elemento_de_lista_pesos(int posicion);
 
-    // pre: 
+    // pre: -
     // pos: conecta el vertice con otro (basicamente crea un camino/arista)
     void conectar_vertice(int indice, int peso);
 

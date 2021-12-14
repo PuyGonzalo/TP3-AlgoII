@@ -60,10 +60,6 @@ public:
     // pos: devuelve la cantidad de nodos que hay en la lista
     int obtener_cantidad() const;
 
-    //pre: la lista está cargada con valores
-    //post: elijo un valor random de la lista y lo elimino
-    Tipo bajar_aleatorio();
-
 
 private:
     // pre: posicion menor al largo de la lista (cantidad)
@@ -239,17 +235,5 @@ int Lista<Tipo>::obtener_cantidad() const{
 }
 
 
-// -----------------------------------------------------------------------------------------
-
-
-template <typename Tipo>
-Tipo Lista<Tipo>::bajar_aleatorio(){
-
-    int posicion_aleatoria = rand() % cantidad;
-    Tipo temporal = this -> consulta(posicion_aleatoria);
-    this -> baja(posicion_aleatoria);
-    
-    return temporal;
-} 
 
 #endif // LISTA_H
