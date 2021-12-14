@@ -61,92 +61,92 @@ public:
     // pos: completa la informacion de los jugadores (excepto ubicacion, claro)
     void cargar_informacion_jugadores();
 
-    // pre:
-    // pos:
+    // pre: Archivo bien formado
+    // pos: Carga los inventarios de los jugadores
     void cargar_inventarios(fstream& archivo_mats);
 
-    // pre: bien formado
-    // pos: carga el diccionario (no le deciamos catalogo? xd)
+    // pre: archivo bien formado
+    // pos: carga el diccionario
     void cargar_diccionario(fstream& archivo_edif);
 
-    // pre: -
+    // pre: Archivo bien formado
     // pos: carga las ubicaciones de materiales y los edificios de cada jugador
     Estado_t cargar_ubicaciones(fstream& archivo_ubics);
 
-    // pre: -
+    // pre: Archivo bien formado
     // pos: carga los materiales en el mapa
     Estado_t cargar_materiales_mapa(fstream& archivo_ubics);
 
-    // pre: -
-    // pos: carga los edificios de un jugador en particular
+    // pre: Archivo bien formado
+    // pos: carga los edificios de los jugadores (en caso de no estar "ubicaciones.txt" vacio)
     Estado_t cargar_edificios_jugador(fstream& archivo_ubics);
 
-    // pre: -
-    // pos: posiciona un jugador en el mapa
+    // pre: coordenadas existentes en el mapa
+    // pos: posiciona un jugador en el mapa y le asigna su ubicacion
     Estado_t posicionar_jugador(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Agrega un edificio a un jugador en particular
     void cargar_edificio_a_jugador(string nombre, char identificador, int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos: 
+    // pre: - 
+    // pos: obtiene la cantidad de energia de un jugador en particular
     double obtener_energia_jugador(Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: energia > 0
+    // pos: agrega energia un jugador en particular
     void agregar_energia_jugador(Jugador_t jugador, double energia);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Compra bombas para un jugador en particular
     Estado_t comprar_bombas(Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Busca un edificio en el diccionario, devuelve true si lo encuentra, false en caso contrario
     bool esta_edificio(string nombre);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: construye un edificio
     Estado_t construir_edificio(string nombre, int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: modifica los datos de construccion de un edificio (cambio solo efectuado en el diccionario)
     void modificar_edificio(string nombre, int piedra_nuevo , int madera_nuevo, int metal_nuevo);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: crea un string listo para usar con Parser (en este caso para el archivo ubicaciones.txt)
     string construir_string_edificio(string nombre, int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Demuele un edificio de un jugador en particular
     Estado_t destruir_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Ataca a un edificio del jugador contrario
     Estado_t atacar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Repara el edificio de un jugador en particular
     Estado_t reparar_edificio_de_coord(int coord_x, int coord_y, Jugador_t jugador);
 
     // pre: -
-    // pos: LLUVIA DE RECURSOS chocolate raaain
+    // pos: LLUVIA DE RECURSOS
     Estado_t lluvia_de_recursos();
 
     // pre: -
     // pos: mueve al jugador a una coordenada
     Estado_t moverse_a_una_coord(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Realiza todo el camino encontrado en 'moverse_a_un_coord(...)' 
     void realizar_movimiento(int coord_inicial_x, int coord_inicial_y, Jugador_t jugador, Lista<Coordenadas*> &camino);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Imprime por pantalla el mapa con un delay para que parezca que el jugar va "caminando" por el mapa
     void animacion_movimiento();
 
     // pre: -
-    // pos: 
+    // pos: Recolecta los recurso de los edificios del jugador
     void recolectar_recursos_jugador(Jugador_t jugador);
 
     // pre: -
@@ -162,11 +162,11 @@ public:
     void mostrar_inventario(Jugador_t jugador);
 
     // pre: -
-    // pos: mostrar edificios construidos (FALTA RESTANTES HASTA MAXIMO)
+    // pos: muestra los edificios construidos del jugador
     void listar_edificios_construidos(Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: imprime por pantalla el diccionario con todos su datos
     void listar_edificios_diccionario();
 
     // pre: -
@@ -177,44 +177,41 @@ public:
     // pos: Se muestran por consola los objetivos del jugador junto con su progreso
     void mostrar_objetivos(Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Consulta un casillero del mapa
     Estado_t consultar_casillero_de_mapa(int coord_x, int coord_y) const;
 
-    // pre:
-    // pos:
-    //void sortear_ubicacion_jugadores();
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Verifica que el usuario (jugador) quiera construir el edificio
     Estado_t consultar_construccion_edificio();
 
-    // pre:
-    // pos:
+    // pre: coordenadas existentes
+    // pos: Devuelve true si el casillero del mapa es transitable, false en caso contrario
     bool es_transitable(int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: jugador ubicado previamente
+    // pos: Quita la posicion actual que tiene el jugador
     Estado_t eliminar_posicion_jugador( Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Guarda todos los cambios realizados en andypolis en los archivos correspondientes (partida en curso)
     void guardar_andypolis(  fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones );
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Guarda la informacion que se cambio del diccionario en el archivo "edificios.txt"
     void guardar_andypolis_partida_nueva(  fstream& archivo_salida_edificios );
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Guarda los materiales de los jugadores en el archivo correspondiente
     void guardar_materiales_en_archivo( fstream& archivo_salida_materiales );
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Arma una string con el estilo de "materiales.txt"
     string armar_str_para_guardar_inventario(int pos);
 
-    // pre: 
-    // pos: 
+    // pre: -
+    // pos: Guarda las ubicaciones de los edificios (y de los mismos jugadores) en el archivo correspondiente
     void guardar_ubicaciones_en_archivo(fstream &archivo_salida);
 
 

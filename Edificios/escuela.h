@@ -28,7 +28,7 @@ public:
     string obtener_tipo_edificio();
 
     // pre: -
-    // pos: no brinda material (se necesita por metodo virtual puro que se uso para devolver return =/= void)
+    // pos: obtiene el identificador del material que brinda
     char obtener_identificador_recurso();
 
     // pre: -

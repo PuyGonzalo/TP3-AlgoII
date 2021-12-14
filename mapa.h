@@ -56,8 +56,8 @@ public:
     // pos: devuelve el indice de la lista de casilleros transitables disponibles de una coordenada pedida
     int obtener_indice_casillero_transitable(int coord_x, int coord_y);
 
-    // pre:
-    // post:
+    // pre: -
+    // pos: Devuelve la ubicacion de un casillero transitable aleatorio de la lista
     Coordenadas obtener_coordenadas_casillero_transitable_aleatorio();
 
     // pre: coordenadas validas (depende de mapa.txt)
@@ -109,51 +109,51 @@ public:
     Estado_t agregar_material_en_coordenadas(Material* material, int coord_x, int coord_y);
 
     // pre: La coordenada debe tener un material!
-    // pos:
+    // pos: quita el material de un casillero
     void quitar_material_en_coordenadas(int coord_x, int coord_y);
 
     // pre: -
     // pos: agrega un material en un casillero transitable DISPONIBLE ALEATORIO (y deja de estar disponible, claro)
     void agregar_material_en_coordenada_transitable_aleatoria(Material* material);
 
-    // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
+    // pre: antes de llamarla chequear que el casillero tenga un edificio
     // pos: devuelve el identificador de un casillero que tiene un edificio con la capacidad de brindar materiales
     char obtener_identificador_recurso_de_casillero(int coord_x, int coord_y);
 
-    // pre: antes de llamarla chequear que el casillero tenga un edificio que sea capaz de bridnar materiales
+    // pre: antes de llamarla chequear que el casillero tenga un edificio
     // pos: devuelve la cantidad de material brindado de un casillero que tiene un edificio con la capacidad de brindar materiales
     double recolectar_recursos_casillero( int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: coordenadas validas
+    // pos: "deposita" un recurso en el deposito del edificio del casillero 
     void depositar_recurso_casillero(int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Verifica que se cumplan las condiciones para construir 
     Estado_t verificar_coordenadas_construccion(int coord_x, int coord_y);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Verifica que se cumplan las condiciones para demoler
     Estado_t verificar_coordenadas_demolicion(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Verifica que se cumplan las condiciones para atacar a un edificio
     Estado_t verificar_coordenadas_ataque(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre:
-    // pos:
+    // pre: -
+    // pos: Verifica que se cumplan las condiciones para reparar un edificio
     Estado_t verificar_coordenadas_reparacion(int coord_x, int coord_y, Jugador_t jugador);
 
-    // pre: 
-    // pos: 
+    // pre: coordenadas validas (que haya un edificio)
+    // pos: Devuelve de que jugador es el edificio
     Jugador_t obtener_creador_edificio(int coord_x, int coord_y);
 
-    // pre: 
-    // pos: 
+    // pre: coordenadas validas
+    // pos: Elimina al jugador del mapa
     Estado_t eliminar_posicion_jugador(int coord_x, int coord_y);
 
-    // pre: 
-    // pos:
+    // pre: -
+    // pos: Guarda los materiales que estan en el mapa (No son de ningun jugador!)
     void guardar_materiales_en_achivo( fstream & archivo_salida);
 
 

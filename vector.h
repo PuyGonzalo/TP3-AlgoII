@@ -15,8 +15,8 @@ private:
 
     // Metodos privados
 
-    // pre: tam > 0
-    // pos: Redimensiona el vector, si tam es mayor que la longitud inicial, deja los datos anteriores y completa con vacios, si es menor, corta los datos que exceden.
+    // pre: nuevo_tam > 0
+    // pos: Redimensiona el vector.
     void redimensionar(int nuevo_tam);
 
 public:
@@ -30,7 +30,7 @@ public:
     // pos: Construye un vector de longitud tam y datos vacios
     Vector(int tam);
 
-    // Constructor de copia (Dejar?)
+    // Constructor de copia
     Vector(const Vector <D> &);
 
     // pre: dato tiene que ser un Dato valido
@@ -52,9 +52,6 @@ public:
     // pre: -
     // pos: Devuelve la longitud del vector
     int obtener_longitud() const;
-
-    // Sobrecarga del operador =
-    //void operator=(const Vector<D>& vec); // No se si me sirve para algo sinceramente
 
     // pre: -
     // pos: Libera recursos utilizados
@@ -170,7 +167,7 @@ void Vector<D>::insertar(D* dato){
 
 template <typename D>
 void Vector<D>::insertar_en_posicion( D* dato, int pos){
-    //  ESTO LO TENGO QUE CHEQUEAR CUANDO NO TENGA TANTO SUEÑO 
+    
     D* aux = new D;
     aux = dato;
     delete datos[pos];

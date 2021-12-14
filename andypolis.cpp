@@ -349,7 +349,7 @@ Estado_t Andypolis::consultar_construccion_edificio(){
     cout <<  SUBRAYADO << "Desea usted continuar?[ si / no ]" << FIN_DE_FORMATO << endl;
     getline(cin, opcion);
  
-    return ( opcion.compare("si") !=0 )? ERROR_CONSTRUCCION_CANCELADA : OK ; //Prefieren poner un !OK
+    return ( opcion.compare("si") !=0 )? ERROR_CONSTRUCCION_CANCELADA : OK;
 
 }
 
@@ -402,7 +402,7 @@ Estado_t Andypolis::destruir_edificio_de_coord(int coord_x, int coord_y, Jugador
 
     nombre_edificio = mapa.obtener_nombre_objeto_de_casillero_ocupado(coord_x, coord_y);
     estado = mapa.destruir_edificio_en_coord(coord_x, coord_y);
-    jugadores[jugador].destruir_edificio(nombre_edificio, diccionario, coord_x, coord_y);
+    jugadores[jugador].demoler_edificio(nombre_edificio, diccionario, coord_x, coord_y);
     
     cout<<endl<<TAB<<NEGRITA<<FONDO_COLOR_VERDE<< "¡Se demolio " << nombre_edificio << " exitosamente!" <<FIN_DE_FORMATO<<endl;
 
@@ -623,8 +623,6 @@ void Andypolis::animacion_movimiento(){
 void Andypolis::recolectar_recursos_jugador(Jugador_t jugador){
 
    jugadores[jugador].recolectar_recursos(mapa);
-
-    // anotar lo de ari de armar una lista de coords y que andypolis actualice el mapa (no rompe encapsulamiento pero es mas largo :p)
 
 }
 

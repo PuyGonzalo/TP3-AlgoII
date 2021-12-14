@@ -42,16 +42,16 @@ public:
     // pos: devuelve el nombre del material que esta ocupando el casillero
     string obtener_nombre_objeto_de_casillero();
 
-    // pre:
-    // pos:
+    // pre: antes de llamarla se debe verificar que efectivamente el casillero este ocupado
+    // pos: "Quita" el material del "Suelo" (casillero)
     void destruir_material();
 
-    // pre: - 
-    // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
+    // pre: antes de llamarla se debe verificar que efectivamente el casillero este ocupado
+    // pos: obtiene el identificador del material que esta en el "suelo"
     char obtener_identificador_recurso_de_casillero(){return material_ocupado -> obtener_identificador();};
 
-    // pre: - 
-    // pos: momentaneamente no tiene sentido pedirle info de un material a un casillero transitable (metodo virtual ret =/= void)
+    // pre: antes de llamarla se debe verificar que efectivamente el casillero este ocupado 
+    // pos: obtiene la cantidad el material que esta en el "suelo"
     double recolectar_recursos(){return material_ocupado -> obtener_cantidad();};
 
 };
