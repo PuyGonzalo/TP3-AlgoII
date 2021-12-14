@@ -287,7 +287,7 @@ Estado_t Mapa::consultar_casillero(int coord_x, int coord_y) const{
 
 void Mapa::mostrar_mapa(int pos_visual_x, int pos_visual_y){
 
-    //imprimir_leyenda_mapa();
+    imprimir_leyenda_mapa();
 
     //Gotoxy gotoxy;
 

@@ -190,6 +190,10 @@ public:
     // pos: Devuelve true si el casillero del mapa es transitable, false en caso contrario
     bool es_transitable(int coord_x, int coord_y);
 
+    // pre: coordenadas existentes
+    // pos: Devuelve true si el casillero del mapa es transitable, false en caso contrario
+    bool es_construible(int coord_x, int coord_y);
+
     // pre: jugador ubicado previamente
     // pos: Quita la posicion actual que tiene el jugador
     Estado_t eliminar_posicion_jugador( Jugador_t jugador);
@@ -221,6 +225,14 @@ public:
     // pre: -
     // pos: Guarda los materiales con 0 de cantidad para cada uno de los jugadores
     void guardar_materiales_para_nueva_partida(fstream &archivo_materiales);
+
+    // pre: -
+    // pos: devuelve la cantidad de filas del mapa
+    int obtener_filas_mapa();
+
+    // pre: -
+    // pos: devuelve la cantidad de columnas del mapa
+    int obtener_columnas_mapa();
 
 
 

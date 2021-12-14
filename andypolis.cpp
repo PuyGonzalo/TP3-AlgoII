@@ -319,7 +319,8 @@ Estado_t Andypolis::construir_edificio(string nombre, int coord_x, int coord_y, 
 
     
         
-    estado = jugadores[jugador].verificar_condiciones_construccion(nombre, diccionario);
+    if( (estado = jugadores[jugador].verificar_condiciones_construccion(nombre, diccionario)) != OK )
+        return estado;
 
     if( (estado = consultar_construccion_edificio()) != OK)
         return estado;
@@ -610,7 +611,7 @@ void Andypolis::animacion_movimiento(){
 
     if(system(CLR_SCREEN));
 
-    mostrar_mapa(16,1);
+    mostrar_mapa(0,0);
 
     usleep(500000);
 
@@ -741,6 +742,16 @@ bool Andypolis::es_transitable(int coord_x, int coord_y){
 // ------------------------------------------------------------------------------------------------------------
 
 
+
+bool Andypolis::es_construible(int coord_x, int coord_y){
+
+    return mapa.se_puede_construir(coord_x, coord_y);
+
+}
+
+// ------------------------------------------------------------------------------------------------------------
+
+
 void Andypolis::guardar_andypolis(  fstream& archivo_salida_materiales, fstream& archivo_salida_ubicaciones){
 
     guardar_materiales_en_archivo(archivo_salida_materiales);
@@ -834,3 +845,24 @@ void Andypolis::guardar_materiales_para_nueva_partida(fstream &archivo_materiale
     }
 
 }
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+int Andypolis::obtener_filas_mapa(){
+
+    return mapa.obtener_filas();
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+
+int Andypolis::obtener_columnas_mapa(){
+
+    return mapa.obtener_columnas();
+
+}
+

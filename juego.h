@@ -160,11 +160,11 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
 // pre: -
 // pos hace todo el proceso de juego (seguir jugando hasta que el usuario quiera irse e iniciar el aleatorio)
-void procesar_juego(Andypolis& andypolis); 
+Estado_t procesar_juego(Andypolis& andypolis); 
 
 // pre: andypolis previemnte creado
 // post: se encarga del menu de partida nueva validando y ejecutando las opciones seleccionadas por el ususario
-void partida_nueva(Andypolis& andypolis);
+Estado_t partida_nueva(Andypolis& andypolis);
 
 // pre: -
 // pos: asigna quien va a ir primero (jugador A) y quien ira segundo (jugador B) en el primer par de turnos

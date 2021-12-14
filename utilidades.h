@@ -14,8 +14,6 @@ const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt";
 const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
 const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
 const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
-const string PATH_ENTRADA_MATERIALES_NUEVA_PARTIDA = "Archivos/materiales_nueva_partida.txt";
-const string PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA = "Archivos/ubicaciones_nueva_partida.txt";
 
 
 const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";

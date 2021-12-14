@@ -1,7 +1,7 @@
-mina 200 50 140 2
-planta electrica 100 40 220 3
-fabrica 10 0 500 3
-aserradero 40 25 100 4
+aserradero 420 420 420 4
 escuela 45 125 140 10
+fabrica 10 0 500 3
+mina 200 50 140 2
 mina oro 200 50 123 3
 obelisco 1000 1000 1000 1
+planta electrica 100 40 220 3

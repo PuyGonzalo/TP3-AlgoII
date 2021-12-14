@@ -37,8 +37,6 @@ void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_OPCION_13 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
 
-
-
 }
 
 
@@ -66,7 +64,7 @@ void mostrar_menu_partida_nueva(){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void partida_nueva(Andypolis& andypolis){
+Estado_t partida_nueva(Andypolis& andypolis){
     int opcion = 0;
    	Estado_t estado = OK;
     
@@ -75,10 +73,12 @@ void partida_nueva(Andypolis& andypolis){
         if(opcion != GUARDAR_SALIR_PARTIDA_NUEVA && opcion != COMENZAR_PARTIDA_PARTIDA_NUEVA){
             mostrar_menu_partida_nueva();
             estado = ingreso_menu_partida_nueva(opcion, andypolis);
-            if(estado != OK)
+            if(estado != OK && estado != PARTIDA_NUEVA_NO_INICIALIZADA)
                 imprimir_error(estado);
         }
     }
+
+    return estado;
 
 }
 
@@ -86,7 +86,7 @@ void partida_nueva(Andypolis& andypolis){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void procesar_juego(Andypolis& andypolis){
+Estado_t procesar_juego(Andypolis& andypolis){
 
 
     int opcion = 0;
@@ -127,6 +127,8 @@ void procesar_juego(Andypolis& andypolis){
         }
 
     }
+
+    return estado;
 
 }
 
@@ -221,21 +223,24 @@ Estado_t procesar_opcion_partida_nueva(int opcion_elegida, Andypolis &andypolis)
 
         case MOSTRAR_MAPA_PARTIDA_NUEVA: 
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             break;
 
         case COMENZAR_PARTIDA_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
             estado = consultar_ubicacion_jugadroes(andypolis);
-            cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
-            cout << endl << endl;
-            procesar_juego(andypolis);
+            if(estado == OK){
+                cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
+                cout << endl << endl;
+                estado = procesar_juego(andypolis);
+            }
             break;
 
         case GUARDAR_SALIR_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
             cout << endl << TAB << NEGRITA << FONDO_COLOR_AZUL << MSJ_DESPEDIDA << FIN_DE_FORMATO <<endl;
             cout << endl << endl;
+            estado = PARTIDA_NUEVA_NO_INICIALIZADA;
             break;
 
         default: 
@@ -259,7 +264,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSTRUIR_EDIFICIO_POR_NOMBRE:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             estado = construir_edificio_por_nombre(andypolis, jugador);
             break;
 
@@ -270,19 +275,19 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case DEMOLER_EDIFICIO_POR_COORD: 
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             estado = demoler_edificio_por_coordenada(andypolis, jugador);
             break;
 
         case ATACAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             estado = atacar_edificio_por_coordenada(andypolis, jugador);
             break;
 
         case REPARAR_EDIFICIO_POR_COORD:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             estado = reparar_edificio_por_coordenada(andypolis, jugador);
             break;
         
@@ -293,6 +298,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case CONSULTAR_COORDENADA: 
             if(system(CLR_SCREEN));
+            andypolis.mostrar_mapa(0,0);
             estado = consultar_coordenada(andypolis);
             break;
         
@@ -313,7 +319,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
         case MOVERSE_A_UNA_COORD:
             if(system(CLR_SCREEN));
-            andypolis.mostrar_mapa(16,1);
+            andypolis.mostrar_mapa(0,0);
             estado = moverse_a_una_coord(andypolis, jugador);
             break;
 
@@ -380,8 +386,7 @@ void guardar_cambios(Andypolis& andypolis, fstream& archivo_salida_materiales, f
 
     andypolis.guardar_andypolis( archivo_salida_materiales, archivo_salida_ubicaciones);
 
-    cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥ " << endl << endl
-    << TAB << TAB << "# La partida se ha guardado correctamente. Esperamos que vuelvan pronto ♥ " << endl << endl;
+    cout << endl << TAB << TAB << "# La partida se ha guardado correctamente. Esperamos que vuelvan pronto ♥ " << endl << endl;
 
 }
 
@@ -394,7 +399,7 @@ void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida
     // Cierros los archivos de lectura
 	archivo_salida_edificios.close();
 
-    archivo_salida_edificios.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
+    archivo_salida_edificios.open(PATH_ENTRADA_EDIFICIOS, ios::out | ios::trunc);
 
     andypolis.guardar_andypolis_partida_nueva(archivo_salida_edificios);
 
@@ -408,6 +413,8 @@ void inicializar_juego(){
 
 	srand( (unsigned int)time(NULL) );
 
+    Estado_t estado = OK;
+
     // Abro archivos de lectura
 	fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::in);
 	fstream archivo_materiales(PATH_ENTRADA_MATERIALES, ios::in);
@@ -418,19 +425,25 @@ void inicializar_juego(){
     if( !archivo_ubicaciones.is_open() ){
 
         fstream archivo_ubicaciones;
-        crear_archivo_vacio(PATH_ENTRADA_UBICACIONES_NUEVA_PARTIDA, archivo_ubicaciones);
+        crear_archivo_vacio(PATH_ENTRADA_UBICACIONES, archivo_ubicaciones);
 
     }
     
 	if( archivo_esta_vacio(archivo_ubicaciones) ){
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,true);
-		partida_nueva(andypolis);
-        guardar_cambios_partida_nueva(andypolis, archivo_edificios);
-	}
+		estado = partida_nueva(andypolis);
+        if(estado != ESTADO_JUGADOR_GANADOR && estado != PARTIDA_NUEVA_NO_INICIALIZADA){
+            guardar_cambios(andypolis, archivo_materiales, archivo_ubicaciones);
+        } else if (estado == PARTIDA_NUEVA_NO_INICIALIZADA){
+            guardar_cambios_partida_nueva(andypolis, archivo_edificios);
+        }
+    }
 	else{
 		Andypolis andypolis(archivo_edificios, archivo_ubicaciones, archivo_mapa,archivo_materiales,false);
-		procesar_juego(andypolis);
-        guardar_cambios(andypolis, archivo_materiales, archivo_ubicaciones);
+		estado = procesar_juego(andypolis);
+        if(estado != ESTADO_JUGADOR_GANADOR){
+            guardar_cambios(andypolis, archivo_materiales, archivo_ubicaciones);
+        }
 	}
 
 	archivo_materiales.close(); 

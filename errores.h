@@ -37,6 +37,7 @@ const string STR_ERROR_ANDYCOINS_INSUFICIENTES = "¡No tenes suficientes andycoi
 const string STR_ERROR_ENERGIA_INSUFICIENTE = "¡No tenes suficiente energia para realizar esta acción!";
 const string STR_ERROR_MOVIMIENTO_A_OCUPADO = "¡No es posible moverse a este casillero, hay un edificio o un jugador!";
 const string STR_ERROR_MISMA_UBICACION = "¡El jugador ya se encuentra en esa posicion!";
+const string STR_ERROR_CASILLERO_CONSTRUIBLE = "¡Este casillero es construible!";
 
 const string errores[] = {
 	STR_OK,
@@ -68,7 +69,8 @@ const string errores[] = {
 	STR_ERROR_JUGADOR_ELEGIDO_INCORRECTO,
 	STR_ERROR_CONSTRUCCION_CANCELADA,
 	STR_ERROR_MOVIMIENTO_A_OCUPADO,
-	STR_ERROR_MISMA_UBICACION
+	STR_ERROR_MISMA_UBICACION,
+	STR_ERROR_CASILLERO_CONSTRUIBLE
 	
 };
 
@@ -103,8 +105,10 @@ enum Estado_t {
 	ERROR_CONSTRUCCION_CANCELADA =27,
 	ERROR_MOVIMIENTO_A_OCUPADO = 28,
 	ERROR_MISMA_UBICACION = 29,
+	ERROR_CASILLERO_CONSTRUIBLE = 30,
 	ADVERTENCIA_LLUVIA_RECURSOS = 100,
-	ESTADO_JUGADOR_GANADOR = 200};
+	ESTADO_JUGADOR_GANADOR = 200,
+	PARTIDA_NUEVA_NO_INICIALIZADA = 300};
 
 
 //####################################################### FUNCIONES #################################################################

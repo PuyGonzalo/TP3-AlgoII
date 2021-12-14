@@ -480,12 +480,12 @@ Estado_t Jugador::verificar_condiciones_construccion(string nombre, const ABB<Da
     if(energia < CANTIDAD_ENERGIA_NECESARIA_P_CONSTRUIR)
         return estado = ERROR_ENERGIA_INSUFICIENTE;
 
-    if(diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() < inventario.obtener_cantidad_de_piedra()
-        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() < inventario.obtener_cantidad_de_madera()
-        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() < inventario.obtener_cantidad_de_metal()){
+    if(diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_piedra() <= inventario.obtener_cantidad_de_piedra()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_madera() <= inventario.obtener_cantidad_de_madera()
+        && diccionario.consultar_const(nombre) -> obtener_dato_const() -> obtener_costo_metal() <= inventario.obtener_cantidad_de_metal()){
             
         estado = OK;
-    }else return estado = ERROR_MATERIALES_INSUFICIENTES; 
+    }else estado = ERROR_MATERIALES_INSUFICIENTES; 
 
     return estado;
 }

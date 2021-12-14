@@ -424,8 +424,6 @@ Estado_t Grafo::procesamiento_del_movimiento(Coordenadas coordenadas_origen, int
 
     energia_requerida = (double) matriz_distancias[indice_origen][indice_destino];
 
-    imprimir_camino_minimo(indice_origen,indice_destino);
-
     do{
 
         Coordenadas* ubicacion_vertice = new Coordenadas;
