@@ -1,5 +1,5 @@
 madera 5305 2138
 metal 1442 9789
 piedra 1830 9878
-andycoins 2391 3293
-bombas 5 10
+andycoins 2391 3193
+bombas 5 11

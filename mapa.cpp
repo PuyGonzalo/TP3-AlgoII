@@ -317,23 +317,24 @@ void Mapa::mostrar_mapa(int pos_visual_x, int pos_visual_y){
 
 void Mapa::imprimir_leyenda_mapa(){
 
-cout << TAB << "╔═══════════════════════════════════════╗" << endl;
-cout << TAB << NEGRITA << "║ " << "Superficies:" << string(25, ' ') << FIN_DE_FORMATO " ║" << endl;
-cout << TAB << "║ " << FONDO_COLOR_AZUL  << "LAGO" << string(3, ' ') << FIN_DE_FORMATO << string(30, ' ') << " ║" << endl;
-cout << TAB << "║ " << FONDO_COLOR_GRIS  << "CAMINO" << string(1, ' ') << FIN_DE_FORMATO << string(30, ' ') << " ║" << endl;
-cout << TAB << "║ " << FONDO_COLOR_VERDE  << "TERRENO" << FIN_DE_FORMATO << string(30, ' ') << " ║" << endl;
-cout << TAB << "║ " << string(37, ' ') << " ║" << endl;
-cout << TAB << NEGRITA << "║ " << "Edificios:" << string(27, ' ') << FIN_DE_FORMATO << " ║" << endl;
-cout << TAB << "║ " << "(A) Aserradero"  <<  string(23, ' ') << " ║" << endl;
-cout << TAB << "║ " << "(E) Escuela"  << string(26, ' ') << " ║" << endl;
-cout << TAB << "║ " << "(F) Fabrica"  << string(26, ' ') << " ║" << endl;
-cout << TAB << "║ " << "(M) Mina"  << string(29, ' ') << " ║" << endl;
-cout << TAB << "║ " << "(O) Obelisco"  << string(25, ' ') << " ║" << endl;
-cout << TAB << "║ " << "(P) Planta electrica" << string(17, ' ')  << " ║" << endl;
-cout << TAB << "║ " << string(37, ' ') << " ║" << endl;
-cout << TAB << NEGRITA << "║ " << "Materiales:" << string(26, ' ') << FIN_DE_FORMATO << " ║" << endl;
-cout << TAB << "║ " << "(I) Metal || (W) Madera || (S) Piedra"  << " ║" << endl;
-cout << TAB << "╚═══════════════════════════════════════╝" << endl;    
+cout << TAB << "╔════════════════════════════════════════════════════════╗" << endl;
+cout << TAB << NEGRITA << "║ " << "Superficies:" << string(42, ' ') << FIN_DE_FORMATO " ║" << endl;
+cout << TAB << "║ " << FONDO_COLOR_AZUL  << "LAGO" << string(3, ' ') << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
+cout << TAB << "║ " << FONDO_COLOR_GRIS  << "CAMINO" << string(1, ' ') << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
+cout << TAB << "║ " << FONDO_COLOR_VERDE  << "TERRENO" << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
+cout << TAB << "║ " << string(54, ' ') << " ║" << endl;
+cout << TAB << NEGRITA << "║ " << "Edificios:" << string(44, ' ') << FIN_DE_FORMATO << " ║" << endl;
+cout << TAB << "║ " << "(A) Aserradero"  <<  string(40, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(E) Escuela"  << string(43, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(F) Fabrica"  << string(43, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(M) Mina"  << string(46, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(G) Mina oro"  << string(42, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(O) Obelisco"  << string(42, ' ') << " ║" << endl;
+cout << TAB << "║ " << "(P) Planta electrica" << string(34, ' ')  << " ║" << endl;
+cout << TAB << "║ " << string(54, ' ') << " ║" << endl;
+cout << TAB << NEGRITA << "║ " << "Materiales:" << string(43, ' ') << FIN_DE_FORMATO << " ║" << endl;
+cout << TAB << "║ " << "(I) Metal || (W) Madera || (S) Piedra || (C) Andycoins"  << " ║" << endl;
+cout << TAB << "╚════════════════════════════════════════════════════════╝" << endl;    
 
 }
 
