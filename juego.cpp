@@ -320,6 +320,7 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
         case FINALIZAR_TURNO:
             if(system(CLR_SCREEN));
             if(andypolis.gano_el_jugador(jugador)){
+                generar_archivos_para_nueva_partida(andypolis);
                 mostrar_pantalla_final(jugador);
                 return ESTADO_JUGADOR_GANADOR;
             }
@@ -348,7 +349,6 @@ Estado_t procesar_opcion(int opcion_elegida, Andypolis &andypolis, Jugador_t jug
 
 void mostrar_pantalla_final(Jugador_t jugador){
 
-
     cout << NEGRITA << TAB << MSJ_FELICITACIONES_FINAL << FIN_DE_FORMATO << endl;
     if(jugador == JUGADOR_UNO)
         cout << NEGRITA << TAB << TAB << MSJ_MENU_BIENVENIDA_JUGADOR_UNO << FIN_DE_FORMATO << endl;
@@ -356,6 +356,11 @@ void mostrar_pantalla_final(Jugador_t jugador){
         cout << NEGRITA << TAB << TAB << MSJ_MENU_BIENVENIDA_JUGADOR_DOS << ARTE_PANTALLA_FINAL << FIN_DE_FORMATO << endl;
     
     cout << endl << endl;
+
+    cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥ " << endl << endl
+    << TAB << TAB << TAB << TAB << "# Ivan Lisman (a.k.a Lazurro)" << endl
+    << TAB << TAB << TAB << TAB << "# Gonzalo Puy (a.k.a Gona)" << endl
+    << TAB << TAB << TAB << TAB << "# Maximiliano Pintos (a.k.a El massi)" << endl;
 
 }
 
@@ -374,6 +379,9 @@ void guardar_cambios(Andypolis& andypolis, fstream& archivo_salida_materiales, f
     archivo_salida_ubicaciones.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
 
     andypolis.guardar_andypolis( archivo_salida_materiales, archivo_salida_ubicaciones);
+
+    cout << TAB << TAB << "¡Muchas gracias por jugar! Esperamos que lo hayan disfrutado ♥ " << endl << endl
+    << TAB << TAB << "# La partida se ha guardado correctamente. Esperamos que vuelvan pronto ♥ " << endl << endl;
 
 }
 
@@ -429,4 +437,19 @@ void inicializar_juego(){
 	archivo_edificios.close();
     archivo_ubicaciones.close();
     archivo_mapa.close();
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void generar_archivos_para_nueva_partida(Andypolis& andypolis){
+
+    fstream archivo_ubicaciones(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
+    archivo_ubicaciones.close();
+
+    fstream archivo_materiales(PATH_ENTRADA_MATERIALES, ios::out | ios::trunc);
+    andypolis.guardar_materiales_para_nueva_partida(archivo_materiales);
+    archivo_ubicaciones.close();
+        
 }

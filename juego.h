@@ -93,7 +93,7 @@ const string MSJ_MENU_BIENVENIDA_PARTIDA_NUEVA = R"(
 |  _   | |   | |    ___||  _    ||       ||    ___||  _    ||   | | |_|   ||  |_|  ||_____  |
 | |_|   ||   | |   |___ | | |   | |     | |   |___ | | |   ||   | |       ||       | _____| |
 |_______||___| |_______||_|  |__|  |___|  |_______||_|  |__||___| |______| |_______||_______|
-                                 _______                                                                         
+                                  _______                                                                         
                                  |   _   |                                                                        
                                  |  |_|  |                                                                        
                                  |       |                                                                        
@@ -198,6 +198,10 @@ void guardar_cambios(Andypolis& andypolis, fstream& archivo_salida_materiales, f
 // pre: -
 // pos: guarda todos los cambios que haya realizado el jugador en la partida nueva
 void guardar_cambios_partida_nueva(Andypolis& andypolis, fstream& archivo_salida_edificios );
+
+// pre: -
+// pos: Crea un archivo de ubicaciones vacio y pone los materiales en 0, dejando todo listo para una nueva partida
+void generar_archivos_para_nueva_partida(Andypolis& andypolis);
 
 
 #endif //JUEGO_H

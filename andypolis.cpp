@@ -786,6 +786,21 @@ string Andypolis::armar_str_para_guardar_inventario(int pos){
 }
 
 
+// ------------------------------------------------------------------------------------------------------------
+
+
+string Andypolis::armar_str_para_guardar_inventario_nueva_partida(int pos){
+
+    stringstream ss;
+
+    ss << jugadores[JUGADOR_UNO].obtener_str_nombre_material(pos) << " " 
+    << "0" << " "
+    << "0" << endl;
+
+    return ss.str();
+
+}
+
 
 // ------------------------------------------------------------------------------------------------------------
 
@@ -805,4 +820,17 @@ void Andypolis::guardar_ubicaciones_en_archivo(fstream &archivo_salida){
 
     // Imprimo los edificios del jugador dos:
     jugadores[JUGADOR_DOS].guardar_mis_edificios_en_archivo(archivo_salida);
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Andypolis::guardar_materiales_para_nueva_partida(fstream &archivo_materiales){
+
+    for(int i = 0; i < jugadores[JUGADOR_UNO].obtener_cantidad_de_materiales_en_inventario(); ++i){
+        string linea = armar_str_para_guardar_inventario_nueva_partida(i);
+        archivo_materiales << linea;
+    }
+
 }

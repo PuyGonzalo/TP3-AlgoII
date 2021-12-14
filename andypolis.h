@@ -211,8 +211,16 @@ public:
     string armar_str_para_guardar_inventario(int pos);
 
     // pre: -
+    // pre: Arma un string con el estilo de "materiales.txt" pero con las cantidades de los materiales en 0 para ambos jugadores
+    string armar_str_para_guardar_inventario_nueva_partida(int pos);
+
+    // pre: -
     // pos: Guarda las ubicaciones de los edificios (y de los mismos jugadores) en el archivo correspondiente
     void guardar_ubicaciones_en_archivo(fstream &archivo_salida);
+
+    // pre: -
+    // pos: Guarda los materiales con 0 de cantidad para cada uno de los jugadores
+    void guardar_materiales_para_nueva_partida(fstream &archivo_materiales);
 
 
 
