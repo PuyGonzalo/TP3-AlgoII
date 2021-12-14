@@ -12,7 +12,7 @@ Repositorio para el Trabajo Práctico número 3 de Algoritmos y Programación II
 
 ## Recomendaciones
 
-- Se recomienda ampliamente correr el juego con la consola en pantalla completa. De esta forma, es mas cómodo.
+- Se recomienda ampliamente correr el juego con la consola en pantalla completa. De esta forma, es mas cómodo la visualización de los menúes y mapas.
 
 ## Aclaraciones
 
