@@ -322,6 +322,8 @@ cout << TAB << NEGRITA << "║ " << "Superficies:" << string(42, ' ') << FIN_DE_
 cout << TAB << "║ " << FONDO_COLOR_AZUL  << "LAGO" << string(3, ' ') << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
 cout << TAB << "║ " << FONDO_COLOR_GRIS  << "CAMINO" << string(1, ' ') << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
 cout << TAB << "║ " << FONDO_COLOR_VERDE  << "TERRENO" << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
+cout << TAB << "║ " << FONDO_COLOR_CENIZA  << "BETUN" << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
+cout << TAB << "║ " << FONDO_COLOR_MARRON  << "MUELLE" << FIN_DE_FORMATO << string(47, ' ') << " ║" << endl;
 cout << TAB << "║ " << string(54, ' ') << " ║" << endl;
 cout << TAB << NEGRITA << "║ " << "Edificios:" << string(44, ' ') << FIN_DE_FORMATO << " ║" << endl;
 cout << TAB << "║ " << "(A) Aserradero"  <<  string(40, ' ') << " ║" << endl;
