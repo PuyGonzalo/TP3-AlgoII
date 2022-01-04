@@ -68,7 +68,7 @@ Estado_t modificar_edificio_por_nombre(Andypolis &andypolis){
     cout << endl << TAB << SUBRAYADO << MSJ_UBICACION_MODIFICAR_EDIFCIO << FIN_DE_FORMATO << endl;
     cout << "Cantidad de piedra > "; getline(cin, piedra);
     cout << endl <<  "Cantidad de madera > "; getline(cin, madera);
-    cout << endl <<  "Cantidad de madera > "; getline(cin, metal);
+    cout << endl <<  "Cantidad de metal > "; getline(cin, metal);
 
     if(es_un_numero(piedra) && es_un_numero(madera) && es_un_numero(metal)){
 

@@ -134,7 +134,7 @@ void Manejo_archivos::generar_archivos_para_nueva_partida(Andypolis& andypolis){
     archivo_ubicaciones.close();
     archivo_ubicaciones.open(PATH_ENTRADA_UBICACIONES, ios::out | ios::trunc);
     
-    archivo_ubicaciones.close();
+    archivo_materiales.close();
     archivo_materiales.open(PATH_ENTRADA_MATERIALES, ios::out | ios::trunc);
     andypolis.guardar_materiales_para_nueva_partida(archivo_materiales);
     

@@ -17,8 +17,6 @@ Menu::Menu(){
 
 void Menu::mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 
-    Estado_t estado;
-
     string FONDO = "";
 
     if(jugador == JUGADOR_UNO){
@@ -53,8 +51,6 @@ void Menu::mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 
 
 void Menu::mostrar_menu_partida_nueva(){
-
-    Estado_t estado;
 
     string FONDO = "";
     

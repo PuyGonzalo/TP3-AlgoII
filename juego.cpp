@@ -38,17 +38,18 @@ void Juego::jugar(){
         
         estado = juego_nuevo(andypolis, opcion);
 
-        if(opcion == COMENZAR_PARTIDA_PARTIDA_NUEVA){
+        if(opcion == COMENZAR_PARTIDA_PARTIDA_NUEVA && estado == OK){
             estado = procesar_juego(andypolis);
             
             if(estado == ESTADO_JUGADOR_GANADOR)
                 archivos.generar_archivos_para_nueva_partida(andypolis);
+        
+            else archivos.guardar_cambios(andypolis);
 
         }else archivos.guardar_cambios_partida_nueva(andypolis);
 
     }else{
 
-        int opcion;
         Estado_t estado;
 
         Andypolis andypolis(archivos.obtener_archivo_edificios(),
@@ -64,6 +65,7 @@ void Juego::jugar(){
         if(estado == ESTADO_JUGADOR_GANADOR)
             archivos.generar_archivos_para_nueva_partida(andypolis);
 
+        else archivos.guardar_cambios(andypolis);
     }
 
 }
@@ -78,7 +80,6 @@ Estado_t Juego::juego_nuevo(Andypolis& andypolis, int& opcion){
     
     while(opcion != GUARDAR_SALIR_PARTIDA_NUEVA && opcion != COMENZAR_PARTIDA_PARTIDA_NUEVA){
 
-       if(system(CLR_SCREEN));
        menu.mostrar_menu_partida_nueva();
        estado = menu.ingreso_menu();
 
@@ -125,7 +126,8 @@ Estado_t Juego::juego_nuevo(Andypolis& andypolis, int& opcion){
             break;
 
         default: 
-            return ERROR_NUMERO_OPCION_INVALIDA;
+            estado = ERROR_NUMERO_OPCION_INVALIDA;
+            break;
     }
 
     if( estado != OK )
@@ -135,6 +137,26 @@ Estado_t Juego::juego_nuevo(Andypolis& andypolis, int& opcion){
 
     
     return estado;
+
+}
+
+
+// ------------------------------------------------------------------------------------------------------------
+
+
+void Juego::sortear_jugadores(Jugador_t &jugador_A, Jugador_t &jugador_B){
+
+    int primero = rand()%100; 
+
+    if(primero < 50){
+        jugador_A = JUGADOR_UNO;
+        jugador_B = JUGADOR_DOS;
+    }
+    if(primero >= 50){
+        jugador_A = JUGADOR_DOS;
+        jugador_B = JUGADOR_UNO;
+    }
+
 
 }
 
@@ -159,7 +181,7 @@ Estado_t Juego::procesar_juego(Andypolis& andypolis){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){ 
                 menu.mostrar_menu_jugador(jugador_A, andypolis);                
-                estado = procesar_opcion(andypolis, jugador_A);
+                estado = procesar_opcion(andypolis, jugador_A, opcion);
                 if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
                 else if(estado == ESTADO_JUGADOR_GANADOR)
@@ -172,7 +194,7 @@ Estado_t Juego::procesar_juego(Andypolis& andypolis){
             opcion = 0;
             while(opcion != GUARDAR_SALIR && opcion != FINALIZAR_TURNO){
                 menu.mostrar_menu_jugador(jugador_B, andypolis);
-                estado = procesar_opcion(andypolis, jugador_B);
+                estado = procesar_opcion(andypolis, jugador_B, opcion);
                 if(estado != OK && estado != ESTADO_JUGADOR_GANADOR)
                     imprimir_error(estado);
                 else if(estado == ESTADO_JUGADOR_GANADOR)
@@ -190,29 +212,9 @@ Estado_t Juego::procesar_juego(Andypolis& andypolis){
 // ------------------------------------------------------------------------------------------------------------
 
 
-void sortear_jugadores(Jugador_t &jugador_A, Jugador_t &jugador_B){
+Estado_t Juego::procesar_opcion(Andypolis &andypolis, Jugador_t jugador, int& opcion){
 
-    int primero = rand()%100; 
-
-    if(primero < 50){
-        jugador_A = JUGADOR_UNO;
-        jugador_B = JUGADOR_DOS;
-    }
-    if(primero >= 50){
-        jugador_A = JUGADOR_DOS;
-        jugador_B = JUGADOR_UNO;
-    }
-
-
-}
-
-
-// ------------------------------------------------------------------------------------------------------------
-
-
-Estado_t Juego::procesar_opcion(Andypolis &andypolis, Jugador_t jugador){
-
-    int opcion = 0;
+    opcion = 0;
     Estado_t estado = OK;
     string str_edificio;
     string codigo_ingresado;
@@ -221,6 +223,7 @@ Estado_t Juego::procesar_opcion(Andypolis &andypolis, Jugador_t jugador){
 
     while( estado != OK){
         imprimir_error(estado);
+        menu.mostrar_menu_jugador(jugador,andypolis);
         estado = menu.ingreso_menu();
     }
 

@@ -72,7 +72,7 @@ public:
 
     // pre: ingreso_menu() ya valida el puntero nulo
     // pos: realiza la opcion del menu que el usuario elija
-    Estado_t procesar_opcion(Andypolis &andypolis, Jugador_t jugador);
+    Estado_t procesar_opcion(Andypolis &andypolis, Jugador_t jugador, int& opcion);
 
 };
 
