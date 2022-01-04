@@ -112,6 +112,7 @@ Estado_t Juego::juego_nuevo(Andypolis& andypolis, int& opcion){
         case COMENZAR_PARTIDA_PARTIDA_NUEVA:
             if(system(CLR_SCREEN));
             estado = consultar_ubicacion_jugadroes(andypolis);
+            if(system(CLR_SCREEN));
             if(estado == OK){
                 cout << endl << TAB << NEGRITA << FONDO_COLOR_VERDE << MSJ_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
                 cout << endl << endl;
