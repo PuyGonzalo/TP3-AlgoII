@@ -131,8 +131,10 @@ Estado_t Juego::juego_nuevo(Andypolis& andypolis, int& opcion){
             break;
     }
 
-    if( estado != OK )
+    if( estado != OK && estado != PARTIDA_NUEVA_NO_INICIALIZADA){
         imprimir_error(estado);
+        opcion = 0;
+    }    
 
     }
 
