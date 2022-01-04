@@ -10,12 +10,6 @@
 
 using namespace std;
 
-const string PATH_ENTRADA_MATERIALES = "Archivos/materiales.txt"; 
-const string PATH_ENTRADA_EDIFICIOS = "Archivos/edificios.txt";
-const string PATH_ENTRADA_UBICACIONES = "Archivos/ubicaciones.txt";
-const string PATH_ENTRADA_MAPA = "Archivos/mapa.txt";
-
-
 const string MSJ_INGRESO_EDIFICIO_CONSTRUIR = "Ingresa el nombre del edifico a construir:";
 const string MSG_UBICACION_CONSTRUCCION_EDIFCIO = "Ingrese las coordenadas donde quiere construir el edificio:";
 const string MSJ_INGRESO_EDIFICIO_MODIFICAR = "Ingresa el nombre del edifico a modificar:";

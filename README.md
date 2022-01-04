@@ -16,6 +16,11 @@ Repositorio para el Trabajo Práctico número 3 de Algoritmos y Programación II
 
 ## Aclaraciones
 
+<span style="color:red">_NOTAS_ :</span> 
+
+- Cuando se guarda partida y se reanuda mas tarde, los objetivos secundarios de cada jugador **se reiniciarán**. No esta implementado (por el momento) que se mantengan los mismos objetivos con los que estaban jugando los jugadores anteriormente. 
+- El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual tuvimos que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas del trabajo, por lo que se actualizo el trabajo posteriormente.
+
 ### Compilación
 
 El programa tiene varias sub-carpetas, por lo tanto para compilar utilizar la siguiente linea de comando
