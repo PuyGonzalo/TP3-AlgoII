@@ -129,6 +129,7 @@ public:
     // pos: muestra el menu
     void mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis);
 
+
     // pre: - 
     // pos: muestra el menu de la partida nueva en caso de tener texto de ubicaciones vacio
     void mostrar_menu_partida_nueva();

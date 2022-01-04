@@ -17,6 +17,8 @@ Menu::Menu(){
 
 void Menu::mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 
+    Estado_t estado;
+
     string FONDO = "";
 
     if(jugador == JUGADOR_UNO){
@@ -52,6 +54,8 @@ void Menu::mostrar_menu_jugador(Jugador_t jugador, Andypolis& andypolis){
 
 void Menu::mostrar_menu_partida_nueva(){
 
+    Estado_t estado;
+
     string FONDO = "";
     
     cout << TAB << NEGRITA << MSJ_MENU_BIENVENIDA_PARTIDA_NUEVA << FIN_DE_FORMATO <<endl;
@@ -64,7 +68,6 @@ void Menu::mostrar_menu_partida_nueva(){
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_4 << string(19, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "║ " << FONDO << NEGRITA  << MSJ_MENU_PARTIDA_NUEVA_OPCION_5 << string(20, ' ') << FIN_DE_FORMATO << " ║" << endl;
     cout << TAB << "╚════════════════════════════════════════╝" << endl;
-
 
 }
 
