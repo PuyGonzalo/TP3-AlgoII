@@ -8,18 +8,21 @@
 
 Repositorio para el Trabajo Práctico número 3 de Algoritmos y Programación II (95.12)
 
+Juego para la consola de Linux.
+
 ---
 
 ## Recomendaciones
 
+- Para comenzar una nueva partida, asegurarse que en la carpeta 'Archivos', el archivo 'ubicaciones.txt' este vacio (tambien puede no estar) y que el archivo 'materiales.txt' tenga las cantidades en 0 (las dos columnas siguientes a los nombres de los materiales).
 - Se recomienda ampliamente correr el juego con la consola en pantalla completa. De esta forma, es mas cómodo la visualización de los menúes y mapas.
 
 ## Aclaraciones
 
 <span style="color:red">_NOTAS_ :</span> 
 
-- Cuando se guarda partida y se reanuda mas tarde, los objetivos secundarios de cada jugador **se reiniciarán**. No esta implementado (por el momento) que se mantengan los mismos objetivos con los que estaban jugando los jugadores anteriormente. 
-- El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual tuvimos que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas del trabajo, por lo que se actualizo el trabajo posteriormente.
+- Cuando se guarda partida y se reanuda mas tarde, los objetivos secundarios de cada jugador **se reiniciarán**. No esta implementado (por el momento) que se mantengan los mismos objetivos con los que se estaban anteriormente. 
+- El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual se tuvo que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas de la entrega, por lo que se actualizo el proyecto posteriormente.
 
 ### Compilación
 
@@ -27,6 +30,12 @@ El programa tiene varias sub-carpetas, por lo tanto para compilar utilizar la si
 
 ~~~
 g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.cpp Superficies/*.cpp Objetivos/*.cpp -Wall -Werror -Wconversion -pedantic -pedantic-errors
+~~~
+
+Tambien se puede compilar con el makefile que esta incluido en el repositorio (Chequear que se tenga instalado 'make') con el siguiente commando:
+
+~~~
+make
 ~~~
 
 <span style="color:red">Por favor, tener en cuenta las siguientes consideraciones a la hora de compilar:</span>
