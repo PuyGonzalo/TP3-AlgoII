@@ -6,6 +6,9 @@
 
 Menu::Menu(){
 
+    this -> ingreso_usuario = " ";
+    this -> opcion_elegida = 0;
+
 }
 
 
@@ -109,3 +112,18 @@ bool Menu::verificar_opcion_elegida_en_rango(int min, int max){
 
 
 // ------------------------------------------------------------------------------------------------------------
+
+Estado_t Menu::ingreso_menu(){
+
+    Estado_t estado = OK;
+
+    cout << TAB << SUBRAYADO << MSJ_MENU_INGRESO_OPCION<< FIN_DE_FORMATO <<endl;
+    cout << '>' << ESPACIO; getline(cin, ingreso_usuario); cout << FIN_DE_FORMATO;
+
+    if( !es_un_numero(ingreso_usuario) )
+        return ERROR_ENTRADA_INVALIDA;
+
+    opcion_elegida = stoi(ingreso_usuario);
+
+    return estado;
+}

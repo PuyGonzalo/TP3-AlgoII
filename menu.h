@@ -5,6 +5,7 @@
 #include <string>
 #include "manejo_archivos.h"
 #include "herramientas.h"
+#include "error.h"
 
 
 using namespace std;
@@ -140,6 +141,9 @@ public:
     // pos: Verifica que la opcion ingresada este dentro del rango (min,max)
     bool verificar_opcion_elegida_en_rango(int min, int max);
 
+    // pre: -
+    // pos: Valida la opcion ingresada por el usuario
+    Estado_t ingreso_menu();
 
 };
 
