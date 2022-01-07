@@ -8,7 +8,7 @@
 
 Repositorio para el Trabajo Práctico número 3 de Algoritmos y Programación II (95.12)
 
-Juego para la consola de Linux.
+Juego para la consola de Linux - Andypolis: la batalla por el obelisco.
 
 ---
 
@@ -32,10 +32,11 @@ El programa tiene varias sub-carpetas, por lo tanto para compilar utilizar la si
 g++ -o <nombre_ejecutable> *.cpp Materiales/*.cpp Edificios/*.cpp Casilleros/*.cpp Superficies/*.cpp Objetivos/*.cpp -Wall -Werror -Wconversion -pedantic -pedantic-errors
 ~~~
 
-Tambien se puede compilar con el makefile que esta incluido en el repositorio (Chequear que se tenga instalado 'make') con el siguiente commando:
+Tambien se puede compilar y correr con el makefile que esta incluido en el repositorio (Chequear que se tenga instalado 'make') con los siguientes commandos:
 
 ~~~
 make
+./tp
 ~~~
 
 <span style="color:red">Por favor, tener en cuenta las siguientes consideraciones a la hora de compilar:</span>

@@ -626,6 +626,9 @@ bool Jugador::victoria_por_objetivos_secundarios(){
 void Jugador::mostrar_inventario(){
 
     inventario.mostrar_inventario();
+
+    cout << endl << TAB << TAB
+         << "Tiene: " << energia << " de energia." << endl;
     
 }
 
