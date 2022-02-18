@@ -61,6 +61,7 @@ make
 
 ## Diagrama UML del proyecto
 
+NOTA:
 - El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual se tuvo que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas de la entrega, por lo que se actualizo el proyecto posteriormente.
 
 <p align="center">
