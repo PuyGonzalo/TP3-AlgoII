@@ -12,19 +12,15 @@ Juego para la consola de Linux - Andypolis: la batalla por el obelisco.
 
 ---
 
-## Recomendaciones
+## Recomendaciones y aclaraciones
 
 - Para comenzar una nueva partida, asegurarse que en la carpeta 'Archivos', el archivo 'ubicaciones.txt' este vacio (tambien puede no estar) y que el archivo 'materiales.txt' tenga las cantidades en 0 (las dos columnas siguientes a los nombres de los materiales).
-- Se recomienda ampliamente correr el juego con la consola en pantalla completa. De esta forma, es mas cómodo la visualización de los menúes y mapas.
+- Cuando se guarda partida y se reanuda mas tarde, los objetivos secundarios de cada jugador **se reiniciarán**. No esta implementado (por el momento) que se mantengan los mismos objetivos con los que se estaban anteriormente.
+- Se recomienda ampliamente correr el juego con la consola en pantalla completa. De esta forma, es mas cómodo la visualización de los menúes y mapas. 
 
-## Aclaraciones
+---
 
-<span style="color:red">_NOTAS_ :</span> 
-
-- Cuando se guarda partida y se reanuda mas tarde, los objetivos secundarios de cada jugador **se reiniciarán**. No esta implementado (por el momento) que se mantengan los mismos objetivos con los que se estaban anteriormente. 
-- El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual se tuvo que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas de la entrega, por lo que se actualizo el proyecto posteriormente.
-
-### Compilación
+## Compilación
 
 El programa tiene varias sub-carpetas, por lo tanto para compilar utilizar la siguiente linea de comando
 
@@ -46,7 +42,7 @@ make
 - **Por un tema de diseño y consigna del mismo TP, por favor asegurarse que los archivos estén hechos en LINUX. Si se hacen en Windows, puede haber un problema por la diferencia entre los 'end of line' de cada sistema operativo.**
 -  **NO mover los `.cpp` de las correspondientes sub-carpetas.**
 
-### Funcionamiento del programa
+## Funcionamiento del programa
 
 - En cuanto a los atributos de cada casillero, se cuenta con una superficie con atributos booleanos que van a dictar las características finales del casillero. Esto se realizó de esta manera ya que. Por ejemplo, un Lago es inaccesible porque se decidió que ese terreno, momentáneamente, no es accesible, no que un Casillero Inaccesible lo es porque tiene un Lago.
 
@@ -64,6 +60,8 @@ make
 
 
 ## Diagrama UML del proyecto
+
+- El UML adjunto en este readme no es la version final del proyecto. Dicho UML fue hecho con una version anterior del trabajo la cual se tuvo que entregar por cuestiones de tiempo. El grupo no quedo conforme con algunas cosas de la entrega, por lo que se actualizo el proyecto posteriormente.
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/39422659/145930120-f4e2d89f-5c12-43fc-8732-33c054e63fd1.jpg" />
